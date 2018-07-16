@@ -1,0 +1,24 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/date-fns"
+    ],
+    "lib": ["es2017", "dom"],
+    "baseUrl": ".",
+    "paths": {
+      "@lifeworks/activity-log": ["libs/activity-log/src/index.ts"],
+      "@lifeworks/notifications": ["libs/notifications/src/index.ts"],
+      "@lifeworks/utilities": ["libs/utilities/src/index.ts"],
+      "@lifeworks/core": ["libs/core/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "tmp"]
+}

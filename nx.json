@@ -1,0 +1,33 @@
+{
+  "npmScope": "lifeworks",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "lifeworks": {
+      "tags": []
+    },
+    "lifeworks-e2e": {
+      "tags": []
+    },
+    "activity-log": {
+      "tags": []
+    },
+    "notifications": {
+      "tags": []
+    },
+    "utilities": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "utilities": {
+      "tags": []
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/lifeworks",
+    "module": "es2015",
+    "types": []
+  },
+  "exclude": ["src/test.ts", "**/*.spec.ts"],
+  "include": [
+    "**/*.ts",
+
+    "../../libs/activity-log/src/index.ts",
+    "../../libs/notifications/src/index.ts"
+  ]
+}

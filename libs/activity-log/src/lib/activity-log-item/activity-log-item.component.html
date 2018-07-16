@@ -1,0 +1,10 @@
+<ng-container *ngIf="canRender">
+    Type: {{item.type}}
+    <br> Message: {{ item.message }}
+    <br> Source: {{ item.source }}
+    <br> Date: {{ item.occurence | niceDate }}
+    <br> Subject: {{item.subject}}
+    <br> Action: {{item.action}}
+    <br>
+    <br>
+</ng-container>
