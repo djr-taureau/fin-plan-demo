@@ -9,7 +9,7 @@ import { ActivityLogItem } from '../models';
 })
 export class ActivityLogComponent implements OnInit {
 
-  @Input() log: Array<ActivityLogItem>
+  @Input() public log: Array<ActivityLogItem>
 
   constructor() { }
 

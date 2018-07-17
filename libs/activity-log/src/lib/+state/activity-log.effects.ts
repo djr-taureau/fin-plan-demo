@@ -26,7 +26,6 @@ export class ActivityLogEffects {
   });
 
   constructor(
-    private actions$: Actions,
     private dataPersistence: DataPersistence<ActivityLogState>,
     private activityLogService: ActivityLogService
   ) {}

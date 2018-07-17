@@ -14,7 +14,7 @@ import { canUse } from '@lifeworks/utilities';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ActivityLogItemComponent implements OnChanges {
-  @Input() item: ActivityLogItem;
+  @Input() public item: ActivityLogItem;
 
   canRender = false;
 

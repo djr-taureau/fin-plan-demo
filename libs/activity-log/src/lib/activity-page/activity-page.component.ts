@@ -12,8 +12,8 @@ import { getActivityLogs, isLoaded } from '../+state/activity-log.selectors';
   styleUrls: ['./activity-page.component.scss']
 })
 export class ActivityPageComponent implements OnInit {
-  logs$: Observable<ActivityLogItems>;
-  isLoaded$: Observable<boolean>;
+  public logs$: Observable<ActivityLogItems>;
+  public isLoaded$: Observable<boolean>;
 
   constructor(private store: Store<ActivityLogState>) {
     this.logs$ = store.pipe(select(getActivityLogs));

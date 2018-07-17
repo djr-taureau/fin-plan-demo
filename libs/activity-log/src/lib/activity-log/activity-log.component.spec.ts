@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ActivityLogComponent } from './activity-log.component';
+import { ActivityLogItemComponent } from '../activity-log-item/activity-log-item.component';
 
 describe('ActivityLogComponent', () => {
   let component: ActivityLogComponent;
@@ -8,9 +9,12 @@ describe('ActivityLogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityLogComponent ]
+      declarations: [
+        ActivityLogComponent,
+        ActivityLogItemComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

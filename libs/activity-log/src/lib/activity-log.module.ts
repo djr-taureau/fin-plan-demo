@@ -14,7 +14,7 @@ import {
   initialState as activityLogInitialState
 } from './+state/activity-log.reducer';
 import { ActivityLogEffects } from './+state/activity-log.effects';
-import { CoreModule, NiceDatePipe } from '@lifeworks/core';
+import { CoreModule } from '@lifeworks/core';
 
 @NgModule({
   imports: [
@@ -32,8 +32,7 @@ import { CoreModule, NiceDatePipe } from '@lifeworks/core';
   declarations: [
     ActivityLogComponent,
     ActivityLogItemComponent,
-    ActivityPageComponent,
-    NiceDatePipe
+    ActivityPageComponent
   ],
   providers: [ActivityLogAPIService, ActivityLogService, ActivityLogEffects]
 })

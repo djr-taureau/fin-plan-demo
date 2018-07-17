@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { StoreModule } from '@ngrx/store';
 import { ActivityPageComponent } from './activity-page.component';
+import { ActivityLogComponent } from '../activity-log/activity-log.component';
+import { ActivityLogItemComponent } from '../activity-log-item/activity-log-item.component';
 
 describe('ActivityPageComponent', () => {
   let component: ActivityPageComponent;
@@ -8,9 +10,14 @@ describe('ActivityPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ActivityPageComponent ]
+      imports: [StoreModule.forRoot({})],
+      declarations: [
+        ActivityPageComponent,
+        ActivityLogComponent,
+        ActivityLogItemComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

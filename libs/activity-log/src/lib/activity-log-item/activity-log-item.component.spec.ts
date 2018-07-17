@@ -16,10 +16,12 @@ describe('ActivityLogItemComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ActivityLogItemComponent);
     component = fixture.componentInstance;
+    component.item = null;
     fixture.detectChanges();
   });
 
   it('should create', () => {
+    component.item = null;
     expect(component).toBeTruthy();
   });
 });

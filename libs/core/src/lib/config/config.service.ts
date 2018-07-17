@@ -1,19 +1,11 @@
-import {
-  Injectable
-} from '@angular/core';
-import {
-  HttpClient
-} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import {
-  Configuration
-} from './configuration';
-import {
-  getConfigError
-} from '../error/error';
+import { Configuration } from './configuration';
+import { getConfigError } from '../error/error';
 
 
-export const CONFIG_URL = '/config/configuration.json';
+export const CONFIG_URL = '/config';
 
 @Injectable()
 export class ConfigService {
