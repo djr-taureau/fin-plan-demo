@@ -6,22 +6,15 @@ import { hot, cold, readAll } from '@nrwl/nx/testing';
 
 import { ActivityLogActions } from './activity-log.actions';
 import { ActivityLogEffects } from './activity-log.effects';
-import { Load, LoadSuccess } from './activity-log.actions';
+import { Load, LoadSuccess, LoadFail } from './activity-log.actions';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { ActivityLogService } from '../activity-log.service';
 
 describe('ActivityLogEffects', () => {
   let actions$: Observable<any>;
   let effects$: ActivityLogEffects;
-  const logItem1 = {
-    id: 1,
-    type: '',
-    message: '',
-    source: '',
-    occurence: new Date(),
-    subject: '',
-    action: {}
-  };
+  const spyFn = jasmine.createSpy('get');
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,25 +23,32 @@ describe('ActivityLogEffects', () => {
         ActivityLogEffects,
         DataPersistence,
         provideMockActions(() => actions$),
-        
+        {
+          provide: ActivityLogService,
+          useValue: { get: spyFn }
+        }
       ]
     });
 
     effects$ = TestBed.get(ActivityLogEffects);
   });
 
-  // todo: Renable this test and make it correct.
-  // describe('someEffect', () => {
-  //   it('should work', async () => {
-  //     const action = new Load();
-  //     const completion = new LoadSuccess([logItem1])
+  describe('loadActivityLog Effect', () => {
+    it('call LoadSuccess on Successful API call', () => {
+      spyFn.and.returnValue(of([]))
+      actions$ = hot('-a-|', { a: new Load() });
+      expect(effects$.loadActivityLog$).toBeObservable(
+        hot('-a-|', { a: new LoadSuccess([]) })
+      );
+    });
 
-  //     actions$ = hot('-a-|', { a: action });
-  //     // const response = cold('-a-b|', [ logItem1 ]);
-  //     // const expected = cold('-----c', { c: completion });
+    it('call LoadFail on failed API call', () => {
+      spyFn.and.throwError('error');
+      actions$ = hot('-a-|', { a: new Load() });
+      expect(effects$.loadActivityLog$).toBeObservable(
+        hot('-a-|', { a: new LoadFail(new Error('error')) })
+      );
+    });
 
-
-  //     expect(await readAll(effects$.loadActivityLog$)).toEqual([completion]);
-  //   });
-  // });
+  });
 });

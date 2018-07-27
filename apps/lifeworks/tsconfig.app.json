@@ -8,8 +8,8 @@
   "exclude": ["src/test.ts", "**/*.spec.ts"],
   "include": [
     "**/*.ts",
-
+    /* Lazy Loaded*/
     "../../libs/activity-log/src/index.ts",
-    "../../libs/notifications/src/index.ts"
+    "../../libs/notifications/src/index.ts",
   ]
 }

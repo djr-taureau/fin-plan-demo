@@ -10,7 +10,7 @@ import {
 import { ActivityLogState } from './activity-log.reducer';
 import { DataPersistence } from '@nrwl/nx';
 import { ActivityLogService } from '../activity-log.service';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, flatMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { getApiError } from '@lifeworks/core';
 

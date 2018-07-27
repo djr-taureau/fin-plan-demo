@@ -2,6 +2,10 @@
 
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
+import { AuthenticationModule } from '@lifeworks/authentication';
+
+// tslint:disable-next-line
+import { TestingAuthProviderModule } from '@lifeworks/authentication/providers/testing-auth-provider';
 import {
   BrowserDynamicTestingModule,
   platformBrowserDynamicTesting
@@ -11,7 +15,7 @@ declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
+  [BrowserDynamicTestingModule, AuthenticationModule, TestingAuthProviderModule],
   platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

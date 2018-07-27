@@ -1,14 +1,26 @@
-import { LoadSuccess } from './activity-log.actions';
+import { LoadFail, LoadSuccess, Load } from './activity-log.actions';
 import { activityLogReducer, initialState } from './activity-log.reducer';
-import { ActivityLogItems } from '../models';
+import { LoadDataStatus } from '@lifeworks/core';
 
 describe('activityLogReducer', () => {
-  // it('should work', () => {
-  //   const action: LoadSuccess = new LoadSuccess([] as ActivityLogItems);
-  //   const actual = activityLogReducer(initialState, action);
-  //   expect(actual).toEqual({ status: 'loaded', entities: [] });
-  // });
-  it('should work', () => {
-    expect(true).toEqual(true);
+  it('update status and entities for a LoadSuccess Action', () => {
+    const action: LoadSuccess = new LoadSuccess([]);
+    const actual = activityLogReducer(initialState, action);
+    expect(actual.entities).toEqual([]);
+    expect(actual.status).toEqual(LoadDataStatus.loaded);
   });
+
+  it('update status to Loading on LoadFail Action', () => {
+    const action: Load = new Load();
+    const actual = activityLogReducer(initialState, action);
+    expect(actual.status).toEqual(LoadDataStatus.loading);
+  });
+
+  it('update status to Error and clear entities on LoadFail Action', () => {
+    const action: LoadFail = new LoadFail(new Error('error'));
+    const actual = activityLogReducer(initialState, action);
+    expect(actual.status).toEqual(LoadDataStatus.error);
+    expect(actual.entities).toEqual([]);
+  });
+
 });

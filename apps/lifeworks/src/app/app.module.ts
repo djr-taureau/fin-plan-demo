@@ -17,8 +17,14 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import {
   FixedRouterSerializer,
   ConfigService,
-  appInitializer
+  appInitializer,
+  CONFIG_URL
 } from '@lifeworks/core';
+import { AuthenticationModule, AUTH_PROVIDER } from '@lifeworks/authentication';
+import { ApplicationRoutes, AuthConfig } from './configs';
+
+// tslint:disable-next-line
+import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,20 +32,10 @@ import {
     HttpClientModule,
     BrowserModule,
     HttpClientModule,
+    AzureAdAuthProviderModule,
+    AuthenticationModule.forRoot(AuthConfig),
     NxModule.forRoot(),
-    RouterModule.forRoot(
-      [
-        {
-          path: 'activity-log',
-          loadChildren: '@lifeworks/activity-log#ActivityLogModule'
-        },
-        {
-          path: 'notifications',
-          loadChildren: '@lifeworks/notifications#NotificationsModule'
-        }
-      ],
-      { initialNavigation: 'enabled' }
-    ),
+    RouterModule.forRoot(ApplicationRoutes, { initialNavigation: 'enabled' }),
     StoreModule.forRoot(
       { route: routerReducer },
       {
@@ -59,7 +55,8 @@ import {
       multi: true,
       deps: [ConfigService]
     },
-    { provide: RouterStateSerializer, useClass: FixedRouterSerializer }
+    { provide: RouterStateSerializer, useClass: FixedRouterSerializer },
+    { provide: CONFIG_URL, useValue: environment.configUrl }
   ],
   bootstrap: [AppComponent]
 })

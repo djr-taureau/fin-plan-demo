@@ -29,7 +29,7 @@ describe('NotificationsEffects', () => {
     effects$ = TestBed.get(NotificationsEffects);
   });
 
-  describe('someEffect', () => {
+  describe('loadNotifications', () => {
     it('should work', () => {
       actions$ = hot('-a-|', { a: new LoadNotifications({}) });
       expect(effects$.loadNotifications$).toBeObservable(
