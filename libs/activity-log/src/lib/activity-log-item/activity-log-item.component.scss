@@ -1,3 +1,7 @@
+@import "~/../libs/styles/_framework";
+
 :host {
     display: block;
+    color: $primary-color;
+    @include MakeEmBig
 }
