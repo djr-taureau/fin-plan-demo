@@ -28,8 +28,7 @@
               "apps/lifeworks/src/config"
             ],
             "styles": [
-              "apps/lifeworks/src/styles.scss",
-              "libs/styles/_framework.scss"
+              "apps/lifeworks/src/styles.scss"
             ],
             "scripts": []
           },
