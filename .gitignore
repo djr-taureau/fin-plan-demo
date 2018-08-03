@@ -44,3 +44,8 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#azure/azurite storage emulator
+__blobstorage__
+__azurite_db_blob__.json
+__azurite_db_table__.json

@@ -27,7 +27,10 @@ module.exports = {
   target: 'node',
   entry: {
     'activity-log/GetActivityLog': $.root('./micro-services/activity-log/GetActivityLog'),
-    'activity-log/LogActivity': $.root('./micro-services/activity-log/LogActivity')
+    'activity-log/LogActivity': $.root('./micro-services/activity-log/LogActivity'),
+    'notifications/GetNotifications': $.root('./micro-services/notifications/GetNotifications'),
+    'notifications/SendNotifications': $.root('./micro-services/notifications/SendNotifications'),
+
   },
   output: {
     path: $.root('dist/micro-services'),

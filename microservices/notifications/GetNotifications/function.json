@@ -6,7 +6,11 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "log-activity"
+      "route": "notifications/{id?}",
+      "methods": [
+        "get",
+        "post"
+      ]
     },
     {
       "type": "http",

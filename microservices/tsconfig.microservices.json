@@ -1,7 +1,7 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist/out-tsc/microservices",
+    "outDir": "../dist/microservices",
     "rootDir": ".",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -12,9 +12,5 @@
   },
   "include": [
     "**/*.ts"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "usePrecompiledFiles": true,
-    "useWebpackText": true
-  }
+  ]
 }

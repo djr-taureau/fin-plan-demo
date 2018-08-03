@@ -26,7 +26,11 @@
     "dep-graph": "./node_modules/.bin/nx dep-graph",
     "help": "./node_modules/.bin/nx help",
     "clean": "rimraf dist",
-    "setup": "./tools/local-setup.sh"
+    "setup": "./tools/local-setup.sh",
+    "ms:build:clean": "rimraf dist/microservices",
+    "ms:build:ts": "tsc -p microservices/tsconfig.microservices.json",
+    "ms:build:copy": "copyfiles -u 1 \"microservices/**/*\" -e \"**/*(*.ts|*.microservices.json)\" dist/microservices",
+    "ms:build": "npm run ms:build:clean && npm run ms:build:ts && npm run ms:build:copy"
   },
   "private": true,
   "dependencies": {
@@ -49,8 +53,10 @@
     "mssql": "^4.1.0",
     "ngrx-store-freeze": "0.2.2",
     "ramda": "^0.25.0",
+    "reflect-metadata": "^0.1.12",
     "rxjs": "6.0.0",
     "rxjs-compat": "6.0.0",
+    "typeorm": "^0.2.7",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -64,11 +70,13 @@
     "@schematics/angular": "0.6.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
+    "@types/mssql": "^4.0.8",
     "@types/node": "~8.9.4",
     "@types/ramda": "0.25.24",
     "awesome-typescript-loader": "^5.2.0",
     "codelyzer": "~4.2.1",
     "copy-webpack-plugin": "^4.5.2",
+    "copyfiles": "^2.0.0",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "0.3.1",
     "jasmine-spec-reporter": "~4.2.1",
