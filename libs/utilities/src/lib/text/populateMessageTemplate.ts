@@ -11,6 +11,9 @@ import {
 	assoc
 } from 'ramda';
 
+const composeTemplateSelector = (key: string, selector: string) =>
+	`__${key[0]}.${selector}`;
+
 export const populateMessageTemplate = item => {
 	let sources = pick(['target', 'event', 'source'], item);
 	const eventSubject = path(['event', 'subject'], sources);
@@ -22,8 +25,4 @@ export const populateMessageTemplate = item => {
 	);
 	const vals = reduce((a, v) => concat(a, v), [], values(mapped));
 	return reduce((a, v) => replace(v[0], v[1], a), item.message, vals);
-};
-
-export const composeTemplateSelector = (key, selector) => {
-	return `__${key[0]}.${selector}`;
 };

@@ -2,21 +2,27 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { AuthService } from './auth.service';
 import { AUTH_PROVIDER, AuthProvider } from './auth-provider';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { EventEmitter } from '@angular/core';
+import { TestingAuthProvider } from '@lifeworks/authentication/providers/testing-auth-provider';
 
 describe('AuthService', () => {
-	const provider = jasmine.createSpyObj<AuthProvider>('provider', [
-		'login',
-		'logout',
-		'isAuthenticated'
-	]);
+	let provider: AuthProvider;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
+			imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
 			providers: [
 				AuthService,
-				{ provide: AUTH_PROVIDER, useValue: provider }
+				{ provide: AUTH_PROVIDER, useClass: TestingAuthProvider }
 			]
 		});
+
+		provider = TestBed.get(AUTH_PROVIDER) as AuthProvider;
+		spyOn(provider, 'isAuthenticated');
+		spyOn(provider, 'login');
+		spyOn(provider, 'logout');
 	});
 
 	it(

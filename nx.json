@@ -35,6 +35,9 @@
     "testing-auth-provider": {
       "tags": []
     },
+    "dashboarding": {
+      "tags": []
+    },
     "ui-components-data-list": {
       "tags": []
     },

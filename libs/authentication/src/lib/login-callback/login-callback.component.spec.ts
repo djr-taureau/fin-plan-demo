@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 
 import { LoginCallbackComponent } from './login-callback.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 describe('LoginCallbackComponent', () => {
 	let component: LoginCallbackComponent;
@@ -11,7 +13,11 @@ describe('LoginCallbackComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [RouterTestingModule],
+				imports: [
+					StoreModule.forRoot({}),
+					EffectsModule.forRoot([]),
+					RouterTestingModule
+				],
 				declarations: [LoginCallbackComponent]
 			}).compileComponents();
 		})

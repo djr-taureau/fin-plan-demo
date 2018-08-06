@@ -27,8 +27,7 @@ import {
 		CoreModule,
 		RouterModule.forChild([
 			{
-				path: '',
-				pathMatch: 'full',
+				path: 'activity-log',
 				component: ActivityPageComponent,
 				canActivate: [AuthenticatedGuard]
 			}

@@ -1,0 +1,6 @@
+<div [ngSwitch]="role | async">
+  <lifeworks-dashboard-advisor *ngSwitchCase="'advisor'"></lifeworks-dashboard-advisor>
+  <lifeworks-dashboard-client *ngSwitchCase="'client'"></lifeworks-dashboard-client>
+  <lifeworks-dashboard-manager *ngSwitchCase="'manager'"></lifeworks-dashboard-manager>
+  <lifeworks-dashboard-compliance *ngSwitchCase="'compliance_officer'"></lifeworks-dashboard-compliance>
+</div>

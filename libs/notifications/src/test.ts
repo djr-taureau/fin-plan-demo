@@ -11,6 +11,7 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 import { CoreModule } from '@lifeworks/core';
 import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
+import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
 
 declare const require: any;
 
@@ -20,7 +21,8 @@ getTestBed().initTestEnvironment(
 		BrowserDynamicTestingModule,
 		CoreModule,
 		HttpClientTestingModule,
-		UiComponentsDataListModule
+		UiComponentsDataListModule,
+		UiComponentsNavigationModule
 	],
 	platformBrowserDynamicTesting()
 );

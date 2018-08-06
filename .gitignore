@@ -13,6 +13,7 @@ local/*.*
 
 # dependencies
 /node_modules
+spa-server/node_modules
 
 # IDEs and editors
 /.idea

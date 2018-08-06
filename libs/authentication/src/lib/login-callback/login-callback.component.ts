@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { retriveFromStorage } from '@lifeworks/core';
+import { retriveFromStorage, Timeout } from '@lifeworks/core';
 import { REDIRECT_TOKEN } from '../authentication.routes';
 import { Location } from '@angular/common';
 import { timeout } from 'rxjs/operators';
@@ -23,11 +23,14 @@ export class LoginCallbackComponent implements OnInit {
 	constructor(private auth: AuthService, private router: Router) {}
 
 	ngOnInit() {
-		setTimeout(() => {
-			if (this.auth.isAuthenticated()) {
-				const redir = retriveFromStorage(REDIRECT_TOKEN);
-				this.router.navigate([redir]);
-			}
-		}, 500);
+		this.processAuthState();
+	}
+
+	@Timeout(500)
+	processAuthState() {
+		if (this.auth.isAuthenticated()) {
+			const redir = retriveFromStorage(REDIRECT_TOKEN);
+			this.router.navigate([redir]);
+		}
 	}
 }

@@ -17,9 +17,8 @@ import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 	imports: [
 		CommonModule,
 		HttpClientModule,
-		UiComponentsDataListModule,
 		CoreModule,
-
+		UiComponentsDataListModule,
 		RouterModule.forChild([
 			{
 				path: '',

@@ -8,8 +8,8 @@ import {
 import { logErrorToConsole, saveToStorage } from '@lifeworks/core';
 import { AuthProvider, AUTH_CONFIG } from '@lifeworks/authentication';
 import { getFullUrl } from '@lifeworks/utilities';
-
-const TOKEN_KEY = 'lifeworks_token';
+import { Timeout } from '@lifeworks/core';
+import { TimeoutError } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -25,10 +25,9 @@ export class AzureAdAuthProvider extends AuthProvider {
 		this.provider = new Msal.UserAgentApplication(
 			config.clientID,
 			getAuthorityUri(config.tenant, config.signUpSignInPolicy),
-			(errorDesc: any, token: any, error: any, tokenType: any) => {
-				// todo: handle errors
-				if (token) {
-					saveToStorage(TOKEN_KEY, token);
+			(errorDesc: string, token: any, error: any, tokenType: any) => {
+				if (errorDesc) {
+					this.emitAuthenticationError(error, errorDesc);
 				}
 			},
 			{
@@ -38,6 +37,25 @@ export class AzureAdAuthProvider extends AuthProvider {
 				cacheLocation: 'localStorage'
 			}
 		);
+
+		this.emitIfAuthenticated();
+	}
+
+	@Timeout()
+	emitIfAuthenticated(token?: any) {
+		if (this.isAuthenticated()) {
+			this.onAuthenticated.emit(token || this.provider.getUser().idToken);
+		}
+	}
+
+	@Timeout()
+	emitAuthenticationError(err: any, description: string) {
+		if (this.isAuthenticated) {
+			this.onAuthenticateError.emit({
+				err,
+				description
+			});
+		}
 	}
 
 	login() {

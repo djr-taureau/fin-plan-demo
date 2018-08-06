@@ -11,5 +11,6 @@
     /* Lazy Loaded*/
     "../../libs/activity-log/src/index.ts",
     "../../libs/notifications/src/index.ts",
+    "../../libs/dashboarding/src/index.ts",
   ]
 }

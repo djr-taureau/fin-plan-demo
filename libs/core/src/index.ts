@@ -4,4 +4,5 @@ export * from './lib/error';
 export * from './lib/date';
 export * from './lib/config';
 export * from './lib/storage';
-export * from './lib/http/pagination';
+export * from './lib/decorators';
+export * from './lib/http';
