@@ -1,0 +1,36 @@
+@import '../../../../../styles/_framework';
+
+:host-context {
+	padding: 1rem;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	width: 4rem;
+	flex: 0 0 4rem;
+	text-align: center;
+	svg {
+		width: 2rem;
+		margin: 0 auto;
+	}
+	-moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+	-webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+	box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+	background-color: #aaa;
+	&.lw-data-list-img-client-flagged-content,
+	&.lw-data-list-img-prep-for-review-meeting {
+		background-color: $color-blue;
+	}
+	&.lw-data-list-img-compliance-approval {
+		background-color: $color-green;
+	}
+	&.lw-data-list-img-compliance-revision-needed {
+		background-color: $color-orange;
+	}
+	&.lw-data-list-img-sales-opportunity {
+		background-color: $color-purple;
+	}
+	&.lw-data-list-img-review-meeting,
+	&.lw-data-list-img-suggestion {
+		background-color: $color-yellow;
+	}
+}

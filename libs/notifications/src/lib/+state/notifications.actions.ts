@@ -1,25 +1,28 @@
 import { Action } from '@ngrx/store';
+import { NotificationsItemCollection } from '../models';
+import { IPaginationHeader } from '@lifeworks/core';
 
 export enum NotificationsActionTypes {
-  NotificationsAction = '[Notifications] Action',
-  LoadNotifications = '[Notifications] Load Data',
-  NotificationsLoaded = '[Notifications] Data Loaded'
+	Load = '[Notifications] Load',
+	LoadSuccess = '[Notifications] Load Success',
+	LoadFail = '[Notifications] Load Fail'
 }
 
-export class Notifications implements Action {
-  readonly type = NotificationsActionTypes.NotificationsAction;
-}
-export class LoadNotifications implements Action {
-  readonly type = NotificationsActionTypes.LoadNotifications;
-  constructor(public payload: any) {}
+export class Load implements Action {
+	readonly type = NotificationsActionTypes.Load;
 }
 
-export class NotificationsLoaded implements Action {
-  readonly type = NotificationsActionTypes.NotificationsLoaded;
-  constructor(public payload: any) {}
+export class LoadSuccess implements Action {
+	readonly type = NotificationsActionTypes.LoadSuccess;
+	constructor(
+		public payload: NotificationsItemCollection,
+		public paging: IPaginationHeader
+	) {}
 }
 
-export type NotificationsActions =
-  | Notifications
-  | LoadNotifications
-  | NotificationsLoaded;
+export class LoadFail implements Action {
+	readonly type = NotificationsActionTypes.LoadFail;
+	constructor(public payload: Error) {}
+}
+
+export type NotificationsActions = Load | LoadSuccess | LoadFail;

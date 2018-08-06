@@ -1,35 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, timer, of } from 'rxjs';
-import { map, mergeScan, take } from 'rxjs/operators';
-import { NotificationsItem } from '../models';
-import { NotificationsService } from '../notifications.service';
-import { NotificationAPIService } from '../notification-api.service';
-import { head } from 'ramda';
-
-export type Notifications = Array<NotificationsItem>;
+import { Observable, pipe } from 'rxjs';
+import { NotificationsItemCollection } from '../models';
+import * as NotificationsActions from '../+state/notifications.actions';
+import { Store, select } from '@ngrx/store';
+import { NotificationsState } from '../+state/notifications.reducer';
+import {
+	getNotifications,
+	isLoaded,
+	getNotificationCount
+} from '../+state/notifications.selectors';
 
 @Component({
-  selector: 'lw-notifications-page',
-  templateUrl: './notifications-page.component.html',
-  styleUrls: ['./notifications-page.component.scss']
+	selector: 'lw-notifications-page',
+	templateUrl: './notifications-page.component.html',
+	styleUrls: ['./notifications-page.component.scss']
 })
 export class NotificationsPageComponent implements OnInit {
-  singleNotificationsItem$: Observable<NotificationsItem> = of({} as any);
+	notifications$: Observable<NotificationsItemCollection>;
+	isLoaded$: Observable<boolean>;
+	notificationCount$: Observable<number>;
 
-  notifications$: Observable<Notifications>;
+	constructor(private store: Store<NotificationsState>) {
+		this.notifications$ = store.pipe(select(getNotifications));
+		this.isLoaded$ = store.pipe(select(isLoaded));
+		this.notificationCount$ = store.pipe(select(getNotificationCount));
+	}
 
-  serviceNotifications$: Observable<Notifications>;
-
-  constructor(
-    private notifications: NotificationsService,
-    private notificationsAPI: NotificationAPIService
-  ) {}
-
-  ngOnInit() {
-    this.serviceNotifications$ = this.notifications.get();
-
-    this.singleNotificationsItem$ = this.notificationsAPI
-      .get()
-      .pipe(map(x => head(x)));
-  }
+	ngOnInit() {
+		this.store.dispatch(new NotificationsActions.Load());
+	}
 }

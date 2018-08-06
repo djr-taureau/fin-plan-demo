@@ -6,17 +6,25 @@ import { AuthenticationModule } from '@lifeworks/authentication';
 
 // tslint:disable-next-line
 import { TestingAuthProviderModule } from '@lifeworks/authentication/providers/testing-auth-provider';
+// tslint:disable-next-line
+import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
+
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
+	BrowserDynamicTestingModule,
+	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  [BrowserDynamicTestingModule, AuthenticationModule, TestingAuthProviderModule],
-  platformBrowserDynamicTesting()
+	[
+		BrowserDynamicTestingModule,
+		AuthenticationModule,
+		TestingAuthProviderModule,
+		UiComponentsNavigationModule
+	],
+	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);

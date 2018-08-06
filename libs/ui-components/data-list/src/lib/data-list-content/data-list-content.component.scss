@@ -1,0 +1,7 @@
+@import '../../../../../styles/_framework';
+
+:host-context {
+	padding: 1.4rem 3rem;
+	flex-grow: 10;
+	font-weight: $font-weight-light;
+}

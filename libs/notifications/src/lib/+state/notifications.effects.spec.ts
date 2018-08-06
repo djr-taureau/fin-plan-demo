@@ -5,36 +5,43 @@ import { DataPersistence } from '@nrwl/nx';
 import { hot } from '@nrwl/nx/testing';
 
 import { NotificationsEffects } from './notifications.effects';
-import {
-  LoadNotifications,
-  NotificationsLoaded
-} from './notifications.actions';
+import { Load, LoadSuccess } from './notifications.actions';
 
-import { Observable } from 'rxjs';
+import { NotificationsService } from '../notifications.service';
+
+import { Observable, of } from 'rxjs';
 
 describe('NotificationsEffects', () => {
-  let actions$: Observable<any>;
-  let effects$: NotificationsEffects;
+	let actions$: Observable<any>;
+	let effects$: NotificationsEffects;
+	const getNotificationsSpyFn = jasmine.createSpy('get');
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
-      providers: [
-        NotificationsEffects,
-        DataPersistence,
-        provideMockActions(() => actions$)
-      ]
-    });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [StoreModule.forRoot({})],
+			providers: [
+				NotificationsEffects,
+				DataPersistence,
+				provideMockActions(() => actions$),
+				{
+					provide: NotificationsService,
+					useValue: { get: getNotificationsSpyFn }
+				}
+			]
+		});
 
-    effects$ = TestBed.get(NotificationsEffects);
-  });
+		effects$ = TestBed.get(NotificationsEffects);
+	});
 
-  describe('loadNotifications', () => {
-    it('should work', () => {
-      actions$ = hot('-a-|', { a: new LoadNotifications({}) });
-      expect(effects$.loadNotifications$).toBeObservable(
-        hot('-a-|', { a: new NotificationsLoaded({}) })
-      );
-    });
-  });
+	describe('loadNotifications', () => {
+		it('should work', () => {
+			getNotificationsSpyFn.and.returnValue(of({ results: [] }));
+			actions$ = hot('-a-|', { a: new Load() });
+			expect(effects$.loadNotifications$).toBeObservable(
+				hot('-a-|', {
+					a: new LoadSuccess([], {} as any)
+				})
+			);
+		});
+	});
 });

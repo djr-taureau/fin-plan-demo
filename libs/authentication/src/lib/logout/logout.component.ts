@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lifeworks-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.css']
+	selector: 'lifeworks-logout',
+	templateUrl: './logout.component.html',
+	styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
+	constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+	ngOnInit() {}
 }

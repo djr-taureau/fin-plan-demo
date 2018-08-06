@@ -1,5 +1,17 @@
-<h1>Single Item</h1>
-<lw-notifications-item [item]="singleNotificationsItem$ | async"></lw-notifications-item>
+<ng-container *ngIf="isLoaded$ | async">
 
-<h1>Service of items</h1>
-<lw-notifications [notifications]="serviceNotifications$ | async"></lw-notifications>
+    <lw-data-list>
+        <lw-data-list-header>
+            <lw-data-list-title>Notifications</lw-data-list-title>
+            <lw-data-list-amount>{{notificationCount$ | async}}</lw-data-list-amount>
+        </lw-data-list-header>
+        <lw-data-list-item *ngFor="let notification of notifications$ | async" [location]="notification.location">
+            <lw-data-list-img [type]="notification.event.type"></lw-data-list-img>
+            <lw-data-list-content>
+                <lw-data-list-meta>{{notification.occurrence | niceDate}}</lw-data-list-meta>
+                <lw-data-list-meta>{{notification.event.type | uppercase | replace:"-":" "}}</lw-data-list-meta>
+                {{notification | populateMessageTemplate}}
+            </lw-data-list-content>
+        </lw-data-list-item>
+    </lw-data-list>
+</ng-container>

@@ -12,43 +12,42 @@ import { Observable, of } from 'rxjs';
 import { ActivityLogService } from '../activity-log.service';
 
 describe('ActivityLogEffects', () => {
-  let actions$: Observable<any>;
-  let effects$: ActivityLogEffects;
-  const spyFn = jasmine.createSpy('get');
+	let actions$: Observable<any>;
+	let effects$: ActivityLogEffects;
+	const spyFn = jasmine.createSpy('get');
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
-      providers: [
-        ActivityLogEffects,
-        DataPersistence,
-        provideMockActions(() => actions$),
-        {
-          provide: ActivityLogService,
-          useValue: { get: spyFn }
-        }
-      ]
-    });
+	beforeEach(() => {
+		TestBed.configureTestingModule({
+			imports: [StoreModule.forRoot({})],
+			providers: [
+				ActivityLogEffects,
+				DataPersistence,
+				provideMockActions(() => actions$),
+				{
+					provide: ActivityLogService,
+					useValue: { get: spyFn }
+				}
+			]
+		});
 
-    effects$ = TestBed.get(ActivityLogEffects);
-  });
+		effects$ = TestBed.get(ActivityLogEffects);
+	});
 
-  describe('loadActivityLog Effect', () => {
-    it('call LoadSuccess on Successful API call', () => {
-      spyFn.and.returnValue(of([]))
-      actions$ = hot('-a-|', { a: new Load() });
-      expect(effects$.loadActivityLog$).toBeObservable(
-        hot('-a-|', { a: new LoadSuccess([]) })
-      );
-    });
+	describe('loadActivityLog Effect', () => {
+		it('call LoadSuccess on Successful API call', () => {
+			spyFn.and.returnValue(of({ results: [] }));
+			actions$ = hot('-a-|', { a: new Load() });
+			expect(effects$.loadActivityLog$).toBeObservable(
+				hot('-a-|', { a: new LoadSuccess([], {} as any) })
+			);
+		});
 
-    it('call LoadFail on failed API call', () => {
-      spyFn.and.throwError('error');
-      actions$ = hot('-a-|', { a: new Load() });
-      expect(effects$.loadActivityLog$).toBeObservable(
-        hot('-a-|', { a: new LoadFail(new Error('error')) })
-      );
-    });
-
-  });
+		it('call LoadFail on failed API call', () => {
+			spyFn.and.throwError('error');
+			actions$ = hot('-a-|', { a: new Load() });
+			expect(effects$.loadActivityLog$).toBeObservable(
+				hot('-a-|', { a: new LoadFail(new Error('error')) })
+			);
+		});
+	});
 });

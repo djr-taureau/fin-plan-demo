@@ -1,0 +1,36 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import {
+	DataListComponent,
+	DataListTitleDirective,
+	DataListMetaDirective,
+	DataListAmountDirective
+} from './data-list.component';
+
+describe('DataListComponent', () => {
+	let component: DataListComponent;
+	let fixture: ComponentFixture<DataListComponent>;
+
+	beforeEach(
+		async(() => {
+			TestBed.configureTestingModule({
+				declarations: [
+					DataListComponent,
+					DataListTitleDirective,
+					DataListMetaDirective,
+					DataListAmountDirective
+				]
+			}).compileComponents();
+		})
+	);
+
+	beforeEach(() => {
+		fixture = TestBed.createComponent(DataListComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
+
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
+});

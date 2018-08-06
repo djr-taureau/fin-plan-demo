@@ -1,35 +1,44 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import {
-  NotificationsActions,
-  NotificationsActionTypes,
-  LoadNotifications,
-  NotificationsLoaded
+	NotificationsActions,
+	NotificationsActionTypes,
+	Load,
+	LoadSuccess,
+	LoadFail
 } from './notifications.actions';
 import { NotificationsState } from './notifications.reducer';
+import { NotificationsService } from '../notifications.service';
 import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
+import { dissoc } from 'ramda';
 
 @Injectable()
 export class NotificationsEffects {
-  @Effect()
-  effect$ = this.actions$.ofType(NotificationsActionTypes.NotificationsAction);
+	@Effect()
+	loadNotifications$ = this.dataPersistence.fetch(
+		NotificationsActionTypes.Load,
+		{
+			run: (action: Load, state: NotificationsState) =>
+				this.notificationsService
+					.get()
+					.pipe(
+						map(
+							results =>
+								new LoadSuccess(
+									results.results,
+									dissoc('results', results)
+								)
+						)
+					),
+			onError: (action: NotificationsActions, error) =>
+				new LoadFail(error)
+		}
+	);
 
-  @Effect()
-  loadNotifications$ = this.dataPersistence.fetch(
-    NotificationsActionTypes.LoadNotifications,
-    {
-      run: (action: LoadNotifications, state: NotificationsState) => {
-        return new NotificationsLoaded(state);
-      },
-
-      onError: (action: LoadNotifications, error) => {
-        console.error('Error', error);
-      }
-    }
-  );
-
-  constructor(
-    private actions$: Actions,
-    private dataPersistence: DataPersistence<NotificationsState>
-  ) {}
+	constructor(
+		private actions$: Actions,
+		private dataPersistence: DataPersistence<NotificationsState>,
+		private notificationsService: NotificationsService
+	) {}
 }

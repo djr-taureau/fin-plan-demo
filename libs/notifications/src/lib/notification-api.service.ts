@@ -6,6 +6,13 @@ import { Observable } from 'rxjs';
 // import { catchError } from 'rxjs/operators';
 
 import { NotificationsItem } from './models';
+
+import {
+	PaginationResult,
+	getApiError,
+	throwErrorAndLog
+} from '@lifeworks/core';
+import { catchError } from '../../../../node_modules/rxjs/operators';
 //import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 // const httpOptions = {
@@ -16,13 +23,19 @@ import { NotificationsItem } from './models';
 // };
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class NotificationAPIService {
-  notificationsUrl = 'https://0a712aa5-cdc0-4b03-8704-7b84574ba25c.mock.pstmn.io/notifications';
-  constructor(private http: HttpClient) {}
+	notificationsUrl = 'https://c1e420f9-05f0-4a54-9c29-1fc5937dd9e1.mock.pstmn.io/notifications';
 
-  get(): Observable<NotificationsItem[]> {
-    return this.http.get<NotificationsItem[]>(this.notificationsUrl);
-  }
+	serviceErrorHandler = throwErrorAndLog('Notification API Service');
+
+	constructor(private http: HttpClient) {}
+
+	get(): Observable<PaginationResult<NotificationsItem>> {
+		return this.http
+			.get<PaginationResult<NotificationsItem>>(this.notificationsUrl)
+			.pipe(catchError(this.serviceErrorHandler(getApiError)));
+		// return this.http.get<NotificationsItem[]>(this.notificationsUrl);
+	}
 }

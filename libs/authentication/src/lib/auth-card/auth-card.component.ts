@@ -2,29 +2,25 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'lifeworks-auth-card',
-  templateUrl: './auth-card.component.html',
-  styleUrls: ['./auth-card.component.css']
+	selector: 'lifeworks-auth-card',
+	templateUrl: './auth-card.component.html',
+	styleUrls: ['./auth-card.component.css']
 })
 export class AuthCardComponent implements OnInit {
+	constructor(private auth: AuthService) {}
 
-  constructor(private auth: AuthService) { }
+	ngOnInit() {}
 
-  ngOnInit() {
-  }
+	login(): void {
+		this.auth.login();
+	}
 
-  login(): void {
-    this.auth.login();
-  }
+	logout(): void {
+		this.auth.logout();
+		sessionStorage.clear();
+	}
 
-  logout(): void {
-    this.auth.logout();
-    sessionStorage.clear();
-  };
-
-  isOnline(): boolean {
-    return this.auth.isAuthenticated();
-  };
-
-
+	isOnline(): boolean {
+		return this.auth.isAuthenticated();
+	}
 }

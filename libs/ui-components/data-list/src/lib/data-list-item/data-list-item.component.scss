@@ -1,0 +1,62 @@
+@import '../../../../../styles/_framework';
+
+:host-context {
+	display: flex;
+	color: $color-grey-dark;
+	align-items: stretch;
+	font-size: 1.6rem;
+	font-family: $font-family-text;
+}
+
+.notification-item-dismiss {
+	display: flex;
+	align-items: center;
+	width: 6rem;
+	flex: 0 0 6rem;
+
+	.notification-item-dismiss-button {
+		height: 3rem;
+		width: 3rem;
+		position: relative;
+		cursor: pointer;
+		border: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		background-color: transparent;
+		margin: 0 auto;
+		position: absolute !important;
+		top: -9999px !important;
+		left: -9999px !important;
+		&:active,
+		&:focus,
+		:host-context:hover & {
+			position: relative !important;
+			top: 0 !important;
+			left: 0 !important;
+		}
+		&:before,
+		&:after {
+			content: '';
+			position: absolute;
+			top: -0.5rem;
+			display: block;
+			width: 0.1rem;
+			height: 4rem;
+			background-color: #666;
+			left: 50%;
+			transform: translateX(-50%) translateX(-50%);
+		}
+		&:before {
+			transform: rotate(45deg);
+		}
+		&:after {
+			transform: rotate(-45deg);
+		}
+		&:hover {
+			&:before,
+			&:after {
+				background-color: #000;
+			}
+		}
+	}
+}

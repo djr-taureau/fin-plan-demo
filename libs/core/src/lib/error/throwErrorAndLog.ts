@@ -5,10 +5,9 @@ import { catchError } from 'rxjs/operators';
 //todo: Convert to RXJS Operator
 
 export const throwErrorAndLog = name => tr => err => {
-  console.error(name, err);
-  return throwError(tr(err));
+	console.error(name, err);
+	return throwError(tr(err));
 };
-
 
 // export const throwErrorAndLogOperator = () => (source: Observable<any>) => {
 //   return new Observable(observer => {

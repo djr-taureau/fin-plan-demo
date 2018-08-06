@@ -7,29 +7,27 @@ import { timeout } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 
 @Component({
-  selector: 'lifeworks-login-callback',
-  templateUrl: './login-callback.component.html',
-  styleUrls: ['./login-callback.component.css']
+	selector: 'lifeworks-login-callback',
+	templateUrl: './login-callback.component.html',
+	styleUrls: ['./login-callback.component.css']
 })
 export class LoginCallbackComponent implements OnInit {
-  get authState() {
-    if(this.auth.isAuthenticated()) {
-      return 'Authenticating'
-    } else {
-      return 'Unable to authenticate';
-    }
-  }
+	get authState() {
+		if (this.auth.isAuthenticated()) {
+			return 'Authenticating';
+		} else {
+			return 'Unable to authenticate';
+		}
+	}
 
-  constructor(private auth: AuthService, private router: Router) { }
+	constructor(private auth: AuthService, private router: Router) {}
 
-  ngOnInit() {
-  
-    setTimeout(() => {
-      if(this.auth.isAuthenticated()) {
-        const redir = retriveFromStorage(REDIRECT_TOKEN);
-        this.router.navigate([redir])
-      }
-    }, 500)
-  }
-
+	ngOnInit() {
+		setTimeout(() => {
+			if (this.auth.isAuthenticated()) {
+				const redir = retriveFromStorage(REDIRECT_TOKEN);
+				this.router.navigate([redir]);
+			}
+		}, 500);
+	}
 }

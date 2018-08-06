@@ -1,0 +1,26 @@
+@import '../../../../../styles/_framework';
+
+.lw-navigation {
+	@include linear-gradient($color-green-dark, $color-green-darker);
+	min-height: 100vh;
+}
+
+.lw-navigation-group {
+	display: block;
+	border-top: solid 0.1rem #000508;
+	padding: 2.3rem 0;
+	&:first-of-type {
+		border-top: 0;
+		padding-top: 0;
+	}
+}
+
+.lw-navigation-title {
+	display: block;
+	font-family: $font-family-text;
+	font-weight: $font-weight-semibold;
+	font-size: 1.8rem;
+	color: #fefefe;
+	padding: 2.7rem 4.5rem;
+	text-transform: uppercase;
+}

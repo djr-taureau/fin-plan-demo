@@ -34,6 +34,12 @@
     },
     "testing-auth-provider": {
       "tags": []
+    },
+    "ui-components-data-list": {
+      "tags": []
+    },
+    "ui-components-navigation": {
+      "tags": []
     }
   }
 }

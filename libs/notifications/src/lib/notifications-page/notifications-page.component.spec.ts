@@ -1,26 +1,27 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotificationsPageComponent } from './notifications-page.component';
-import { NotificationsComponent } from '../notifications/notifications.component';
-import { NotificationsItemComponent } from '../notifications-item/notifications-item.component';
+import { StoreModule } from '@ngrx/store';
 
 describe('NotificationsPageComponent', () => {
-  let component: NotificationsPageComponent;
-  let fixture: ComponentFixture<NotificationsPageComponent>;
+	let component: NotificationsPageComponent;
+	let fixture: ComponentFixture<NotificationsPageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ NotificationsPageComponent, NotificationsComponent, NotificationsItemComponent ]
-    })
-    .compileComponents();
-  }));
+	beforeEach(
+		async(() => {
+			TestBed.configureTestingModule({
+				imports: [StoreModule.forRoot({})],
+				declarations: [NotificationsPageComponent]
+			}).compileComponents();
+		})
+	);
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationsPageComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+	beforeEach(() => {
+		fixture = TestBed.createComponent(NotificationsPageComponent);
+		component = fixture.componentInstance;
+		fixture.detectChanges();
+	});
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });

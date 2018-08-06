@@ -9,55 +9,59 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import {
-  StoreRouterConnectingModule,
-  routerReducer,
-  RouterStateSerializer
+	StoreRouterConnectingModule,
+	routerReducer,
+	RouterStateSerializer
 } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import {
-  FixedRouterSerializer,
-  ConfigService,
-  appInitializer,
-  CONFIG_URL
+	FixedRouterSerializer,
+	ConfigService,
+	appInitializer,
+	CONFIG_URL
 } from '@lifeworks/core';
 import { AuthenticationModule, AUTH_PROVIDER } from '@lifeworks/authentication';
 import { ApplicationRoutes, AuthConfig } from './configs';
+import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
 
 // tslint:disable-next-line
 import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [
-    HttpClientModule,
-    BrowserModule,
-    HttpClientModule,
-    AzureAdAuthProviderModule,
-    AuthenticationModule.forRoot(AuthConfig),
-    NxModule.forRoot(),
-    RouterModule.forRoot(ApplicationRoutes, { initialNavigation: 'enabled' }),
-    StoreModule.forRoot(
-      { route: routerReducer },
-      {
-        initialState: {},
-        metaReducers: !environment.production ? [storeFreeze] : []
-      }
-    ),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule.forRoot({ stateKey: 'router' })
-  ],
-  providers: [
-    ConfigService,
-    {
-      useFactory: appInitializer,
-      provide: APP_INITIALIZER,
-      multi: true,
-      deps: [ConfigService]
-    },
-    { provide: RouterStateSerializer, useClass: FixedRouterSerializer },
-    { provide: CONFIG_URL, useValue: environment.configUrl }
-  ],
-  bootstrap: [AppComponent]
+	declarations: [AppComponent],
+	imports: [
+		HttpClientModule,
+		BrowserModule,
+		HttpClientModule,
+		AzureAdAuthProviderModule,
+		UiComponentsNavigationModule,
+		AuthenticationModule.forRoot(AuthConfig),
+		NxModule.forRoot(),
+		RouterModule.forRoot(ApplicationRoutes, {
+			initialNavigation: 'enabled'
+		}),
+		StoreModule.forRoot(
+			{ route: routerReducer },
+			{
+				initialState: {},
+				metaReducers: !environment.production ? [storeFreeze] : []
+			}
+		),
+		EffectsModule.forRoot([]),
+		!environment.production ? StoreDevtoolsModule.instrument() : [],
+		StoreRouterConnectingModule.forRoot({ stateKey: 'router' })
+	],
+	providers: [
+		ConfigService,
+		{
+			useFactory: appInitializer,
+			provide: APP_INITIALIZER,
+			multi: true,
+			deps: [ConfigService]
+		},
+		{ provide: RouterStateSerializer, useClass: FixedRouterSerializer },
+		{ provide: CONFIG_URL, useValue: environment.configUrl }
+	],
+	bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

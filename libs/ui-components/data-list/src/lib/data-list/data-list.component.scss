@@ -1,0 +1,42 @@
+@import '../../../../../styles/_framework';
+
+ul {
+	padding-left: 0;
+}
+
+.lw-data-list-item:nth-child(odd) {
+	background-color: $color-grey-lightest;
+}
+
+.lw-data-list-meta {
+	display: inline-block;
+	font-size: 1.3rem;
+	font-weight: $font-weight-light;
+	text-transform: uppercase;
+	color: $color-grey-light;
+	margin-bottom: 0.5rem;
+	&:after {
+		content: '/';
+		display: inline-block;
+		margin: 0 1em;
+	}
+	&:last-child:after {
+		content: '';
+		display: none;
+	}
+}
+
+.lw-data-list-title {
+	color: $color-green;
+	&:after {
+		content: '/';
+		display: inline-block;
+		color: $color-grey-lighter;
+		font-weight: $font-weight-light;
+		margin: 0 0.8em;
+	}
+}
+
+.lw-data-list-amount {
+	color: $color-orange;
+}

@@ -2,16 +2,16 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { NotificationsItem } from './models';
 import { NotificationAPIService } from './notification-api.service';
+import { PaginationResult } from '@lifeworks/core';
 
 export type Notifications = Array<NotificationsItem>;
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class NotificationsService {
-  notifications = this.notificationsAPI.get();
-  constructor(private notificationsAPI: NotificationAPIService) {}
+	constructor(private NotificationsAPI: NotificationAPIService) {}
 
-  get(): Observable<Array<NotificationsItem>> {
-    return this.notifications;
-  }
+	get(): Observable<PaginationResult<NotificationsItem>> {
+		return this.NotificationsAPI.get();
+	}
 }

@@ -1,16 +1,10 @@
 import {
-  Action,
-  StateObservable,
-  createFeatureSelector,
-  createSelector
-} from '@ngrx/store';
-import {
-  ActivityLogActions,
-  ActivityLogActionTypes
+	ActivityLogActions,
+	ActivityLogActionTypes
 } from './activity-log.actions';
-import { ActivityLogItems } from '../models';
-import { LoadDataStatus } from '@lifeworks/core';
-import { assoc, compose } from 'ramda';
+import { ActivityLogItemCollection } from '../models';
+import { LoadDataStatus, IPaginationHeader } from '@lifeworks/core';
+import { assoc } from 'ramda';
 
 /**
  * Interface for the 'ActivityLog' data used in
@@ -18,8 +12,9 @@ import { assoc, compose } from 'ramda';
  *  - activityLogReducer
  */
 export interface ActivityLogData {
-  status: LoadDataStatus;
-  entities: ActivityLogItems;
+	status: LoadDataStatus;
+	entities: ActivityLogItemCollection;
+	paging?: IPaginationHeader;
 }
 
 /**
@@ -27,47 +22,51 @@ export interface ActivityLogData {
  * and other information related to ActivityLogData.
  */
 export interface ActivityLogState {
-  readonly activityLog: ActivityLogData;
+	readonly activityLog: ActivityLogData;
 }
 
 export const initialState: ActivityLogData = {
-  status: LoadDataStatus.initial,
-  entities: [
-    {
-      id: 1,
-      message: 'test',
-      source: 'string',
-      occurence: new Date(),
-      type: 'Actionable',
-      subject: 'client',
-      action: {}
-    }
-  ]
+	status: LoadDataStatus.initial,
+	entities: [
+		{
+			id: 1,
+			message: 'test',
+			source: 'string',
+			occurence: new Date(),
+			type: 'Actionable',
+			subject: 'client',
+			action: {}
+		}
+	]
 };
 
 export function activityLogReducer(
-  state = initialState,
-  action: ActivityLogActions
+	state = initialState,
+	action: ActivityLogActions
 ): ActivityLogData {
-  switch (action.type) {
-    case ActivityLogActionTypes.Load:
-      return assoc('status', LoadDataStatus.loading, state);
+	switch (action.type) {
+		case ActivityLogActionTypes.Load:
+			return assoc('status', LoadDataStatus.loading, state);
 
-    case ActivityLogActionTypes.LoadSuccess:
-      return assoc(
-        'entities',
-        action.payload,
-        assoc('status', LoadDataStatus.loaded, state)
-      );
+		case ActivityLogActionTypes.LoadSuccess:
+			return assoc(
+				'entities',
+				action.payload,
+				assoc(
+					'status',
+					LoadDataStatus.loaded,
+					assoc('paging', action.paging, state)
+				)
+			);
 
-    case ActivityLogActionTypes.LoadFail:
-      return assoc(
-        'entities',
-        [],
-        assoc('status', LoadDataStatus.error, state)
-      );
+		case ActivityLogActionTypes.LoadFail:
+			return assoc(
+				'entities',
+				[],
+				assoc('status', LoadDataStatus.error, state)
+			);
 
-    default:
-      return state;
-  }
+		default:
+			return state;
+	}
 }

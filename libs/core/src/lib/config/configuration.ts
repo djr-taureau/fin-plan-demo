@@ -1,5 +1,5 @@
 export interface Configuration {
-    apis: {
-        lifeworks: string;
-    }
+	apis: {
+		lifeworks: string;
+	};
 }

@@ -6,17 +6,23 @@ import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting
+	BrowserDynamicTestingModule,
+	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import { CoreModule } from '@lifeworks/core';
+import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-  [BrowserDynamicTestingModule, CoreModule, HttpClientTestingModule],
-  platformBrowserDynamicTesting()
+	[
+		BrowserDynamicTestingModule,
+		CoreModule,
+		HttpClientTestingModule,
+		UiComponentsDataListModule
+	],
+	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
