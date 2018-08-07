@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { NotificationsItemCollection } from '../models';
-import { IPaginationHeader } from '@lifeworks/core';
+import { IPaginationHeader } from '@lifeworks/common';
 
 export enum NotificationsActionTypes {
 	Load = '[Notifications] Load',

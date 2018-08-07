@@ -5,7 +5,7 @@ import {
 	RouterStateSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { saveToStorage } from '@lifeworks/core';
+import { saveToStorage } from '@lifeworks/common';
 import { match } from 'ramda';
 import { REDIRECT_TOKEN } from './authentication.routes';
 import { Constants } from 'msal';

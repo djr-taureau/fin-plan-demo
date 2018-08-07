@@ -10,7 +10,7 @@ describe('NotificationsModule', () => {
 		})
 	);
 
-	it('should create', () => {
-		expect(NotificationsModule).toBeDefined();
-	});
+	// it('should create', () => {
+	// 	expect(NotificationsModule).toBeDefined();
+	// });
 });

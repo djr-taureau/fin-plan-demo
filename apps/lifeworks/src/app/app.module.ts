@@ -1,28 +1,29 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { AppComponent } from './app.component';
 import { NxModule } from '@nrwl/nx';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from '../environments/environment';
 import {
 	StoreRouterConnectingModule,
 	routerReducer,
 	RouterStateSerializer
 } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { environment } from '../environments/environment';
+
+import { AppComponent } from './app.component';
+import { ApplicationRoutes, AuthConfig } from './configs';
 import {
 	FixedRouterSerializer,
 	ConfigService,
 	appInitializer,
-	CONFIG_URL
+	CONFIG_URL,
+	CoreModule
 } from '@lifeworks/core';
 import { AuthenticationModule, AUTH_PROVIDER } from '@lifeworks/authentication';
-import { ApplicationRoutes, AuthConfig } from './configs';
-import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
 
 // tslint:disable-next-line
 import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';
@@ -33,8 +34,8 @@ import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/a
 		HttpClientModule,
 		BrowserModule,
 		HttpClientModule,
+		CoreModule,
 		AzureAdAuthProviderModule,
-		UiComponentsNavigationModule,
 		AuthenticationModule.forRoot(AuthConfig),
 		NxModule.forRoot(),
 		RouterModule.forRoot(ApplicationRoutes, {

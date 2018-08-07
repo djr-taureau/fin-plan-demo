@@ -3,7 +3,7 @@ import {
 	ActivityLogActionTypes
 } from './activity-log.actions';
 import { ActivityLogItemCollection } from '../models';
-import { LoadDataStatus, IPaginationHeader } from '@lifeworks/core';
+import { LoadDataStatus, IPaginationHeader } from '@lifeworks/common';
 import { assoc } from 'ramda';
 
 /**

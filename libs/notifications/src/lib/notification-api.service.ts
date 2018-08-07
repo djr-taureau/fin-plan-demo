@@ -7,11 +7,8 @@ import { Observable } from 'rxjs';
 
 import { NotificationsItem } from './models';
 
-import {
-	PaginationResult,
-	getApiError,
-	throwErrorAndLog
-} from '@lifeworks/core';
+import { getApiError, throwErrorAndLog } from '@lifeworks/core';
+import { PaginationResult } from '@lifeworks/common';
 import { catchError } from '../../../../node_modules/rxjs/operators';
 //import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 

@@ -6,11 +6,8 @@ import { catchError } from 'rxjs/operators';
 
 import { ActivityLogItem } from './models';
 
-import {
-	getApiError,
-	throwErrorAndLog,
-	PaginationResult
-} from '@lifeworks/core';
+import { getApiError, throwErrorAndLog } from '@lifeworks/core';
+import { PaginationResult } from '@lifeworks/common';
 
 @Injectable({
 	providedIn: 'root'

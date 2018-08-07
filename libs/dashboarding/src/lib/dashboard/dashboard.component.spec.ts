@@ -10,6 +10,7 @@ import { AuthenticationModule, UserService } from '@lifeworks/authentication';
 import { EffectsModule } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { hot } from '@nrwl/nx/testing';
+import { DataPersistence } from '@nrwl/nx';
 
 describe('DashboardComponent', () => {
 	let component: DashboardComponent;
@@ -39,7 +40,10 @@ describe('DashboardComponent', () => {
 					DashboardManagerComponent,
 					DashboardComplianceComponent
 				],
-				providers: [{ provide: UserService, useValue: UserServiceMock }]
+				providers: [
+					DataPersistence,
+					{ provide: UserService, useValue: UserServiceMock }
+				]
 			}).compileComponents();
 
 			UserServiceMock.getUser.and.returnValue(of(MockUser));

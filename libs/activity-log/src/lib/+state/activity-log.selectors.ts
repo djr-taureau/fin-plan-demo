@@ -1,6 +1,6 @@
 import { ActivityLogData } from './activity-log.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { LoadDataStatus } from '@lifeworks/core';
+import { LoadDataStatus } from '@lifeworks/common';
 
 const activityLogState = createFeatureSelector<ActivityLogData>('activityLog');
 const getDataStatus = createSelector(activityLogState, s => s.status);

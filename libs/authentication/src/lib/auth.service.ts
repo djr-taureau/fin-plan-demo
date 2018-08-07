@@ -1,6 +1,6 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { AuthProvider, AUTH_PROVIDER } from './auth-provider';
-import { logErrorToConsole } from '@lifeworks/core';
+import { logErrorToConsole } from '@lifeworks/common';
 import { Store } from '@ngrx/store';
 import { Authenticated } from './+state/auth.actions';
 import { AuthState } from './+state/auth.interfaces';

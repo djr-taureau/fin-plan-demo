@@ -4,13 +4,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "lifeworks",
+      ["lw", "lifeworks"],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "lifeworks",
+      ["lw", "lifeworks"],
       "kebab-case"
     ]
   }

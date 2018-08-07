@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { ActivityLogItemCollection } from '../models';
-import { IPaginationHeader } from '@lifeworks/core';
+import { IPaginationHeader } from '@lifeworks/common';
 
 export enum ActivityLogActionTypes {
 	Load = '[ActivityLog] Load',

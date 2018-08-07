@@ -1,6 +1,6 @@
 import { NotificationsData } from './notifications.reducer';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { LoadDataStatus } from '@lifeworks/core';
+import { LoadDataStatus } from '@lifeworks/common';
 
 const notificationsState = createFeatureSelector<NotificationsData>(
 	'notifications'

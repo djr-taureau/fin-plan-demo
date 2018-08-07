@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { NotificationsItem } from './models';
 import { NotificationAPIService } from './notification-api.service';
-import { PaginationResult } from '@lifeworks/core';
+import { PaginationResult } from '@lifeworks/common';
 
 export type Notifications = Array<NotificationsItem>;
 @Injectable({

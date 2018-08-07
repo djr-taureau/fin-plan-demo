@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotificationsPageComponent } from './notifications-page.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { NotificationsWidgetComponent } from '../notifications-widget/notifications-widget.component';
 
 describe('NotificationsPageComponent', () => {
 	let component: NotificationsPageComponent;
@@ -11,7 +12,7 @@ describe('NotificationsPageComponent', () => {
 		async(() => {
 			TestBed.configureTestingModule({
 				imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
-				declarations: [NotificationsPageComponent]
+				declarations: [NotificationsPageComponent, NotificationsWidgetComponent]
 			}).compileComponents();
 		})
 	);

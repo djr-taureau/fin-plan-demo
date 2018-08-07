@@ -7,21 +7,53 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
-    "typeRoots": ["node_modules/@types", "node_modules/date-fns"],
-    "lib": ["es2017", "dom"],
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/date-fns"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
     "baseUrl": ".",
     "paths": {
-      "@lifeworks/activity-log": ["libs/activity-log/src/index.ts"],
-      "@lifeworks/notifications": ["libs/notifications/src/index.ts"],
-      "@lifeworks/utilities": ["libs/utilities/src/index.ts"],
-      "@lifeworks/core": ["libs/core/src/index.ts"],
-      "@lifeworks/ui-components/data-list": ["libs/ui-components/data-list/src/index.ts"],
-      "@lifeworks/ui-components/navigation": ["libs/ui-components/navigation/src/index.ts"],
-      "@lifeworks/authentication": ["libs/authentication/src/index.ts"],
-      "@lifeworks/authentication/providers/azure-ad-auth-provider": ["libs/authentication/src/lib/providers/azure-ad-auth-provider/src/index.ts"],
-      "@lifeworks/authentication/providers/testing-auth-provider": ["libs/authentication/src/lib/providers/testing-auth-provider/src/index.ts"],
-      "@lifeworks/dashboarding": ["libs/dashboarding/src/index.ts"]
+      "@lifeworks/activity-log": [
+        "libs/activity-log/src/index.ts"
+      ],
+      "@lifeworks/notifications": [
+        "libs/notifications/src/index.ts"
+      ],
+      "@lifeworks/utilities": [
+        "libs/utilities/src/index.ts"
+      ],
+      "@lifeworks/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@lifeworks/ui-components/data-list": [
+        "libs/ui-components/data-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/navigation": [
+        "libs/ui-components/navigation/src/index.ts"
+      ],
+      "@lifeworks/authentication": [
+        "libs/authentication/src/index.ts"
+      ],
+      "@lifeworks/authentication/providers/azure-ad-auth-provider": [
+        "libs/authentication/src/lib/providers/azure-ad-auth-provider/src/index.ts"
+      ],
+      "@lifeworks/authentication/providers/testing-auth-provider": [
+        "libs/authentication/src/lib/providers/testing-auth-provider/src/index.ts"
+      ],
+      "@lifeworks/dashboarding": [
+        "libs/dashboarding/src/index.ts"
+      ],
+      "@lifeworks/common": [
+        "libs/common/src/index.ts"
+      ]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }

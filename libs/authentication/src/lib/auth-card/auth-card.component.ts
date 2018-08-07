@@ -4,7 +4,7 @@ import { AuthService } from '../auth.service';
 @Component({
 	selector: 'lifeworks-auth-card',
 	templateUrl: './auth-card.component.html',
-	styleUrls: ['./auth-card.component.css']
+	styleUrls: ['./auth-card.component.scss']
 })
 export class AuthCardComponent implements OnInit {
 	constructor(private auth: AuthService) {}

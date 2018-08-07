@@ -8,11 +8,13 @@ import { DashboardAdvisorComponent } from './dashboard-advisor/dashboard-advisor
 import { DashboardManagerComponent } from './dashboard-manager/dashboard-manager.component';
 import { DashboardComplianceComponent } from './dashboard-compliance/dashboard-compliance.component';
 import { AuthenticationModule } from '@lifeworks/authentication';
+import { NotificationsModule } from '@lifeworks/notifications';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		AuthenticationModule,
+		NotificationsModule,
 		RouterModule.forChild([
 			{
 				path: '',

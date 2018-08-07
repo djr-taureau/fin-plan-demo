@@ -1,6 +1,6 @@
 import { Load } from './notifications.actions';
 import { notificationsReducer, initialState } from './notifications.reducer';
-import { LoadDataStatus } from '@lifeworks/core';
+import { LoadDataStatus } from '@lifeworks/common';
 
 describe('notificationsReducer', () => {
 	it('should work', () => {

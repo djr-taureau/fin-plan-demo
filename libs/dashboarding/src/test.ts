@@ -9,12 +9,15 @@ import {
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import { AuthenticationModule } from '@lifeworks/authentication';
+import { NotificationsModule } from '@lifeworks/notifications';
+import { NxModule } from '@nrwl/nx';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[BrowserDynamicTestingModule, AuthenticationModule],
+	[BrowserDynamicTestingModule, HttpClientTestingModule, AuthenticationModule, NotificationsModule, NxModule],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

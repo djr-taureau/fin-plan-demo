@@ -13,6 +13,7 @@ import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+import { CoreModule } from '@lifeworks/core';
 
 declare const require: any;
 
@@ -20,6 +21,7 @@ declare const require: any;
 getTestBed().initTestEnvironment(
 	[
 		BrowserDynamicTestingModule,
+		CoreModule,
 		AuthenticationModule,
 		TestingAuthProviderModule,
 		UiComponentsNavigationModule

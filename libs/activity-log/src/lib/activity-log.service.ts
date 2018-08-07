@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ActivityLogItem } from './models';
 import { ActivityLogAPIService } from './activity-log-api.service';
-import { PaginationResult } from '@lifeworks/core';
+import { PaginationResult } from '@lifeworks/common';
 
 export type ActivityLogItems = Array<ActivityLogItem>;
 

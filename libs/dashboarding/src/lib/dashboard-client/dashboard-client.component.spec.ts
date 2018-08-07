@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DashboardClientComponent } from './dashboard-client.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/nx';
 
 describe('DashboardClientComponent', () => {
 	let component: DashboardClientComponent;
@@ -12,7 +13,8 @@ describe('DashboardClientComponent', () => {
 		async(() => {
 			TestBed.configureTestingModule({
 				imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
-				declarations: [DashboardClientComponent]
+				declarations: [DashboardClientComponent],
+				providers: [DataPersistence]
 			}).compileComponents();
 		})
 	);

@@ -43,6 +43,9 @@
     },
     "ui-components-navigation": {
       "tags": []
+    },
+    "common": {
+      "tags": []
     }
   }
 }

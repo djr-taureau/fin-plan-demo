@@ -1,6 +1,6 @@
 import { LoadFail, LoadSuccess, Load } from './activity-log.actions';
 import { activityLogReducer, initialState } from './activity-log.reducer';
-import { LoadDataStatus } from '@lifeworks/core';
+import { LoadDataStatus } from '@lifeworks/common';
 
 describe('activityLogReducer', () => {
 	it('update status and entities for a LoadSuccess Action', () => {

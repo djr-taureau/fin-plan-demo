@@ -3,7 +3,7 @@ import {
 	NotificationsActionTypes
 } from './notifications.actions';
 import { NotificationsItemCollection } from '../models';
-import { LoadDataStatus, IPaginationHeader } from '@lifeworks/core';
+import { LoadDataStatus, IPaginationHeader } from '@lifeworks/common';
 import { assoc } from 'ramda';
 
 /**

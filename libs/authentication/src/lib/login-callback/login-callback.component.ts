@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { retriveFromStorage, Timeout } from '@lifeworks/core';
+import { retriveFromStorage, Timeout } from '@lifeworks/common';
 import { REDIRECT_TOKEN } from '../authentication.routes';
 import { Location } from '@angular/common';
 import { timeout } from 'rxjs/operators';

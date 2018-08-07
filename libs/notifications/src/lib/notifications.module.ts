@@ -12,6 +12,7 @@ import {
 import { NotificationsEffects } from './+state/notifications.effects';
 import { HttpClientModule } from '@angular/common/http';
 import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
+import { NotificationsWidgetComponent } from './notifications-widget/notifications-widget.component'
 
 @NgModule({
 	imports: [
@@ -21,7 +22,7 @@ import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 		UiComponentsDataListModule,
 		RouterModule.forChild([
 			{
-				path: '',
+				path: 'notifications',
 				pathMatch: 'full',
 				component: NotificationsPageComponent
 			}
@@ -31,7 +32,8 @@ import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 		}),
 		EffectsModule.forFeature([NotificationsEffects])
 	],
-	declarations: [NotificationsPageComponent],
+	declarations: [NotificationsPageComponent, NotificationsWidgetComponent],
+	exports: [NotificationsWidgetComponent],
 	providers: [NotificationsEffects]
 })
 export class NotificationsModule {}
