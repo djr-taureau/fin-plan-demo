@@ -1,0 +1,19 @@
+@import '../../../../../styles/_framework';
+
+:host {
+	font-size: 1.6rem;
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+	&:after {
+		content: '';
+		display: inline-block;
+		width: 0;
+		height: 0;
+		border-top: 0.5rem solid transparent;
+		border-left: 0.6rem solid $color-orange;
+		border-bottom: 0.5rem solid transparent;
+		margin-left: 0.7rem;
+	}
+}

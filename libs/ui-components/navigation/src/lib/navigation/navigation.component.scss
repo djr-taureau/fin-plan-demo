@@ -3,6 +3,28 @@
 .lw-navigation {
 	@include linear-gradient($color-green-dark, $color-green-darker);
 	min-height: 100vh;
+	position: relative;
+	overflow: hidden;
+	& > * {
+		z-index: 1;
+		position: relative;
+	}
+	&:after {
+		content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		transform: translateX(70%);
+		display: block;
+		height: 40rem;
+		width: 40rem;
+		background: radial-gradient(
+			closest-side,
+			rgba(0, 252, 255, 0.25),
+			rgba(0, 252, 255, 0)
+		);
+		z-index: 0;
+	}
 }
 
 .lw-navigation-group {

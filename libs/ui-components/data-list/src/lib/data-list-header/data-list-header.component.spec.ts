@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DataListHeaderComponent } from './data-list-header.component';
+import { RouterModule } from '@angular/router';
 
 describe('DataListHeaderComponent', () => {
 	let component: DataListHeaderComponent;
@@ -9,6 +10,7 @@ describe('DataListHeaderComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
+				imports: [RouterModule],
 				declarations: [DataListHeaderComponent]
 			}).compileComponents();
 		})

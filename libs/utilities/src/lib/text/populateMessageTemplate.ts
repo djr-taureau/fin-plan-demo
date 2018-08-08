@@ -8,11 +8,10 @@ import {
 	toPairs,
 	replace,
 	path,
-	assoc
+	assoc,
+	ifElse,
+	identity
 } from 'ramda';
-
-const composeTemplateSelector = (key: string, selector: string) =>
-	`__${key[0]}.${selector}`;
 
 export const populateMessageTemplate = item => {
 	let sources = pick(['target', 'event', 'source'], item);
@@ -24,5 +23,24 @@ export const populateMessageTemplate = item => {
 		sources
 	);
 	const vals = reduce((a, v) => concat(a, v), [], values(mapped));
-	return reduce((a, v) => replace(v[0], v[1], a), item.message, vals);
+	const transformedVals = map(uppercaseName, vals);
+	return reduce(
+		(a, v) => replace(v[0], v[1], a),
+		item.message,
+		transformedVals
+	);
 };
+
+const composeTemplateSelector = (key, selector) => {
+	return `__${key[0]}.${selector}`;
+};
+
+const containsPartial = subStr => array => {
+	return array[0].includes(subStr);
+};
+
+const wrapValue = value => [value[0], value[1].toUpperCase()];
+
+const formatArray = ifElse(containsPartial('fullName'), wrapValue, identity);
+
+export const uppercaseName = array => formatArray(array);

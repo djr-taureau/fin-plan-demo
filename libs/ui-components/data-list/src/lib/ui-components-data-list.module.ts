@@ -10,6 +10,7 @@ import { DataListItemComponent } from './data-list-item/data-list-item.component
 import { DataListHeaderComponent } from './data-list-header/data-list-header.component';
 import { DataListImgComponent } from './data-list-img/data-list-img.component';
 import { DataListContentComponent } from './data-list-content/data-list-content.component';
+import { DataListHeaderLinkComponent } from './data-list-header-link/data-list-header-link.component';
 @NgModule({
 	imports: [CommonModule],
 	declarations: [
@@ -20,7 +21,8 @@ import { DataListContentComponent } from './data-list-content/data-list-content.
 		DataListTitleDirective,
 		DataListAmountDirective,
 		DataListMetaDirective,
-		DataListContentComponent
+		DataListContentComponent,
+		DataListHeaderLinkComponent
 	],
 	exports: [
 		DataListItemComponent,
@@ -30,7 +32,8 @@ import { DataListContentComponent } from './data-list-content/data-list-content.
 		DataListTitleDirective,
 		DataListAmountDirective,
 		DataListMetaDirective,
-		DataListContentComponent
+		DataListContentComponent,
+		DataListHeaderLinkComponent
 	]
 })
 export class UiComponentsDataListModule {}
