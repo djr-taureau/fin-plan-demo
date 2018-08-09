@@ -10,7 +10,7 @@
             <lw-data-list-content>
                 <lw-data-list-meta>{{notification.occurrence | niceDate}}</lw-data-list-meta>
                 <lw-data-list-meta>{{notification.event.type | uppercase | replace:"-":" "}}</lw-data-list-meta>
-                {{notification | populateMessageTemplate}}
+                {{notification | hydrateTemplate}}
             </lw-data-list-content>
         </lw-data-list-item>
     </lw-data-list>

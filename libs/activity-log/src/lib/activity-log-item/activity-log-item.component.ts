@@ -5,7 +5,7 @@ import {
 	ChangeDetectionStrategy
 } from '@angular/core';
 import { ActivityLogItem } from '../models';
-import { canUse } from '@lifeworks/utilities';
+import { isUseable } from '@lifeworks/common';
 
 @Component({
 	selector: 'lw-activity-log-item',
@@ -19,6 +19,6 @@ export class ActivityLogItemComponent implements OnChanges {
 	canRender = false;
 
 	ngOnChanges() {
-		this.canRender = canUse(this.item);
+		this.canRender = isUseable(this.item);
 	}
 }

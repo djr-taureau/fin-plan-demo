@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 import { NotificationsItem } from './models';
 
-import { getApiError, throwErrorAndLog } from '@lifeworks/core';
-import { PaginationResult } from '@lifeworks/common';
-import { catchError } from '../../../../node_modules/rxjs/operators';
+import { getApiError } from '@lifeworks/core';
+import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
+//import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
 const DIMISS = { dismiss: true };
 

@@ -12,7 +12,10 @@ describe('NotificationsPageComponent', () => {
 		async(() => {
 			TestBed.configureTestingModule({
 				imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
-				declarations: [NotificationsPageComponent, NotificationsWidgetComponent]
+				declarations: [
+					NotificationsPageComponent,
+					NotificationsWidgetComponent
+				]
 			}).compileComponents();
 		})
 	);

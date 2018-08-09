@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Observable, throwError } from 'rxjs';
+import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { ActivityLogItem } from './models';
 
-import { getApiError, throwErrorAndLog } from '@lifeworks/core';
-import { PaginationResult } from '@lifeworks/common';
+import { getApiError } from '@lifeworks/core';
+import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
 
 @Injectable({
 	providedIn: 'root'
@@ -19,7 +19,7 @@ export class ActivityLogAPIService {
 
 	constructor(private http: HttpClient) {}
 
-	get(): Observable<PaginationResult<ActivityLogItem>> {
+	get() {
 		return this.http
 			.get<PaginationResult<ActivityLogItem>>(this.activityLogUrl)
 			.pipe(catchError(this.serviceErrorHandler(getApiError)));

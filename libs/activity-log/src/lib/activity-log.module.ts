@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import { ActivityLogItemComponent } from './activity-log-item/activity-log-item.component';
@@ -15,6 +15,7 @@ import {
 } from './+state/activity-log.reducer';
 import { ActivityLogEffects } from './+state/activity-log.effects';
 import { CoreModule } from '@lifeworks/core';
+import { CommonModule } from '@lifeworks/common';
 import {
 	AuthenticatedGuard,
 	HttpAuthTokenInterceptor
@@ -22,9 +23,10 @@ import {
 
 @NgModule({
 	imports: [
-		CommonModule,
+		NgCommonModule,
 		HttpClientModule,
 		CoreModule,
+		CommonModule,
 		RouterModule.forChild([
 			{
 				path: 'activity-log',

@@ -3,7 +3,11 @@ import { Store, select } from '@ngrx/store';
 
 import { NotificationsItem } from './models';
 import { NotificationsState } from './+state/notifications.interfaces';
-import { isLoaded, getNotifications, getNotificationCount } from './+state/notifications.selectors';
+import {
+	isLoaded,
+	getNotifications,
+	getNotificationCount
+} from './+state/notifications.selectors';
 import { Load, Dismiss } from './+state/notifications.actions';
 
 export type NotificationItemss = Array<NotificationsItem>;
@@ -27,6 +31,6 @@ export class NotificationsService {
 	}
 
 	dismiss(id: string) {
-		this.store.dispatch(new Dismiss(id))
+		this.store.dispatch(new Dismiss(id));
 	}
 }

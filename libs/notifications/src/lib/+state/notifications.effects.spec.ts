@@ -9,7 +9,6 @@ import { NotificationsEffects } from './notifications.effects';
 import { Load, LoadSuccess } from './notifications.actions';
 import { NotificationAPIService } from '../notification-api.service';
 
-
 describe('NotificationsEffects', () => {
 	let actions$: Observable<any>;
 	let effects$: NotificationsEffects;

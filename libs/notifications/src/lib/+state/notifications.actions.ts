@@ -8,7 +8,7 @@ export enum NotificationsActionTypes {
 	LoadFailure = '[Notifications] Load Failure',
 	Dismiss = '[Notifications] Dismiss',
 	DismissSuccess = '[Notifications] Dismiss Success',
-	DismissFailure = '[Notifications] Dismiss Failure',
+	DismissFailure = '[Notifications] Dismiss Failure'
 }
 
 export class Load implements Action {
@@ -29,21 +29,21 @@ export class LoadFailure implements Action {
 }
 
 export class Dismiss implements Action {
-	readonly type = NotificationsActionTypes.Dismiss
+	readonly type = NotificationsActionTypes.Dismiss;
 	constructor(public payload: string) {}
 }
 
 export class DismissSuccess implements Action {
-	readonly type = NotificationsActionTypes.DismissSuccess
+	readonly type = NotificationsActionTypes.DismissSuccess;
 	constructor(public payload: string) {}
 }
 export class DismissFailure implements Action {
-	readonly type = NotificationsActionTypes.DismissFailure
+	readonly type = NotificationsActionTypes.DismissFailure;
 	constructor(public payload: string) {}
 }
 
-export type NotificationsActions
-	= Load
+export type NotificationsActions =
+	| Load
 	| LoadSuccess
 	| LoadFailure
 	| Dismiss

@@ -1,20 +1,19 @@
-import { async, TestBed } from '@angular/core/testing';
-import { canUse, isTrue, isFalse } from './logic';
+import { isUseable, isTrue, isFalse } from './logic';
 
 describe('Utilities Library', () => {
 	describe('logic functions', () => {
-		describe('canUse', () => {
+		describe('isUseable', () => {
 			it('should be false for nulls', () => {
-				expect(canUse(null)).toBeFalsy();
+				expect(isUseable(null)).toBeFalsy();
 			});
 			it('should be false for undefined', () => {
-				expect(canUse(undefined)).toBeFalsy();
+				expect(isUseable(undefined)).toBeFalsy();
 			});
 			it('should be false for empty strings', () => {
-				expect(canUse('')).toBeFalsy();
+				expect(isUseable('')).toBeFalsy();
 			});
 			it('should be true for a false value', () => {
-				expect(canUse(true)).toBeTruthy();
+				expect(isUseable(true)).toBeTruthy();
 			});
 		});
 	});

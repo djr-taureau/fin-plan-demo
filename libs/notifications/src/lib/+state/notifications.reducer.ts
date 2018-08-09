@@ -18,10 +18,7 @@ const setDataState = <T>(action) =>
 		setDataEntities(action.payload)
 	);
 
-const setDismissed = id => when(
-	propEq('GUID', id),
-	assoc('dismissed', true)
-)
+const setDismissed = id => when(propEq('GUID', id), assoc('dismissed', true));
 
 export function notificationsReducer(
 	state = notificationsInitialState,
@@ -37,10 +34,7 @@ export function notificationsReducer(
 		case NotificationsActionTypes.DismissSuccess:
 			return assoc(
 				'entities',
-				map(
-					setDismissed(action.payload),
-					state.entities
-				),
+				map(setDismissed(action.payload), state.entities),
 				state
 			);
 

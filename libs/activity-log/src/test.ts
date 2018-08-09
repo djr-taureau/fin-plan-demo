@@ -10,12 +10,18 @@ import {
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 import { CoreModule } from '@lifeworks/core';
+import { CommonModule } from '@lifeworks/common';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[BrowserDynamicTestingModule, HttpClientTestingModule, CoreModule],
+	[
+		BrowserDynamicTestingModule,
+		HttpClientTestingModule,
+		CoreModule,
+		CommonModule
+	],
 	platformBrowserDynamicTesting()
 );
 

@@ -7,7 +7,7 @@ import {
 } from './azure-ad-auth-config';
 import { logErrorToConsole, saveToStorage, Timeout } from '@lifeworks/common';
 import { AuthProvider, AUTH_CONFIG } from '@lifeworks/authentication';
-import { getFullUrl } from '@lifeworks/utilities';
+import { getFullUrl } from '@lifeworks/common';
 import { TimeoutError } from 'rxjs';
 
 @Injectable({

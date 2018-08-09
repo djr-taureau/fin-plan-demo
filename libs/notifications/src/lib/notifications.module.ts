@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule as NgCommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 import { CoreModule } from '@lifeworks/core';
+import { CommonModule } from '@lifeworks/common';
 import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 
 import { notificationsReducer } from './+state/notifications.reducer';
 import { NotificationsEffects } from './+state/notifications.effects';
-import { NotificationsWidgetComponent } from './notifications-widget/notifications-widget.component'
-import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 import { notificationsInitialState } from './+state/notifications.init';
-import { CommonModule } from '@lifeworks/common';
+import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import { NotificationsWidgetComponent } from './notifications-widget/notifications-widget.component';
 
 @NgModule({
 	imports: [

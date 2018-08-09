@@ -23,9 +23,6 @@
       "@lifeworks/notifications": [
         "libs/notifications/src/index.ts"
       ],
-      "@lifeworks/utilities": [
-        "libs/utilities/src/index.ts"
-      ],
       "@lifeworks/core": [
         "libs/core/src/index.ts"
       ],

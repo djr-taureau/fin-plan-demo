@@ -7,9 +7,8 @@ const notificationsState = createFeatureSelector<NotificationsData>(
 );
 const getDataStatus = createSelector(notificationsState, s => s.status);
 
-export const getNotifications = createSelector(
-	notificationsState,
-	s => s.entities.filter(x => !x.dismissed)
+export const getNotifications = createSelector(notificationsState, s =>
+	s.entities.filter(x => !x.dismissed)
 );
 export const isLoaded = createSelector(
 	getDataStatus,

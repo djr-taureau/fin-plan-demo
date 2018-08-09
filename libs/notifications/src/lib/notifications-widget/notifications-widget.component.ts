@@ -14,10 +14,8 @@ export class NotificationsWidgetComponent implements OnInit {
 	isLoaded$: Observable<boolean>;
 	notificationCount$: Observable<number>;
 
-	constructor(private notificationsService: NotificationsService) {
-		console.log('service', notificationsService)
-	}
-	
+	constructor(private notificationsService: NotificationsService) {}
+
 	ngOnInit() {
 		this.notifications$ = this.notificationsService.get();
 		this.isLoaded$ = this.notificationsService.isDataLoaded();

@@ -9,9 +9,10 @@ import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
+
 import { CoreModule } from '@lifeworks/core';
-import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 import { CommonModule } from '@lifeworks/common';
+import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 
 declare const require: any;
 
@@ -21,6 +22,7 @@ getTestBed().initTestEnvironment(
 		BrowserDynamicTestingModule,
 		CommonModule,
 		CoreModule,
+		CommonModule,
 		HttpClientTestingModule,
 		UiComponentsDataListModule
 	],

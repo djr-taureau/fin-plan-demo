@@ -39,9 +39,7 @@ describe('DashboardComponent', () => {
 					DashboardManagerComponent,
 					DashboardComplianceComponent
 				],
-				providers: [
-					{ provide: UserService, useValue: UserServiceMock }
-				]
+				providers: [{ provide: UserService, useValue: UserServiceMock }]
 			}).compileComponents();
 
 			UserServiceMock.getUser.and.returnValue(of(MockUser));

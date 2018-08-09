@@ -183,34 +183,6 @@
         }
       }
     },
-    "utilities": {
-      "root": "libs/utilities",
-      "sourceRoot": "libs/utilities/src",
-      "projectType": "library",
-      "prefix": "lifeworks",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/utilities/src/test.ts",
-            "tsConfig": "libs/utilities/tsconfig.spec.json",
-            "karmaConfig": "libs/utilities/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/utilities/tsconfig.lib.json",
-              "libs/utilities/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "notifications": {
       "root": "libs/notifications",
       "sourceRoot": "libs/notifications/src",
