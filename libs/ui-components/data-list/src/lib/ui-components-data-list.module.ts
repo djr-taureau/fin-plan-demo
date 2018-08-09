@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import {
 	DataListComponent,
 	DataListTitleDirective,
@@ -12,7 +12,7 @@ import { DataListImgComponent } from './data-list-img/data-list-img.component';
 import { DataListContentComponent } from './data-list-content/data-list-content.component';
 import { DataListHeaderLinkComponent } from './data-list-header-link/data-list-header-link.component';
 @NgModule({
-	imports: [CommonModule],
+	imports: [NgCommonModule],
 	declarations: [
 		DataListComponent,
 		DataListItemComponent,

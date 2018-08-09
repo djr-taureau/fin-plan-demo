@@ -8,13 +8,13 @@
 	font-family: $font-family-text;
 }
 
-.notification-item-dismiss {
+.data-list-item-dismiss {
 	display: flex;
 	align-items: center;
 	width: 6rem;
 	flex: 0 0 6rem;
 
-	.notification-item-dismiss-button {
+	.data-list-item-dismiss-button {
 		height: 3rem;
 		width: 3rem;
 		position: relative;

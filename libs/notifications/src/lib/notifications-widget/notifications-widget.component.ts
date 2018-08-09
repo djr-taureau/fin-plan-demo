@@ -1,14 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, pipe } from 'rxjs';
-import { NotificationsItemCollection } from '../models';
-import * as NotificationsActions from '../+state/notifications.actions';
-import { Store, select } from '@ngrx/store';
-import { NotificationsState } from '../+state/notifications.reducer';
-import {
-	getNotifications,
-	isLoaded,
-	getNotificationCount
-} from '../+state/notifications.selectors';
+import { Observable } from 'rxjs';
+import { NotificationItems, NotificationsItem } from '../models';
+import { NotificationsState } from '../+state/notifications.interfaces';
+import { NotificationsService } from '../notifications.service';
 
 @Component({
 	selector: 'lw-notifications-widget',
@@ -16,17 +10,21 @@ import {
 	styleUrls: ['./notifications-widget.component.scss']
 })
 export class NotificationsWidgetComponent implements OnInit {
-	notifications$: Observable<NotificationsItemCollection>;
+	notifications$: Observable<NotificationItems>;
 	isLoaded$: Observable<boolean>;
 	notificationCount$: Observable<number>;
 
-	constructor(private store: Store<NotificationsState>) {
-		this.notifications$ = store.pipe(select(getNotifications));
-		this.isLoaded$ = store.pipe(select(isLoaded));
-		this.notificationCount$ = store.pipe(select(getNotificationCount));
+	constructor(private notificationsService: NotificationsService) {
+		console.log('service', notificationsService)
+	}
+	
+	ngOnInit() {
+		this.notifications$ = this.notificationsService.get();
+		this.isLoaded$ = this.notificationsService.isDataLoaded();
+		this.notificationCount$ = this.notificationsService.count();
 	}
 
-	ngOnInit() {
-		this.store.dispatch(new NotificationsActions.Load());
+	dismiss(notification: NotificationsItem) {
+		this.notificationsService.dismiss(notification.GUID);
 	}
 }

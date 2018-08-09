@@ -1,4 +1,6 @@
 <ng-content></ng-content>
-<div class="notification-item-dismiss">
-  <button class="notification-item-dismiss-button" type="image" title="Dismiss Notification" alt="Dismiss Notification"></button>
-</div>
+<ng-container *ngIf="showRemoveButton">
+  <div class="data-list-item-dismiss">
+    <button (click)="raiseRemoveEvent()" class="data-list-item-dismiss-button skip-container-click" type="image" title="Dismiss Notification" alt="Dismiss Notification"></button>
+  </div>
+</ng-container>

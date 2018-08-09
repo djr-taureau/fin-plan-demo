@@ -1,17 +1,32 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { NotificationsItem } from './models';
-import { NotificationAPIService } from './notification-api.service';
-import { PaginationResult } from '@lifeworks/common';
+import { Store, select } from '@ngrx/store';
 
-export type Notifications = Array<NotificationsItem>;
+import { NotificationsItem } from './models';
+import { NotificationsState } from './+state/notifications.interfaces';
+import { isLoaded, getNotifications, getNotificationCount } from './+state/notifications.selectors';
+import { Load, Dismiss } from './+state/notifications.actions';
+
+export type NotificationItemss = Array<NotificationsItem>;
 @Injectable({
 	providedIn: 'root'
 })
 export class NotificationsService {
-	constructor(private NotificationsAPI: NotificationAPIService) {}
+	constructor(private store: Store<NotificationsState>) {}
 
-	get(): Observable<PaginationResult<NotificationsItem>> {
-		return this.NotificationsAPI.get();
+	get() {
+		this.store.dispatch(new Load());
+		return this.store.pipe(select(getNotifications));
+	}
+
+	isDataLoaded() {
+		return this.store.pipe(select(isLoaded));
+	}
+
+	count() {
+		return this.store.pipe(select(getNotificationCount));
+	}
+
+	dismiss(id: string) {
+		this.store.dispatch(new Dismiss(id))
 	}
 }

@@ -1,17 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
+import { DataPersistence } from '@nrwl/nx';
+import { map } from 'rxjs/operators';
+import { dissoc } from 'ramda';
+
 import {
 	NotificationsActions,
 	NotificationsActionTypes,
 	Load,
 	LoadSuccess,
-	LoadFail
+	LoadFailure,
+	Dismiss,
+	DismissSuccess,
+	DismissFailure
 } from './notifications.actions';
-import { NotificationsState } from './notifications.reducer';
 import { NotificationsService } from '../notifications.service';
-import { DataPersistence } from '@nrwl/nx';
-import { map } from 'rxjs/operators';
-import { dissoc } from 'ramda';
+import { NotificationsState } from './notifications.interfaces';
+import { NotificationAPIService } from '../notification-api.service';
 
 @Injectable()
 export class NotificationsEffects {
@@ -20,7 +25,7 @@ export class NotificationsEffects {
 		NotificationsActionTypes.Load,
 		{
 			run: (action: Load, state: NotificationsState) =>
-				this.notificationsService
+				this.notificationsApiService
 					.get()
 					.pipe(
 						map(
@@ -32,13 +37,27 @@ export class NotificationsEffects {
 						)
 					),
 			onError: (action: NotificationsActions, error) =>
-				new LoadFail(error)
+				new LoadFailure(error)
+		}
+	);
+
+	@Effect()
+	dismissNotification$ = this.dataPersistence.optimisticUpdate(
+		NotificationsActionTypes.Dismiss,
+		{
+			run: (action: Dismiss, state: NotificationsState) =>
+				this.notificationsApiService
+					.dismiss(action.payload)
+					.pipe(map(results => new DismissSuccess(action.payload))),
+
+			undoAction: (action: NotificationsActions, error) =>
+				new DismissFailure(error)
 		}
 	);
 
 	constructor(
 		private actions$: Actions,
 		private dataPersistence: DataPersistence<NotificationsState>,
-		private notificationsService: NotificationsService
+		private notificationsApiService: NotificationAPIService
 	) {}
 }

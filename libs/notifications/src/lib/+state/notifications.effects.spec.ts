@@ -3,13 +3,12 @@ import { StoreModule } from '@ngrx/store';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from '@nrwl/nx/testing';
+import { Observable, of } from 'rxjs';
 
 import { NotificationsEffects } from './notifications.effects';
 import { Load, LoadSuccess } from './notifications.actions';
+import { NotificationAPIService } from '../notification-api.service';
 
-import { NotificationsService } from '../notifications.service';
-
-import { Observable, of } from 'rxjs';
 
 describe('NotificationsEffects', () => {
 	let actions$: Observable<any>;
@@ -24,7 +23,7 @@ describe('NotificationsEffects', () => {
 				DataPersistence,
 				provideMockActions(() => actions$),
 				{
-					provide: NotificationsService,
+					provide: NotificationAPIService,
 					useValue: { get: getNotificationsSpyFn }
 				}
 			]

@@ -1,4 +1,4 @@
-export type NotificationsItemCollection = Array<NotificationsItem>;
+export type NotificationItems = Array<NotificationsItem>;
 
 export interface NotificationsItem {
 	GUID: string;

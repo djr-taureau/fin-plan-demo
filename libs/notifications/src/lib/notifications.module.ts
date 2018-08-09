@@ -1,24 +1,26 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
-import { CoreModule } from '@lifeworks/core';
+import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import {
-	notificationsReducer,
-	initialState as notificationsInitialState
-} from './+state/notifications.reducer';
-import { NotificationsEffects } from './+state/notifications.effects';
-import { HttpClientModule } from '@angular/common/http';
+
+import { CoreModule } from '@lifeworks/core';
 import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
+
+import { notificationsReducer } from './+state/notifications.reducer';
+import { NotificationsEffects } from './+state/notifications.effects';
 import { NotificationsWidgetComponent } from './notifications-widget/notifications-widget.component'
+import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import { notificationsInitialState } from './+state/notifications.init';
+import { CommonModule } from '@lifeworks/common';
 
 @NgModule({
 	imports: [
-		CommonModule,
+		NgCommonModule,
 		HttpClientModule,
 		CoreModule,
+		CommonModule,
 		UiComponentsDataListModule,
 		RouterModule.forChild([
 			{

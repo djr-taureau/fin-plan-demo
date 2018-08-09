@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'lw-data-list-item',
@@ -9,8 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DataListItemComponent implements OnInit {
 	@Input() location: string;
+	@Input() showRemoveButton: Boolean = false;
+	@Output() removeClicked = new EventEmitter();
 
 	constructor() {}
 
 	ngOnInit() {}
+
+	raiseRemoveEvent() {
+		this.removeClicked.emit();
+	}
 }

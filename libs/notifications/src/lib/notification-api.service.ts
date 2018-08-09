@@ -1,23 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-
 import { Observable } from 'rxjs';
-// import { catchError } from 'rxjs/operators';
 
 import { NotificationsItem } from './models';
 
 import { getApiError, throwErrorAndLog } from '@lifeworks/core';
 import { PaginationResult } from '@lifeworks/common';
 import { catchError } from '../../../../node_modules/rxjs/operators';
-//import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     Authorization: 'my-auth-token'
-//   })
-// };
+const DIMISS = { dismiss: true };
 
 @Injectable({
 	providedIn: 'root'
@@ -29,10 +21,15 @@ export class NotificationAPIService {
 
 	constructor(private http: HttpClient) {}
 
-	get(): Observable<PaginationResult<NotificationsItem>> {
+	get() {
 		return this.http
 			.get<PaginationResult<NotificationsItem>>(this.notificationsUrl)
 			.pipe(catchError(this.serviceErrorHandler(getApiError)));
-		// return this.http.get<NotificationsItem[]>(this.notificationsUrl);
+	}
+
+	dismiss(id: string) {
+		return this.http
+			.patch([this.notificationsUrl, id].join('/'), DIMISS)
+			.pipe(catchError(this.serviceErrorHandler(getApiError)));
 	}
 }

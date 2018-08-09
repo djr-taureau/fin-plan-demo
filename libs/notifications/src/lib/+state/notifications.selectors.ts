@@ -1,4 +1,4 @@
-import { NotificationsData } from './notifications.reducer';
+import { NotificationsData } from './notifications.interfaces';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { LoadDataStatus } from '@lifeworks/common';
 
@@ -9,7 +9,7 @@ const getDataStatus = createSelector(notificationsState, s => s.status);
 
 export const getNotifications = createSelector(
 	notificationsState,
-	s => s.entities
+	s => s.entities.filter(x => !x.dismissed)
 );
 export const isLoaded = createSelector(
 	getDataStatus,

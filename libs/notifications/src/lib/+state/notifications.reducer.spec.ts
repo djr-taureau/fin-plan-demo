@@ -1,11 +1,14 @@
 import { Load } from './notifications.actions';
-import { notificationsReducer, initialState } from './notifications.reducer';
+import { notificationsReducer } from './notifications.reducer';
+import { notificationsInitialState } from './notifications.init';
 import { LoadDataStatus } from '@lifeworks/common';
 
 describe('notificationsReducer', () => {
-	it('should work', () => {
-		const action: Load = new Load();
-		const actual = notificationsReducer(initialState, action);
-		expect(actual.status).toEqual(LoadDataStatus.loading);
-	});
+	describe('Load Action', () => {
+		it('should set loading state to true', () => {
+			const action: Load = new Load();
+			const actual = notificationsReducer(notificationsInitialState, action);
+			expect(actual.status).toEqual(LoadDataStatus.loading);
+		});
+	})
 });

@@ -5,7 +5,7 @@
             <lw-data-list-title>Notifications</lw-data-list-title>
             <lw-data-list-amount>{{notificationCount$ | async}}</lw-data-list-amount>
         </lw-data-list-header>
-        <lw-data-list-item *ngFor="let notification of notifications$ | async" [location]="notification.location">
+        <lw-data-list-item [lwLinkTo]="notification.location" *ngFor="let notification of notifications$ | async" [showRemoveButton]="true" (removeClicked)="dismiss(notification)">
             <lw-data-list-img [type]="notification.event.type"></lw-data-list-img>
             <lw-data-list-content>
                 <lw-data-list-meta>{{notification.occurrence | niceDate}}</lw-data-list-meta>
