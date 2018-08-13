@@ -1,16 +1,12 @@
-import { LoadDataStatus, IPaginationHeader } from '@lifeworks/common';
-import { NotificationItems, NotificationsItem } from '../models';
+import { LoadDataStatus, EntityState } from '@lifeworks/common';
+import { NotificationItem, NotificationItems } from '../models';
 
 /**
  * Interface for the 'Notifications' data used in
  *  - NotificationsState, and
  *  - notificationsReducer
  */
-export interface NotificationsData {
-	status: LoadDataStatus;
-	entities: NotificationItems;
-	paging: IPaginationHeader;
-}
+export interface NotificationsData extends EntityState<NotificationItem> {}
 
 /**
  * Interface to the part of the Store containing NotificationsState

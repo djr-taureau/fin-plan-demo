@@ -1,14 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NotificationsWidgetComponent } from './notifications-widget.component';
-import { NotificationsService } from '../notifications.service';
 import { of } from 'rxjs';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Notifications } from '../../services/notifications.service';
 
 describe('NotificationsWidgetComponent', () => {
 	let component: NotificationsWidgetComponent;
 	let fixture: ComponentFixture<NotificationsWidgetComponent>;
-	const notificationsSpyOj = jasmine.createSpyObj<NotificationsService>(
+	const notificationsSpyOj = jasmine.createSpyObj<Notifications>(
 		'NotificationsService',
 		['get', 'isDataLoaded', 'count', 'dismiss']
 	);
@@ -50,7 +50,7 @@ describe('NotificationsWidgetComponent', () => {
 				declarations: [NotificationsWidgetComponent],
 				providers: [
 					{
-						provide: NotificationsService,
+						provide: Notifications,
 						useValue: notificationsSpyOj
 					}
 				]

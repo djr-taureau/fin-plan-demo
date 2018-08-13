@@ -1,24 +1,17 @@
 import {
+	setLoadingState,
+	setEntityProp,
+	setDataState
+} from '@lifeworks/common';
+import {
 	NotificationsActions,
 	NotificationsActionTypes
 } from './notifications.actions';
-import { LoadDataStatus } from '@lifeworks/common';
-import { assoc, pipe, curry, map, when, propEq, identity } from 'ramda';
 import { notificationsInitialState } from './notifications.init';
 import { NotificationsData } from './notifications.interfaces';
 
-const setDataStatus = status => assoc('status', status);
-const setDataPaging = paging => assoc('paging', paging);
-const setDataEntities = entities => assoc('entities', entities);
-
-const setDataState = <T>(action) =>
-	pipe<T, T, T, T>(
-		setDataStatus(LoadDataStatus.loaded),
-		setDataPaging(action.paging),
-		setDataEntities(action.payload)
-	);
-
-const setDismissed = id => when(propEq('GUID', id), assoc('dismissed', true));
+const setDismissed = setEntityProp('dismissed');
+const setRemoving = setEntityProp('_ui_isRemoving');
 
 export function notificationsReducer(
 	state = notificationsInitialState,
@@ -26,17 +19,19 @@ export function notificationsReducer(
 ): NotificationsData {
 	switch (action.type) {
 		case NotificationsActionTypes.Load:
-			return setDataStatus(LoadDataStatus.loading)(state);
+			return setLoadingState(state);
 
 		case NotificationsActionTypes.LoadSuccess:
-			return setDataState<NotificationsData>(action)(state);
+			return setDataState(action.payload, state);
+
+		case NotificationsActionTypes.Dismiss:
+			return setRemoving(action.payload, true, state);
+
+		case NotificationsActionTypes.DismissFailure:
+			return setRemoving(action.payload, false, state);
 
 		case NotificationsActionTypes.DismissSuccess:
-			return assoc(
-				'entities',
-				map(setDismissed(action.payload), state.entities),
-				state
-			);
+			return setDismissed(action.payload, true, state);
 
 		default:
 			return state;

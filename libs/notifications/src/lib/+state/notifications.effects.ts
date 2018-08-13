@@ -14,9 +14,8 @@ import {
 	DismissSuccess,
 	DismissFailure
 } from './notifications.actions';
-import { NotificationsService } from '../notifications.service';
 import { NotificationsState } from './notifications.interfaces';
-import { NotificationAPIService } from '../notification-api.service';
+import { NotificationsApi } from '../services/notifications-api.service';
 
 @Injectable()
 export class NotificationsEffects {
@@ -58,6 +57,6 @@ export class NotificationsEffects {
 	constructor(
 		private actions$: Actions,
 		private dataPersistence: DataPersistence<NotificationsState>,
-		private notificationsApiService: NotificationAPIService
+		private notificationsApiService: NotificationsApi
 	) {}
 }

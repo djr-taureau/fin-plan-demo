@@ -1,0 +1,17 @@
+<ng-container *ngIf="isLoaded$ | async">
+    <lw-data-list>
+        <lw-data-list-header>
+            <lw-data-list-title>Notifications</lw-data-list-title>
+            <lw-data-list-amount>{{notificationCount$ | async}}</lw-data-list-amount>
+            <lw-data-list-header-link location="/notifications">View all</lw-data-list-header-link>
+        </lw-data-list-header>
+        <lw-data-list-item [isRemoving]="notification?._ui_isRemoving" [lwLinkTo]="notification | notificationLink" *ngFor="let notification of notifications$ | async" [showRemoveButton]="true" (removeClicked)="dismiss(notification)">
+            <lw-data-list-img [type]="notification | notificationImage"></lw-data-list-img>
+            <lw-data-list-content>
+                <lw-data-list-meta>{{notification.timestamps.createdOn | niceDate}}</lw-data-list-meta>
+                <lw-data-list-meta>{{notification.notificationType | uppercase | replace:"-":" "}}</lw-data-list-meta>
+                <div [innerHTML]="notification | hydrateTemplate"></div>
+            </lw-data-list-content>
+        </lw-data-list-item>
+    </lw-data-list>
+</ng-container>

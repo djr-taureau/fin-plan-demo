@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
 
 import { NotificationsEffects } from './notifications.effects';
 import { Load, LoadSuccess } from './notifications.actions';
-import { NotificationAPIService } from '../notification-api.service';
+import { NotificationsApi } from '../services/notifications-api.service';
 
 describe('NotificationsEffects', () => {
 	let actions$: Observable<any>;
@@ -22,7 +22,7 @@ describe('NotificationsEffects', () => {
 				DataPersistence,
 				provideMockActions(() => actions$),
 				{
-					provide: NotificationAPIService,
+					provide: NotificationsApi,
 					useValue: { get: getNotificationsSpyFn }
 				}
 			]

@@ -60,3 +60,7 @@
 		}
 	}
 }
+
+:host(.is-removing) {
+	opacity: .2;
+}

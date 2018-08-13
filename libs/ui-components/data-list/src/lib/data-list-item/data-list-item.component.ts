@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+	Component,
+	OnInit,
+	Input,
+	Output,
+	EventEmitter,
+	HostBinding
+} from '@angular/core';
 
 @Component({
 	selector: 'lw-data-list-item',
@@ -10,6 +17,10 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class DataListItemComponent implements OnInit {
 	@Input() location: string;
 	@Input() showRemoveButton: Boolean = false;
+
+	@HostBinding('class.is-removing')
+	@Input()
+	isRemoving: Boolean = false;
 	@Output() removeClicked = new EventEmitter();
 
 	constructor() {}
