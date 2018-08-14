@@ -1,0 +1,21 @@
+@import '../../../../../styles/_framework';
+
+:host {
+	font-weight: $font-weight-black;
+	font-size: 8.5rem;
+	display: block;
+	line-height: 0.84;
+	margin-right: 2rem;
+	&.lw-dashboard-overview-emphasis-up {
+		white-space: nowrap;
+		&:before {
+			@include arrowVertical('up');
+		}
+	}
+	&.lw-dashboard-overview-emphasis-down {
+		white-space: nowrap;
+		&:before {
+			@include arrowVertical('down');
+		}
+	}
+}

@@ -9,12 +9,16 @@ import { DashboardManagerComponent } from './dashboard-manager/dashboard-manager
 import { DashboardComplianceComponent } from './dashboard-compliance/dashboard-compliance.component';
 import { AuthenticationModule } from '@lifeworks/authentication';
 import { NotificationsModule } from '@lifeworks/notifications';
+import { UiComponentsDashboardOverviewModule } from '@lifeworks/ui-components/dashboard-overview';
+import { UiComponentsSummaryListModule } from '@lifeworks/ui-components/summary-list';
 
 @NgModule({
 	imports: [
 		CommonModule,
 		AuthenticationModule,
 		NotificationsModule,
+		UiComponentsDashboardOverviewModule,
+		UiComponentsSummaryListModule,
 		RouterModule.forChild([
 			{
 				path: '',

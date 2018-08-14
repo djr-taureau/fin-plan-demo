@@ -46,6 +46,12 @@
       ],
       "@lifeworks/common": [
         "libs/common/src/index.ts"
+      ],
+      "@lifeworks/ui-components/dashboard-overview": [
+        "libs/ui-components/dashboard-overview/src/index.ts"
+      ],
+      "@lifeworks/ui-components/summary-list": [
+        "libs/ui-components/summary-list/src/index.ts"
       ]
     }
   },

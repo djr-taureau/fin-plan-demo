@@ -406,6 +406,62 @@
           }
         }
       }
+    },
+    "ui-components-dashboard-overview": {
+      "root": "libs/ui-components/dashboard-overview",
+      "sourceRoot": "libs/ui-components/dashboard-overview/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/dashboard-overview/src/test.ts",
+            "tsConfig": "libs/ui-components/dashboard-overview/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/dashboard-overview/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/dashboard-overview/tsconfig.lib.json",
+              "libs/ui-components/dashboard-overview/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-components-summary-list": {
+      "root": "libs/ui-components/summary-list",
+      "sourceRoot": "libs/ui-components/summary-list/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/summary-list/src/test.ts",
+            "tsConfig": "libs/ui-components/summary-list/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/summary-list/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/summary-list/tsconfig.lib.json",
+              "libs/ui-components/summary-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

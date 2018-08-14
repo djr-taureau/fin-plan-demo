@@ -1,5 +1,87 @@
+<!-- todo: Remove hard coded values in dashboard overview -->
+<lw-dashboard-overview theme="dark">
+    <h1>Overview</h1>
+
+    <lw-dashboard-overview-item>
+        <lw-dashboard-overview-emphasis>38</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+            Total clients in <br>discovery phase
+        </lw-dashboard-overview-description>
+    </lw-dashboard-overview-item>
+
+    <lw-dashboard-overview-item>
+        <lw-dashboard-overview-emphasis>62</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+            Total clients in <br>stratedgy phase
+        </lw-dashboard-overview-description>
+    </lw-dashboard-overview-item>
+
+    <lw-dashboard-overview-item>
+        <lw-dashboard-overview-emphasis>129</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+                Total clients in <br>implementation phase
+        </lw-dashboard-overview-description>
+    </lw-dashboard-overview-item>
+    
+    <lw-dashboard-overview-item [stacked]="true">
+        <lw-dashboard-overview-emphasis arrow="up">27</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+            Change in total number of clients<br>from last year at this time
+        </lw-dashboard-overview-description>
+        
+    </lw-dashboard-overview-item>
+    
+    <lw-dashboard-overview-item [stacked]="true">
+        <lw-dashboard-overview-emphasis>$425,240</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+            Average yearly household income
+        </lw-dashboard-overview-description>
+    </lw-dashboard-overview-item>
+
+    <lw-dashboard-overview-item [stacked]="true">
+        <lw-dashboard-overview-emphasis>$56,240</lw-dashboard-overview-emphasis>
+        <lw-dashboard-overview-description>
+            Change in average yearly household income<br>
+            from last year at this time
+        </lw-dashboard-overview-description>
+    </lw-dashboard-overview-item>
+</lw-dashboard-overview>
 
 <div>
     <lw-notifications-widget filter="undismissed"></lw-notifications-widget>
-    <div>Tasks</div>
 </div>
+
+
+<!-- todo: Remove hard coded values in summary list -->
+<lw-summary-list>
+    <lw-summary-list-title>
+        Achieved Client Goals
+    </lw-summary-list-title>
+    <lw-summary-list-item>
+        <lw-summary-list-target>
+            Dave &amp; Wendy Smith
+        </lw-summary-list-target>
+        <lw-summary-list-description>
+            Monthly IRA contribution goal amount reached
+        </lw-summary-list-description>
+    </lw-summary-list-item>
+    <lw-summary-list-item>
+        <lw-summary-list-target>
+            Dave &amp; Wendy Smith
+        </lw-summary-list-target>
+        <lw-summary-list-description>
+            Monthly IRA contribution goal amount reached
+        </lw-summary-list-description>
+    </lw-summary-list-item>
+    <lw-summary-list-item>
+        <lw-summary-list-target>
+            Dave &amp; Wendy Smith
+        </lw-summary-list-target>
+        <lw-summary-list-description>
+            Monthly IRA contribution goal amount reached
+        </lw-summary-list-description>
+    </lw-summary-list-item>
+    <lw-summary-list-location location="activity-log">
+        View all
+    </lw-summary-list-location>
+</lw-summary-list>

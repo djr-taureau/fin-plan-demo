@@ -1,0 +1,13 @@
+@import '../../../../../styles/_framework';
+
+:host {
+	a {
+		font-family: $font-family-primary;
+		font-size: 1.6rem;
+		color: $color-orange;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+}

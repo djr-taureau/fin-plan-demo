@@ -43,6 +43,12 @@
     },
     "common": {
       "tags": []
+    },
+    "ui-components-dashboard-overview": {
+      "tags": []
+    },
+    "ui-components-summary-list": {
+      "tags": []
     }
   }
 }
