@@ -1,0 +1,7 @@
+@import '../mixins/elevation.scss';
+
+@for $zValue from 0 through 24 {
+	.#{$elevation-prefix}#{$zValue} {
+		@include elevation($zValue);
+	}
+}

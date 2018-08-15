@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-import { StoreModule } from '@ngrx/store';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { DataPersistence } from '@nrwl/nx';
 import { hot } from '@nrwl/nx/testing';
@@ -7,24 +6,24 @@ import { Observable, of } from 'rxjs';
 
 import { NotificationsEffects } from './notifications.effects';
 import { Load, LoadSuccess } from './notifications.actions';
-import { NotificationsApi } from '../services/notifications-api.service';
+import { NotificationsApiMock } from '../testing';
+import { NotificationsApi } from '../services';
 
 describe('NotificationsEffects', () => {
 	let actions$: Observable<any>;
 	let effects$: NotificationsEffects;
-	const getNotificationsSpyFn = jasmine.createSpy('get');
+	const m_NotificationsApi = NotificationsApiMock;
 
 	beforeEach(() => {
 		TestBed.configureTestingModule({
-			imports: [StoreModule.forRoot({})],
 			providers: [
 				NotificationsEffects,
 				DataPersistence,
-				provideMockActions(() => actions$),
 				{
 					provide: NotificationsApi,
-					useValue: { get: getNotificationsSpyFn }
-				}
+					useValue: NotificationsApiMock
+				},
+				provideMockActions(() => actions$)
 			]
 		});
 
@@ -33,7 +32,8 @@ describe('NotificationsEffects', () => {
 
 	describe('loadNotifications', () => {
 		it('should work', () => {
-			getNotificationsSpyFn.and.returnValue(of({ results: [] }));
+			m_NotificationsApi.get.and.returnValue(of({ results: [] }));
+
 			actions$ = hot('-a-|', { a: new Load() });
 			expect(effects$.loadNotifications$).toBeObservable(
 				hot('-a-|', {

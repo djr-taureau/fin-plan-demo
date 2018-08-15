@@ -1,0 +1,16 @@
+@import './_framework.scss';
+@import './global/_text-color.scss';
+@import './global/_fonts.scss';
+@import './global/_elevation.scss';
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	margin: 0;
+}
+
+.clickable {
+	cursor: pointer;
+}

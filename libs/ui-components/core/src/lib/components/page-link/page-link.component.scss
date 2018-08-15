@@ -1,0 +1,25 @@
+@import '../../../../../../styles/_framework';
+
+:host() {
+	font-size: 1.6rem;
+	text-decoration: none;
+
+	&:hover {
+		cursor: pointer;
+		text-decoration: underline;
+	}
+}
+
+:host(:not(.no-icon)) {
+	@include border-caret($color-orange);
+}
+
+:host(.lw-icon-color-green):after {
+	border-left-color: $color-green;
+}
+:host(.lw-icon-color-orange):after {
+	border-left-color: $color-orange;
+}
+:host(.lw-icon-color-white):after {
+	border-left-color: $color-white;
+}

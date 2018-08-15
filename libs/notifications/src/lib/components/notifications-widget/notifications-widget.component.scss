@@ -8,3 +8,14 @@
         text-transform: uppercase;
     }
 }
+
+.widget-message {
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    padding: 4rem;
+    font-family: 'Lato';
+}

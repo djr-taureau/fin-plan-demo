@@ -35,6 +35,9 @@
     "dashboarding": {
       "tags": []
     },
+    "ui-components-core": {
+      "tags": []
+    },
     "ui-components-data-list": {
       "tags": []
     },
@@ -42,6 +45,9 @@
       "tags": []
     },
     "common": {
+      "tags": []
+    },
+    "ui-components-widget": {
       "tags": []
     },
     "ui-components-dashboard-overview": {

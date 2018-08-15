@@ -4,28 +4,17 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
+import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { CoreModule } from '@lifeworks/core';
-import { CommonModule } from '@lifeworks/common';
-import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
+import { NotificationsUIModule } from './lib/+modules';
+import { NotificationsTestingModule } from './lib/testing';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[
-		BrowserDynamicTestingModule,
-		CommonModule,
-		CoreModule,
-		CommonModule,
-		HttpClientTestingModule,
-		UiComponentsDataListModule
-	],
+	[RouterTestingModule, NotificationsUIModule, NotificationsTestingModule],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

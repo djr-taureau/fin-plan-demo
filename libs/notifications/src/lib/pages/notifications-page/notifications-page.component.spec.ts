@@ -1,11 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
+import { NotificationsWidgetComponent } from '../../components';
+import { NotificationImagePipe, NotificationLinkPipe } from '../../pipes';
+import { Notifications } from '../../services';
+import { NotificationsMock } from '../../testing';
 import { NotificationsPageComponent } from './notifications-page.component';
-import { NotificationsWidgetComponent } from '../../components/notifications-widget/notifications-widget.component';
-import { NotificationImagePipe } from '../../pipes/notification-image.pipe';
-import { NotificationLinkPipe } from '../../pipes/notification-link.pipe';
 
 describe('NotificationsPageComponent', () => {
 	let component: NotificationsPageComponent;
@@ -14,12 +13,14 @@ describe('NotificationsPageComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
 				declarations: [
 					NotificationsPageComponent,
 					NotificationsWidgetComponent,
 					NotificationImagePipe,
 					NotificationLinkPipe
+				],
+				providers: [
+					{ provide: Notifications, useValue: NotificationsMock }
 				]
 			}).compileComponents();
 		})

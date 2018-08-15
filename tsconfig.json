@@ -26,6 +26,9 @@
       "@lifeworks/core": [
         "libs/core/src/index.ts"
       ],
+      "@lifeworks/ui-components/core": [
+        "libs/ui-components/core/src/index.ts"
+      ],
       "@lifeworks/ui-components/data-list": [
         "libs/ui-components/data-list/src/index.ts"
       ],
@@ -46,6 +49,9 @@
       ],
       "@lifeworks/common": [
         "libs/common/src/index.ts"
+      ],
+      "@lifeworks/ui-components/widget": [
+        "libs/ui-components/widget/src/index.ts"
       ],
       "@lifeworks/ui-components/dashboard-overview": [
         "libs/ui-components/dashboard-overview/src/index.ts"

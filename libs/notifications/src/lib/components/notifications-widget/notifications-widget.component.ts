@@ -1,10 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { NotificationItems, NotificationItem } from '../../models';
+import { Observable, combineLatest } from 'rxjs';
+
 import { NotificationsState } from '../../+state/notifications.interfaces';
-import { Notifications } from '../../services/notifications.service';
+import { NotificationItems, NotificationItem } from '../../models';
+import { Notifications } from '../../services';
 
 export type NotificationsFilter = 'all' | 'dismissed' | 'undismissed';
+export type DataState = 'loading' | 'empty' | 'loaded' | 'error';
 
 @Component({
 	selector: 'lw-notifications-widget',
@@ -16,15 +18,34 @@ export class NotificationsWidgetComponent implements OnInit {
 
 	notifications$: Observable<NotificationItems>;
 	isLoaded$: Observable<boolean>;
+	dataState$: Observable<DataState>;
 	notificationCount$: Observable<number>;
 
 	constructor(private notificationsService: Notifications) {}
 
 	ngOnInit() {
 		this.notificationsService.load();
+		this.initDataSet(this.filter);
 		this.isLoaded$ = this.notificationsService.isDataLoaded();
+		this.dataState$ = combineLatest(
+			this.isLoaded$,
+			this.notificationCount$,
+			(loaded, count) => {
+				if (!loaded) {
+					return 'loading' as DataState;
+				} else if (count > 0) {
+					return 'loaded' as DataState;
+				} else if (count < 1) {
+					return 'empty' as DataState;
+				} else {
+					return 'error' as DataState;
+				}
+			}
+		);
+	}
 
-		switch (this.filter) {
+	initDataSet(filter: NotificationsFilter) {
+		switch (filter) {
 			case 'all': {
 				this.notifications$ = this.notificationsService.getAll();
 				this.notificationCount$ = this.notificationsService.countOfAll();

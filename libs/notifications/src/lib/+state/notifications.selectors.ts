@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { prop, length, propEq, pipe, values } from 'ramda';
+import { prop, propOr, length, propEq, pipe, values } from 'ramda';
 import { LoadDataStatus, isTrue, isFalse } from '@lifeworks/common';
 
 import { NotificationsData } from './notifications.interfaces';
@@ -9,7 +9,8 @@ const notificationsState = createFeatureSelector<NotificationsData>(
 	'notifications'
 );
 
-const STATUS_PROPERTY = prop('status');
+const ENTITIES_PROPERTY = prop('entities');
+const STATUS_PROPERTY = propOr('status', '');
 const IS_DISMISSED = propEq('dismissed', true);
 const IS_NOT_DISMISSED = propEq('dismissed', false);
 const IS_LOADING = propEq('status', LoadDataStatus.loading);
@@ -22,7 +23,7 @@ export const isLoading = createSelector(notificationsState, IS_LOADING);
 
 export const allNotifications = createSelector(
 	notificationsState,
-	pipe(prop('entities'), values)
+	pipe(ENTITIES_PROPERTY, values)
 );
 
 export const allNotificationsCount = createSelector(allNotifications, length);

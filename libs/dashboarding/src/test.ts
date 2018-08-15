@@ -8,10 +8,11 @@ import {
 	BrowserDynamicTestingModule,
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
-import { AuthenticationModule } from '@lifeworks/authentication';
-import { NotificationsModule } from '@lifeworks/notifications';
-import { NxModule } from '@nrwl/nx';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { NxModule } from '@nrwl/nx';
+
+import { DashboardingUIModule } from './lib/+modules';
 
 declare const require: any;
 
@@ -20,8 +21,8 @@ getTestBed().initTestEnvironment(
 	[
 		BrowserDynamicTestingModule,
 		HttpClientTestingModule,
-		AuthenticationModule,
-		NotificationsModule,
+		RouterTestingModule,
+		DashboardingUIModule,
 		NxModule
 	],
 	platformBrowserDynamicTesting()

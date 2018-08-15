@@ -2,3 +2,7 @@
 	display: grid;
 	grid-template-columns: 30rem auto;
 }
+
+router-outlet {
+	display: none;
+}

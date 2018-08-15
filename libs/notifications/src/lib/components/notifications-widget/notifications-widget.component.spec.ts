@@ -1,57 +1,35 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NotificationsWidgetComponent } from './notifications-widget.component';
 import { of } from 'rxjs';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Notifications } from '../../services/notifications.service';
+
+import { Notifications } from '../../services';
+import { NotificationImagePipe, NotificationLinkPipe } from '../../pipes';
+import { NotificationsMock, MOCK_COMPLIANCE_NOTIFICATION } from '../../testing';
+import { NotificationsWidgetComponent } from './notifications-widget.component';
 
 describe('NotificationsWidgetComponent', () => {
 	let component: NotificationsWidgetComponent;
 	let fixture: ComponentFixture<NotificationsWidgetComponent>;
-	const notificationsSpyOj = jasmine.createSpyObj<Notifications>(
-		'NotificationsService',
-		['get', 'isDataLoaded', 'count', 'dismiss']
-	);
-	notificationsSpyOj.count.and.returnValue(of(10));
-	notificationsSpyOj.dismiss.and.returnValue(of(undefined));
-	notificationsSpyOj.isDataLoaded.and.returnValue(of(true));
-	notificationsSpyOj.get.and.returnValue(
-		of([
-			{
-				GUID: '1',
-				occurrence: '2017-11-05T13:15:30Z',
-				message:
-					'__t.fullName flagged a __e.displayName for __s.fullName review',
-				status: 'unread',
-				dismissed: false,
-				location: '/',
-				target: {
-					fullName: 'Jane Doe',
-					GUID: '139'
-				},
-				source: {
-					fullName: 'Ronald Johnson',
-					GUID: '1234'
-				},
-				event: {
-					type: 'client-flagged-content',
-					subject: {
-						displayName: 'scenario'
-					}
-				}
-			}
-		])
+	const m_Notifications = NotificationsMock;
+
+	m_Notifications.countOfUndismissed.and.returnValue(of(10));
+	m_Notifications.dismiss.and.returnValue(of(undefined));
+	m_Notifications.isDataLoaded.and.returnValue(of(true));
+	m_Notifications.getUndismissed.and.returnValue(
+		of([MOCK_COMPLIANCE_NOTIFICATION])
 	);
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [RouterTestingModule, HttpClientTestingModule],
-				declarations: [NotificationsWidgetComponent],
+				declarations: [
+					NotificationsWidgetComponent,
+					NotificationImagePipe,
+					NotificationLinkPipe
+				],
 				providers: [
 					{
 						provide: Notifications,
-						useValue: notificationsSpyOj
+						useValue: m_Notifications
 					}
 				]
 			}).compileComponents();
@@ -60,12 +38,12 @@ describe('NotificationsWidgetComponent', () => {
 
 	beforeEach(() => {
 		fixture = TestBed.createComponent(NotificationsWidgetComponent);
+		fixture.componentInstance.filter = 'undismissed';
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});
 
-	// it('should create', () => {
-
-	// 	expect(component).toBeTruthy();
-	// });
+	it('should create', () => {
+		expect(component).toBeTruthy();
+	});
 });
