@@ -20,4 +20,4 @@ const craftConfig = (entityRepo) => {
   return config;
 }
 
-export const connection = async (entity) => await createConnection(craftConfig(entity));
+export const connection = (entity) => createConnection(craftConfig(entity));
