@@ -14,8 +14,6 @@ import {
 } from '../+state/notifications.selectors';
 import { Load, Dismiss } from '../+state/notifications.actions';
 
-export type NotificationItemss = Array<NotificationItem>;
-
 @Injectable({
 	providedIn: 'root'
 })
@@ -51,6 +49,14 @@ export class Notifications {
 	}
 
 	countOfDismissed() {
+		return this.store.pipe(select(dismissedCount));
+	}
+
+	getFiltered() {
+		return this.store.pipe(select(dismissedNotifications));
+	}
+
+	countOfFiltered() {
 		return this.store.pipe(select(dismissedCount));
 	}
 

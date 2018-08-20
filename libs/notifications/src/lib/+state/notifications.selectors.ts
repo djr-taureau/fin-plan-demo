@@ -42,3 +42,9 @@ export const dismissedNotifications = createSelector(allNotifications, x =>
 );
 
 export const dismissedCount = createSelector(dismissedNotifications, length);
+
+export const filterNotifications = filter =>
+	createSelector(allNotifications, x => x.filter(IS_DISMISSED));
+
+export const filterCount = filter =>
+	createSelector(filterNotifications(filter), length);

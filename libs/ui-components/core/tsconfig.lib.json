@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/libs/ui-components/navigation",
+    "outDir": "../../../dist/out-tsc/libs/ui-components/core",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

@@ -1,11 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import {
-	DataListComponent,
-	DataListTitleDirective,
-	DataListMetaDirective,
-	DataListAmountDirective
-} from './data-list.component';
+import { DataListComponent } from './data-list.component';
 
 describe('DataListComponent', () => {
 	let component: DataListComponent;
@@ -14,12 +9,7 @@ describe('DataListComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [
-					DataListComponent,
-					DataListTitleDirective,
-					DataListMetaDirective,
-					DataListAmountDirective
-				]
+				declarations: [DataListComponent]
 			}).compileComponents();
 		})
 	);

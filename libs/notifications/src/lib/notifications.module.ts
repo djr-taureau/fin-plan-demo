@@ -7,7 +7,10 @@ import {
 	NotificationsUIModule
 } from './+modules';
 import { NotificationsPageComponent } from './pages';
-import { NotificationsWidgetComponent } from './components';
+import {
+	NotificationsWidgetComponent,
+	NotificationsListComponent
+} from './components';
 import { NotificationLinkPipe, NotificationImagePipe } from './pipes';
 
 @NgModule({
@@ -21,7 +24,8 @@ import { NotificationLinkPipe, NotificationImagePipe } from './pipes';
 		NotificationsPageComponent,
 		NotificationsWidgetComponent,
 		NotificationLinkPipe,
-		NotificationImagePipe
+		NotificationImagePipe,
+		NotificationsListComponent
 	],
 	exports: [NotificationsPageComponent, NotificationsWidgetComponent]
 })

@@ -26,7 +26,7 @@
       "@lifeworks/core": [
         "libs/core/src/index.ts"
       ],
-      "@lifeworks/ui-components/core": [
+      "@lifeworks/ui-components": [
         "libs/ui-components/core/src/index.ts"
       ],
       "@lifeworks/ui-components/data-list": [
@@ -58,6 +58,12 @@
       ],
       "@lifeworks/ui-components/summary-list": [
         "libs/ui-components/summary-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/buttons": [
+        "libs/ui-components/buttons/src/index.ts"
+      ],
+      "@lifeworks/ui-components/icons": [
+        "libs/ui-components/icons/src/index.ts"
       ]
     }
   },

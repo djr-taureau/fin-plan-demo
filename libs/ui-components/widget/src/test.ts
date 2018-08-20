@@ -9,7 +9,7 @@ import {
 	platformBrowserDynamicTesting
 } from '@angular/platform-browser-dynamic/testing';
 
-import { UiComponentsCoreModule } from '@lifeworks/ui-components/core';
+import { UiComponentsCoreModule } from '@lifeworks/ui-components';
 
 declare const require: any;
 

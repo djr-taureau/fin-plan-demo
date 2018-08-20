@@ -4,7 +4,8 @@ import {
 	OnInit,
 	HostBinding,
 	Directive,
-	ViewEncapsulation
+	ViewEncapsulation,
+	Input
 } from '@angular/core';
 
 @Component({
@@ -17,24 +18,27 @@ export class DataListComponent implements OnInit {
 	constructor() {}
 
 	@HostBinding('attr.role') role = 'list-item';
+	@HostBinding('class.striped')
+	@Input()
+	striped = false;
 
 	ngOnInit() {}
 }
 
 @Directive({
-	selector: 'lw-data-list-title',
-	host: { class: 'lw-data-list-title' }
+	selector: 'lw-data-list-item-header',
+	host: { class: 'lw-data-list-item-header' }
 })
-export class DataListTitleDirective {}
+export class DataListItemHeaderDirective {}
 
 @Directive({
-	selector: 'lw-data-list-meta',
-	host: { class: 'lw-data-list-meta' }
+	selector: 'lw-data-list-item-indicator',
+	host: { class: 'lw-data-list-item-indicator' }
 })
-export class DataListMetaDirective {}
+export class DataListItemIndicatorDirective {}
 
 @Directive({
-	selector: 'lw-data-list-amount',
-	host: { class: 'lw-data-list-amount' }
+	selector: '[lwDataListItemAction], lw-data-list-item-action',
+	host: { class: 'lw-data-list-item-action' }
 })
-export class DataListAmountDirective {}
+export class DataListItemActionDirective {}

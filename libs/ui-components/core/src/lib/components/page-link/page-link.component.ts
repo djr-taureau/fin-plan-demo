@@ -3,14 +3,13 @@ import { Component, ElementRef, Input, HostBinding } from '@angular/core';
 import {
 	mixinTextColor,
 	mixinIconColor,
-	HasTextColor,
+	mixinCssModifiers,
+	HasColor,
 	HasIconColor
 } from '../../behaviors';
+import { ComponentHostBase } from '../../component-base';
 
-export class PageLinkBase {
-	constructor(public _elementRef: ElementRef) {}
-}
-export const _PageLinkBase = mixinTextColor(mixinIconColor(PageLinkBase));
+export const _PageLinkBase = mixinTextColor(mixinIconColor(ComponentHostBase));
 
 @Component({
 	selector: '[lwPageLink]',
@@ -19,7 +18,7 @@ export const _PageLinkBase = mixinTextColor(mixinIconColor(PageLinkBase));
 	styleUrls: ['./page-link.component.scss']
 })
 export class PageLinkComponent extends _PageLinkBase
-	implements HasTextColor, HasIconColor {
+	implements HasColor, HasIconColor {
 	@HostBinding('class.no-icon')
 	@Input()
 	noIcon = false;

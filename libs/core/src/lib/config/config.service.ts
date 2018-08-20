@@ -1,8 +1,10 @@
 import { Injectable, InjectionToken, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { path } from 'ramda';
 
 import { Configuration } from './configuration';
-import { getConfigError } from '../error/error';
+import { getConfigError } from '../error';
+import { isNotUseable } from '@lifeworks/common';
 
 export const CONFIG_URL = new InjectionToken('CONFIG_URL');
 
@@ -23,6 +25,12 @@ export class ConfigService {
 			.catch(() => {
 				throw getConfigError();
 			});
+	}
+
+	getLifeworksApiUri() {
+		if (isNotUseable(this.config)) throw getConfigError();
+
+		return path(['apis', 'lifeworks'], this.config);
 	}
 }
 

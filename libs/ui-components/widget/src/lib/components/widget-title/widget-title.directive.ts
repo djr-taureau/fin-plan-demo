@@ -3,30 +3,27 @@ import { Directive, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import {
 	TextColorPalette,
 	mixinTextColor,
-	HasTextColor
-} from '@lifeworks/ui-components/core';
+	HasColor,
+	ComponentHostBase
+} from '@lifeworks/ui-components';
 
 const DEFAULT_SUBTITLE_COLOR = 'orange';
 
-export class WidgetTitleBase {
-	constructor(public _elementRef: ElementRef) {}
-}
-export const _WidgetTitleBase = mixinTextColor(WidgetTitleBase);
+export const _WidgetTitleBase = mixinTextColor(ComponentHostBase);
 
 @Directive({
 	selector: 'lw-widget-title, [lwWidgetTitle]',
 	inputs: ['color'],
 	host: { class: 'lw-widget-title' }
 })
-export class WidgetTitleDirective extends _WidgetTitleBase
-	implements HasTextColor {
+export class WidgetTitleDirective extends _WidgetTitleBase implements HasColor {
 	constructor(elementRef: ElementRef) {
 		super(elementRef);
 	}
 }
 
 export const _WidgetSubtitleBase = mixinTextColor(
-	WidgetTitleBase,
+	ComponentHostBase,
 	DEFAULT_SUBTITLE_COLOR
 );
 @Directive({
@@ -35,7 +32,7 @@ export const _WidgetSubtitleBase = mixinTextColor(
 	host: { class: 'lw-widget-subtitle' }
 })
 export class WidgetSubtitleDirective extends _WidgetSubtitleBase
-	implements HasTextColor {
+	implements HasColor {
 	constructor(elementRef: ElementRef) {
 		super(elementRef);
 	}

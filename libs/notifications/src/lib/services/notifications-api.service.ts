@@ -4,10 +4,9 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { NotificationItem } from '../models';
-
-import { getApiError } from '@lifeworks/core';
+import { getApiError, ConfigService } from '@lifeworks/core';
 import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
+import { NotificationItem } from '../models';
 
 const DIMISS = { dismiss: true };
 
@@ -15,11 +14,17 @@ const DIMISS = { dismiss: true };
 	providedIn: 'root'
 })
 export class NotificationsApi {
-	notificationsUrl = 'https://c1e420f9-05f0-4a54-9c29-1fc5937dd9e1.mock.pstmn.io/notifications';
+	notificationsUrl: string;
 
 	serviceErrorHandler = throwErrorAndLog('Notification API Service');
 
-	constructor(private http: HttpClient) {}
+	constructor(
+		private http: HttpClient,
+		private configuration: ConfigService
+	) {
+		const baseUrl = configuration.getLifeworksApiUri();
+		this.notificationsUrl = `${baseUrl}/notifications`;
+	}
 
 	get() {
 		return this.http

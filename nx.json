@@ -55,6 +55,12 @@
     },
     "ui-components-summary-list": {
       "tags": []
+    },
+    "ui-components-buttons": {
+      "tags": []
+    },
+    "ui-components-icons": {
+      "tags": []
     }
   }
 }

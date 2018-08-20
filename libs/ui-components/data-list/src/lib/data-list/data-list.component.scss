@@ -1,14 +1,8 @@
 @import '../../../../../styles/_framework';
 
-ul {
-	padding-left: 0;
-}
 
-.lw-data-list-item:nth-child(odd) {
-	background-color: $color-grey-lightest;
-}
 
-.lw-data-list-meta {
+.lw-data-list-item-header {
 	display: inline-block;
 	font-size: 1.3rem;
 	font-weight: $font-weight-light;
@@ -20,23 +14,27 @@ ul {
 		display: inline-block;
 		margin: 0 1em;
 	}
-	&:last-child:after {
+	&:last-of-type:after {
 		content: '';
 		display: none;
 	}
 }
 
-.lw-data-list-title {
-	color: $color-green;
-	&:after {
-		content: '/';
-		display: inline-block;
-		color: $color-grey-lighter;
-		font-weight: $font-weight-light;
-		margin: 0 0.8em;
+.lw-data-list-item-indicator {
+    flex: 0 0 4em;
+    align-items: center;
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
+	background-color: #aaa;
+
+	:first-child {
+		box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
 	}
 }
 
-.lw-data-list-amount {
-	color: $color-orange;
+.lw-data-list-item-action {
+	padding: 10px;
+	height: 100%;
+	flex: 1;
+	display: flex;
+	cursor: pointer;
 }

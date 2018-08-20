@@ -1,0 +1,31 @@
+@import '../../../../../styles/_framework';
+
+:host-context {
+    align-items: center;
+    display: flex;
+    flex: 1;
+	height: 100%;
+
+	svg {
+		width: 2rem;
+		margin: 0 auto;
+	}
+	
+	&.lw-data-list-img-client-flagged-content,
+	&.lw-data-list-img-prep-for-review-meeting {
+		background-color: $color-blue;
+	}
+	&.lw-data-list-img-compliance-approval {
+		background-color: $color-green;
+	}
+	&.lw-data-list-img-compliance-revision-needed {
+		background-color: $color-orange;
+	}
+	&.lw-data-list-img-sales-opportunity {
+		background-color: $color-purple;
+	}
+	&.lw-data-list-img-review-meeting,
+	&.lw-data-list-img-suggestion {
+		background-color: $color-yellow;
+	}
+}

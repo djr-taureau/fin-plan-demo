@@ -4,7 +4,9 @@ import { of } from 'rxjs';
 import { Notifications } from '../../services';
 import { NotificationImagePipe, NotificationLinkPipe } from '../../pipes';
 import { NotificationsMock, MOCK_COMPLIANCE_NOTIFICATION } from '../../testing';
+
 import { NotificationsWidgetComponent } from './notifications-widget.component';
+import { NotificationsListComponent } from '../notifications-list/notifications-list.component';
 
 describe('NotificationsWidgetComponent', () => {
 	let component: NotificationsWidgetComponent;
@@ -24,7 +26,8 @@ describe('NotificationsWidgetComponent', () => {
 				declarations: [
 					NotificationsWidgetComponent,
 					NotificationImagePipe,
-					NotificationLinkPipe
+					NotificationLinkPipe,
+					NotificationsListComponent
 				],
 				providers: [
 					{

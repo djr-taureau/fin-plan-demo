@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, User } from '@lifeworks/authentication';
-import * as jwt_decode from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { head } from 'ramda';

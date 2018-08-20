@@ -1,6 +1,20 @@
-<ng-content></ng-content>
-<ng-container *ngIf="showRemoveButton">
-  <div class="data-list-item-dismiss">
-    <button (click)="raiseRemoveEvent()" class="data-list-item-dismiss-button skip-container-click" type="image" title="Dismiss Notification" alt="Dismiss Notification"></button>
+<ng-content select="lw-data-list-item-indicator"></ng-content>
+<ng-container *ngIf="noNavigation; else wrappedContent">
+  <div class="data-list-item-content">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
   </div>
 </ng-container>
+<div class="data-list-item-actions">
+  <ng-content select="lw-data-list-item-action, [lwDataListItemAction]"></ng-content>
+</div>
+
+<ng-template #wrappedContent>
+  <a class="data-list-item-content" [routerLink]="location">
+      <ng-container *ngTemplateOutlet="content"></ng-container>
+  </a>
+</ng-template>
+
+<ng-template #content>
+  <ng-content select="lw-data-list-item-header, [lwDataListItemHeader]"></ng-content>
+  <ng-content></ng-content>
+</ng-template>

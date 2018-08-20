@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationsWidgetComponent } from '../../components';
+import {
+	NotificationsWidgetComponent,
+	NotificationsListComponent
+} from '../../components';
 import { NotificationImagePipe, NotificationLinkPipe } from '../../pipes';
 import { Notifications } from '../../services';
 import { NotificationsMock } from '../../testing';
@@ -17,7 +20,8 @@ describe('NotificationsPageComponent', () => {
 					NotificationsPageComponent,
 					NotificationsWidgetComponent,
 					NotificationImagePipe,
-					NotificationLinkPipe
+					NotificationLinkPipe,
+					NotificationsListComponent
 				],
 				providers: [
 					{ provide: Notifications, useValue: NotificationsMock }

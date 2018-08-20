@@ -1,33 +1,30 @@
+// tslint:disable:use-host-property-decorator use-input-property-decorator
+import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import {
-	Component,
-	OnInit,
-	Input,
-	Output,
-	EventEmitter,
-	HostBinding
-} from '@angular/core';
+	mixinNavigation,
+	HasNavigation,
+	HasDataItemState,
+	mixinDateItemState,
+	mixinCssModifiers,
+	ComponentHostBase
+} from '@lifeworks/ui-components';
+
+export const _DataListItemComponent = mixinNavigation(
+	mixinDateItemState(mixinCssModifiers(ComponentHostBase))
+);
 
 @Component({
 	selector: 'lw-data-list-item',
+	exportAs: 'dataItem',
+	inputs: ['item', 'location', 'wrapWithAnchor'],
 	templateUrl: './data-list-item.component.html',
 	styleUrls: ['./data-list-item.component.scss'],
-	// tslint:disable-next-line:use-host-property-decorator
-	host: { class: 'lw-data-list-item' }
+	host: { class: 'lw-data-list-item' },
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class DataListItemComponent implements OnInit {
-	@Input() location: string;
-	@Input() showRemoveButton: Boolean = false;
-
-	@HostBinding('class.is-removing')
-	@Input()
-	isRemoving: Boolean = false;
-	@Output() removeClicked = new EventEmitter();
-
-	constructor() {}
-
-	ngOnInit() {}
-
-	raiseRemoveEvent() {
-		this.removeClicked.emit();
+export class DataListItemComponent<T> extends _DataListItemComponent
+	implements HasNavigation, HasDataItemState<T> {
+	constructor(elementRef: ElementRef) {
+		super(elementRef);
 	}
 }

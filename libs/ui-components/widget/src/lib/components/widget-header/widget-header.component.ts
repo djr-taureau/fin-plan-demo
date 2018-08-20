@@ -6,12 +6,13 @@ import {
 	ChangeDetectionStrategy,
 	ElementRef
 } from '@angular/core';
-import { mixinColor, HasColor } from '@lifeworks/ui-components/core';
+import {
+	mixinColor,
+	HasColor,
+	ComponentHostBase
+} from '@lifeworks/ui-components';
 
-export class WidgetHeaderBase {
-	constructor(public _elementRef: ElementRef) {}
-}
-export const _WidgetHeaderBase = mixinColor(WidgetHeaderBase);
+export const _WidgetHeaderBase = mixinColor(ComponentHostBase);
 
 @Component({
 	selector: 'lw-widget-header',

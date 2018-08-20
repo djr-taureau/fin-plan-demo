@@ -1,24 +1,13 @@
-<lw-widget class="lw-elevation6">
+<lw-widget class="lw-elevation-6">
     <lw-widget-header>
         <lw-widget-title color="green">Notifications</lw-widget-title>
-        <lw-widget-subtitle *ngIf="(dataState$ | async) === 'loaded'">{{notificationCount$ | async}}</lw-widget-subtitle>
-        <a [routerLink]="['notifications']" lwPageLink lwWidgetLink>View All</a>
+        <lw-widget-subtitle *ngIf="(dataState$ | async) === 'loaded'">{{dataItemsCount$ | async}}</lw-widget-subtitle>
+        <a [routerLink]="['notifications']" lwPageLink lwWidgetLink>View all</a>
     </lw-widget-header>
     <lw-widget-content [ngSwitch]="dataState$ | async">
-        <div class="widget-message" *ngSwitchCase="'loading'">Loading...</div>
-        <div class="widget-message" *ngSwitchCase="'empty'">No new items</div>
-        <div class="widget-message" *ngSwitchCase="'error'">Opps... something went wrong</div>
-        <lw-data-list *ngSwitchCase="'loaded'">
-            <lw-data-list-item [isRemoving]="notification?._ui_isRemoving" [lwLinkTo]="notification | notificationLink" *ngFor="let notification of notifications$ | async"
-            [showRemoveButton]="true" (removeClicked)="dismiss(notification)">
-            <lw-data-list-img [type]="notification | notificationImage"></lw-data-list-img>
-            <lw-data-list-content>
-                <lw-data-list-meta>{{notification?.timestamps?.createdOn | niceDate}}</lw-data-list-meta>
-                <lw-data-list-meta>{{notification?.notificationType | uppercase | replace:"-":" "}}</lw-data-list-meta>
-                    <div [innerHTML]="notification | hydrateTemplate"></div>
-                </lw-data-list-content>
-            </lw-data-list-item>
-        </lw-data-list>
-
+        <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>
+        <div *ngSwitchCase="'empty'" class="widget-message">No new items</div>
+        <div *ngSwitchCase="'error'" class="widget-message">Opps... something went wrong</div>
+        <lw-notifications-list (event)="onEvent($event)" *ngSwitchCase="'loaded'" [items]="data$ | async"></lw-notifications-list>
     </lw-widget-content>
 </lw-widget>

@@ -3,8 +3,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { DataListItemComponent } from './data-list-item.component';
 
 describe('DataListItemComponent', () => {
-	let component: DataListItemComponent;
-	let fixture: ComponentFixture<DataListItemComponent>;
+	let component: DataListItemComponent<{}>;
+	let fixture: ComponentFixture<DataListItemComponent<{}>>;
 
 	beforeEach(
 		async(() => {

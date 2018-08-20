@@ -1,12 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Observable, combineLatest } from 'rxjs';
 
+import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { NotificationsState } from '../../+state/notifications.interfaces';
 import { NotificationItems, NotificationItem } from '../../models';
 import { Notifications } from '../../services';
+import { tap, map } from 'rxjs/operators';
+
+//todo: Make reuseable
 
 export type NotificationsFilter = 'all' | 'dismissed' | 'undismissed';
 export type DataState = 'loading' | 'empty' | 'loaded' | 'error';
+
+export const getDataState = ([loaded, count]: [boolean, number]): DataState => {
+	if (!loaded) {
+		return 'loading';
+	} else if (loaded && count > 0) {
+		return 'loaded';
+	} else if (loaded && count < 1) {
+		return 'empty';
+	}
+	return 'error';
+};
 
 @Component({
 	selector: 'lw-notifications-widget',
@@ -16,10 +31,11 @@ export type DataState = 'loading' | 'empty' | 'loaded' | 'error';
 export class NotificationsWidgetComponent implements OnInit {
 	@Input() filter: NotificationsFilter;
 
-	notifications$: Observable<NotificationItems>;
+	data$: Observable<NotificationItems>;
 	isLoaded$: Observable<boolean>;
 	dataState$: Observable<DataState>;
-	notificationCount$: Observable<number>;
+	dataItemsCount$: Observable<number>;
+	filteredItems$: Observable<NotificationItems>;
 
 	constructor(private notificationsService: Notifications) {}
 
@@ -29,38 +45,41 @@ export class NotificationsWidgetComponent implements OnInit {
 		this.isLoaded$ = this.notificationsService.isDataLoaded();
 		this.dataState$ = combineLatest(
 			this.isLoaded$,
-			this.notificationCount$,
-			(loaded, count) => {
-				if (!loaded) {
-					return 'loading' as DataState;
-				} else if (count > 0) {
-					return 'loaded' as DataState;
-				} else if (count < 1) {
-					return 'empty' as DataState;
-				} else {
-					return 'error' as DataState;
-				}
-			}
-		);
+			this.dataItemsCount$
+		).pipe(map(getDataState));
 	}
 
 	initDataSet(filter: NotificationsFilter) {
 		switch (filter) {
 			case 'all': {
-				this.notifications$ = this.notificationsService.getAll();
-				this.notificationCount$ = this.notificationsService.countOfAll();
+				this.data$ = this.notificationsService.getAll();
+				this.dataItemsCount$ = this.notificationsService.countOfAll();
 				break;
 			}
 			case 'dismissed': {
-				this.notifications$ = this.notificationsService.getDismissed();
-				this.notificationCount$ = this.notificationsService.countOfDismissed();
+				this.data$ = this.notificationsService.getDismissed();
+				this.dataItemsCount$ = this.notificationsService.countOfDismissed();
 				break;
 			}
 			case 'undismissed': {
-				this.notifications$ = this.notificationsService.getUndismissed();
-				this.notificationCount$ = this.notificationsService.countOfUndismissed();
+				this.data$ = this.notificationsService
+					.getUndismissed()
+					.pipe(this.applyFilters());
+				this.dataItemsCount$ = this.notificationsService.countOfUndismissed();
 				break;
 			}
+		}
+	}
+
+	applyFilters() {
+		return map((x: NotificationItems) => x.slice(0, 3));
+	}
+
+	onEvent(event: DatasourceItemEvent<NotificationItem>) {
+		switch (event.action) {
+			case 'remove':
+				this.dismiss(event.item);
+				break;
 		}
 	}
 

@@ -41,7 +41,7 @@ any buisness logic or services of any application or library outside of its self
 UI-Components are allowed to import the following
 - Angular Modules
 - 3rd Party Modules
-- @lifeworks/ui-components/core
+- @lifeworks/ui-components
 
 use the following command to create a new UI-Component
 

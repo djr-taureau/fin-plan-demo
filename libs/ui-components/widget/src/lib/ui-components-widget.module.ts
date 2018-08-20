@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UiComponentsCoreModule } from '@lifeworks/ui-components/core';
+import { UiComponentsCoreModule } from '@lifeworks/ui-components';
 
 import {
 	WidgetComponent,

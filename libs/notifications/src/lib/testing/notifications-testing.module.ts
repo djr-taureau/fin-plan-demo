@@ -4,6 +4,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ConfigService } from '@lifeworks/core';
+import { ConfigServiceMock } from '../../../../core/src/lib/testing';
 
 @NgModule({
 	imports: [
@@ -19,6 +21,9 @@ import { RouterTestingModule } from '@angular/router/testing';
 		EffectsModule,
 		HttpClientTestingModule,
 		RouterTestingModule
+	],
+	providers: [
+		{provide: ConfigService, useValue: ConfigServiceMock}
 	]
 })
 export class NotificationsTestingModule {}
