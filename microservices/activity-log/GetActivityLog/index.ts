@@ -17,37 +17,34 @@ const mockData = {
     }
 };
 
+const mockedValues = results => map(merge(mockData), results);
+
 
 const db = new ActivityLogDb();
 
 export function run(context, req) {
     context.log.info('JavaScript HTTP trigger function processed a request.');
-
-    // Wrap with a function decorateor
-    if(req.params.id !== undefined) {
-        Promise.all([db.getActivityLogByID(req.params.id), db.getAllActivityLogs()])
+    context.log(req);
+    if(req.query) {
+        Promise.all([db.getActivityLogs(req.query), db.getAllActivityLogs()])
         .then(values => {
             context.log(values[0]);
-
-            const mockedValues = merge(mockData, values[0]); //TODO: remove mock data  process actual data
             
             processResult(context, req, [
                 countResults,
                 totalRecords(values[1].length)
-            ])(mockedValues);
+            ])(mockedValues(values[0]));
         })
         .catch(handleError(context));
     } else {
-        Promise.all([db.getAllActivityLogs(), db.getAllActivityLogs()])
-        .then(values => {
-            context.log(values[0]);
-
-            const mockedValues = map(merge(mockData), values[0]); //TODO: remove mock data  process actual data
+        db.getAllActivityLogs()
+        .then(results => {
+            context.log(results);
             
             processResult(context, req, [
                 countResults,
-                totalRecords(values[1].length)
-            ])(mockedValues);
+                totalRecords(results.length)
+            ])(mockedValues(results));
         })
         .catch(handleError(context));
     }
