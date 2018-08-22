@@ -6,6 +6,7 @@
 	display: block;
 	line-height: 0.84;
 	margin-right: 2rem;
+
 	&.lw-dashboard-overview-emphasis-up {
 		white-space: nowrap;
 		&:before {
@@ -18,4 +19,8 @@
 			@include arrowVertical('down');
 		}
 	}
+}
+
+:host-context() .inline-caret {
+	font-size: 20px;
 }

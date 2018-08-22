@@ -2,7 +2,7 @@
     <lw-widget-header>
         <lw-widget-title color="green">Notifications</lw-widget-title>
         <lw-widget-subtitle *ngIf="(dataState$ | async) === 'loaded'">{{dataItemsCount$ | async}}</lw-widget-subtitle>
-        <a [routerLink]="['notifications']" lwPageLink lwWidgetLink>View all</a>
+        <a lwWidgetLink [routerLink]="['notifications']" lwInlineCaret caretDirection="right">View all</a>
     </lw-widget-header>
     <lw-widget-content [ngSwitch]="dataState$ | async">
         <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>

@@ -2,10 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DataPersistence } from '@nrwl/nx';
+
 import { ConfigService } from '@lifeworks/core';
-import { ConfigServiceMock } from '../../../../core/src/lib/testing';
+import { UserService } from '@lifeworks/authentication';
+import { m_ConfigService, m_UserService } from './mock-services';
 
 @NgModule({
 	imports: [
@@ -23,7 +26,9 @@ import { ConfigServiceMock } from '../../../../core/src/lib/testing';
 		RouterTestingModule
 	],
 	providers: [
-		{provide: ConfigService, useValue: ConfigServiceMock}
+		DataPersistence,
+		{ provide: UserService, useValue: m_UserService },
+		{ provide: ConfigService, useValue: m_ConfigService }
 	]
 })
 export class DashboardingTestingModule {}

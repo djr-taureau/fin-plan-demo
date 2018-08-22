@@ -1,1 +1,1 @@
-export { DomainEntity, DomainSubject } from './domain-entity';
+export { DomainEntityBase, DomainEntity, DomainSubject } from './domain-entity';

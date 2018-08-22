@@ -13,7 +13,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { NxModule } from '@nrwl/nx';
 
 import { DashboardingUIModule } from './lib/+modules';
-import { DashboardingTestingModule } from './lib/testing'
+import { DashboardingTestingModule } from './lib/testing';
 
 declare const require: any;
 
@@ -21,9 +21,7 @@ declare const require: any;
 getTestBed().initTestEnvironment(
 	[
 		BrowserDynamicTestingModule,
-		HttpClientTestingModule,
 		DashboardingTestingModule,
-		RouterTestingModule,
 		DashboardingUIModule,
 		NxModule
 	],

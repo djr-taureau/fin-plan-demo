@@ -64,6 +64,9 @@
       ],
       "@lifeworks/ui-components/icons": [
         "libs/ui-components/icons/src/index.ts"
+      ],
+      "@lifeworks/services": [
+        "libs/services/src/index.ts"
       ]
     }
   },

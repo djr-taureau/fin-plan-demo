@@ -1,0 +1,30 @@
+.inline-caret {
+    font-size: 24px;
+    line-height: 0.8;
+    
+    vertical-align: middle;
+    font-family: "Material Icons";
+
+    .inline-caret:first-child:not(:last-child) {
+        margin-right: -6px;
+    }
+    .inline-caret:last-child:not(:first-child) {
+        margin-left: -4px;
+    }
+
+    &.caret-color-orange {
+        color: orange;
+    }
+    &.caret-color-white {
+        color: white;
+    }
+    &.caret-color-green {
+        color: green;
+    }
+    &.caret-color-blue {
+        color: blue;
+    }
+    &.caret-color-red {
+        color: red;
+    }
+}

@@ -22,8 +22,6 @@ import { ConfigServiceMock } from '../../../../core/src/lib/testing';
 		HttpClientTestingModule,
 		RouterTestingModule
 	],
-	providers: [
-		{provide: ConfigService, useValue: ConfigServiceMock}
-	]
+	providers: [{ provide: ConfigService, useValue: ConfigServiceMock }]
 })
 export class NotificationsTestingModule {}

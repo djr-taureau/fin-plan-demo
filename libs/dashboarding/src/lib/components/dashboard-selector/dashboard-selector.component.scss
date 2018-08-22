@@ -1,0 +1,27 @@
+:host {
+    height: 86px;
+    font-size: 20px;
+    padding:0 36px;
+    background-color: #66AA99;
+    color: #ffffff;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    font-family: 'Lato';
+    font-weight: normal;
+}
+
+select {
+    font-weight: 300;
+    color: #7E7E7E;
+    background-color: #E8ECED;
+    height: 44px;
+    width: 345px;
+    padding: 0 16px;
+    margin-left: 20px;
+
+    :focus {
+        outline: none;
+    }    
+}

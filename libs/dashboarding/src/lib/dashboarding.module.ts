@@ -6,11 +6,19 @@ import {
 	DashboardingUIModule
 } from './+modules';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashboardClientComponent } from './dashboard-client/dashboard-client.component';
-import { DashboardAdvisorComponent } from './dashboard-advisor/dashboard-advisor.component';
-import { DashboardManagerComponent } from './dashboard-manager/dashboard-manager.component';
-import { DashboardComplianceComponent } from './dashboard-compliance/dashboard-compliance.component';
+import {
+	DashboardClientComponent,
+	DashboardAdvisorComponent,
+	DashboardManagerComponent,
+	DashboardComplianceComponent
+} from './pages';
+
+import {
+	DashboardRouterComponent,
+	DashboardSelectorComponent,
+	DashboardHeaderComponent
+} from './components';
+import { DashboardRolePipe } from './dashboard-role.pipe';
 
 @NgModule({
 	imports: [
@@ -19,11 +27,14 @@ import { DashboardComplianceComponent } from './dashboard-compliance/dashboard-c
 		DashboardingUIModule
 	],
 	declarations: [
-		DashboardComponent,
+		DashboardRouterComponent,
 		DashboardClientComponent,
 		DashboardAdvisorComponent,
 		DashboardManagerComponent,
-		DashboardComplianceComponent
+		DashboardComplianceComponent,
+		DashboardSelectorComponent,
+		DashboardRolePipe,
+		DashboardHeaderComponent
 	]
 })
 export class DashboardingModule {}

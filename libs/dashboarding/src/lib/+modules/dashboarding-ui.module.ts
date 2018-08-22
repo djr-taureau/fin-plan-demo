@@ -4,13 +4,17 @@ import { UiComponentsSummaryListModule } from '@lifeworks/ui-components/summary-
 import { NotificationsModule } from '@lifeworks/notifications';
 import { CommonModule } from '@lifeworks/common';
 import { AuthenticationModule } from '@lifeworks/authentication';
+import { ServicesModule } from '@lifeworks/services';
+import { UiComponentsIconsModule } from '@lifeworks/ui-components/icons';
 
 const MODULES = [
 	CommonModule,
 	AuthenticationModule,
 	UiComponentsDashboardOverviewModule,
 	UiComponentsSummaryListModule,
-	NotificationsModule
+	UiComponentsIconsModule,
+	NotificationsModule,
+	ServicesModule
 ];
 
 @NgModule({

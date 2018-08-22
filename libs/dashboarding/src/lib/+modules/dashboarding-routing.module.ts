@@ -2,16 +2,51 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AuthenticatedGuard } from '@lifeworks/authentication';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+import {
+	DashboardRouterComponent,
+	DashboardSelectorComponent
+} from '../components';
+import {
+	DashboardClientComponent,
+	DashboardAdvisorComponent,
+	DashboardManagerComponent,
+	DashboardComplianceComponent
+} from '../pages';
 
 @NgModule({
 	imports: [
 		RouterModule.forChild([
 			{
 				path: '',
-				pathMatch: 'full',
-				component: DashboardComponent,
-				canActivate: [AuthenticatedGuard]
+				component: DashboardSelectorComponent,
+				outlet: 'shell-top'
+			},
+			{
+				path: '',
+				canActivate: [AuthenticatedGuard],
+				children: [
+					{
+						path: '',
+						pathMatch: 'full',
+						component: DashboardRouterComponent
+					},
+					{
+						path: 'dashboard/advisor',
+						component: DashboardAdvisorComponent
+					},
+					{
+						path: 'dashboard/client',
+						component: DashboardClientComponent
+					},
+					{
+						path: 'dashboard/manager',
+						component: DashboardManagerComponent
+					},
+					{
+						path: 'dashboard/compliance',
+						component: DashboardComplianceComponent
+					}
+				]
 			}
 		])
 	],
