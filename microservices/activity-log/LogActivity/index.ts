@@ -3,22 +3,21 @@ import { handleError } from "../../utils/errors";
 import { processResult, wrapResults } from "../../utils/processor";
 
 
-
 const db = new ActivityLogDb();
 
 export function run(context, req) {
     context.log('JavaScript HTTP trigger function processed a request.');
 
-    if(req.body && req.body.message) {
+    if(req.body) {
 
-        db.addOneActivityLog(req.body.message)
+        db.addActivityLogs(req.body)
         .then(processResult(context, [wrapResults]))
         .catch(handleError(context));
         
     } else {
         context.res = {
             status: 400,
-            body: "Please pass a message in the request body"
+            body: "Please pass an Array of ActivityLogs"
         };
         context.done();
     }

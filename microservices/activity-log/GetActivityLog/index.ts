@@ -24,12 +24,9 @@ const db = new ActivityLogDb();
 
 export function run(context, req) {
     context.log.info('JavaScript HTTP trigger function processed a request.');
-    context.log(req);
     if(req.query) {
         Promise.all([db.getActivityLogs(req.query), db.getAllActivityLogs()])
-        .then(values => {
-            context.log(values[0]);
-            
+        .then(values => {            
             processResult(context, req, [
                 countResults,
                 totalRecords(values[1].length)
@@ -38,9 +35,7 @@ export function run(context, req) {
         .catch(handleError(context));
     } else {
         db.getAllActivityLogs()
-        .then(results => {
-            context.log(results);
-            
+        .then(results => {            
             processResult(context, req, [
                 countResults,
                 totalRecords(results.length)

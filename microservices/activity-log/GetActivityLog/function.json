@@ -6,7 +6,10 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "activity_log/"
+      "route": "activity_log/",
+      "methods": [
+        "get"
+      ]
     },
     {
       "type": "http",

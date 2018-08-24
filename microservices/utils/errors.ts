@@ -8,3 +8,7 @@ export const handleError = (context, options?) => error => {
   
   context.done();
 }
+
+export const promiseError = error => {
+  throw new Error(error);
+}

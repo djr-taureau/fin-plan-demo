@@ -7,7 +7,7 @@ const connectionConfig: ConnectionOptions = {
 	password: "zj8ErmFJVMN1v9g585nbt",
 	database: "lifeworks",
 	synchronize: true,
-  logging: false,
+	logging: false,
   entities: [],
 	options: {
 	  encrypt: true

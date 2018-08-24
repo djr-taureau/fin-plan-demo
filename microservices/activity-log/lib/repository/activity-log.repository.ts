@@ -1,27 +1,26 @@
 import "reflect-metadata";
+import { promiseError } from '../../../utils/errors';
+
 import { connection } from '../../../utils/typeorm/connection';
 import { ActivityLog } from '../entity';
 
 const repository = connection(ActivityLog)
   .then(conn => conn.getRepository(ActivityLog))
-  .catch(err => { throw new Error(err)} );
+  .catch(promiseError);
+
 
 export class ActivityLogDb {
 
   public getAllActivityLogs() {
      return repository
      .then(repo => repo.find())
-     .catch(err => {
-       throw new Error(err);
-      });
+     .catch(promiseError);
    }
  
    public getActivityLogByID(GUID: number) {
      return repository
      .then(repo => repo.findOne(GUID))
-     .catch(err => {
-      throw new Error(err);
-     });
+     .catch(promiseError);
    }
 
    public getActivityLogs(queryVars) {
@@ -39,21 +38,27 @@ export class ActivityLogDb {
           query.take(queryVars.limit);
         }
 
-        return query.execute();
+        return query.getMany();
       }
     )
-    .catch(err => {
-     throw new Error(err);
-    });
+    .catch(promiseError);
   }
- 
-   public addOneActivityLog(message: string) {
-     return repository
-     .then(repo => {
-       return repo.save({message: message, read: false});
-     })
-     .catch(err => {
-      throw new Error(err);
-     });
-   }
- }
+  
+  public addActivityLogs(postData) {
+    return repository
+    .then(repo => {
+      let insertQuery = repo.createQueryBuilder("activity_log").insert();
+      
+      const processedPostData = postData.map(data => {
+        data.occurrence = `${new Date()}`;
+        return data;
+      });
+
+      insertQuery.values(processedPostData);
+      
+      return insertQuery.execute();
+
+    })
+    .catch(promiseError);
+  }
+}
