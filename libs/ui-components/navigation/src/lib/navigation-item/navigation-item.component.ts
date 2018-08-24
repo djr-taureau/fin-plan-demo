@@ -1,17 +1,24 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+//tslint:disable:use-input-property-decorator use-host-property-decorator
+import { Component, Input, ViewEncapsulation, ElementRef } from '@angular/core';
+import {
+	ComponentHostBase,
+	mixinNavigation,
+	HasNavigation
+} from '@lifeworks/ui-components';
+
+export const _NavigationItemBase = mixinNavigation(ComponentHostBase);
 
 @Component({
 	selector: 'lw-navigation-item',
+	inputs: ['location', 'wrapWithAnchor'],
 	templateUrl: './navigation-item.component.html',
 	styleUrls: ['./navigation-item.component.scss'],
-	// tslint:disable-next-line:use-host-property-decorator
 	host: { class: 'lw-navigation-item' },
 	encapsulation: ViewEncapsulation.None
 })
-export class NavigationItemComponent implements OnInit {
-	@Input() location: string;
-
-	constructor() {}
-
-	ngOnInit() {}
+export class NavigationItemComponent extends _NavigationItemBase
+	implements HasNavigation {
+	constructor(public _elementRef: ElementRef) {
+		super(_elementRef);
+	}
 }

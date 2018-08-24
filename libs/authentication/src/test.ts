@@ -4,17 +4,14 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
-import { TestingAuthProviderModule } from '@lifeworks/authentication/providers/testing-auth-provider';
+import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+import { AuthenticationTestingModule } from './lib/testing';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[BrowserDynamicTestingModule, TestingAuthProviderModule],
+	[AuthenticationTestingModule],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

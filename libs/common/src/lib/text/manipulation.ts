@@ -1,4 +1,4 @@
-import { replace } from 'ramda';
+import { replace, pipe, split, head } from 'ramda';
 
 /**
  * Remove the suppplied input from a string
@@ -13,3 +13,8 @@ import { replace } from 'ramda';
  */
 export const removeFromString = (replacement: string | RegExp) =>
 	replace(replacement, '');
+
+/**
+ * Gets the text that occurces before the supplied token
+ */
+export const getTextBefore = (token: string) => pipe(split(token), head);

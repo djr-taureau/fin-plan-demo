@@ -1,14 +1,15 @@
 import { when, concat } from 'ramda';
+import { getTextBefore } from '../text';
 import {
 	notEmpty,
 	whenNotEmpty,
 	whenPropIsNotUseable,
-	isMissingRegEx
+	doesNotMatch
 } from '../utility';
 
 const HTTP_PROTOCOL_REGEX = /^https?:\/\//i;
 
-const missingHttpProtocol = isMissingRegEx(HTTP_PROTOCOL_REGEX);
+const missingHttpProtocol = doesNotMatch(HTTP_PROTOCOL_REGEX);
 
 const getPortString = whenNotEmpty(p => `:${p}`);
 
@@ -18,6 +19,8 @@ const getHostString = (l: Location) =>
 const buildHostString = whenPropIsNotUseable('origin', getHostString);
 
 const buildAbsoluteUrl = concat(buildHostString(window.location));
+
+export const stripeHash = getTextBefore('#');
 
 /**
  * Returns an Absolute url from the given string or the absolute url for the given host

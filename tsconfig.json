@@ -41,9 +41,6 @@
       "@lifeworks/authentication/providers/azure-ad-auth-provider": [
         "libs/authentication/src/lib/providers/azure-ad-auth-provider/src/index.ts"
       ],
-      "@lifeworks/authentication/providers/testing-auth-provider": [
-        "libs/authentication/src/lib/providers/testing-auth-provider/src/index.ts"
-      ],
       "@lifeworks/dashboarding": [
         "libs/dashboarding/src/index.ts"
       ],

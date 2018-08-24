@@ -5,7 +5,6 @@ import 'zone.js/dist/zone';
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
 import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 
 import { NotificationsUIModule } from './lib/+modules';
 import { NotificationsTestingModule } from './lib/testing';
@@ -14,7 +13,7 @@ declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[RouterTestingModule, NotificationsUIModule, NotificationsTestingModule],
+	[NotificationsUIModule, NotificationsTestingModule],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

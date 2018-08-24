@@ -17,8 +17,7 @@ type RegExPredicate = (s: RegExp) => TypedPredicate<string>;
 /**
  * Returns true when the input does not match the supplied regex
  */
-export const isMissingRegEx: RegExPredicate = testRx =>
-	complement(test(testRx));
+export const doesNotMatch: RegExPredicate = testRx => complement(test(testRx));
 
 /**
  * Determines if input is not `null`, `""`, `{}`, `[]` or `undefined` value

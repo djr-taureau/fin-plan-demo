@@ -29,7 +29,7 @@ export function mixinNavigation<T extends Constructor<{}>>(
 
 		constructor(...args: any[]) {
 			super(...args);
-			this.wrapWithAnchor = false;
+			this.wrapWithAnchor = true;
 		}
 	};
 }

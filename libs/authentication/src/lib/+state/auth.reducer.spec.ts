@@ -1,19 +1,13 @@
 import { Authenticated } from './auth.actions';
-import { User } from './auth.interfaces';
+import { User } from '../models';
 import { authReducer } from './auth.reducer';
 import { authInitialState } from './auth.init';
+import { USER_ADVISOR } from '../testing';
 
 describe('authReducer', () => {
-	const testUser: User = {
-		id: '1',
-		displayName: 'Name 1',
-		roles: ['role 1'],
-		permissions: []
-	};
-
 	it('should work', () => {
-		const action: Authenticated = new Authenticated(testUser);
+		const action: Authenticated = new Authenticated(USER_ADVISOR);
 		const actual = authReducer(authInitialState, action);
-		expect(actual).toEqual(testUser);
+		expect(actual.currentUser).toEqual(USER_ADVISOR);
 	});
 });

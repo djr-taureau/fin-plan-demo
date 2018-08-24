@@ -1,9 +1,11 @@
-<ng-container class="mine" *ngIf="show$ | async">
+<ng-container *ngIf="show$ | async">
+  <div class="dashboard-selector">
   <label>
     Viewing As:
 
-    <select (change)="changeDashboard(selectControl.value)" #selectControl>
-      <option [value]="role.name | dashboardRole" *ngFor="let role of roles$ | async">{{role.name}}</option>
+    <select (change)="changeDashboard(selectControl.value) " #selectControl>
+      <option [value]="role.name | dashboardRole " *ngFor="let role of roles$ | async ">{{role.name}}</option>
     </select>
   </label>
+  </div>
 </ng-container>

@@ -5,8 +5,6 @@ import { getTestBed } from '@angular/core/testing';
 import { AuthenticationModule } from '@lifeworks/authentication';
 
 // tslint:disable-next-line
-import { TestingAuthProviderModule } from '@lifeworks/authentication/providers/testing-auth-provider';
-// tslint:disable-next-line
 import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
 
 import {
@@ -23,7 +21,6 @@ getTestBed().initTestEnvironment(
 		BrowserDynamicTestingModule,
 		CoreModule,
 		AuthenticationModule,
-		TestingAuthProviderModule,
 		UiComponentsNavigationModule
 	],
 	platformBrowserDynamicTesting()

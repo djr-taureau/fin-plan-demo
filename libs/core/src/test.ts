@@ -4,28 +4,16 @@ import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
 import 'zone.js/dist/zone-testing';
 import { getTestBed } from '@angular/core/testing';
-import {
-	BrowserDynamicTestingModule,
-	platformBrowserDynamicTesting
-} from '@angular/platform-browser-dynamic/testing';
-import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
-import { RouterTestingModule } from '@angular/router/testing';
+import { platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 
-// tslint:disable-next-line
-import { TestingAuthProviderModule } from '@lifeworks/authentication/providers/testing-auth-provider';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { CoreUIModule } from './lib/+modules';
+import { CoreTestingModule } from './lib/testing';
 
 declare const require: any;
 
 // First, initialize the Angular testing environment.
 getTestBed().initTestEnvironment(
-	[
-		BrowserDynamicTestingModule,
-		HttpClientTestingModule,
-		UiComponentsNavigationModule,
-		RouterTestingModule,
-		TestingAuthProviderModule
-	],
+	[CoreUIModule, CoreTestingModule],
 	platformBrowserDynamicTesting()
 );
 // Then we find all the tests.

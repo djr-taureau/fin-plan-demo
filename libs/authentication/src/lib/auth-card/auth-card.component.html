@@ -1,7 +1,0 @@
-<ul>
-  <li *ngIf="isOnline()"><a class="btn btn-link" (click)="logout()">Logout</a></li>
-  <li *ngIf="!isOnline()"><a class="btn btn-link" (click)="login()">Login</a></li>
-</ul>
-<pre>
-  isOnline(): {{ isOnline() }}
-</pre>

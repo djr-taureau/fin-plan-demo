@@ -1,6 +1,14 @@
-<a [routerLink]=[location] routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">
+<ng-container *ngIf="noNavigation; else wrappedContent">
+  <ng-container *ngTemplateOutlet="content"></ng-container>
+</ng-container>
+
+<ng-template #wrappedContent>
+  <a [routerLink]=[location] routerLinkActive="is-active" [routerLinkActiveOptions]="{exact: true}">
+    <ng-content *ngTemplateOutlet="content"></ng-content>
+  </a>
+</ng-template>
+
+<ng-template #content>
   <ng-content select="lw-navigation-icon"></ng-content>
-  <span>
-    <ng-content></ng-content>
-  </span>
-</a>
+  <span><ng-content></ng-content></span>
+</ng-template>

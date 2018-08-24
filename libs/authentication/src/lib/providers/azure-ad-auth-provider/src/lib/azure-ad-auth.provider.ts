@@ -9,81 +9,83 @@ import { logErrorToConsole, saveToStorage, Timeout } from '@lifeworks/common';
 import { AuthProvider, AUTH_CONFIG } from '@lifeworks/authentication';
 import { getFullUrl } from '@lifeworks/common';
 import { TimeoutError } from 'rxjs';
+import { MsalService, BroadcastService } from '@azure/msal-angular';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AzureAdAuthProvider extends AuthProvider {
-	provider: Msal.UserAgentApplication;
-
 	constructor(
-		@Inject(AUTH_CONFIG) private config: AzureADAuthProviderConfig
+		@Inject(AUTH_CONFIG) private config: AzureADAuthProviderConfig,
+		private msal: MsalService,
+		private broadcastService: BroadcastService
 	) {
 		super();
 
-		this.provider = new Msal.UserAgentApplication(
-			config.clientID,
-			getAuthorityUri(config.tenant, config.signUpSignInPolicy),
-			(errorDesc: string, token: any, error: any, tokenType: any) => {
-				if (errorDesc) {
-					this.emitAuthenticationError(error, errorDesc);
+		if (this.isAuthenticated()) {
+			this.emitAuthenticated();
+		}
+	}
+
+	@Timeout()
+	emitAuthenticated() {
+		this.onAuthenticated.emit(this.msal.getUser().idToken);
+	}
+
+	login(returnUrl?: string) {
+		if (
+			!this.msal._oauthData.isAuthenticated &&
+			!this.msal._oauthData.userName
+		) {
+			this.freshLogin(returnUrl);
+		} else if (
+			!this.msal._oauthData.isAuthenticated &&
+			this.msal._oauthData.userName
+		) {
+			this.tryTokenRefresh();
+		}
+	}
+
+	private freshLogin(returnUrl = '/') {
+		if (!this.msal._renewActive && !this.msal.loginInProgress()) {
+			const loginStartPage = getFullUrl(returnUrl);
+			if (loginStartPage !== null) {
+				this.msal
+					.getCacheStorage()
+					.setItem('msal.angular.login.request', loginStartPage);
+			}
+
+			this.msal.loginRedirect(this.config.b2cScopes);
+		}
+	}
+
+	private tryTokenRefresh() {
+		this.msal.acquireTokenSilent([this.config.clientID]).then(
+			(token: any) => {
+				if (token) {
+					this.msal._oauthData.isAuthenticated = true;
+					// this.broadcastService.broadcast("msal:loginSuccess", token);
 				}
 			},
-			{
-				navigateToLoginRequestUrl: false,
-				redirectUri: getFullUrl('/processing-login'),
-				postLogoutRedirectUri: getFullUrl('/logout'),
-				cacheLocation: 'localStorage'
+			(error: any) => {
+				// this.broadcastService.broadcast("msal:loginFailure", {error});
 			}
 		);
-
-		this.emitIfAuthenticated();
-	}
-
-	@Timeout()
-	emitIfAuthenticated(token?: any) {
-		if (this.isAuthenticated()) {
-			this.onAuthenticated.emit(token || this.provider.getUser().idToken);
-		}
-	}
-
-	@Timeout()
-	emitAuthenticationError(err: any, description: string) {
-		if (this.isAuthenticated) {
-			this.onAuthenticateError.emit({
-				err,
-				description
-			});
-		}
-	}
-
-	login() {
-		this.provider.loginRedirect(this.config.b2cScopes);
 	}
 
 	logout() {
-		this.provider.logout();
+		this.msal.logout();
 	}
 
 	isAuthenticated() {
-		return this.provider.getUser() != null;
+		this.msal.updateDataFromCache([this.config.clientID]);
+		return (
+			!!this.msal._oauthData.isAuthenticated &&
+			!!this.msal._oauthData.userName
+		);
 	}
 
-	async getToken() {
-		try {
-			return await this.provider.acquireTokenSilent(
-				this.config.graphScopes
-			);
-		} catch (ex) {
-			return await this.getTokenPopup();
-		}
-	}
+	async getToken() {}
 
-	private async getTokenPopup() {
-		try {
-			return await this.provider.acquireTokenPopup(this.config.b2cScopes);
-		} catch (ex) {
-			return '';
-		}
-	}
+	private async getTokenPopup() {}
 }

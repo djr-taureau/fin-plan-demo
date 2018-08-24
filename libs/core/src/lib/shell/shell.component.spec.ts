@@ -1,8 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShellComponent } from './shell.component';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 describe('ShellComponent', () => {
 	let component: ShellComponent;
@@ -11,7 +9,6 @@ describe('ShellComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				imports: [StoreModule.forRoot({}), EffectsModule.forRoot([])],
 				declarations: [ShellComponent]
 			}).compileComponents();
 		})

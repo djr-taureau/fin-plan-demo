@@ -29,9 +29,6 @@
     "azure-ad-auth-provider": {
       "tags": []
     },
-    "testing-auth-provider": {
-      "tags": []
-    },
     "dashboarding": {
       "tags": []
     },

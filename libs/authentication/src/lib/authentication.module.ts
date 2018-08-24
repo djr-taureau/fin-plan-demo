@@ -1,41 +1,24 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule as NgCommonModule } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 
-import { AuthCardComponent } from './auth-card/auth-card.component';
-import { LoginCallbackComponent } from './login-callback/login-callback.component';
-import { LogoutComponent } from './logout/logout.component';
-import { AuthenticatedGuard } from './authenticated.guard';
-import { AuthService } from './auth.service';
-import { AUTH_PROVIDER, AuthProvider, AUTH_CONFIG } from './auth-provider';
-import { HttpAuthTokenInterceptor } from './http-auth-token-interceptor';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { authReducer } from './+state/auth.reducer';
-import { authInitialState } from './+state/auth.init';
-import { AuthEffects } from './+state/auth.effects';
-import { UserService } from './user.service';
+import {
+	AuthenticationRoutingModule,
+	AuthenticationStateModule
+} from './+modules';
+import { AUTH_CONFIG } from './providers';
+import { AuthService, UserService, HttpAuthTokenInterceptor } from './services';
+import { AuthenticatedGuard } from './guards';
+import { LoginCallbackComponent, LogoutComponent } from './pages';
 
 @NgModule({
 	imports: [
-		CommonModule,
-		RouterModule.forChild([
-			{
-				path: 'processing-login',
-				pathMatch: 'full',
-				component: LoginCallbackComponent
-			},
-			{ path: 'logout', pathMatch: 'full', component: LogoutComponent }
-		]),
-		StoreModule.forFeature('auth', authReducer, {
-			initialState: authInitialState
-		}),
-		EffectsModule.forFeature([AuthEffects])
+		NgCommonModule,
+		AuthenticationRoutingModule,
+		AuthenticationStateModule
 	],
-	declarations: [AuthCardComponent, LoginCallbackComponent, LogoutComponent],
-	exports: [AuthCardComponent],
-	providers: [AuthenticatedGuard, AuthEffects, UserService]
+	declarations: [LoginCallbackComponent, LogoutComponent],
+	providers: [AuthenticatedGuard, UserService]
 })
 export class AuthenticationModule {
 	static forRoot(config: any = {}): ModuleWithProviders {

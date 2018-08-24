@@ -1,13 +1,9 @@
-export interface User {
-	id: string;
-	displayName: string;
-	roles: Array<string>;
-	permissions: Array<string>;
-}
-
-// tslint:disable-next-line
-export interface Auth extends User {}
+import { User } from '../models';
 
 export interface AuthState {
-	readonly auth: User;
+	currentUser: User;
+}
+
+export interface AuthStateDef {
+	readonly auth: AuthState;
 }

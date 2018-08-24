@@ -1,16 +1,16 @@
 import { Action } from '@ngrx/store';
+import { assoc } from 'ramda';
 import { AuthActions, AuthActionTypes } from './auth.actions';
-import { Auth } from './auth.interfaces';
+import { AuthState } from './auth.interfaces';
 import { authInitialState } from './auth.init';
 
 export function authReducer(
 	state = authInitialState,
 	action: AuthActions
-): Auth {
+): AuthState {
 	switch (action.type) {
 		case AuthActionTypes.AuthenticatedAction:
-			return { ...state, ...action.payload };
-
+			return assoc('currentUser', action.payload, state);
 		default:
 			return state;
 	}

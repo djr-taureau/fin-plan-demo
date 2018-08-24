@@ -1,3 +1,5 @@
-import { Auth } from './auth.interfaces';
+import { AuthState } from './auth.interfaces';
 
-export const authInitialState: Auth = {} as Auth;
+export const authInitialState: AuthState = {
+	currentUser: null
+};

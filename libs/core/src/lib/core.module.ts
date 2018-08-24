@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { ShellComponent } from './shell/shell.component';
-import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
+
+import { CoreCoreModule, CoreUIModule } from './+modules';
 
 @NgModule({
-	imports: [CommonModule, RouterModule, UiComponentsNavigationModule],
+	imports: [CoreCoreModule, CoreUIModule],
 	declarations: [ShellComponent],
 	exports: [ShellComponent]
 })
