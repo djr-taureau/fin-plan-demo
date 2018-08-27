@@ -1,21 +1,23 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardOverviewItemComponent } from './dashboard-overview-item.component';
+import { DashboardOverviewValueCalloutComponent } from './value-callout-item.component';
 
 describe('DashboardOverviewItemComponent', () => {
-	let component: DashboardOverviewItemComponent;
-	let fixture: ComponentFixture<DashboardOverviewItemComponent>;
+	let component: DashboardOverviewValueCalloutComponent;
+	let fixture: ComponentFixture<DashboardOverviewValueCalloutComponent>;
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [DashboardOverviewItemComponent]
+				declarations: [DashboardOverviewValueCalloutComponent]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(DashboardOverviewItemComponent);
+		fixture = TestBed.createComponent(
+			DashboardOverviewValueCalloutComponent
+		);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

@@ -3,12 +3,12 @@
 :host {
 	display: block;
 	margin-top: 1.5rem;
-	&.lw-dashboard-overview-footer-up {
+	&.lw-value-callout-footer-up {
 		&:before {
 			@include arrowVertical('up', 1.5);
 		}
 	}
-	&.lw-dashboard-overview-footer-down {
+	&.lw-value-callout-footer-down {
 		&:before {
 			@include arrowVertical('down', 1.5);
 		}

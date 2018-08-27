@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardOverviewEmphasisComponent } from './dashboard-overview-emphasis.component';
+import { DashboardOverviewEmphasisComponent } from './value-callout-emphasis.component';
 
 describe('DashboardOverviewEmphasisComponent', () => {
 	let component: DashboardOverviewEmphasisComponent;

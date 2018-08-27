@@ -1,6 +1,6 @@
 @import '../../../../../styles/_framework';
 
-.lw-dashboard-overview {
+.lw-value-callout {
 	position: relative;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
@@ -48,9 +48,4 @@
 	&-dark h1 {
 		color: #ffffff;
 	}
-}
-
-.lw-dashboard-overview-description {
-	color: #81cfba;
-	display: block;
 }

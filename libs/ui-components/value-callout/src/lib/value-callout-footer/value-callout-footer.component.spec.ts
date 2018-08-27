@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DashboardOverviewFooterComponent } from './dashboard-overview-footer.component';
+import { DashboardOverviewFooterComponent } from './value-callout-footer.component';
 
 describe('DashboardOverviewFooterComponent', () => {
 	let component: DashboardOverviewFooterComponent;

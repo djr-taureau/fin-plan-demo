@@ -9,14 +9,14 @@ import {
 } from '@angular/core';
 import { classWithModifiers } from '@lifeworks/common';
 @Component({
-	selector: 'lw-dashboard-overview',
-	templateUrl: './dashboard-overview.component.html',
-	styleUrls: ['./dashboard-overview.component.scss'],
+	selector: 'lw-value-callout',
+	templateUrl: './value-callout.component.html',
+	styleUrls: ['./value-callout.component.scss'],
 	encapsulation: ViewEncapsulation.None
 })
 export class DashboardOverviewComponent implements OnInit {
 	@Input() theme: string;
-	elementName = 'lw-dashboard-overview';
+	elementName = 'lw-value-callout';
 
 	constructor() {}
 
@@ -26,9 +26,3 @@ export class DashboardOverviewComponent implements OnInit {
 		this.classes = classWithModifiers(this.elementName, this.theme);
 	}
 }
-
-@Directive({
-	selector: 'lw-dashboard-overview-description',
-	host: { class: 'lw-dashboard-overview-description' }
-})
-export class DashboardOverviewDescriptionDirective {}

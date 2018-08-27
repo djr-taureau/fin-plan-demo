@@ -7,45 +7,43 @@ import {
 	Renderer2
 } from '@angular/core';
 
-export type CaretPosition = 'start' | 'end';
+export type CaretPosition = 'top' | 'center' | 'bottom';
+export type CaretLocation = 'start' | 'end';
 export type CaretDirection = 'up' | 'down' | 'left' | 'right';
 export type CaretColor = 'white' | 'orange' | 'green' | 'blue';
+export type CaretSize = 'small' | 'large';
 
 @Directive({
 	selector: '[lwInlineCaret]'
 })
 export class InlineCaretDirective implements AfterViewInit {
 	@Input('lwInlineFontIcon') icon = '';
-	@Input() caretPosition: CaretPosition = 'end';
+	@Input() caretPosition: CaretPosition = 'center';
+	@Input() caretLocation: CaretLocation = 'end';
 	@Input() caretDirection: CaretDirection = 'right';
 	@Input() caretColor: CaretColor = 'orange';
+	@Input() caretSize: CaretSize = 'small';
 
 	constructor(
 		private _elementRef: ElementRef,
 		private _renderer: Renderer2
 	) {}
 
-	createCaret(direction: CaretDirection, color: CaretColor) {
+	createCaret(
+		direction: CaretDirection,
+		color: CaretColor,
+		position: CaretPosition,
+		size: CaretSize
+	) {
 		const spanEle: HTMLElement = this._renderer.createElement('span');
 		const icon = this._renderer.setValue(spanEle, '&gt;');
-		this._renderer.addClass(spanEle, 'inline-caret');
+		this._renderer.addClass(spanEle, `icon-${direction}`);
+		this._renderer.addClass(spanEle, `inline-caret`);
+		this._renderer.addClass(spanEle, `inline-caret-${position}`);
+		this._renderer.addClass(spanEle, `inline-caret-${size}`);
 		this._renderer.addClass(spanEle, `caret-color-${color}`);
-		spanEle.innerHTML = this.getCaretHtml(direction);
 
 		return spanEle;
-	}
-
-	getCaretHtml(direction: CaretDirection) {
-		switch (direction) {
-			case 'up':
-				return 'arrow_drop_up';
-			case 'down':
-				return 'arrow_drop_down';
-			case 'left':
-				return 'arrow_left';
-			case 'right':
-				return 'arrow_right';
-		}
 	}
 
 	getHostElement(): HTMLElement {
@@ -54,11 +52,13 @@ export class InlineCaretDirective implements AfterViewInit {
 
 	insertCaret(
 		direction: CaretDirection,
+		location: CaretLocation,
+		color: CaretColor,
 		position: CaretPosition,
-		color: CaretColor
+		size: CaretSize
 	) {
-		const caret = this.createCaret(direction, color);
-		if (position === 'start') {
+		const caret = this.createCaret(direction, color, position, size);
+		if (location === 'start') {
 			this._renderer.insertBefore(
 				this.getHostElement(),
 				caret,
@@ -72,8 +72,10 @@ export class InlineCaretDirective implements AfterViewInit {
 	ngAfterViewInit() {
 		this.insertCaret(
 			this.caretDirection,
+			this.caretLocation,
+			this.caretColor,
 			this.caretPosition,
-			this.caretColor
+			this.caretSize
 		);
 	}
 }

@@ -50,8 +50,8 @@
       "@lifeworks/ui-components/widget": [
         "libs/ui-components/widget/src/index.ts"
       ],
-      "@lifeworks/ui-components/dashboard-overview": [
-        "libs/ui-components/dashboard-overview/src/index.ts"
+      "@lifeworks/ui-components/value-callout": [
+        "libs/ui-components/value-callout/src/index.ts"
       ],
       "@lifeworks/ui-components/summary-list": [
         "libs/ui-components/summary-list/src/index.ts"

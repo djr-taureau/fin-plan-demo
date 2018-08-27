@@ -2,54 +2,44 @@
 <lw-dashboard-header>
     <h1>Overview</h1>
 
-    <lw-dashboard-overview-item >
-        <lw-dashboard-overview-emphasis lwInlineCaret caretDirection="up" caretColor="green" caretPosition="start">38</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description lwInlineCaret>
-            Total clients in <br>discovery phase
-        </lw-dashboard-overview-description>
-    </lw-dashboard-overview-item>
+    <lw-value-callout-item color="green" displayType="stacked">
+        <lw-value-callout-emphasis color="white" lwInlineCaret caretDirection="up" caretColor="green" caretLocation="start"
+            caretPosition="top">38</lw-value-callout-emphasis>
+        Total clients in <br>discovery phase
+    </lw-value-callout-item>
 
-    <lw-dashboard-overview-item>
-        <lw-dashboard-overview-emphasis>62</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description>
-            Total clients in <br>stratedgy phase
-        </lw-dashboard-overview-description>
-    </lw-dashboard-overview-item>
+    <lw-value-callout-item color="green">
+        <lw-value-callout-emphasis color="white" lwInlineCaret caretDirection="down" caretColor="orange" caretLocation="start"
+            caretPosition="top">62</lw-value-callout-emphasis>
+        Total clients in <br>strategy phase
+    </lw-value-callout-item>
 
-    <lw-dashboard-overview-item>
-        <lw-dashboard-overview-emphasis>129</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description>
-                Total clients in <br>implementation phase
-        </lw-dashboard-overview-description>
-    </lw-dashboard-overview-item>
-    
-    <lw-dashboard-overview-item [stacked]="true">
-        <lw-dashboard-overview-emphasis arrow="up">27</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description lwInlineCaret caretDirection="up" caretColor="orange" caretPosition="start">
-            Change in total number of clients<br>from last year at this time
-        </lw-dashboard-overview-description>
-        
-    </lw-dashboard-overview-item>
-    
-    <lw-dashboard-overview-item [stacked]="true">
-        <lw-dashboard-overview-emphasis>$425,240</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description>
-            Average yearly household income
-        </lw-dashboard-overview-description>
-    </lw-dashboard-overview-item>
+    <lw-value-callout-item color="green" displayType="inline">
+        <lw-value-callout-emphasis color="white">129</lw-value-callout-emphasis>
+        Total clients in <br>implementation phase
+    </lw-value-callout-item>
 
-    <lw-dashboard-overview-item [stacked]="true">
-        <lw-dashboard-overview-emphasis>$56,240</lw-dashboard-overview-emphasis>
-        <lw-dashboard-overview-description>
-            Change in average yearly household income<br>
-            from last year at this time
-        </lw-dashboard-overview-description>
-    </lw-dashboard-overview-item>
+    <lw-value-callout-item color="green" displayType="stacked">
+        <lw-value-callout-emphasis color="white">27</lw-value-callout-emphasis>
+        <div lwInlineCaret caretDirection="up" caretColor="orange" caretLocation="start" caretPosition="top" caretSize="large">
+            Change in total number of clients from last year at this time
+        </div>
+
+    </lw-value-callout-item>
+
+    <lw-value-callout-item color="green" displayType="stacked">
+        <lw-value-callout-emphasis color="white">$425,240</lw-value-callout-emphasis>
+        Average yearly household income
+    </lw-value-callout-item>
+
+    <lw-value-callout-item color="green" displayType="stacked">
+        <lw-value-callout-emphasis color="white">$56,240</lw-value-callout-emphasis>
+        Change in average yearly household income from last year at this time
+    </lw-value-callout-item>
 </lw-dashboard-header>
 
 
 <lw-notifications-widget filter="undismissed"></lw-notifications-widget>
-
 
 
 <!-- todo: Remove hard coded values in summary list -->
