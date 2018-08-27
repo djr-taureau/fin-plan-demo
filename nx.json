@@ -61,6 +61,12 @@
     },
     "services": {
       "tags": []
+    },
+    "sandbox": {
+      "tags": []
+    },
+    "ui-components-value-list": {
+      "tags": []
     }
   }
 }

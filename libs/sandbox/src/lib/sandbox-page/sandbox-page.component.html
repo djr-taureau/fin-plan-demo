@@ -1,0 +1,19 @@
+<lw-section-title>
+  Financial Overview
+  <lw-section-subtitle color="green">ytd</lw-section-subtitle>
+</lw-section-title>
+
+<div class="container-small">
+  <lw-value-list>
+    <lw-value-list-header>
+      <lw-value-list-header-icon>ICON</lw-value-list-header-icon>
+      <lw-value-list-header-title>Title</lw-value-list-header-title>
+      <lw-value-list-header-column>COLI</lw-value-list-header-column>
+    </lw-value-list-header>
+    <lw-value-list-item *ngFor="let item of valueListData; let idx = index">
+        <lw-value-list-item-index>{{idx + 1}}</lw-value-list-item-index>
+        <lw-value-list-item-text>{{item.name}}</lw-value-list-item-text>
+        <lw-value-list-item-value>{{item.value}}</lw-value-list-item-value>
+    </lw-value-list-item>
+  </lw-value-list>
+</div>

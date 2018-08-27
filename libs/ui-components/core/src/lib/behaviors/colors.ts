@@ -12,14 +12,26 @@ export interface HasIconColor {
 
 /** Possible colors for text  */
 export type ColorPalette =
-	| 'green'
 	| 'orange'
+	| 'green'
 	| 'blue'
+	| 'dark-green'
+	| 'light-green'
 	| 'white'
-	| 'purple'
-	| 'grey';
+	| 'black'
+	| 'grey'
+	| 'light-grey';
 
-export type TextColorPalette = 'green' | 'orange' | 'white';
+export type TextColorPalette =
+	| 'orange'
+	| 'green'
+	| 'dark-green'
+	| 'light-green'
+	| 'white'
+	| 'black'
+	| 'grey'
+	| 'light-grey';
+
 export type IconColorPalette = 'green' | 'orange' | 'white';
 
 /** Mixin to add a `color` property to a directive or component. */

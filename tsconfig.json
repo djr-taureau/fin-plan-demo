@@ -64,6 +64,12 @@
       ],
       "@lifeworks/services": [
         "libs/services/src/index.ts"
+      ],
+      "@lifeworks/sandbox": [
+        "libs/sandbox/src/index.ts"
+      ],
+      "@lifeworks/ui-components/value-list": [
+        "libs/ui-components/value-list/src/index.ts"
       ]
     }
   },

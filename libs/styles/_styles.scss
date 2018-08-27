@@ -6,7 +6,8 @@
 @import './global/_icons.scss';
 
 html {
-	font-size: 62.5%;
+	font-size: $rem-base;
+	font-family: $font-family-primary;
 }
 
 body {
