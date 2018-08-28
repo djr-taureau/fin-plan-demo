@@ -1,7 +1,6 @@
 <!-- todo: Remove hard coded values in dashboard overview -->
 <lw-dashboard-header>
     <h1>Overview</h1>
-
     <lw-value-callout-item color="green" displayType="stacked">
         <lw-value-callout-emphasis color="white" lwInlineCaret caretDirection="up" caretColor="green" caretLocation="start"
             caretPosition="top">38</lw-value-callout-emphasis>
@@ -24,7 +23,6 @@
         <div lwInlineCaret caretDirection="up" caretColor="orange" caretLocation="start" caretPosition="top" caretSize="large">
             Change in total number of clients from last year at this time
         </div>
-
     </lw-value-callout-item>
 
     <lw-value-callout-item color="green" displayType="stacked">
@@ -43,35 +41,27 @@
 
 
 <!-- todo: Remove hard coded values in summary list -->
-<lw-summary-list>
-    <lw-summary-list-title>
+<lw-text-list>
+    <lw-text-list-title>
         Achieved Client Goals
-    </lw-summary-list-title>
-    <lw-summary-list-item>
-        <lw-summary-list-target>
+    </lw-text-list-title>
+    <lw-text-list-item>
+        <a lwTextListItemHeader lwTextCaret>
             Dave &amp; Wendy Smith
-        </lw-summary-list-target>
-        <lw-summary-list-description>
-            Monthly IRA contribution goal amount reached
-        </lw-summary-list-description>
-    </lw-summary-list-item>
-    <lw-summary-list-item>
-        <lw-summary-list-target>
+        </a>
+        Monthly IRA contribution goal amount reached
+    </lw-text-list-item>
+    <lw-text-list-item>
+        <a lwTextListItemHeader lwTextCaret>
             Dave &amp; Wendy Smith
-        </lw-summary-list-target>
-        <lw-summary-list-description>
-            Monthly IRA contribution goal amount reached
-        </lw-summary-list-description>
-    </lw-summary-list-item>
-    <lw-summary-list-item>
-        <lw-summary-list-target>
+        </a>
+        Monthly IRA contribution goal amount reached
+    </lw-text-list-item>
+    <lw-text-list-item>
+        <a lwTextListItemHeader lwTextCaret>
             Dave &amp; Wendy Smith
-        </lw-summary-list-target>
-        <lw-summary-list-description>
-            Monthly IRA contribution goal amount reached
-        </lw-summary-list-description>
-    </lw-summary-list-item>
-    <lw-summary-list-location location="activity-log">
-        View all
-    </lw-summary-list-location>
-</lw-summary-list>
+        </a>
+        Monthly IRA contribution goal amount reached
+    </lw-text-list-item>
+    <a lwTextListFooter lwInlineCaret [routerLink]="['client/goals']">View all</a>
+</lw-text-list>

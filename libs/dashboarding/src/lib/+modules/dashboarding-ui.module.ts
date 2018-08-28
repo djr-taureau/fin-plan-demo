@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { UiComponentsValueCalloutModule } from '@lifeworks/ui-components/value-callout';
-import { UiComponentsSummaryListModule } from '@lifeworks/ui-components/summary-list';
+import { UiComponentsTextListModule } from '@lifeworks/ui-components/text-list';
 import { NotificationsModule } from '@lifeworks/notifications';
 import { CommonModule } from '@lifeworks/common';
 import { AuthenticationModule } from '@lifeworks/authentication';
@@ -11,7 +11,7 @@ const MODULES = [
 	CommonModule,
 	AuthenticationModule,
 	UiComponentsValueCalloutModule,
-	UiComponentsSummaryListModule,
+	UiComponentsTextListModule,
 	UiComponentsIconsModule,
 	NotificationsModule,
 	ServicesModule

@@ -1,7 +1,7 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../../dist/out-tsc/libs/ui-components/summary-list",
+    "outDir": "../../../dist/out-tsc/libs/ui-components/text-list",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

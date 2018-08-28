@@ -53,8 +53,8 @@
       "@lifeworks/ui-components/value-callout": [
         "libs/ui-components/value-callout/src/index.ts"
       ],
-      "@lifeworks/ui-components/summary-list": [
-        "libs/ui-components/summary-list/src/index.ts"
+      "@lifeworks/ui-components/text-list": [
+        "libs/ui-components/text-list/src/index.ts"
       ],
       "@lifeworks/ui-components/buttons": [
         "libs/ui-components/buttons/src/index.ts"
