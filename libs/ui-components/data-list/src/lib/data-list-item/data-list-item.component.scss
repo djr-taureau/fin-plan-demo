@@ -7,32 +7,33 @@
 	align-items: stretch;
 	font-size: 1.6rem;
 	font-family: $font-family-text;
+	position: relative;
 }
 
 a.data-list-item-content {
 	color: $color-grey-dark;
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.01);
+	}
 }
 
 .data-list-item-content {
-	padding: 1.4rem 3rem;
+	padding: 1.4rem 7.5rem 1.4rem 2.5rem;
 	flex-grow: 10;
 	font-weight: $font-weight-light;
 }
 
 .data-list-item-actions {
-	display: none;
 	align-items: center;
-	flex: 0;
-
-	:host-context:focus &,
-	:host-context:hover & {
-		display: flex;
-		padding-right: 10px;
-	}
+	position: absolute;
+	width: 5.5rem;
+	top: 0;
+	bottom: 0;
+	right: 0;
 }
 
 :host(.data-item-is-removing) {
-	opacity: .2;
+	opacity: 0.2;
 }
 
 .striped :host-context:nth-child(odd) {

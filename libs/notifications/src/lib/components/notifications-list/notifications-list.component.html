@@ -6,6 +6,6 @@
     <lw-data-list-item-header>{{notification?.timestamps?.createdOn | niceDate}}</lw-data-list-item-header>
     <lw-data-list-item-header>{{notification?.notificationType | uppercase | replace:"-":" "}}</lw-data-list-item-header>
     <div lwInlineCaret caretDirection="right" [lwBindTemplate]="notification"></div>
-    <button lwDataListItemAction lw-icon-button *ngIf="!notification?._ui_isRemoving" (click)="raiseItemEvent('remove', notification, $event)">remove</button>
+    <button lwDataListItemAction lw-icon-button *ngIf="!notification?._ui_isRemoving" (click)="raiseItemEvent('remove', notification, $event)"  aria-label="Remove">&#xe929;</button>
   </lw-data-list-item>
 </lw-data-list>

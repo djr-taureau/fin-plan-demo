@@ -6,40 +6,40 @@
 	justify-content: space-between;
 	font-size: 2.8rem;
 	font-family: $font-family-primary;
-	padding: 1rem 4.7rem 1rem 6rem;
-    color: $color-orange;
-    
-    &.lw-color-orange {
-        color: $color-white;
-        background-color: $color-orange;
-    }
-    &.lw-color-green {
-        color: $color-white;
-        background-color: $color-green;
-    }
-    &.lw-color-white {
-        color: $color-orange;
-        background-color: $color-white;
-    }
-    &.lw-color-blue {
-        color: $color-orange;
-        background-color: $color-blue-bright;
-    }
+	padding: 2rem 2.5rem 2rem 6.2rem;
+	color: $color-orange;
+
+	&.lw-color-orange {
+		color: $color-white;
+		background-color: $color-orange;
+	}
+	&.lw-color-green {
+		color: $color-white;
+		background-color: $color-green;
+	}
+	&.lw-color-white {
+		color: $color-orange;
+		background-color: $color-white;
+	}
+	&.lw-color-blue {
+		color: $color-orange;
+		background-color: $color-blue-bright;
+	}
 }
 
 .lw-widget-subtitle:before {
-    content: '/';
-    display: inline-block;
-    color: $color-grey-lighter;
-    font-weight: 300;
-    margin: 0 0.8em;
+	content: '/';
+	display: inline-block;
+	color: $color-grey-lighter;
+	font-weight: 300;
+	margin: 0 0.8em;
 }
 
 .lw-widget-header-links {
-    display: flex;
+	display: flex;
 }
 
 .lw-widget-link {
-    font-size: 1.6rem;
-    margin-left: 0.7rem;
+	font-size: 1.6rem;
+	margin-left: 0.7rem;
 }
