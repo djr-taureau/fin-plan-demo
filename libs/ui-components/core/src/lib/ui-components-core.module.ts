@@ -22,7 +22,7 @@ import {
 		FillComponent,
 		BindTemplateDirective,
 		SectionTitleComponent,
-		SectionSubTitleComponent,
+		SectionSubTitleComponent
 	]
 })
 export class UiComponentsCoreModule {}

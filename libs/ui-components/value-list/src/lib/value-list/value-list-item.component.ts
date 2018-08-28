@@ -17,18 +17,18 @@ export class ValueListItemComponent {}
 
 @Directive({
 	selector: 'lw-value-list-item-index, [lwValueListItemIndex]',
-	host: { class: 'lw-value-list-item-index' },
+	host: { class: 'lw-value-list-item-index' }
 })
 export class ValueListItemIndexDirective {}
 
 @Directive({
 	selector: 'lw-value-list-item-text, [lwValueListItemText]',
-	host: { class: 'lw-value-list-item-text' },
+	host: { class: 'lw-value-list-item-text' }
 })
 export class ValueListItemTextDirective {}
 
 @Directive({
 	selector: 'lw-value-list-item-value, [lwValueListItemValue]',
-	host: { class: 'lw-value-list-item-value' },
+	host: { class: 'lw-value-list-item-value' }
 })
 export class ValueListItemValueDirective {}

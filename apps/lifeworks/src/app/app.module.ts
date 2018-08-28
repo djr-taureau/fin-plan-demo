@@ -15,13 +15,14 @@ import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
-import { ApplicationRoutes, AuthConfig } from './configs';
+import { ApplicationRoutes, AuthConfig, NAVIGATION } from './configs';
 import {
 	FixedRouterSerializer,
 	ConfigService,
 	appInitializer,
 	CONFIG_URL,
-	CoreModule
+	CoreModule,
+	APP_NAVIGATION
 } from '@lifeworks/core';
 import { AuthenticationModule, AUTH_PROVIDER } from '@lifeworks/authentication';
 
@@ -54,6 +55,7 @@ import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/a
 	],
 	providers: [
 		ConfigService,
+		{ provide: APP_NAVIGATION, useValue: NAVIGATION },
 		{
 			useFactory: appInitializer,
 			provide: APP_INITIALIZER,

@@ -4,10 +4,10 @@ import { VALUE_LIST_DATA } from './data';
 export const LIST_VALUE_DATA = VALUE_LIST_DATA;
 
 @Component({
-  selector: 'lw-sandbox-page',
-  templateUrl: './sandbox-page.component.html',
-  styleUrls: ['./sandbox-page.component.scss']
+	selector: 'lw-sandbox-page',
+	templateUrl: './sandbox-page.component.html',
+	styleUrls: ['./sandbox-page.component.scss']
 })
 export class SandboxPageComponent {
-  valueListData = LIST_VALUE_DATA;
+	valueListData = LIST_VALUE_DATA;
 }

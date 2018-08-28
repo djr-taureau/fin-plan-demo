@@ -9,6 +9,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { APP_NAVIGATION } from '../navigation';
 
 @NgModule({
 	imports: [
@@ -29,7 +30,8 @@ import { EffectsModule } from '@ngrx/effects';
 	],
 	providers: [
 		{ provide: ConfigService, useValue: ConfigServiceMock },
-		{ provide: AuthService, useValue: AuthServiceMock }
+		{ provide: AuthService, useValue: AuthServiceMock },
+		{ provide: APP_NAVIGATION, useValue: [] }
 	]
 })
 export class CoreTestingModule {}

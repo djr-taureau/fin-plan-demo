@@ -28,10 +28,10 @@ export class SectionTitleComponent extends SectionTitleBase
 
 export const SectionSubTitleBase = mixinColor(ComponentHostBase);
 @Component({
-  selector: 'lw-section-subtitle',
-  inputs: ['color'],
-  template: '(<ng-content></ng-content>)',
-  host: { class: 'lw-section-subtitle' },
+	selector: 'lw-section-subtitle',
+	inputs: ['color'],
+	template: '(<ng-content></ng-content>)',
+	host: { class: 'lw-section-subtitle' },
 	encapsulation: ViewEncapsulation.None
 })
 export class SectionSubTitleComponent extends SectionSubTitleBase
