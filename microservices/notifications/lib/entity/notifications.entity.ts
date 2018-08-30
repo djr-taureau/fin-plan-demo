@@ -8,6 +8,19 @@ export class NotificationSchema extends CommonSchema {
   message: string;
 
   @Column('bit')
-  read: boolean;
+  dismissed: boolean;
+
+  @Column('varchar')
+  notification_type: string
+  
+  @Column({ 
+    type: 'datetime',
+  })
+  created_on: string
+
+  @Column({ 
+    type: 'datetime',
+  })
+  modified_on: string
 
 }

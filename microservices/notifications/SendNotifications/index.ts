@@ -9,12 +9,12 @@ const db = new NotificationDb();
  * @param message the text of notification
  * @param read whether the notification has been read
  */
-const sendNotification = (message) => db.addOneNotificaiton(message);
+const sendNotification = (message) => db.addNotificaitons(message);
 
 export function run(context, queueMessage) {
     context.log('JavaScript queue trigger function processed work item', queueMessage);
 
-    sendNotification(queueMessage.message)
+    sendNotification(queueMessage)
     .then(() => {
         context.log('Javascript queue trigger function inserted data into the data base');
         context.done();
