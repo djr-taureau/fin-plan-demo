@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import {
 	SandboxCoreModule,
@@ -9,12 +8,7 @@ import {
 import { SandboxPageComponent } from './sandbox-page/sandbox-page.component';
 
 @NgModule({
-	imports: [
-		CommonModule,
-		SandboxCoreModule,
-		SandboxRoutingModule,
-		SandboxUIModule
-	],
+	imports: [SandboxCoreModule, SandboxRoutingModule, SandboxUIModule],
 	declarations: [SandboxPageComponent]
 })
 export class SandboxModule {}

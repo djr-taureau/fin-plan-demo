@@ -1,2 +1,2 @@
-export * from './page-link/page-link.component';
 export * from './fill/fill.component';
+export * from './section-title/section-title.component';

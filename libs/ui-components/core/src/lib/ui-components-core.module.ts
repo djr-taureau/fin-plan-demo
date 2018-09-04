@@ -1,28 +1,27 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
-import { PageLinkComponent, FillComponent } from './components';
-import { BindTemplateDirective } from './directives';
 import {
+	FillComponent,
 	SectionTitleComponent,
 	SectionSubTitleComponent
-} from './section-title/section-title.component';
+} from './components';
+import { BindTemplateDirective } from './directives';
 
 @NgModule({
-	imports: [CommonModule],
+	imports: [CommonModule, RouterModule],
 	declarations: [
-		PageLinkComponent,
 		FillComponent,
-		BindTemplateDirective,
 		SectionTitleComponent,
-		SectionSubTitleComponent
+		SectionSubTitleComponent,
+		BindTemplateDirective
 	],
 	exports: [
-		PageLinkComponent,
 		FillComponent,
-		BindTemplateDirective,
 		SectionTitleComponent,
-		SectionSubTitleComponent
+		SectionSubTitleComponent,
+		BindTemplateDirective
 	]
 })
 export class UiComponentsCoreModule {}

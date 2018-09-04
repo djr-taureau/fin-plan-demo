@@ -4,9 +4,10 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { getApiError, ConfigService } from '@lifeworks/core';
+import { ConfigService } from '@lifeworks/core';
 import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
 import { NotificationItem } from '../models';
+import { getApiError } from '../notifications-errors';
 
 const DIMISS = { dismiss: true };
 

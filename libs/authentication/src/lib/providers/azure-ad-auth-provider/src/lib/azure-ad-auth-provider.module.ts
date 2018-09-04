@@ -8,10 +8,7 @@ import {
 import { AUTH_PROVIDER, AUTH_CONFIG } from '@lifeworks/authentication';
 import { getFullUrl } from '@lifeworks/common';
 import { AzureAdAuthProvider } from './azure-ad-auth.provider';
-import {
-	AzureADAuthProviderConfig,
-	getAuthorityUri
-} from './azure-ad-auth-config';
+import { AzureADAuthProviderConfig } from './azure-ad-auth-config';
 import { MsalConfig, BroadcastService } from '@azure/msal-angular';
 
 @NgModule({
@@ -35,11 +32,11 @@ export function msalConfigFactory(
 	return {
 		clientID: config.clientID,
 		cacheLocation: 'localStorage',
-		authority: getAuthorityUri(config.tenant, config.signUpSignInPolicy),
+		authority: config.authority,
 		// redirectUri,
 		postLogoutRedirectUri: getFullUrl('/logout'),
 		popUp: false,
-		consentScopes: config.b2cScopes,
+		consentScopes: config.scopes,
 		isAngular: true
 	};
 }

@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { UiComponentsNavigationModule } from '@lifeworks/ui-components/navigation';
+import { UiComponentsSideNavigationModule } from '@lifeworks/ui-components/side-navigation';
 
-const MODULES = [UiComponentsNavigationModule];
+const MODULES = [UiComponentsSideNavigationModule];
 
 @NgModule({
 	imports: MODULES,

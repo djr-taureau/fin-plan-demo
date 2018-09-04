@@ -1,4 +1,4 @@
-import { ConfigService } from '../config';
+import { ConfigService } from '../services';
 import { AuthService } from '@lifeworks/authentication';
 
 export const AuthServiceMock = jasmine.createSpyObj<AuthService>(

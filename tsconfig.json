@@ -32,8 +32,8 @@
       "@lifeworks/ui-components/data-list": [
         "libs/ui-components/data-list/src/index.ts"
       ],
-      "@lifeworks/ui-components/navigation": [
-        "libs/ui-components/navigation/src/index.ts"
+      "@lifeworks/ui-components/side-navigation": [
+        "libs/ui-components/side-navigation/src/index.ts"
       ],
       "@lifeworks/authentication": [
         "libs/authentication/src/index.ts"
@@ -70,6 +70,12 @@
       ],
       "@lifeworks/ui-components/value-list": [
         "libs/ui-components/value-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/page-layouts": [
+        "libs/ui-components/page-layouts/src/index.ts"
+      ],
+      "@lifeworks/ui-components/page-navigation": [
+        "libs/ui-components/page-navigation/src/index.ts"
       ]
     }
   },

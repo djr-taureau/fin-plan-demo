@@ -1,20 +1,23 @@
-import { ElementRef } from '@angular/core';
-import { ngRouterLink, isNotUseable, isFalse } from '@lifeworks/common';
-import { Constructor } from './constructor';
+import {
+	Constructor,
+	NavigationLink,
+	isNotUseable,
+	isFalse
+} from '@lifeworks/common';
 
 export interface HasNavigation {
-	location: ngRouterLink;
+	location: NavigationLink;
 	wrapWithAnchor: boolean;
 	readonly noNavigation: boolean;
 }
 
-/** Mixin to add a `color` property to a directive or component. */
+/** Mixin to add a `wrapWithAnchor` and `location` properties to a directive or component. */
 export function mixinNavigation<T extends Constructor<{}>>(
 	base: T
 ): Constructor<HasNavigation> & T {
 	return class extends base {
 		wrapWithAnchor: boolean;
-		_location: ngRouterLink;
+		_location: NavigationLink;
 
 		get noNavigation() {
 			return isFalse(this.wrapWithAnchor) || isNotUseable(this.location);
@@ -23,7 +26,7 @@ export function mixinNavigation<T extends Constructor<{}>>(
 		get location() {
 			return this._location;
 		}
-		set location(value: ngRouterLink) {
+		set location(value: NavigationLink) {
 			this._location = value;
 		}
 

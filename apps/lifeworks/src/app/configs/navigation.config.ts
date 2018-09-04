@@ -1,4 +1,4 @@
-import { NavigationItems } from '@lifeworks/core';
+import { NavigationItems } from '@lifeworks/common';
 
 export const NAVIGATION: NavigationItems = [
 	{

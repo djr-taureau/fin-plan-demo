@@ -1,10 +1,7 @@
 import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as Msal from 'msal';
-import {
-	AzureADAuthProviderConfig,
-	getAuthorityUri
-} from './azure-ad-auth-config';
+import { AzureADAuthProviderConfig } from './azure-ad-auth-config';
 import { logErrorToConsole, saveToStorage, Timeout } from '@lifeworks/common';
 import { AuthProvider, AUTH_CONFIG } from '@lifeworks/authentication';
 import { getFullUrl } from '@lifeworks/common';
@@ -55,7 +52,7 @@ export class AzureAdAuthProvider extends AuthProvider {
 					.setItem('msal.angular.login.request', loginStartPage);
 			}
 
-			this.msal.loginRedirect(this.config.b2cScopes);
+			this.msal.loginRedirect(this.config.scopes);
 		}
 	}
 

@@ -104,21 +104,97 @@
         }
       }
     },
-    "lifeworks-e2e": {
-      "root": "apps/lifeworks-e2e/",
+    "lifeworks-admin": {
+      "root": "apps/lifeworks-admin/",
+      "sourceRoot": "apps/lifeworks-admin/src",
       "projectType": "application",
+      "prefix": "lifeworks",
+      "schematics": {},
       "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "protractorConfig": "apps/lifeworks-e2e/protractor.conf.js",
-            "devServerTarget": "lifeworks:serve"
+            "outputPath": "dist/apps/lifeworks-admin",
+            "index": "apps/lifeworks-admin/src/index.html",
+            "main": "apps/lifeworks-admin/src/main.ts",
+            "polyfills": "apps/lifeworks-admin/src/polyfills.ts",
+            "tsConfig": "apps/lifeworks-admin/tsconfig.app.json",
+            "assets": [
+              "apps/lifeworks-admin/src/favicon.ico",
+              "apps/lifeworks-admin/src/assets",
+              "apps/lifeworks-admin/src/config"
+            ],
+            "styles": [
+              "libs/styles/_styles.scss",
+              "apps/lifeworks-admin/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/lifeworks-admin/src/environments/environment.ts",
+                  "with": "apps/lifeworks-admin/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 4201,
+            "browserTarget": "lifeworks-admin:build",
+            "ssl": true,
+            "sslCert": "local/server.crt",
+            "sslKey": "local/server.key"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "lifeworks-admin:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "lifeworks-admin:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/lifeworks-admin/src/test.ts",
+            "polyfills": "apps/lifeworks-admin/src/polyfills.ts",
+            "tsConfig": "apps/lifeworks-admin/tsconfig.spec.json",
+            "karmaConfig": "apps/lifeworks-admin/karma.conf.js",
+            "styles": [
+              "apps/lifeworks-admin/styles.css"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/lifeworks-admin/src/favicon.ico",
+              "apps/lifeworks-admin/src/assets"
+            ]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "apps/lifeworks-e2e/tsconfig.e2e.json",
+            "tsConfig": [
+              "apps/lifeworks-admin/tsconfig.app.json",
+              "apps/lifeworks-admin/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
@@ -266,26 +342,26 @@
         }
       }
     },
-    "ui-components-navigation": {
-      "root": "libs/ui-components/navigation",
-      "sourceRoot": "libs/ui-components/navigation/src",
+    "ui-components-side-navigation": {
+      "root": "libs/ui-components/side-navigation",
+      "sourceRoot": "libs/ui-components/side-navigation/src",
       "projectType": "library",
       "prefix": "lifeworks",
       "architect": {
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/ui-components/navigation/src/test.ts",
-            "tsConfig": "libs/ui-components/navigation/tsconfig.spec.json",
-            "karmaConfig": "libs/ui-components/navigation/karma.conf.js"
+            "main": "libs/ui-components/side-navigation/src/test.ts",
+            "tsConfig": "libs/ui-components/side-navigation/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/side-navigation/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/ui-components/navigation/tsconfig.lib.json",
-              "libs/ui-components/navigation/tsconfig.spec.json"
+              "libs/ui-components/side-navigation/tsconfig.lib.json",
+              "libs/ui-components/side-navigation/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -622,6 +698,62 @@
             "tsConfig": [
               "libs/ui-components/value-list/tsconfig.lib.json",
               "libs/ui-components/value-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-components-page-layouts": {
+      "root": "libs/ui-components/page-layouts",
+      "sourceRoot": "libs/ui-components/page-layouts/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/page-layouts/src/test.ts",
+            "tsConfig": "libs/ui-components/page-layouts/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/page-layouts/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/page-layouts/tsconfig.lib.json",
+              "libs/ui-components/page-layouts/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-components-page-navigation": {
+      "root": "libs/ui-components/page-navigation",
+      "sourceRoot": "libs/ui-components/page-navigation/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/page-navigation/src/test.ts",
+            "tsConfig": "libs/ui-components/page-navigation/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/page-navigation/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/page-navigation/tsconfig.lib.json",
+              "libs/ui-components/page-navigation/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

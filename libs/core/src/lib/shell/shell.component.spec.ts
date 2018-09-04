@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShellComponent } from './shell.component';
+import { AppNavigationComponent } from '../components';
 
 describe('ShellComponent', () => {
 	let component: ShellComponent;
@@ -9,7 +10,7 @@ describe('ShellComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [ShellComponent]
+				declarations: [ShellComponent, AppNavigationComponent]
 			}).compileComponents();
 		})
 	);

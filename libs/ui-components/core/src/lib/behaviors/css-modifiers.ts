@@ -1,5 +1,5 @@
-import { Constructor } from '.';
 import { ElementRef } from '@angular/core';
+import { Constructor } from '@lifeworks/common';
 
 export interface HasElementRef {
 	_elementRef: ElementRef;

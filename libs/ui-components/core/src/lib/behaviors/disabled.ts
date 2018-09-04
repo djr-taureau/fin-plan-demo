@@ -1,5 +1,4 @@
-import { Constructor } from './constructor';
-import { toBool } from '@lifeworks/common';
+import { toBool, Constructor } from '@lifeworks/common';
 
 export interface CanDisable {
 	/** Whether the component is disabled. */

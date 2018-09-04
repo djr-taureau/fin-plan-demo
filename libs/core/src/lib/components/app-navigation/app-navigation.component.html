@@ -1,0 +1,14 @@
+
+<lw-side-nav>
+  <lw-navigation-logo></lw-navigation-logo>
+  <lw-navigation-search></lw-navigation-search>
+  
+  <lw-navigation-group *ngFor="let navGroup of navigation">
+      <lw-navigation-title *ngIf="navGroup.display">{{navGroup.display}}</lw-navigation-title>
+      <lw-navigation-item (click)="raiseEvent($event, navItem.action || 'click')" [location]="navItem.location" *ngFor="let navItem of navGroup.children">
+        <lw-navigation-icon [type]="navItem.icon" *ngIf="navItem.icon"></lw-navigation-icon>
+        {{navItem.display}}
+      </lw-navigation-item>
+  </lw-navigation-group>
+  
+</lw-side-nav>

@@ -6,3 +6,4 @@ export * from './lib/text';
 export * from './lib/uri';
 export * from './lib/utility';
 export * from './lib/common.module';
+export * from './lib/types';

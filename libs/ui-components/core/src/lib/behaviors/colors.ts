@@ -1,5 +1,5 @@
 import { ElementRef } from '@angular/core';
-import { Constructor } from './constructor';
+import { Constructor } from '@lifeworks/common';
 import { HasCssModifiers } from './css-modifiers';
 
 export interface HasColor {

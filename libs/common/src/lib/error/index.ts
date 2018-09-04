@@ -1,2 +1,2 @@
 export * from './error-handling';
-export * from './throwErrorAndLog';
+export * from './observable-error';

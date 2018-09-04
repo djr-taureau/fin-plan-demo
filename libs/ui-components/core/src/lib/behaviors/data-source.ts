@@ -1,6 +1,6 @@
-import { Constructor, HasCssModifiers } from '.';
+import { HasCssModifiers } from '.';
 import { EventEmitter } from '@angular/core';
-import { UIDataItemState } from '@lifeworks/common';
+import { UIDataItemState, Constructor } from '@lifeworks/common';
 
 export type DataSourceItemAction = 'remove';
 

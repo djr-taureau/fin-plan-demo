@@ -11,9 +11,6 @@
     "lifeworks": {
       "tags": []
     },
-    "lifeworks-e2e": {
-      "tags": []
-    },
     "activity-log": {
       "tags": []
     },
@@ -38,7 +35,7 @@
     "ui-components-data-list": {
       "tags": []
     },
-    "ui-components-navigation": {
+    "ui-components-side-navigation": {
       "tags": []
     },
     "common": {
@@ -62,10 +59,19 @@
     "services": {
       "tags": []
     },
+    "lifeworks-admin": {
+      "tags": []
+    },
     "sandbox": {
       "tags": []
     },
     "ui-components-value-list": {
+      "tags": []
+    },
+    "ui-components-page-layouts": {
+      "tags": []
+    },
+    "ui-components-page-navigation": {
       "tags": []
     }
   }

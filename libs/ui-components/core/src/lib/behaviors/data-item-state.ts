@@ -1,4 +1,4 @@
-import { Constructor } from '.';
+import { Constructor } from '@lifeworks/common';
 import { HasCssModifiers } from './css-modifiers';
 
 export interface HasDataItemState<T> {

@@ -2,14 +2,17 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { BrowserDynamicTestingModule } from '@angular/platform-browser-dynamic/testing';
-import { ConfigService } from '../config';
-import { ConfigServiceMock, AuthServiceMock } from './core-services.mock';
-import { AuthService } from '@lifeworks/authentication';
+import { ConfigService } from '../services';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { APP_NAVIGATION } from '../navigation';
+
+import { AuthService } from '@lifeworks/authentication';
+import { UiComponentsSideNavigationModule } from '@lifeworks/ui-components/side-navigation';
+import { APP_NAVIGATION } from '@lifeworks/core';
+
+import { ConfigServiceMock, AuthServiceMock } from './core-services.mock';
 
 @NgModule({
 	imports: [
@@ -18,7 +21,8 @@ import { APP_NAVIGATION } from '../navigation';
 		RouterTestingModule,
 		HttpClientTestingModule,
 		StoreModule.forRoot({}),
-		EffectsModule.forRoot([])
+		EffectsModule.forRoot([]),
+		UiComponentsSideNavigationModule
 	],
 	exports: [
 		BrowserDynamicTestingModule,
@@ -26,7 +30,8 @@ import { APP_NAVIGATION } from '../navigation';
 		RouterTestingModule,
 		HttpClientTestingModule,
 		StoreModule,
-		EffectsModule
+		EffectsModule,
+		UiComponentsSideNavigationModule
 	],
 	providers: [
 		{ provide: ConfigService, useValue: ConfigServiceMock },

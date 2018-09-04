@@ -21,10 +21,10 @@ import {
 	ConfigService,
 	appInitializer,
 	CONFIG_URL,
-	CoreModule,
-	APP_NAVIGATION
+	APP_NAVIGATION,
+	CoreModule
 } from '@lifeworks/core';
-import { AuthenticationModule, AUTH_PROVIDER } from '@lifeworks/authentication';
+import { AuthenticationModule } from '@lifeworks/authentication';
 
 // tslint:disable-next-line
 import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';

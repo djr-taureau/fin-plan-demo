@@ -26,3 +26,7 @@ a {
 .template-token {
 	text-transform: uppercase;
 }
+
+router-outlet {
+	display: none;
+}

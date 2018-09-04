@@ -1,0 +1,24 @@
+:host {
+    background: #f8f8f8;
+}
+
+.page {
+    margin-top: 10rem;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+.ill-cont {
+    display: flex;
+    background-color: #8bc4ac;
+    border: solid .5rem #6f9685;
+    border-radius: 50%;
+    width: 50rem;
+    height: 50rem;
+    justify-content: center;
+    align-items: center;
+}
+.page-header {
+    padding: 4.8rem 5.8rem;
+    background: #ffffff;
+}

@@ -9,7 +9,7 @@ import { ActivityLogEffects } from './activity-log.effects';
 import { Load, LoadSuccess, LoadFail } from './activity-log.actions';
 
 import { Observable, of } from 'rxjs';
-import { ActivityLogService } from '../activity-log.service';
+import { ActivityLogService } from '../services';
 
 describe('ActivityLogEffects', () => {
 	let actions$: Observable<any>;
