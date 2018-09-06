@@ -1,0 +1,13 @@
+{
+  "name": "lifeworks-microservices",
+  "version": "0.0.1",
+  "scripts": {
+    "ms:pack": "funcpack pack -c ./"
+  },
+  "dependencies": {
+    "mssql": "^4.1.0",
+    "ramda": "^0.25.0",
+    "reflect-metadata": "^0.1.12",
+    "typeorm": "^0.2.7"
+  }
+}

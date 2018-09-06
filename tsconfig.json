@@ -17,6 +17,7 @@
     ],
     "baseUrl": ".",
     "paths": {
+
       "@lifeworks/activity-log": [
         "libs/activity-log/src/index.ts"
       ],

@@ -3,12 +3,14 @@
   "compilerOptions": {
     "outDir": "../dist/microservices",
     "rootDir": ".",
-    "module": "commonjs",
+    "baseUrl": ".",
+    "module": "none",
     "moduleResolution": "node",
     "target": "es2015",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
+    "sourceMap": false,
   },
   "include": [
     "**/*.ts"

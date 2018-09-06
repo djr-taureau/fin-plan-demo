@@ -2,23 +2,13 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug AzFunc activity-log ",
+      "name": "Debug Microservices",
       "type": "node",
       "request": "attach",
+      "protocol": "inspector",
       "port": 5858,
       "sourceMaps": true,
-      "preLaunchTask": "ms:debug:activity-log",
-      "trace": true,
-      "timeout": 25000
-    },
-    {
-      "name": "Debug AzFunc notifications ",
-      "type": "node",
-      "request": "attach",
-      "port": 5858,
-      "sourceMaps": true,
-      "preLaunchTask": "ms:debug:notifications",
-      "trace": true,
+      "preLaunchTask": "runFunctionsHost",
       "timeout": 25000
     }
   ]

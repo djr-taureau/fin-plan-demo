@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "SQL_HOST":"localhost",
+    "SQL_DB": "lifeworks",
+    "SQL_UID": "sa",
+    "SQL_PWD": "Password123!",
+    "SQL_SYNC": true
+  }
+}

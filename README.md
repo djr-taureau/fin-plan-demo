@@ -23,6 +23,13 @@ https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-vie
 Follow the directions here to install the CARoot
 https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/how-to-create-temporary-certificates-for-use-during-development
 
+
+## Docker SQL Server
+
+```
+docker run -it -v d:/docker/volumes/lwSqlData:/var/opt/mssql -p 1433:1433 --name "lw-sql-server" -d lifeworks/sql
+```
+
 # Angular Structure
 
 ## Applications
