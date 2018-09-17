@@ -1,5 +1,7 @@
-import { assoc, indexBy, prop, when, assocPath, pipe } from 'ramda';
-import { LoadDataStatus } from './entity-state';
+import { Observable, combineLatest } from 'rxjs';
+import { map as rxMap } from 'rxjs/operators'
+import { assoc, assocPath, pipe, values } from 'ramda';
+import { LoadDataStatus, DataState } from './entity-state';
 import { indexByProp } from '../../utility';
 
 /**
@@ -22,6 +24,7 @@ export const setLoadedState = updateDataStatus(LoadDataStatus.loaded);
  */
 export const setEntities = <T, S>(entities: Array<T>, state: S) =>
 	assoc('entities', indexByProp('guid', entities), state) as S;
+
 
 /**
  * Updates a property of an Entity in state
@@ -47,3 +50,27 @@ type SetDataStateFn = <P, T>(payload: Array<P>, state: T) => T;
  * Updates Entities in state and set the status to loaded
  */
 export const setDataState = <SetDataStateFn>pipe(setEntities, setLoadedState);
+
+/**
+ * Calculates the State of the requested dataset from state
+ */
+const calculateDataState = ([loaded, count]: [boolean, number]): DataState => {
+	if (!loaded) {
+		return LoadDataStatus.loading;
+	} else if (loaded && count > 0) {
+		return LoadDataStatus.loaded;
+	} else if (loaded && count < 1) {
+		return LoadDataStatus.empty;
+	}
+	return LoadDataStatus.error;
+};
+
+/**
+ * Calculates the State of the requested dataset from the count and loadStatus
+ */
+export const getDatasetState = (loaded$: Observable<boolean>, count$: Observable<number>) => {
+	return combineLatest(
+		loaded$,
+		count$
+	).pipe(rxMap(calculateDataState));
+}

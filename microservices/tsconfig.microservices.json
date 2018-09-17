@@ -10,7 +10,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "suppressImplicitAnyIndexErrors": true,
-    "sourceMap": false,
+    "sourceMap": true,
   },
   "include": [
     "**/*.ts"

@@ -1,27 +1,13 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Observable, combineLatest } from 'rxjs';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
-import { NotificationsState } from '../../+state/notifications.interfaces';
 import { NotificationItems, NotificationItem } from '../../models';
 import { Notifications } from '../../services';
-import { tap, map } from 'rxjs/operators';
-
-//todo: Make reuseable
 
 export type NotificationsFilter = 'all' | 'dismissed' | 'undismissed';
-export type DataState = 'loading' | 'empty' | 'loaded' | 'error';
-
-export const getDataState = ([loaded, count]: [boolean, number]): DataState => {
-	if (!loaded) {
-		return 'loading';
-	} else if (loaded && count > 0) {
-		return 'loaded';
-	} else if (loaded && count < 1) {
-		return 'empty';
-	}
-	return 'error';
-};
 
 @Component({
 	selector: 'lw-notifications-widget',
@@ -43,10 +29,7 @@ export class NotificationsWidgetComponent implements OnInit {
 		this.notificationsService.load();
 		this.initDataSet(this.filter);
 		this.isLoaded$ = this.notificationsService.isDataLoaded();
-		this.dataState$ = combineLatest(
-			this.isLoaded$,
-			this.dataItemsCount$
-		).pipe(map(getDataState));
+		this.dataState$ = getDatasetState(this.isLoaded$, this.dataItemsCount$);
 	}
 
 	initDataSet(filter: NotificationsFilter) {

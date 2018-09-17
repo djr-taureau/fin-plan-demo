@@ -1,25 +1,21 @@
-import { EntityRepository } from 'typeorm';
-import { BaseRepository, QueryOptions, GetQueryOptions } from './common';
+import { EntityRepository, AbstractRepository, DeepPartial } from 'typeorm';
+import { getPagingOptions, QueryOptions } from './common';
 import { ActivityLog } from '../domain-entities';
 
 
+@EntityRepository(ActivityLog)
+export class ActivityLogRepository extends AbstractRepository<ActivityLog> {
 
-@EntityRepository()
-export class ActivityLogRepository extends BaseRepository<ActivityLog> {
-
-  constructor() {
-    super('ActivityLog');
-  }
-
-  async get(options: GetQueryOptions) {
-    return await super.get(options);
+  async get(guid: string) {
+    return await this.repository.findOne(guid);
   }
   
-  async query(options?: QueryOptions) {
-    return await super.query(options);
-  }
+	async query(options?: QueryOptions) {
+		const pagingOptions = getPagingOptions(options);
+		return await this.repository.findAndCount(pagingOptions);
+	}
 
-  async insert(item: ActivityLog) {
-    return await super.insert(item);
+  async insert(item: DeepPartial<ActivityLog>) {
+    return await this.repository.save(item);
   }
 }

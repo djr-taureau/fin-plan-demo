@@ -73,6 +73,12 @@
     },
     "ui-components-page-navigation": {
       "tags": []
+    },
+    "admin-features-dashboard": {
+      "tags": []
+    },
+    "permissions": {
+      "tags": []
     }
   }
 }

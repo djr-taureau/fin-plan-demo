@@ -2,7 +2,6 @@ import { Route } from '@angular/router';
 import { AuthenticatedGuard } from '@lifeworks/authentication';
 
 import {
-	DashboardPageComponent,
 	UsersPageComponent,
 	AccountsPageComponent,
 	AccountsUsersPageComponent,
@@ -23,9 +22,11 @@ export const ApplicationRoutes: Route[] = [
 		children: [
 			{
 				path: '',
-				pathMatch: 'full',
-				component: DashboardPageComponent,
-				data: { title: 'Dashboard' }
+				loadChildren: '@lifeworks/admin-features/dashboard#AdminFeaturesDashboardModule'
+			},
+			{
+				path: '',
+				loadChildren: '@lifeworks/permissions#PermissionsModule'
 			},
 			{
 				path: 'users',

@@ -1,8 +1,13 @@
-import { ActivityLogService } from '../libs/services';
 import "../libs/typeorm/connect";
+import { ActivityLogService } from '../libs/services';
+import {
+	queryResponse,
+	errorResponse
+} from '../libs/function-utilities';
+import { Context, HttpRequest } from '../libs/azure-function-types';
 
-const activityLogs = new ActivityLogService();
 
-export async function run(context, req) {
+export async function run(context: Context, req: HttpRequest) {
+    const activityLogs = new ActivityLogService();
     context.res.body = await activityLogs.getActivityLogs(req.query);
 }

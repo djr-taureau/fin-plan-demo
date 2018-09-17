@@ -8,8 +8,7 @@
       "name": "req",
       "route": "notifications/{id?}",
       "methods": [
-        "get",
-        "post"
+        "get"
       ]
     },
     {

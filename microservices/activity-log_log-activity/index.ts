@@ -1,12 +1,14 @@
-import { ActivityLogService } from '../libs/services';
 import "../libs/typeorm/connect";
+import { ActivityLogService } from '../libs/services';
+import {
+	queryResponse,
+	errorResponse
+} from '../libs/function-utilities';
+import { Context, HttpRequest } from '../libs/azure-function-types';
 
 
-const activityLogs = new ActivityLogService();
-
-export async function run(context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.');
+export async function run(context: Context, req: HttpRequest) {
+    const activityLogs = new ActivityLogService();
 
     activityLogs.saveActivityLogItem(req.body);
-
 };

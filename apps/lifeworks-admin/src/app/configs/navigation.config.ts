@@ -11,14 +11,19 @@ export const NAVIGATION: NavigationItems = [
 				order: 1
 			},
 			{
+				display: 'Permissions',
+				location: '/permissions',
+				order: 2
+			},
+			{
 				display: 'Users',
 				location: '/users',
-				order: 2
+				order: 3
 			},
 			{
 				display: 'Accounts',
 				location: '/accounts',
-				order: 3
+				order: 4
 			}
 		]
 	},

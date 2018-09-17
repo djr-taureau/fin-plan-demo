@@ -8,5 +8,8 @@
     "SQL_UID": "sa",
     "SQL_PWD": "Password123!",
     "SQL_SYNC": true
+  },
+  "host": {
+    "CORS": "*"
   }
 }

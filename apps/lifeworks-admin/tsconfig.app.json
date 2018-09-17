@@ -10,6 +10,9 @@
     "**/*.spec.ts"
   ],
   "include": [
-    "**/*.ts"
+    "**/*.ts",
+    /* Lazy Loaded*/
+    "../../libs/admin-features/dashboard/src/index.ts",
+    "../../libs/permissions/src/index.ts",
   ]
 }

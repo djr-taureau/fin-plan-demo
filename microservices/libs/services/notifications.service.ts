@@ -1,11 +1,9 @@
+import { getCustomRepository } from 'typeorm';
 import { NotificationsRepository } from '../repositories';
 
 export class NotificationsService {
-    private repo: NotificationsRepository;
+	private repo = getCustomRepository(NotificationsRepository);
 
-    constructor() {
-        this.repo = new NotificationsRepository();
-    }
 
     async getNotifications(params) {
         return await this.repo.query(params);

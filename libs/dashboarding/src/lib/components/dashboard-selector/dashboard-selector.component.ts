@@ -35,7 +35,6 @@ export class DashboardSelectorComponent implements OnInit {
 	}
 
 	changeDashboard(dashboard: string) {
-		console.log(dashboard);
 		this.router.navigate([`dashboard/${dashboard}`]);
 	}
 }

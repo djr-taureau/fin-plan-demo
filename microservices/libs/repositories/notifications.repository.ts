@@ -1,28 +1,23 @@
-import { BaseRepository, QueryOptions, GetQueryOptions } from './common';
 import { Notification } from '../domain-entities';
-import { EntityRepository } from 'typeorm';
+import { EntityRepository, AbstractRepository, DeepPartial } from 'typeorm';
+import { QueryOptions, getPagingOptions } from './common';
 
-@EntityRepository()
-export class NotificationsRepository extends BaseRepository<
-	Notification
-> {
-	constructor() {
-		super('Notifications');
-	}
-
-	async get(options: GetQueryOptions) {
-		return await super.get(options);
+@EntityRepository(Notification)
+export class NotificationsRepository extends AbstractRepository<Notification> {
+	async get(guid: string) {
+		return await this.repository.findOne(guid);
 	}
 
 	async query(options?: QueryOptions) {
-		return await super.query(options);
+		const pagingOptions = getPagingOptions(options);
+		return await this.repository.findAndCount(pagingOptions);
 	}
 
-	async insert(notification) {
-		return await super.insert(notification);
+	async insert(notification: DeepPartial<Notification>) {
+		return await this.repository.save(notification);
 	}
 
-	public update(id, notification) {
-		return super.update(id, notification)
+	async update(guid: string, notification: DeepPartial<Notification>) {
+		return await this.repository.update(guid, notification);
 	}
 }

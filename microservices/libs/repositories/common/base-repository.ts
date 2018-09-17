@@ -1,17 +1,7 @@
-import { getConnection } from 'typeorm';
+import { getConnection, EntityManager } from 'typeorm';
 import { has } from 'ramda';
-
-export interface GetQueryOptions {
-	guid: string;
-}
-
-export interface QueryOptions {
-	skip?: number;
-	take?: number;
-	sortBy?: string;
-	sortDirection?: 'ASC' | 'DESC';
-	filter?: { [key: string]: string | number };
-}
+import { EnityType } from './types';
+import { QueryOptions, GetQueryOptions } from './query';
 
 const hasSortBy = has('sortBy');
 const hasSkip = has('skip');
@@ -19,7 +9,13 @@ const hasTake = has('take');
 const hasFilter = has('filter');
 
 export class BaseRepository<T> {
-	constructor(private entityName: string) {}
+	public alias: string;
+
+	constructor(
+		private entityName: string,
+		private entity: EnityType<T>,
+		private manager?: EntityManager
+	) {}
 
 	private async getConnection() {
 		return await getConnection();
@@ -67,7 +63,8 @@ export class BaseRepository<T> {
 
 	public async query(options?: QueryOptions) {
 		const _query = await this.getPagedQueryBuilder(options);
-		return await _query.getManyAndCount();
+		const results = await _query.getManyAndCount();
+		return results;
 	}
 
 	public async get(options: GetQueryOptions) {
@@ -89,5 +86,11 @@ export class BaseRepository<T> {
 		_query.set(item).where(`${idField} = :id`, { id: id });
 
 		return _query.execute();
+	}
+
+	public async eQuery(options?: QueryOptions) {
+		return await this.manager.find<T>(this.entity, {
+			relations: ['firms']
+		});
 	}
 }

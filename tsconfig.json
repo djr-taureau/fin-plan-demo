@@ -17,7 +17,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-
       "@lifeworks/activity-log": [
         "libs/activity-log/src/index.ts"
       ],
@@ -77,6 +76,12 @@
       ],
       "@lifeworks/ui-components/page-navigation": [
         "libs/ui-components/page-navigation/src/index.ts"
+      ],
+      "@lifeworks/admin-features/dashboard": [
+        "libs/admin-features/dashboard/src/index.ts"
+      ],
+      "@lifeworks/permissions": [
+        "libs/permissions/src/index.ts"
       ]
     }
   },

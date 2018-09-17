@@ -5,7 +5,10 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ConfigService } from '@lifeworks/core';
+
 import { ConfigServiceMock } from '../../../../core/src/lib/testing';
+import { NotificationsUIModule } from '../+modules';
+
 
 @NgModule({
 	imports: [
@@ -13,14 +16,16 @@ import { ConfigServiceMock } from '../../../../core/src/lib/testing';
 		StoreModule.forRoot({}),
 		EffectsModule.forRoot([]),
 		HttpClientTestingModule,
-		RouterTestingModule
+		RouterTestingModule,
+		NotificationsUIModule
 	],
 	exports: [
 		BrowserDynamicTestingModule,
 		StoreModule,
 		EffectsModule,
 		HttpClientTestingModule,
-		RouterTestingModule
+		RouterTestingModule,
+		NotificationsUIModule
 	],
 	providers: [{ provide: ConfigService, useValue: ConfigServiceMock }]
 })

@@ -49,6 +49,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/lifeworks/src/environments/environment.local.ts",
+                  "with": "apps/lifeworks/src/environments/environment.prod.ts"
+                }
+              ]
             }
           }
         },
@@ -63,6 +71,9 @@
           "configurations": {
             "production": {
               "browserTarget": "lifeworks:build:production"
+            },
+            "local": {
+              "browserTarget": "lifeworks:build:local"
             }
           }
         },
@@ -147,6 +158,14 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "local": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/lifeworks-admin/src/environments/environment.ts",
+                  "with": "apps/lifeworks-admin/src/environments/environment.local.ts"
+                }
+              ]
             }
           }
         },
@@ -162,6 +181,9 @@
           "configurations": {
             "production": {
               "browserTarget": "lifeworks-admin:build:production"
+            },
+            "local": {
+              "browserTarget": "lifeworks-admin:build:local"
             }
           }
         },
@@ -754,6 +776,62 @@
             "tsConfig": [
               "libs/ui-components/page-navigation/tsconfig.lib.json",
               "libs/ui-components/page-navigation/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "admin-features-dashboard": {
+      "root": "libs/admin-features/dashboard",
+      "sourceRoot": "libs/admin-features/dashboard/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/admin-features/dashboard/src/test.ts",
+            "tsConfig": "libs/admin-features/dashboard/tsconfig.spec.json",
+            "karmaConfig": "libs/admin-features/dashboard/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/admin-features/dashboard/tsconfig.lib.json",
+              "libs/admin-features/dashboard/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "permissions": {
+      "root": "libs/permissions",
+      "sourceRoot": "libs/permissions/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/permissions/src/test.ts",
+            "tsConfig": "libs/permissions/tsconfig.spec.json",
+            "karmaConfig": "libs/permissions/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/permissions/tsconfig.lib.json",
+              "libs/permissions/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

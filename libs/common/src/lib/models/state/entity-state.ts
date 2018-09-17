@@ -2,8 +2,12 @@ export const enum LoadDataStatus {
 	initial = 'initial',
 	loading = 'loading',
 	loaded = 'loaded',
-	error = 'error'
+	error = 'error',
+	empty = 'empty'
 }
+
+export type DataState = LoadDataStatus;
+
 
 export interface Entities<T> {
 	[key: string]: T;

@@ -24,7 +24,7 @@ import { FixedRouterSerializer } from '@lifeworks/core';
 		EffectsModule.forRoot([]),
 		StoreRouterConnectingModule.forRoot({ stateKey: 'router' })
 	],
-	exports: [StoreModule, EffectsModule],
+	exports: [StoreModule, EffectsModule, StoreDevtoolsModule, StoreRouterConnectingModule],
 	providers: [
 		{ provide: RouterStateSerializer, useClass: FixedRouterSerializer }
 	]

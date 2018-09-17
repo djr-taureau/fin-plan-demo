@@ -1,9 +1,13 @@
 import { UpdateDateColumn, CreateDateColumn } from 'typeorm';
 
 export class TimeStamps {
-    @CreateDateColumn()
+    @UpdateDateColumn({
+        name: "created_On"
+    })
     createdOn: Date;
 
-    @UpdateDateColumn()
+    @UpdateDateColumn({
+        name: "modified_On"
+    })
     modifiedOn: Date;
 }

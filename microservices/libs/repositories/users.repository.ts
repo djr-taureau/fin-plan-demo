@@ -1,12 +1,13 @@
-import { BaseRepository, QueryOptions } from './common';
+import { EntityRepository, AbstractRepository } from 'typeorm';
+import { getPagingOptions, QueryOptions } from './common';
 import { User } from '../domain-entities';
-import { EntityRepository } from 'typeorm';
 
-@EntityRepository()
-export class UsersRepository extends BaseRepository<User> {
+@EntityRepository(User)
+export class UsersRepository extends AbstractRepository<User> {
 
-  constructor() {
-	  super('User');
+  async query(options?: QueryOptions) {
+		const pagingOptions = getPagingOptions(options);
+		return await this.repository.findAndCount(pagingOptions);
   }
-
+  
 }

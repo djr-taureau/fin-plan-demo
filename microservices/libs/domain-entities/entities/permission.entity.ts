@@ -1,7 +1,4 @@
-import {
-	Entity,
-	Column
-} from 'typeorm';
+import { Entity, Column, Index } from 'typeorm';
 import { BaseEntity } from '../common';
 
 export enum PermissionScope {
@@ -10,10 +7,12 @@ export enum PermissionScope {
 
 @Entity('permissions')
 export class Permission extends BaseEntity {
-	@Column() name: string;
+	@Column({ unique: true })
+	name: string;
 
 	@Column('text') description: string;
 
+	@Index()
 	@Column({ enum: PermissionScope })
 	scope: PermissionScope;
 }

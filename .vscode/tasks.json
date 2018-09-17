@@ -11,7 +11,7 @@
 				"env": {
 					"languageWorkers:node:arguments": "--inspect=5858"
 				},
-				"cwd": "${workspaceFolder}/dist/microservices/functions"
+				"cwd": "${workspaceFolder}/dist/microservices"
 			},
 			"dependsOn": [
 				"npm: ms:build"
@@ -32,7 +32,7 @@
 			"problemMatcher": [],
 			"presentation": {
 				"echo": true,
-				"reveal": "never",
+				"reveal": "always",
 				"focus": true,
 				"panel": "dedicated",
 			}

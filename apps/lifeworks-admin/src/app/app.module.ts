@@ -10,7 +10,6 @@ import {
 
 import { AppComponent } from './app.component';
 import {
-	DashboardPageComponent,
 	UsersPageComponent,
 	AccountsPageComponent,
 	AccountsBillingPageComponent,
@@ -23,7 +22,6 @@ import {
 @NgModule({
 	declarations: [
 		AppComponent,
-		DashboardPageComponent,
 		UsersPageComponent,
 		AccountsPageComponent,
 		AccountsBillingPageComponent,

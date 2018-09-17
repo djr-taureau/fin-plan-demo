@@ -1,12 +1,8 @@
+import { getCustomRepository } from 'typeorm';
 import { ActivityLogRepository } from '../repositories';
 
-
 export class ActivityLogService {
-    private repo: ActivityLogRepository;
-
-    constructor() {
-        this.repo = new ActivityLogRepository();
-    }
+	private repo = getCustomRepository(ActivityLogRepository);
 
     async getActivityLogs(params) {
         return await this.repo.query(params);
