@@ -1,6 +1,6 @@
 import { getCustomRepository, DeepPartial } from 'typeorm';
 import { PermissionsRepository } from '../repositories';
-import { Permission } from '../domain-entities';
+import { SystemPermission } from '../domain-entities';
 
 export class PermissionsService {
     private repo = getCustomRepository(PermissionsRepository);
@@ -9,7 +9,7 @@ export class PermissionsService {
         return await this.repo.query(params)
     }
 
-    async create(permission: DeepPartial<Permission>) {
+    async create(permission: DeepPartial<SystemPermission>) {
         return await this.repo.insert(permission);
     }
 

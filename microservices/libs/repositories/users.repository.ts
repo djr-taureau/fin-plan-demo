@@ -1,9 +1,9 @@
 import { EntityRepository, AbstractRepository } from 'typeorm';
 import { getPagingOptions, QueryOptions } from './common';
-import { User } from '../domain-entities';
+import { SystemUser } from '../domain-entities';
 
-@EntityRepository(User)
-export class UsersRepository extends AbstractRepository<User> {
+@EntityRepository(SystemUser)
+export class UsersRepository extends AbstractRepository<SystemUser> {
 
   async query(options?: QueryOptions) {
 		const pagingOptions = getPagingOptions(options);

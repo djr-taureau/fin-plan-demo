@@ -82,6 +82,9 @@
       ],
       "@lifeworks/permissions": [
         "libs/permissions/src/index.ts"
+      ],
+      "@lifeworks/clients": [
+        "libs/clients/src/index.ts"
       ]
     }
   },

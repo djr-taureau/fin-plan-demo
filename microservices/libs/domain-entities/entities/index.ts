@@ -1,10 +1,7 @@
-export * from './account.entity';
+export * from './clients';
+export * from './firms';
+export * from './profiles';
+export * from './security';
+
 export * from './activity-log.entity';
-export * from './client-team.entity';
-export * from './client.entity';
-export * from './firm-staff.entity';
-export * from './firm.entity';
 export * from './notification.entity';
-export * from './permission.entity';
-export * from './role.entity';
-export * from './user.entity';

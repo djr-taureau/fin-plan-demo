@@ -79,6 +79,9 @@
     },
     "permissions": {
       "tags": []
+    },
+    "clients": {
+      "tags": []
     }
   }
 }

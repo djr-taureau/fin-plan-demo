@@ -27,6 +27,7 @@ import { PermissionsScopePipe } from './pipes';
 		PermissionsScopePipe,
 		PermissionsTableComponent
 	],
+	exports: [PermissionsScopePipe],
 	entryComponents: [CreatePermissionPageComponent]
 })
 export class PermissionsModule {}

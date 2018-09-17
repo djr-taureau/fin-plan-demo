@@ -1,0 +1,19 @@
+:host {
+    display: flex;
+    flex: 1;
+}
+
+
+
+.lw-widget-content,
+.lw-widget {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+}
+
+.mat-table {
+    flex: 1;
+}

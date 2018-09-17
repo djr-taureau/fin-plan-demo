@@ -1,17 +1,26 @@
 import 'reflect-metadata';
 import { createConnection, ConnectionOptions } from 'typeorm';
 import {
-	Account,
-	ActivityLog,
-	ClientTeamMember,
-	Client,
-	FirmStaff,
+	ClientAccount,
+	ClientAffiliation,
+	ClientRelationship,
+	ClientMember,
+	Profile,
+	ProfileAttribute,
+	ProfileContactInformation,
+	SystemUser,
+	SystemPermission,
+	SystemRole,
 	Firm,
-	Notification,
-	Permission,
-	Role,
-	User,
+	FirmAccount,
+	FirmClient,
+	FirmClientTeamMember,
+	FirmStaffCertification,
+	FirmCertification,
+	FirmStaff,
 } from '../domain-entities';
+
+
 
 const connectionConfig: ConnectionOptions = {
 	type: 'mssql',
@@ -19,19 +28,26 @@ const connectionConfig: ConnectionOptions = {
 	username: process.env.SQL_UID,
 	password: process.env.SQL_PWD,
 	database: process.env.SQL_DB,
-	synchronize: (process.env.SQL_SYNC as any) || false,
+	synchronize: (process.env.SQL_SYNC) as any || false,
 	logging: false,
 	entities: [
-		Account,
-		ActivityLog,
-		ClientTeamMember,
-		Client,
-		FirmStaff,
+		ClientAccount,
+		ClientAffiliation,
+		ClientRelationship,
+		ClientMember,
+		Profile,
+		ProfileAttribute,
+		ProfileContactInformation,
+		SystemUser,
+		SystemPermission,
+		SystemRole,
 		Firm,
-		Notification,
-		Permission,
-		Role,
-		User
+		FirmAccount,
+		FirmClient,
+		FirmClientTeamMember,
+		FirmStaffCertification,
+		FirmCertification,
+		FirmStaff
 	],
 	options: {
 		encrypt: true

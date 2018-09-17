@@ -1,8 +1,8 @@
 import { Entity, Column } from 'typeorm';
-import { BaseEntity, TimeStamps } from '../common';
+import { TrackedBaseEntity } from '../common';
 
 @Entity('notifications')
-export class Notification extends BaseEntity {
+export class Notification extends TrackedBaseEntity {
 
   @Column('varchar')
   message: string;
@@ -12,8 +12,5 @@ export class Notification extends BaseEntity {
 
   @Column('varchar')
   notification_type: string
-  
-	@Column(type => TimeStamps)
-	timestamp: TimeStamps;
 
 }
