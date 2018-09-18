@@ -1,7 +1,5 @@
 @import '../../../../../styles/_framework';
 
-
-
 .lw-data-list-item-header {
 	display: inline-block;
 	font-size: 1.3rem;
@@ -17,17 +15,6 @@
 	&:last-of-type:after {
 		content: '';
 		display: none;
-	}
-}
-
-.lw-data-list-item-indicator {
-    flex: 0 0 4em;
-    align-items: center;
-    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
-	background-color: #aaa;
-
-	:first-child {
-		box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.15);
 	}
 }
 

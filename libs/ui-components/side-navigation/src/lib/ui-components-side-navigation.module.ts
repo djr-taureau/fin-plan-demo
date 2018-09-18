@@ -7,7 +7,6 @@ import {
 	NavigationTitleDirective,
 	NavigationLogoComponent,
 	NavigationSearchComponent,
-	NavigationIconComponent,
 	NavigationItemComponent
 } from './components';
 
@@ -17,7 +16,7 @@ import {
 		SideNavComponent,
 		NavigationLogoComponent,
 		NavigationSearchComponent,
-		NavigationIconComponent,
+
 		NavigationGroupDirective,
 		NavigationTitleDirective,
 		NavigationItemComponent
@@ -26,7 +25,7 @@ import {
 		SideNavComponent,
 		NavigationLogoComponent,
 		NavigationSearchComponent,
-		NavigationIconComponent,
+
 		NavigationGroupDirective,
 		NavigationTitleDirective,
 		NavigationItemComponent

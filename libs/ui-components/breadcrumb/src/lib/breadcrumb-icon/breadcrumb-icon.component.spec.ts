@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NavigationIconComponent } from './navigation-icon.component';
+import { BreadcrumbIconComponent } from './breadcrumb-icon.component';
 
-describe('NavigationIconComponent', () => {
-	let component: NavigationIconComponent;
-	let fixture: ComponentFixture<NavigationIconComponent>;
+describe('BreadcrumbIconComponent', () => {
+	let component: BreadcrumbIconComponent;
+	let fixture: ComponentFixture<BreadcrumbIconComponent>;
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [NavigationIconComponent]
+				declarations: [BreadcrumbIconComponent]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NavigationIconComponent);
+		fixture = TestBed.createComponent(BreadcrumbIconComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

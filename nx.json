@@ -74,6 +74,9 @@
     "ui-components-page-navigation": {
       "tags": []
     },
+    "ui-components-breadcrumb": {
+      "tags": []
+    },
     "admin-features-dashboard": {
       "tags": []
     },

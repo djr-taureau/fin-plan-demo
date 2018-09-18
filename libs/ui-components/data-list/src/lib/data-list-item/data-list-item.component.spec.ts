@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DataListItemComponent } from './data-list-item.component';
+import { DataListItemIconComponent } from '../data-list-item-icon/data-list-item-icon.component';
 
 describe('DataListItemComponent', () => {
 	let component: DataListItemComponent<{}>;
@@ -9,7 +10,7 @@ describe('DataListItemComponent', () => {
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
-				declarations: [DataListItemComponent]
+				declarations: [DataListItemComponent, DataListItemIconComponent]
 			}).compileComponents();
 		})
 	);

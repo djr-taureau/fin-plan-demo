@@ -1,5 +1,5 @@
-<ng-content select="lw-data-list-item-indicator"></ng-content>
-<ng-container *ngIf="noNavigation; else wrappedContent">
+<lw-data-list-item-icon [icon]="icon"></lw-data-list-item-icon>
+<ng-container *ngIf="renderAs==='displayOnly'; else wrappedContent">
   <div class="data-list-item-content">
     <ng-container *ngTemplateOutlet="content"></ng-container>
   </div>

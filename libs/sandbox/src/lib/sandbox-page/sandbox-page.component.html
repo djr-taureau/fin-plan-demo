@@ -11,9 +11,20 @@
       <lw-value-list-header-column>COLI</lw-value-list-header-column>
     </lw-value-list-header>
     <lw-value-list-item *ngFor="let item of valueListData; let idx = index">
-        <lw-value-list-item-index>{{idx + 1}}</lw-value-list-item-index>
-        <lw-value-list-item-text>{{item.name}}</lw-value-list-item-text>
-        <lw-value-list-item-value>{{item.value}}</lw-value-list-item-value>
+      <lw-value-list-item-index>{{idx + 1}}</lw-value-list-item-index>
+      <lw-value-list-item-text>{{item.name}}</lw-value-list-item-text>
+      <lw-value-list-item-value>{{item.value}}</lw-value-list-item-value>
     </lw-value-list-item>
   </lw-value-list>
 </div>
+
+<lw-breadcrumb [data]="breadcrumbData">
+  <!-- <lw-breadcrumb-icon [matMenuTriggerFor]="appMenu"></lw-breadcrumb-icon>
+  <mat-menu [overlapTrigger]="false" panelClass="lw-elevation-1" #appMenu="matMenu" class="lw-breadcrumb-mat-menu">
+    <a mat-menu-item [routerLink]="'/'">Folder: 2nd Level</a>
+    <a mat-menu-item [routerLink]="'/'">Folder: 1st Level</a>
+  </mat-menu>
+  <lw-breadcrumb-location><a [routerLink]="'/'">Folder: 3rd Level</a></lw-breadcrumb-location>
+  <lw-breadcrumb-location><a [routerLink]="'/'">Folder: 4th Level</a></lw-breadcrumb-location>
+  <lw-breadcrumb-location>Folder: Current</lw-breadcrumb-location> -->
+</lw-breadcrumb>

@@ -1,5 +1,10 @@
 // tslint:disable:use-host-property-decorator use-input-property-decorator
-import { Component, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import {
+	Component,
+	ElementRef,
+	ChangeDetectionStrategy,
+	Input
+} from '@angular/core';
 import {
 	mixinNavigation,
 	HasNavigation,
@@ -24,6 +29,8 @@ export const _DataListItemComponent = mixinNavigation(
 })
 export class DataListItemComponent<T> extends _DataListItemComponent
 	implements HasNavigation, HasDataItemState<T> {
+	@Input() icon: string;
+
 	constructor(elementRef: ElementRef) {
 		super(elementRef);
 	}

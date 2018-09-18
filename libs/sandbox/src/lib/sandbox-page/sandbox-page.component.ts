@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { VALUE_LIST_DATA } from './data';
+import { VALUE_LIST_DATA, BREADCRUMB_DATA } from './data';
 
 export const LIST_VALUE_DATA = VALUE_LIST_DATA;
 
@@ -10,4 +10,5 @@ export const LIST_VALUE_DATA = VALUE_LIST_DATA;
 })
 export class SandboxPageComponent {
 	valueListData = LIST_VALUE_DATA;
+	breadcrumbData = BREADCRUMB_DATA;
 }

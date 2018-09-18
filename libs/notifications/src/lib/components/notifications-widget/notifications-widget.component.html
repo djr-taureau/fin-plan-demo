@@ -8,6 +8,6 @@
         <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>
         <div *ngSwitchCase="'empty'" class="widget-message">No new items</div>
         <div *ngSwitchCase="'error'" class="widget-message">Opps... something went wrong</div>
-        <lw-notifications-list (event)="onEvent($event)" *ngSwitchCase="'loaded'" [items]="data$ | async"></lw-notifications-list>
+        <lw-notifications-list (event)="event($event)" *ngSwitchCase="'loaded'" [items]="data$ | async"></lw-notifications-list>
     </lw-widget-content>
 </lw-widget>

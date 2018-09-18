@@ -58,7 +58,7 @@ export class NotificationsWidgetComponent implements OnInit {
 		return map((x: NotificationItems) => x.slice(0, 3));
 	}
 
-	onEvent(event: DatasourceItemEvent<NotificationItem>) {
+	event(event: DatasourceItemEvent<NotificationItem>) {
 		switch (event.action) {
 			case 'remove':
 				this.dismiss(event.item);

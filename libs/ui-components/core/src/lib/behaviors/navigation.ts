@@ -8,7 +8,13 @@ import {
 export interface HasNavigation {
 	location: NavigationLink;
 	wrapWithAnchor: boolean;
-	readonly noNavigation: boolean;
+	readonly renderAs: string;
+}
+
+export enum renderAsType {
+	action,
+	displayOnly,
+	location
 }
 
 /** Mixin to add a `wrapWithAnchor` and `location` properties to a directive or component. */
@@ -17,17 +23,16 @@ export function mixinNavigation<T extends Constructor<{}>>(
 ): Constructor<HasNavigation> & T {
 	return class extends base {
 		wrapWithAnchor: boolean;
-		_location: NavigationLink;
+		location: NavigationLink;
+		action: string;
 
-		get noNavigation() {
-			return isFalse(this.wrapWithAnchor) || isNotUseable(this.location);
-		}
-
-		get location() {
-			return this._location;
-		}
-		set location(value: NavigationLink) {
-			this._location = value;
+		get renderAs() {
+			if (this.location) {
+				return renderAsType[renderAsType.location];
+			} else if (this.action) {
+				return renderAsType[renderAsType.action];
+			}
+			return renderAsType[renderAsType.displayOnly];
 		}
 
 		constructor(...args: any[]) {

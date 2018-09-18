@@ -77,6 +77,9 @@
       "@lifeworks/ui-components/page-navigation": [
         "libs/ui-components/page-navigation/src/index.ts"
       ],
+      "@lifeworks/ui-components/breadcrumb": [
+        "libs/ui-components/breadcrumb/src/index.ts"
+      ],
       "@lifeworks/admin-features/dashboard": [
         "libs/admin-features/dashboard/src/index.ts"
       ],

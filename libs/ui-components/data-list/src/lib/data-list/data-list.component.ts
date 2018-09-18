@@ -32,12 +32,6 @@ export class DataListComponent implements OnInit {
 export class DataListItemHeaderDirective {}
 
 @Directive({
-	selector: 'lw-data-list-item-indicator',
-	host: { class: 'lw-data-list-item-indicator' }
-})
-export class DataListItemIndicatorDirective {}
-
-@Directive({
 	selector: '[lwDataListItemAction], lw-data-list-item-action',
 	host: { class: 'lw-data-list-item-action' }
 })
