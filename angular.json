@@ -923,6 +923,62 @@
           }
         }
       }
+    },
+    "ui-components-file-upload": {
+      "root": "libs/ui-components/file-upload",
+      "sourceRoot": "libs/ui-components/file-upload/src",
+      "projectType": "library",
+      "prefix": "lw",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/file-upload/src/test.ts",
+            "tsConfig": "libs/ui-components/file-upload/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/file-upload/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/file-upload/tsconfig.lib.json",
+              "libs/ui-components/file-upload/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ui-components-attachment": {
+      "root": "libs/ui-components/attachment",
+      "sourceRoot": "libs/ui-components/attachment/src",
+      "projectType": "library",
+      "prefix": "lw",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/attachment/src/test.ts",
+            "tsConfig": "libs/ui-components/attachment/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/attachment/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/attachment/tsconfig.lib.json",
+              "libs/ui-components/attachment/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

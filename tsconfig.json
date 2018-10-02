@@ -91,6 +91,12 @@
       ],
     "@lifeworks/ui-components/status-list": [
         "libs/ui-components/status-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/file-upload": [
+        "libs/ui-components/file-upload/src/index.ts"
+      ],
+      "@lifeworks/ui-components/attachment": [
+        "libs/ui-components/attachment/src/index.ts"
       ]
     }
   },

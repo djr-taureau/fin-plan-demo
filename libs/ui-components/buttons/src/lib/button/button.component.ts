@@ -22,12 +22,13 @@ const BUTTON_HOST_ATTRIBUTES = [
 	'lw-button',
 	'lw-rounded-button',
 	'lw-round-button',
-	'lw-icon-button'
+	'lw-icon-button',
+	'lw-text-button'
 ];
 
 @Component({
 	selector:
-		'button[lw-button],button[lw-icon-button],button[lw-rounded-button],button[lw-round-button]',
+		'button[lw-button],button[lw-icon-button],button[lw-rounded-button],button[lw-round-button],button[lw-text-button]',
 	exportAs: 'lwButton',
 	host: {
 		'[disabled]': 'disabled || null'

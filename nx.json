@@ -88,6 +88,12 @@
     },
     "ui-components-status-list": {
       "tags": []
+    },
+    "ui-components-file-upload": {
+      "tags": []
+    },
+    "ui-components-attachment": {
+      "tags": []
     }
   }
 }
