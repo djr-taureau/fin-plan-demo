@@ -18,6 +18,7 @@ import {
 	FirmStaffCertification,
 	FirmCertification,
 	FirmStaff,
+	Templates
 } from '../domain-entities';
 
 
@@ -47,7 +48,8 @@ const connectionConfig: ConnectionOptions = {
 		FirmClientTeamMember,
 		FirmStaffCertification,
 		FirmCertification,
-		FirmStaff
+		FirmStaff,
+		Templates
 	],
 	options: {
 		encrypt: true

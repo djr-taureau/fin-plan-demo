@@ -5,3 +5,4 @@ export * from './security';
 
 export * from './activity-log.entity';
 export * from './notification.entity';
+export * from './templates.entity';

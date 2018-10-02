@@ -9,3 +9,7 @@ export interface QueryOptions {
 	sortDirection?: 'ASC' | 'DESC';
 	filter?: { [key: string]: string | number };
 }
+
+export interface TemplateQueryOptions {
+	name?: string
+}
