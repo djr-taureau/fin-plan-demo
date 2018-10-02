@@ -88,6 +88,9 @@
       ],
       "@lifeworks/clients": [
         "libs/clients/src/index.ts"
+      ],
+    "@lifeworks/ui-components/status-list": [
+        "libs/ui-components/status-list/src/index.ts"
       ]
     }
   },

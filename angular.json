@@ -895,6 +895,34 @@
           }
         }
       }
+    },
+    "ui-components-status-list": {
+      "root": "libs/ui-components/status-list",
+      "sourceRoot": "libs/ui-components/status-list/src",
+      "projectType": "library",
+      "prefix": "lw",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/ui-components/status-list/src/test.ts",
+            "tsConfig": "libs/ui-components/status-list/tsconfig.spec.json",
+            "karmaConfig": "libs/ui-components/status-list/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ui-components/status-list/tsconfig.lib.json",
+              "libs/ui-components/status-list/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

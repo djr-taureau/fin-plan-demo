@@ -85,6 +85,9 @@
     },
     "clients": {
       "tags": []
+    },
+    "ui-components-status-list": {
+      "tags": []
     }
   }
 }
