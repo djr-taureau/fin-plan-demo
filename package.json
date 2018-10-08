@@ -31,7 +31,9 @@
     "ms:build:ts": "tsc -p microservices/tsconfig.microservices.json",
     "ms:build:copy": "copyfiles -u 1 \"microservices/**/*\" -e \"**/*(*.ts|*.microservices.json)\" dist/microservices",
     "ms:build": "npm run ms:build:clean && npm run ms:build:ts && npm run ms:build:copy",
-    "affected:libs": "./node_modules/.bin/nx affected:libs"
+    "affected:libs": "./node_modules/.bin/nx affected:libs",
+    "migrations:build": "./tools/scripts/build-migrations.sh",
+    "migrations:run": "./tools/scripts/run-migrations.sh"
   },
   "private": true,
   "dependencies": {

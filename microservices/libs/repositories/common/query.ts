@@ -10,6 +10,11 @@ export interface QueryOptions {
 	filter?: { [key: string]: string | number };
 }
 
+export interface QueryOptions {
+	where?: { [key: string]: string | number };
+	select?: string[];
+	relations?: string[];
+}
 export interface TemplateQueryOptions {
 	name?: string
 }

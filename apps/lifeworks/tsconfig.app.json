@@ -3,7 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/lifeworks",
     "module": "es2015",
-    "types": []
+    "types": ["node"]
   },
   "exclude": ["src/test.ts", "**/*.spec.ts"],
   "include": [

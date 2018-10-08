@@ -7,6 +7,7 @@ import { FirmAccountType } from './firm-account-type';
 @Entity('firm-accounts')
 export class FirmAccount extends NamedBaseEntity {
 	@OneToOne(type => SystemUser)
+	@JoinColumn()
 	owner: SystemUser;
 
 	@OneToMany(type => Firm, firm => firm.account)

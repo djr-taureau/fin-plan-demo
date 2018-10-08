@@ -1,0 +1,16 @@
+{
+	"type": "mssql",
+	"host": "localhost",
+	"port": 1433,
+	"username": "sa",
+	"password": "Password123!",
+	"database": "lifeworks",
+	"synchronize": false,
+	"logging": false,
+	"entities": ["dist/migrations/**/*.js"],
+	"migrations": ["dist/migrations/**/*.js"],
+	"cli": {
+		"entitiesDir": "microservices/libs/domain-entities",
+		"migrationsDir": "microservices/libs/migrations"
+	}
+}

@@ -7,7 +7,7 @@ import { Firm } from './firm.entity';
 @Entity('firm-clients')
 export class FirmClient extends TrackedBaseEntity {
 
-	@ManyToOne(type => Firm)
+	@ManyToOne(type => Firm, firm => firm.clients)
 	firm: Firm;
 
 	@ManyToOne(type => ClientAccount)

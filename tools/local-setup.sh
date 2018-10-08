@@ -1,4 +1,4 @@
-#!/bin/sh|
+#!/bin/sh
 
 certPass=v8P!66^@%4U
 openssl genrsa -des3 -passout pass:$certPass -out local/rootCA.key 2048

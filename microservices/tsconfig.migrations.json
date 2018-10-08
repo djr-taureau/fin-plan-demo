@@ -1,0 +1,24 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../dist/migrations",
+    "lib": [
+      "es5",
+      "es6"
+   ],
+   "target": "es5",
+   "module": "commonjs",
+   "moduleResolution": "node",
+   "emitDecoratorMetadata": true,
+   "experimentalDecorators": true,
+   "sourceMap": false
+  },
+  "exclude": [
+    "src/test.ts",
+    "**/*.spec.ts"
+  ],
+  "include": [
+    "libs/domain-entities/**/*.ts",
+    "libs/migrations/**/*.ts"
+  ]
+}
