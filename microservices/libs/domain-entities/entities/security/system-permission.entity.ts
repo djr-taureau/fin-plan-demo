@@ -11,6 +11,6 @@ export class SystemPermission extends TrackedBaseEntity {
 	@Column('text') description: string;
 
 	@Index()
-	@Column()
+	@Column("int")
 	scope: SecurityScope;
 }

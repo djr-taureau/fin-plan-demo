@@ -14,7 +14,8 @@ export class ClientRelationship {
 	@JoinColumn()
 	profile: Profile;
 
-	@Column() relationship: ClientRelationshipType;
+	@Column("int", { nullable: true })
+	relationship: ClientRelationshipType;
 
 	@Column({ nullable: true }) fiscallyDependant: boolean;
 }

@@ -5,13 +5,13 @@
 /tmp
 /out-tsc
 
-local/*.*
-!local/.gitkeep
-!local/server.csr.cnf
-!local/rootCA.csr.cnf
-!local/v3.ext
+# SSL
+ssl/*.*
+!ssl/server.cnf
+
 
 # dependencies
+node_modules
 /node_modules
 microservices/node_modules
 spa-server/node_modules

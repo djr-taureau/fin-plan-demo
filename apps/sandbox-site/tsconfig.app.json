@@ -1,0 +1,13 @@
+{
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		"outDir": "../../dist/out-tsc/apps/sandbox-site",
+		"types": []
+	},
+	"exclude": ["test.ts", "**/*.spec.ts"],
+	"include": [
+		"**/*.ts",
+		/* Lazy Loaded*/
+		"../../libs/sandbox/src/index.ts"
+	]
+}

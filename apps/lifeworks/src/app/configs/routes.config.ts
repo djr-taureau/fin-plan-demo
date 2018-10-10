@@ -1,7 +1,6 @@
 import { ShellComponent } from '@lifeworks/core';
 
 export const ApplicationRoutes = [
-	{ path: 'sandbox', loadChildren: '@lifeworks/sandbox#SandboxModule' },
 	{
 		path: '',
 		component: ShellComponent,

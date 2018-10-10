@@ -65,8 +65,8 @@
           "options": {
             "browserTarget": "lifeworks:build",
             "ssl": true,
-            "sslCert": "local/server.crt",
-            "sslKey": "local/server.key"
+            "sslCert": "ssl/server.crt",
+            "sslKey": "ssl/server.key"
           },
           "configurations": {
             "production": {
@@ -175,8 +175,8 @@
             "port": 4201,
             "browserTarget": "lifeworks-admin:build",
             "ssl": true,
-            "sslCert": "local/server.crt",
-            "sslKey": "local/server.key"
+            "sslCert": "ssl/server.crt",
+            "sslKey": "ssl/server.key"
           },
           "configurations": {
             "production": {
@@ -972,6 +972,92 @@
             "tsConfig": [
               "libs/ui-components/attachment/tsconfig.lib.json",
               "libs/ui-components/attachment/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sandbox-site": {
+      "root": "apps/sandbox-site/",
+      "sourceRoot": "apps/sandbox-site/src",
+      "projectType": "application",
+      "prefix": "lifeworks",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/sandbox-site",
+            "index": "apps/sandbox-site/src/index.html",
+            "main": "apps/sandbox-site/src/main.ts",
+            "polyfills": "apps/sandbox-site/src/polyfills.ts",
+            "tsConfig": "apps/sandbox-site/tsconfig.app.json",
+            "styles": [
+              "libs/styles/_styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/sandbox-site/src/environments/environment.ts",
+                  "with": "apps/sandbox-site/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sandbox-site:build",
+            "ssl": true,
+            "sslCert": "ssl/server.crt",
+            "sslKey": "ssl/server.key"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sandbox-site:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sandbox-site:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/sandbox-site/src/test.ts",
+            "polyfills": "apps/sandbox-site/src/polyfills.ts",
+            "tsConfig": "apps/sandbox-site/tsconfig.spec.json",
+            "karmaConfig": "apps/sandbox-site/karma.conf.js",
+            "styles": [
+              "apps/sandbox-site/src/styles.css"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/sandbox-site/tsconfig.app.json",
+              "apps/sandbox-site/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"

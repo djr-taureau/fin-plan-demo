@@ -13,5 +13,6 @@ export class FirmClient extends TrackedBaseEntity {
 	@ManyToOne(type => ClientAccount)
 	client: ClientAccount;
 
-	@Column() status: FirmClientStatus;
+	@Column("int")
+	status: FirmClientStatus;
 }

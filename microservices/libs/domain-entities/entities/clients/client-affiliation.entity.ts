@@ -13,7 +13,8 @@ export class ClientAffiliation extends BaseEntity {
 	@JoinColumn()
 	clientAccount: ClientAccount;
 
-	@Column() relationship: ClientAffiliationRelationshipType;
+	@Column("int")
+	relationship: ClientAffiliationRelationshipType;
 
 	@Column() affiliateName: string;
 }

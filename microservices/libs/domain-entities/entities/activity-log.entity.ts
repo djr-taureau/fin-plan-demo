@@ -8,7 +8,7 @@ export class ActivityLog extends BaseEntity {
   @Column()
   message: string;
 
-  @Column()
+  @Column("datetime2")
   occurrence: Date;
 
 }

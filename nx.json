@@ -94,6 +94,9 @@
     },
     "ui-components-attachment": {
       "tags": []
+    },
+    "sandbox-site": {
+      "tags": []
     }
   }
 }

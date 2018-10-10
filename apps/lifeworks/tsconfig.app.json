@@ -9,7 +9,6 @@
   "include": [
     "**/*.ts",
     /* Lazy Loaded*/
-    "../../libs/sandbox/src/index.ts",
     "../../libs/activity-log/src/index.ts",
     "../../libs/notifications/src/index.ts",
     "../../libs/dashboarding/src/index.ts",

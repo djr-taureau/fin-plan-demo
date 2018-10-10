@@ -25,16 +25,16 @@ export class Profile extends TrackedBaseEntity {
 	@Column({ nullable: true })
 	email?: string;
 
-	@Column({ nullable: true })
+	@Column("int", { nullable: true })
 	gender?: Gender;
 
-	@Column({ nullable: true })
+	@Column("datetime2", { nullable: true })
 	dateOfBirth?: Date;
 
-	@Column({ nullable: true })
+	@Column("int", { nullable: true })
 	maritalStatus?: MaritalStatus;
 
-	@Column({ nullable: true })
+	@Column("int", { nullable: true })
 	citizenshipStatus?: CitizenshipStatus;
 
 	@Column({ nullable: true })

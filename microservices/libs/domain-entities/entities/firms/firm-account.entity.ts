@@ -13,5 +13,6 @@ export class FirmAccount extends NamedBaseEntity {
 	@OneToMany(type => Firm, firm => firm.account)
 	firms: Firm[];
 
-	@Column() accountType: FirmAccountType;
+	@Column("int")
+	accountType: FirmAccountType;
 }
