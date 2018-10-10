@@ -3,6 +3,7 @@ import {
 	AbstractRepository,
 	FindOneOptions } from 'typeorm';
 import { GetQueryOptions } from './common';
+import { getPermissions } from '../function-utilities'
 import { FirmClient, FirmStaff } from '../domain-entities';
 
 @EntityRepository(FirmClient)
@@ -58,6 +59,27 @@ export class FirmStaffRepository extends AbstractRepository<FirmStaff> {
       console.error(e);
       return null;
     }
+  }
+
+  async getLwFirmStaffPermissions(options: GetQueryOptions) {
+    const query: FindOneOptions = {
+      where: {
+        user: {
+          guid: options
+        }
+      },
+      relations: ['roles', 'roles.permissions']
+    }
+
+    try {
+      const results = await this.repository.findOne(query);
+      return getPermissions(results);
+    } catch(e) {
+      console.error(e);
+      return null;
+    }
+
+    
   }
 
 }

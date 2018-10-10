@@ -1,4 +1,5 @@
 import { QueryResult } from "../repositories/common";
+import { uniq, map, prop, flatten } from 'ramda';
 
 export function queryResponse<T>(params: {}, result: QueryResult<T>) {
     return {
@@ -16,3 +17,5 @@ export function errorResponse(err: Error) {
         message: err.message
     }
 }
+
+export const getPermissions = results => uniq(map(prop('name'),flatten(map(prop('permissions'),prop('roles', results )))));;

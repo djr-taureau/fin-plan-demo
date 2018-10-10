@@ -6,3 +6,4 @@ export * from './permissions.repository';
 export * from './users.repository';
 export * from './firm.repository';
 export * from './templates.repository';
+export * from './profile.repository';

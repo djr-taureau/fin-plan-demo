@@ -27,3 +27,8 @@ export function getPagingOptions<T>(query = {}, defaultSort = 'timestamp.created
 
 	return {};
 }
+
+export const basicError = err => {
+    console.log(err);
+    return err;
+}

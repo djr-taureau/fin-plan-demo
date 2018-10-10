@@ -18,3 +18,16 @@ export interface QueryOptions {
 export interface TemplateQueryOptions {
 	name?: string
 }
+
+export interface GetUserGuidQueryOptions {
+	aadGuid: string,
+}
+
+export interface GetUserGuidQueryOptions {
+	aadGuid: string,
+	lwInviteCode?: string,
+	aadFirstName: string,
+	aadLastName: string,
+	aadDisplayName: string,
+	aadEmail: string
+}
