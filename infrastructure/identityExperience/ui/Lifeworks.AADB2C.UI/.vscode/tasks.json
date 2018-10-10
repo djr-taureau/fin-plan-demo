@@ -1,0 +1,99 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}"
+  },
+"tasks": [
+    {
+        "label": "Build: .NetCore",
+        "problemMatcher": "$msCompile",
+        "group": {
+            "kind": "build",
+            "isDefault": true
+        },
+        "command": "dotnet",
+        "args": [
+            "build"
+        ],
+        "presentation": {
+            "reveal": "silent",
+            "showReuseMessage": false
+        },
+        "type": "shell"
+    },
+    {
+        "label": "Build: Assets",
+        "command": "dotnet",
+        "args": [
+            "bundle"
+        ],
+        "group": "build",
+        "presentation": {
+            "reveal": "never",
+            "showReuseMessage": false
+        },
+        "type": "shell",
+        "problemMatcher": []
+    },
+    {
+        "label": "Clean: Assets",
+        "command": "dotnet",
+        "args": [
+            "bundle",
+            "clean"
+        ],
+        "presentation": {
+            "reveal": "silent",
+            "showReuseMessage": false
+        },
+        "type": "shell",
+        "problemMatcher": []
+    },
+    {
+        "label": "Watch ",
+        "dependsOn": [
+            "Watch: Styles",
+            "Watch: Bundles"
+        ],
+        "problemMatcher": []
+    },
+    {
+        "label": "Watch: Bundles",
+        "command": "dotnet",
+        "args": [
+            "bundle",
+            "watch"
+        ],
+        "problemMatcher": [],
+        "presentation": {
+            "reveal": "silent",
+            "showReuseMessage": false
+        },
+        "type": "shell",
+        "isBackground": true
+    },
+    {
+        "identifier": "Build: Styles",
+        "type": "gulp",
+        "task": "sass",
+        "group": "build",
+        "presentation": {
+            "reveal": "never",
+            "showReuseMessage": false
+        },
+        "problemMatcher": []
+    },
+    {
+        "identifier": "Watch: Styles",
+        "type": "gulp",
+        "task": "sass:watch",
+        "group": "none",
+        "problemMatcher": [],
+        "presentation": {
+            "reveal": "never",
+            "showReuseMessage": false
+        },
+        "isBackground": true
+    }
+]
+}

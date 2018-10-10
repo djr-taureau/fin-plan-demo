@@ -1,69 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <TrustFrameworkPolicy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-    xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
-    xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="lifeworksDev.onmicrosoft.com" PolicyId="B2C_1A_TrustFrameworkExtensions" PublicPolicyUri="http://lifeworksDev.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06" PolicySchemaVersion="0.3.0.0" TenantId="lifeworksDev.onmicrosoft.com" PolicyId="B2C_1A_TrustFrameworkExtensions" PublicPolicyUri="http://lifeworksDev.onmicrosoft.com/B2C_1A_TrustFrameworkExtensions">
 
-    <BasePolicy>
-        <TenantId>lifeworksDev.onmicrosoft.com</TenantId>
-        <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
-    </BasePolicy>
+  <BasePolicy>
+    <TenantId>lifeworksDev.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_TrustFrameworkBase</PolicyId>
+  </BasePolicy>
 
-    <BuildingBlocks>
-    </BuildingBlocks>
+  <BuildingBlocks>
+    <ContentDefinitions>
 
-    <ClaimsProviders>
+      <!-- This content definition is to render an error page that displays unhandled errors. -->
+      <ContentDefinition Id="api.error">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/exception</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Error page</Item>
+        </Metadata>
+      </ContentDefinition>
 
-        <ClaimsProvider>
-            <DisplayName>Lifeworks Claims</DisplayName>
-            <TechnicalProfiles>
-                <TechnicalProfile Id="LW-UserGetOrCreateUsingObjectId">
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserGuid</Item>
-                    </Metadata>
-                </TechnicalProfile>
-                <TechnicalProfile Id="LW-UserContextGetUsingLWUserGuid">
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserContextGuids</Item>
-                    </Metadata>
-                </TechnicalProfile>
-                <TechnicalProfile Id="LW-UserPermissionsGetUsingLWUserGuid">
-                    <Metadata>
-                        <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserPermissions</Item>
-                    </Metadata>
-                </TechnicalProfile>
-            </TechnicalProfiles>
-        </ClaimsProvider>
+      <ContentDefinition Id="api.idpselections">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/idpSelector</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Idp selection page</Item>
+          <Item Key="language.intro">Sign in</Item>
+        </Metadata>
+      </ContentDefinition>
 
-        <ClaimsProvider>
-            <DisplayName>Google</DisplayName>
-            <TechnicalProfiles>
-                <TechnicalProfile Id="Google-OAUTH">
-                    <Metadata>
-                        <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
-                        <Item Key="scope">email</Item>
-                        <Item Key="client_id">840389013888-a97k85d0lc5emb61t3j9vbmc89k5nfmd.apps.googleusercontent.com</Item>
-                    </Metadata>
-                </TechnicalProfile>
-            </TechnicalProfiles>
-        </ClaimsProvider>
+      <ContentDefinition Id="api.idpselections.signup">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/idpSelector</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Idp selection page</Item>
+          <Item Key="language.intro">Sign up</Item>
+        </Metadata>
+      </ContentDefinition>
 
-        <ClaimsProvider>
-            <DisplayName>Local Account SignIn</DisplayName>
-            <TechnicalProfiles>
-                <TechnicalProfile Id="login-NonInteractive">
-                    <Metadata>
-                        <Item Key="client_id">0e5bcb9f-ed80-44e2-9204-e88af91b23db</Item>
-                        <Item Key="IdTokenAudience">a8edece2-c777-46ad-8840-75ee879a5b70</Item>
-                    </Metadata>
-                    <InputClaims>
-                        <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="0e5bcb9f-ed80-44e2-9204-e88af91b23db" />
-                        <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="a8edece2-c777-46ad-8840-75ee879a5b70" />
-                    </InputClaims>
-                </TechnicalProfile>
-            </TechnicalProfiles>
-        </ClaimsProvider>
+      <ContentDefinition Id="api.signuporsignin">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/Unified</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Signin and Signup</Item>
+        </Metadata>
+      </ContentDefinition>
 
-    </ClaimsProviders>
+      <ContentDefinition Id="api.selfasserted">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Collect information from user page</Item>
+        </Metadata>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.selfasserted.profileupdate">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/updateProfile</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Collect information from user page</Item>
+        </Metadata>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.localaccountsignup">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Local account sign up page</Item>
+        </Metadata>
+      </ContentDefinition>
+
+      <ContentDefinition Id="api.localaccountpasswordreset">
+        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
+        <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
+        <Metadata>
+          <Item Key="DisplayName">Local account change password page</Item>
+        </Metadata>
+      </ContentDefinition>
+
+    </ContentDefinitions>
+  </BuildingBlocks>
+
+  <ClaimsProviders>
+
+    <ClaimsProvider>
+      <DisplayName>Lifeworks Claims</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="LW-UserGetOrCreateUsingObjectId">
+          <Metadata>
+            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserGuid</Item>
+          </Metadata>
+        </TechnicalProfile>
+        <TechnicalProfile Id="LW-UserContextGetUsingLWUserGuid">
+          <Metadata>
+            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserContextGuids</Item>
+          </Metadata>
+        </TechnicalProfile>
+        <TechnicalProfile Id="LW-UserPermissionsGetUsingLWUserGuid">
+          <Metadata>
+            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserPermissions</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider>
+      <DisplayName>Google</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="Google-OAUTH">
+          <Metadata>
+            <Item Key="ClaimsEndpoint">https://www.googleapis.com/oauth2/v1/userinfo</Item>
+            <Item Key="scope">email</Item>
+            <Item Key="client_id">840389013888-a97k85d0lc5emb61t3j9vbmc89k5nfmd.apps.googleusercontent.com</Item>
+          </Metadata>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+    <ClaimsProvider>
+      <DisplayName>Local Account SignIn</DisplayName>
+      <TechnicalProfiles>
+        <TechnicalProfile Id="login-NonInteractive">
+          <Metadata>
+            <Item Key="client_id">0e5bcb9f-ed80-44e2-9204-e88af91b23db</Item>
+            <Item Key="IdTokenAudience">a8edece2-c777-46ad-8840-75ee879a5b70</Item>
+          </Metadata>
+          <InputClaims>
+            <InputClaim ClaimTypeReferenceId="client_id" DefaultValue="0e5bcb9f-ed80-44e2-9204-e88af91b23db" />
+            <InputClaim ClaimTypeReferenceId="resource_id" PartnerClaimType="resource" DefaultValue="a8edece2-c777-46ad-8840-75ee879a5b70" />
+          </InputClaims>
+        </TechnicalProfile>
+      </TechnicalProfiles>
+    </ClaimsProvider>
+
+  </ClaimsProviders>
 
   <UserJourneys>
 

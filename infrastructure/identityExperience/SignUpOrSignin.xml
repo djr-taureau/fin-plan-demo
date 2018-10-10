@@ -15,6 +15,11 @@
 
   <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+    <UserJourneyBehaviors>
+      <ContentDefinitionParameters>
+        <Parameter Name="firm">{OAUTH-KV:firm}</Parameter>
+      </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="OpenIdConnect" />

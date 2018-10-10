@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { path } from 'ramda';
 
 import { Configuration } from './configuration';
-import { getConfigError } from './config-errors';
+import { getConfigError, getInvalidConfigError } from './config-errors';
 import { isNotUseable } from '@lifeworks/common';
 
 export const CONFIG_URL = new InjectionToken('CONFIG_URL');
@@ -25,12 +25,12 @@ export class ConfigService {
 			.toPromise()
 			.then(result => (this.config = result))
 			.catch(() => {
-				throw getConfigError();
+				throw getConfigError(this.configUrl);
 			});
 	}
 
 	getLifeworksApiUri() {
-		if (isNotUseable(this.config)) throw getConfigError();
+		if (isNotUseable(this.config)) throw getInvalidConfigError();
 
 		return path(['apis', 'lifeworks'], this.config);
 	}
