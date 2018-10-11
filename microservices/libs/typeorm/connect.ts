@@ -18,10 +18,20 @@ import {
 	FirmStaffCertification,
 	FirmCertification,
 	FirmStaff,
-	Templates
+	Templates,
+	TaxationCategory,
+	TaxationRule,
+	IncomeAdjustments,
+	IncomeAdjustmentValue,
+	IncomeClassification,
+	IncomeClassificationGroup,
+	EntityIncome,
+	Country,
+	Organization,
+	Relationship,
+	RelationshipAttribute,
+	RelationshipDefinition
 } from '../domain-entities';
-
-
 
 const connectionConfig: ConnectionOptions = {
 	type: 'mssql',
@@ -49,7 +59,19 @@ const connectionConfig: ConnectionOptions = {
 		FirmStaffCertification,
 		FirmCertification,
 		FirmStaff,
-		Templates
+		Templates,
+		TaxationCategory,
+		TaxationRule,
+		IncomeAdjustments,
+		IncomeAdjustmentValue,
+		IncomeClassification,
+		IncomeClassificationGroup,
+		EntityIncome,
+		Country,
+		Organization,
+		Relationship,
+		RelationshipAttribute,
+		RelationshipDefinition
 	],
 	options: {
 		encrypt: true

@@ -30,7 +30,7 @@
     "ms:build:clean": "rimraf dist/microservices",
     "ms:build:ts": "tsc -p microservices/tsconfig.microservices.json",
     "ms:build:copy": "copyfiles -u 1 \"microservices/**/*\" -e \"**/*(*.ts|*.microservices.json)\" dist/microservices",
-    "ms:build": "npm run ms:build:clean && npm run ms:build:ts && npm run ms:build:copy",
+    "ms:build": "npm run ms:build:clean; npm run ms:build:ts; npm run ms:build:copy",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
     "sql:build:image": "docker build ./tools/docker/sql-server --tag lifeworks/sql-server:latest",
     "sql:build:container": "docker run -it  -p 1433:1433 --name lifeworks-sql -d lifeworks/sql-server:latest",
@@ -45,7 +45,8 @@
     "db:migration:gen": "./tools/scripts/migrations-generate.sh",
     "db:migration:run": "./tools/scripts/migrations-run.sh",
     "env:echo": "node ./tools/scripts/env-echo.js",
-    "db:seed": "./node_modules/.bin/ts-node ./tools/scripts/db-seed.ts"
+    "db:seed": "./node_modules/.bin/ts-node ./tools/scripts/db-seed.ts",
+    "db:sync": "./tools/scripts/db-sync.sh"
   },
   "private": true,
   "dependencies": {
