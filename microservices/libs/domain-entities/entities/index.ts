@@ -10,3 +10,5 @@ export * from './relationships';
 export * from './activity-log.entity';
 export * from './notification.entity';
 export * from './templates.entity';
+export * from './address.entity';
+export * from './contact-info.entity';

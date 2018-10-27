@@ -1,6 +1,8 @@
-import { Column } from 'typeorm';
+import { Column, Entity, Index } from 'typeorm';
+import { TrackedBaseEntity } from '../common'
 
-export class Address {
+@Entity('address')
+export class Address extends TrackedBaseEntity {
 	@Column({ nullable: true })
 	street1: string;
 
@@ -21,4 +23,8 @@ export class Address {
 	
 	@Column({ nullable: true })
 	country: string;
+
+	@Index()
+	@Column('uuid')
+	target: string;
 }

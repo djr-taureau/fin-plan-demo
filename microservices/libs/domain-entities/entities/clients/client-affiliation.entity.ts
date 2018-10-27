@@ -2,7 +2,7 @@ import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
 import { ClientAccount } from './client-account.entity';
 import { ClientAffiliationRelationshipType } from './client-affiliation-relationship-type';
-import { Address, BaseEntity } from '../../common';
+import { BaseEntity } from '../../common';
 
 @Entity('client-affiliations')
 export class ClientAffiliation extends BaseEntity {

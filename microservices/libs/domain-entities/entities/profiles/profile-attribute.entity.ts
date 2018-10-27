@@ -2,23 +2,25 @@ import {
 	Entity,
 	Column,
 	ManyToOne,
-	JoinColumn
+	JoinColumn,
 } from 'typeorm';
 
-import { TrackedEntity } from '../../common';
+import { TrackedBaseEntity, ProfileAttributeValueType } from '../../common';
 import { Profile } from './profile.entity';
 
 
 @Entity('profile-attributes')
-export class ProfileAttribute extends TrackedEntity {
+export class ProfileAttribute extends TrackedBaseEntity {
 
-	@ManyToOne(type => Profile, p => p.attributes, {primary: true})
-	@JoinColumn()
+	@ManyToOne( type => Profile, p => p.attributes )
 	profile: Profile;
 
-	@Column({primary: true})
+	@Column( {primary: true} )
 	name: string;
 
 	@Column()
 	value: string;
+
+	@Column()
+	valueType: ProfileAttributeValueType;
 }

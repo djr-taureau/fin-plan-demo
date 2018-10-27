@@ -1,13 +1,14 @@
 import 'reflect-metadata';
 import { createConnection, ConnectionOptions } from 'typeorm';
 import {
+	Address,
 	ClientAccount,
 	ClientAffiliation,
 	ClientRelationship,
 	ClientMember,
 	Profile,
 	ProfileAttribute,
-	ProfileContactInformation,
+	ContactInformation,
 	SystemUser,
 	SystemPermission,
 	SystemRole,
@@ -42,13 +43,14 @@ const connectionConfig: ConnectionOptions = {
 	synchronize: (process.env.SQL_SYNC) as any || false,
 	logging: false,
 	entities: [
+		Address,
 		ClientAccount,
 		ClientAffiliation,
 		ClientRelationship,
 		ClientMember,
 		Profile,
 		ProfileAttribute,
-		ProfileContactInformation,
+		ContactInformation,
 		SystemUser,
 		SystemPermission,
 		SystemRole,

@@ -2,6 +2,11 @@ export interface GetQueryOptions {
 	guid: string;
 }
 
+export interface GetProfileOptions {
+	excludeAttributes?: boolean;
+	select?: Array<string>;
+}
+
 export interface QueryOptions {
 	skip?: number;
 	take?: number;
@@ -30,4 +35,35 @@ export interface GetUserGuidQueryOptions {
 	aadLastName: string,
 	aadDisplayName: string,
 	aadEmail: string
+}
+
+export interface ProfileAttributesQueryOptions {
+	name: string,
+	value: string,
+	valueType: number
+}
+
+
+export interface CreateProfileQueryOptions {
+	profileType: number,
+	firstName?: string,
+	middleName?: string,
+	lastName?: string,
+	legalName?: string,
+	commonName?: string,
+	gender?: number,
+	dateOfBirth?: string,
+	attributes?: Array<ProfileAttributesQueryOptions>	
+}
+
+export interface UpdateProfileQueryOptions {
+	profileType?: number,
+	firstName?: string,
+	middleName?: string,
+	lastName?: string,
+	legalName?: string,
+	commonName?: string,
+	gender?: number,
+	dateOfBirth?: string,
+	attributes?: Array<ProfileAttributesQueryOptions>	
 }

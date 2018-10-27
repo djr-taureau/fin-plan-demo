@@ -1,11 +1,14 @@
 import { Entity, Column, OneToMany } from 'typeorm';
 
-import { TrackedBaseEntity, Address } from '../../common';
+import { TrackedBaseEntity } from '../../common';
 import { ProfileAttribute } from './profile-attribute.entity';
-import { CitizenshipStatus } from './citizenship-status';
 import { Gender } from './gender';
-import { MaritalStatus } from './marital-status';
-import { ProfileContactInformation } from './profile-contact-info.entity';
+
+enum ProfileType {
+	Client = 0,
+	Firm = 1,
+	Relationship = 2,
+}
 
 @Entity('profiles')
 export class Profile extends TrackedBaseEntity {
@@ -19,11 +22,11 @@ export class Profile extends TrackedBaseEntity {
 	@Column({ nullable: true })
 	lastName?: string;
 
-	@Column(type => Address)
-	address?: Address;
+	@Column({ nullable: true })
+	legalName?: string;
 
 	@Column({ nullable: true })
-	email?: string;
+	commonName?: string;
 
 	@Column("int", { nullable: true })
 	gender?: Gender;
@@ -31,18 +34,9 @@ export class Profile extends TrackedBaseEntity {
 	@Column("datetime2", { nullable: true })
 	dateOfBirth?: Date;
 
-	@Column("int", { nullable: true })
-	maritalStatus?: MaritalStatus;
-
-	@Column("int", { nullable: true })
-	citizenshipStatus?: CitizenshipStatus;
-
-	@Column({ nullable: true })
-	countryOfOrigin?: string;
-
 	@OneToMany(type => ProfileAttribute, pa => pa.profile)
-	attributes: ProfileAttribute[];
+	attributes?: ProfileAttribute[];
 
-	@OneToMany(type => ProfileContactInformation, pci => pci.profile)
-	contactInformation: ProfileContactInformation[];
+	@Column('int')
+	profileType: ProfileType;
 }

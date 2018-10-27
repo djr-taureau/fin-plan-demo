@@ -5,7 +5,8 @@ import {
   FirmClientRepository,
   FirmStaffRepository,
   UsersRepository,
-  ProfileRepository
+  ProfileRepository,
+  ProfileAttributeRespository
 } from '../repositories';
 import { errorResponse } from '../function-utilities/format-responses';
 
@@ -16,6 +17,7 @@ export class AuthService {
   private firmStaffRepo = getCustomRepository(FirmStaffRepository);
   private userRepo = getCustomRepository(UsersRepository);
   private profileRepo = getCustomRepository(ProfileRepository);
+  private profileAttrRepo = getCustomRepository(ProfileAttributeRespository);
 
 
   async getUserGuid(param) {
@@ -24,7 +26,30 @@ export class AuthService {
       if(lwUserGuid) {
         return lwUserGuid;
       } else {
-        const profile = await this.profileRepo.createProfile(param);
+
+        const profileOptions = {
+          firstName: param.aadFirstName,
+          lastName: param.aadLastName,
+          profileType: 0
+        }
+
+        const profileAttributes = [
+          {
+            value: param.aadEmail,
+            name: 'email',
+            valueType: 1
+          },
+          {
+            value: param.aadDisplayName,
+            name: 'displayName',
+            valueType: 2
+          }
+        ]
+
+        const profile = await this.profileRepo.createProfile(profileOptions);
+        
+        await this.profileAttrRepo.createProfileAttributes(profile.guid, profileAttributes);
+
         const user = await this.userRepo.createSystemUser(profile, param);
         return user.guid;
       }
