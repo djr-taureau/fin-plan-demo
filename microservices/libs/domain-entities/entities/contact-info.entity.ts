@@ -1,6 +1,12 @@
 import { Entity, Column, Index } from 'typeorm';
 
-import { TrackedBaseEntity, ValueType } from '../common';
+import { TrackedBaseEntity} from '../common';
+
+enum ContactInformationType {
+	Phone = 0,
+	Email = 1,
+	Other = 2
+}
 
 @Entity('contact-information')
 export class ContactInformation extends TrackedBaseEntity {
@@ -13,8 +19,8 @@ export class ContactInformation extends TrackedBaseEntity {
 	@Column()
 	value: string;
 
-	@Column()
-	valueType: ValueType;
+	@Column('int')
+	valueType: ContactInformationType;
 
 	@Index()
 	@Column('uuid')

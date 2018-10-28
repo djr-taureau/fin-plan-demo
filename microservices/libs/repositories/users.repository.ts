@@ -31,7 +31,12 @@ export class UsersRepository extends AbstractRepository<SystemUser> {
         }
       }
       const results = await this.repository.findOne(query);
-      return results.guid;
+      if(results) {
+        return results.guid;
+      } else {
+        return false;
+      }
+      
     } catch(err) {
       basicError(err);
     }

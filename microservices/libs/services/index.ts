@@ -6,5 +6,6 @@ export * from './permissions.service';
 export * from './users.service';
 export * from './auth.service';
 export * from './templates.service';
+export * from './settings.service';
 export * from './content.service';
 export * from './profile.service';

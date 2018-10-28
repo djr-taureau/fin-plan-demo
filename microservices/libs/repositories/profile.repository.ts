@@ -7,17 +7,8 @@ import {
   map,
   differenceWith,
   difference,
-  filter,
-  reduce,
-  assoc,
-  has,
-  ifElse,
-  append,
-  over,
-  lensProp,
-  is,
-  compose,
-  split } from 'ramda';
+  filter } from 'ramda';
+import { insertExtensions } from '../function-utilities';
 import { format } from 'date-fns';
 import { 
   basicError,
@@ -56,24 +47,7 @@ export class ProfileRepository extends AbstractRepository<Profile> {
 
       if(!options.excludeAttributes) {
         if(profile.attributes.length > 0) {
-
-          const insertExtension = (acc, item) => {
-
-            const insert = ifElse(
-              is(Array),
-              append(item.value),
-              compose(append(item.value), split(item.name))
-            )
-
-            const formExtension = ifElse(
-              has(item.name),
-              over(lensProp(item.name), insert),
-              assoc(item.name, item.value)
-            )
-
-            return formExtension(acc);
-          }
-          return reduce(insertExtension, profile, profile.attributes);
+          return insertExtensions(profile, profile.attributes);
         }
       }
 

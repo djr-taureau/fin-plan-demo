@@ -1,5 +1,5 @@
 import {Entity, Column, Index} from 'typeorm';
-import { TrackedEntity, SettingValueType } from '../common';
+import { TrackedBaseEntity, ValueType } from '../common';
 
 enum StatusFlag {
   NotActive = 0,
@@ -8,12 +8,13 @@ enum StatusFlag {
 }
 
 @Entity('settings')
-export class Settings extends TrackedEntity {
+export class Settings extends TrackedBaseEntity {
   
   @Index()
   @Column()
   entityGuid: string;
 
+  @Index()
   @Column()
   name: string;
 
@@ -21,7 +22,7 @@ export class Settings extends TrackedEntity {
   value: string;
 
   @Column('int')
-  valueType: SettingValueType;
+  valueType: ValueType;
 
   @Column('int')
   statusFlag: StatusFlag;

@@ -20,6 +20,7 @@ export interface QueryOptions {
 	select?: string[];
 	relations?: string[];
 }
+
 export interface TemplateQueryOptions {
 	name?: string
 }
@@ -35,6 +36,23 @@ export interface GetUserGuidQueryOptions {
 	aadLastName: string,
 	aadDisplayName: string,
 	aadEmail: string
+}
+
+export interface CreateSettingsQueryOptions {
+	entityGuid: string,
+	name: string,
+	value: any,
+	valueType: number
+}
+
+export interface GetSettingsQueryOptions {
+	entityGuid: string;
+}
+
+export interface UpdateSettingsQueryOptions {
+	name?: string,
+	value?: any,
+	valueType?: number
 }
 
 export interface ProfileAttributesQueryOptions {
