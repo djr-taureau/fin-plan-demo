@@ -1,4 +1,12 @@
 <nav mat-tab-nav-bar>
-  <a mat-tab-link [routerLink]="navItem.location" routerLinkActive [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive"
-    [active]="rla.isActive" *ngFor="let navItem of navigation">{{navItem.display}}</a>
+  <a mat-tab-link [routerLink]="navItem.location" [queryParams]="navItem.queryParams" routerLinkActive
+    [routerLinkActiveOptions]="{exact: true}" #rla="routerLinkActive" [active]="rla.isActive" *ngFor="let navItem of navigation">
+    <ng-container *ngIf="navItem.icon">
+      <mat-icon>{{navItem.icon}}</mat-icon>
+    </ng-container>
+    {{navItem.display}}
+    <ng-container *ngIf="navItem.count">
+        <lw-badge>{{navItem.count}}</lw-badge>
+    </ng-container>
+  </a>
 </nav>

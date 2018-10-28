@@ -1,0 +1,65 @@
+:host {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+	grid-template-rows: auto;
+	grid-column-gap: 6rem;
+	grid-row-gap: 5rem;
+	margin-top: 5rem;
+}
+
+.page-sidebar {
+	width: 25.8rem;
+	grid-row: 1 / span 4;
+    grid-column-start: 2;
+}
+
+.about-content {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+
+.status-block {
+	grid-column: 1 / 1;
+	grid-row: 1 / 1;
+	min-height: 135px;
+
+	.days-block {
+		margin-top: 3px;
+		margin-left: 8px;
+	}
+}
+.scenario-block{
+	border-left: 1px solid #D8DDDF;
+	grid-column: 2 / 2;
+	grid-row: 1 / 1;
+
+	min-height: 135px;
+}
+
+.finances-block {
+	.block-grid-row {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	.list-details-block {
+		flex-direction: column;
+		display: flex;
+	}
+	.details-list:first-of-type {
+		margin-top: 11px;
+		flex-grow: 1;
+	}
+}
+
+.client-members-block{
+	border-top: 1px solid #D8DDDF;
+	grid-column: 1 / span 2;
+	grid-row: 2 / span 1;
+
+	.list-details-block {
+		margin-bottom: 26px;
+	}
+}
+
+.team-list {
+	margin-bottom: 6rem;
+}

@@ -1,8 +1,73 @@
 :host {
-    display: flex;
-    flex-direction: column;
+	display: flex;
+	flex-direction: column;
 }
 
+/**
+Need to create a Material Theme for Tables to stop repeating data
+*/
 .mat-table {
-    flex: 1;
+	flex: 1;
+}
+.mat-sort-header-arrow {
+	color: #f26623;
+}
+
+th.mat-header-cell {
+	background-color: #e6ebec;
+	padding-left: 2.4rem;
+	&:not(:last-child) {
+		border-right: 1px solid #c3c7c8;
+	}
+
+	color: #153c3f;
+	font-size: 1.8rem;
+	letter-spacing: 0.015rem;
+}
+td.mat-cell {
+	padding-left: 2.4rem;
+	&:not(:last-child) {
+		border-right: 1px solid #c3c7c8;
+	}
+	border-bottom: none;
+}
+
+tr.mat-row:nth-child(even) {
+	background-color: #edf1f2;
+}
+
+td.mat-cell:first-child,
+td.mat-footer-cell:first-child,
+th.mat-header-cell:first-child {
+	padding-left: 3.8rem;
+}
+.mat-column-select {
+	border-right: none !important;
+	width: 2rem !important;
+
+	/deep/ .mat-checkbox-frame {
+		border: none !important;
+		// background: #fff;
+		// border-color: #E5E3E3 !important;
+	}
+
+	/deep/ .mat-checkbox-checkmark-path,
+	/deep/.mat-checkbox-mixedmark {
+		background-color: #f26623;
+		stroke: #f26623 !important;
+	}
+
+	/deep/ .mat-checkbox-inner-container {
+		background-color: #fff;
+		border-radius: 3px;
+		border: solid 1px #e5e3e5;
+	}
+
+	/deep/ .mat-checkbox-background {
+		background-color: #fff;
+	}
+}
+
+.mat-column-name {
+	padding-left: 1.8rem !important;
 }

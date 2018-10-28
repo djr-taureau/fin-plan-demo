@@ -7,9 +7,28 @@ import {
 } from './+modules';
 
 import {
-	ClientsPageComponent
+	ClientsListPageComponent,
+	ClientProfilePageComponent,
+	ClientDataPageComponent,
+	ClientPlanningPageComponent,
+	ClientActivityPageComponent,
+	ClientDocumentsPageComponent,
+	ClientSalesPageComponent,
+	ClientDataStepPageComponent
 } from './pages';
-import { ClientsPageHeaderComponent, ClientsTableComponent } from './components';
+import {
+	ClientsPageHeaderComponent,
+	ClientDetailHeaderComponent,
+	ClientProfileHeaderComponent,
+	ClientActivityHeaderComponent,
+	ClientsTableComponent,
+	ClientsModuleBarComponent,
+	ClientDataHeaderComponent,
+	ClientsBalanceSheetComponent,
+	AddAccountButtonComponent,
+	SplitButtonComponent
+} from './components';
+import { ModuleStatusPipe, LinkStatusPipe } from './services';
 
 @NgModule({
 	imports: [
@@ -19,10 +38,30 @@ import { ClientsPageHeaderComponent, ClientsTableComponent } from './components'
 		ClientsStateModule
 	],
 	declarations: [
-		ClientsPageComponent,
+		ClientsListPageComponent,
 		ClientsPageHeaderComponent,
-		ClientsTableComponent
+		ClientDetailHeaderComponent,
+		ClientsTableComponent,
+		ClientProfilePageComponent,
+		ClientDataPageComponent,
+		ClientPlanningPageComponent,
+		ClientActivityPageComponent,
+		ClientDocumentsPageComponent,
+		ClientSalesPageComponent,
+		ClientActivityHeaderComponent,
+		ClientProfileHeaderComponent,
+		ClientsModuleBarComponent,
+		ClientDataHeaderComponent,
+		ClientsBalanceSheetComponent,
+		ClientDataStepPageComponent,
+		SplitButtonComponent,
+		AddAccountButtonComponent,
+		ModuleStatusPipe,
+		LinkStatusPipe
 	],
-	entryComponents: []
+	exports:[
+		ModuleStatusPipe,
+		LinkStatusPipe
+	]
 })
 export class ClientsModule {}

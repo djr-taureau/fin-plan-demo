@@ -1,0 +1,44 @@
+.page-header {
+    .lw-section {
+        min-height: 11.9rem;
+    }
+    .lw-section-title {
+        font-size: 2.8rem;
+    }
+}
+
+.lw-page {
+    display: grid;
+    grid: auto auto 1fr / 1fr;
+    
+    .page-content {
+        grid: 1fr/1fr auto;
+        grid-gap: 6rem;
+        display: grid;
+    }
+}
+
+.full-page {
+    .page-content {
+        grid: 1fr/1fr;
+        grid-gap: 6rem;
+        display: grid;
+    }
+}
+.fullWithLeftSidebar {
+    .page-content {
+        grid-gap: 0;
+        display: grid;
+        grid-template-columns: 33rem auto;
+    }
+}
+
+.almostFullWithLeftSidebar {
+    .page-content {
+        grid-gap: 0;
+        display: grid;
+        grid-template-columns: 33rem 4fr 1fr;
+        }
+}
+
+

@@ -1,9 +1,9 @@
 <lw-data-list [striped]="true">
   <lw-data-list-item [item]="notification" [location]="notification | notificationLink" *ngFor="let notification of items"
     [icon]="notification | notificationImage">
-    <lw-data-list-item-header>{{notification?.timestamps?.createdOn | niceDate}}</lw-data-list-item-header>
     <lw-data-list-item-header>{{notification?.notificationType | uppercase | replace:"-":" "}}</lw-data-list-item-header>
-    <div lwInlineCaret caretDirection="right" [lwBindTemplate]="notification"></div>
+    <lw-data-list-item-header>{{notification?.timestamps?.createdOn | niceDate}}</lw-data-list-item-header>
+    <div lwInlineCaret [lwBindTemplate]="notification"></div>
     <button lwDataListItemAction lw-icon-button *ngIf="!notification?._ui_isRemoving" (click)="raiseItemEvent('remove', notification, $event)"
       aria-label="Remove">&#xe929;</button>
   </lw-data-list-item>

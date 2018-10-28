@@ -3,11 +3,11 @@
 .lw-dashboard-header {
 	position: relative;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-column-gap: 2rem;
 	grid-row-gap: $spacing-content-padding*0.66;
-	padding: $spacing-content-padding*0.66 $spacing-content-padding;
-	color: #ffffff;
+	padding: $spacing-content-padding*0.66 $spacing-content-padding*1.85;
+	color: #66AA99;;
 	background-color: #0f252b;
 	font-family: $font-family-primary;
 	font-size: 1.6rem;
@@ -17,6 +17,10 @@
 	background-position: right -5rem center;
 	background-image: url('/assets/accents/overview-background.svg');
 	overflow: hidden;
+
+	a {
+		color: #66AA99;
+	}
 
 	&:after {
 		content: '';

@@ -13,8 +13,11 @@ export type NavigationItems = Array<NavigationItem>;
 export interface NavigationItem {
 	display?: string;
 	order: number;
+	count?: number;
 	icon?: string;
 	location?: NavigationLink;
+	queryParams?: {};
 	children?: NavigationItem[];
 	action?: string;
+	cssClass?: string;
 }

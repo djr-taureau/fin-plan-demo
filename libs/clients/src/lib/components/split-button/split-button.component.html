@@ -1,0 +1,10 @@
+<button mat-flat-button class="add-account-button split-button" [matMenuTriggerFor]="appMenu">
+    <span class="text-wrapper"><ng-content></ng-content></span>
+
+    <div class="split-icon-wrapper">
+        <mat-icon>arrow_drop_down</mat-icon>
+    </div>
+</button>
+<mat-menu [class]="'split-button-panel'" [xPosition]="'before'" [yPosition]="'below'" #appMenu="matMenu">
+    <button mat-menu-item (click)="dispatch(act.value)" *ngFor="let act of actions">{{act.display}}</button>
+</mat-menu>

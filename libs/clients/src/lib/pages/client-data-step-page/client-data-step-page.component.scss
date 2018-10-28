@@ -1,0 +1,115 @@
+.page-hero {
+    padding: 6rem 3.6rem 3rem 3.6rem;
+}
+
+.step-header {
+    box-sizing: border-box;
+    background: #E6EBEC;
+    min-height: 74px;
+    color: #153C3F;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.15px;
+    border-bottom: solid 5px #D8DDDF;
+    border-top: solid 1px #D8DDDF;
+    display: flex;
+    align-items: center;
+    padding: 0 3.6rem;
+}
+
+.simple-list {
+    background: #EDF1F2;
+    border: 1px solid #D8DDDF;
+    padding: 0 2.3rem;
+    margin: 0 3.6rem 6.4rem 3.6rem;
+    color: #959595;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.12px;
+    line-height: 28px;
+
+    .simple-list-header {
+        min-height: 76px;
+        align-items: center;
+        display: flex;
+        border-bottom: 1px solid #D8DDDF;
+
+        .title {
+            color: #153C3F;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 0.13px;
+            flex-grow: 1;
+        }
+    
+    }
+
+    .simple-list-item {
+        min-height: 74px;
+        align-items: center;
+        display: flex;
+        justify-content: space-between;
+
+        .title {
+            display: flex;
+            align-items: center;
+        }
+
+        &:not(:last-of-type) {
+            border-bottom: 1px solid #D8DDDF;
+        }
+
+        .lw-badge {
+            margin-left: 6px;
+        }
+    }
+}
+
+.page-actions {
+    display: flex;
+    padding: 0 3.6rem;
+
+    .fill {
+        flex-grow: 1
+    }
+
+    button:not(:last-of-type) {
+        // background: red;
+        margin-right: 2rem;
+    }
+}
+
+.mat-button {
+    min-height: 44px;
+    line-height: 44px;
+    padding: 0;
+    min-width: 0;
+    color: #F26623;
+}
+
+.mat-flat-button {
+    color: #153C3F;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: center;
+    letter-spacing: 0.12px;
+    line-height: 28px;
+
+    min-height: 44px;
+    min-width: 156px;
+    border-radius: 0;
+
+    /deep/ .mat-button-wrapper {
+        justify-content: center;
+    }
+
+    &.orange {
+        background: #F26623;
+        color: #ffffff;
+    }
+    &.grey {
+        background: linear-gradient(-180deg, #EEF0F1 0%, #D8DDDF 100%);
+        border: 1px solid #A3B5B7;
+        color: #153C3F;
+    }
+}

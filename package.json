@@ -46,7 +46,8 @@
     "db:migration:run": "./tools/scripts/migrations-run.sh",
     "env:echo": "node ./tools/scripts/env-echo.js",
     "db:seed": "./node_modules/.bin/ts-node ./tools/scripts/db-seed.ts",
-    "db:sync": "./tools/scripts/db-sync.sh"
+    "db:sync": "./tools/scripts/db-sync.sh",
+    "ng:fm": "./tools/scripts/feat-mod.sh"
   },
   "private": true,
   "dependencies": {

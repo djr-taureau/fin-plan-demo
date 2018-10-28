@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule, MatIconModule } from '@angular/material';
+import { UiComponentsLayoutsModule } from '@lifeworks/ui-components/layouts';
 
-const MODULES = [MatTabsModule];
+const MODULES = [MatTabsModule, MatIconModule, UiComponentsLayoutsModule];
 
 @NgModule({
-	imports: [MODULES],
-	exports: [MODULES]
+	exports: MODULES
 })
 export class PageNavigationUIModule {}

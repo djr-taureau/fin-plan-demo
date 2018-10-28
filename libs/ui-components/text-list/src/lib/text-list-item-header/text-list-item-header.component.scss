@@ -2,14 +2,18 @@
 
 :host {
 	display: block;
+	margin-bottom: 0.3rem;
+	margin-bottom: 0.9rem;
+
 	a {
-		font-family: $font-family-primary;
-		font-weight: $font-weight-light;
-		color: $color-green-light;
-		font-size: 1.3rem;
+
+		font-weight: bold;
+		color: #082F36;
+		font-size: 1.4rem;
 		line-height: 1.5;
 		text-transform: uppercase;
 		text-decoration: none;
+		margin-bottom: 0.5px;
 		&:hover {
 			text-decoration: underline;
 		}

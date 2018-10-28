@@ -1,8 +1,8 @@
-//tslint:disable:use-host-property-decorator use-input-property-decorator
+//tslint:disable:use-host-property-decorator use-input-property-decorator directive-class-suffix
 import {
 	Component,
 	OnInit,
-	Input,
+	Directive,
 	ViewEncapsulation,
 	ElementRef
 } from '@angular/core';
@@ -37,3 +37,9 @@ export class DashboardOverviewValueCalloutComponent extends _DashboardOverviewVa
 		this.classes = `lw-value-callout-item-main-${this.displayType}`;
 	}
 }
+
+@Directive({
+	selector: 'lw-value-callout-item-title, [lwValueCalloutItemTitle]',
+	host: { class: 'lw-value-callout-item-title' },
+  })
+  export class ValueCalloutItemItem {}

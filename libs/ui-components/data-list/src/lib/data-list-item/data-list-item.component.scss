@@ -2,10 +2,9 @@
 
 :host-context {
 	display: flex;
-	flex: 1;
-	color: $color-grey-dark;
-	align-items: stretch;
-	font-size: 1.6rem;
+	font-size: 1.4rem;
+	color: #153C3F;
+	line-height: 2.6rem;
 	font-family: $font-family-text;
 	position: relative;
 }
@@ -20,7 +19,6 @@ a.data-list-item-content {
 .data-list-item-content {
 	padding: 1.4rem 7.5rem 1.4rem 2.5rem;
 	flex-grow: 10;
-	font-weight: $font-weight-light;
 }
 
 .data-list-item-actions {
@@ -37,5 +35,5 @@ a.data-list-item-content {
 }
 
 .striped :host-context:nth-child(odd) {
-	background-color: $color-grey-lightest;
+	// background-color: $color-grey-lightest;
 }

@@ -1,0 +1,14 @@
+/deep/ .title-bar.lw-section-title {
+    font-size: 18px;
+}
+
+.table-container {
+    display: flex;
+
+    .table-sidemenu {
+        
+    }
+    .table {
+        flex-grow: 1;
+    }
+}

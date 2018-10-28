@@ -1,0 +1,44 @@
+<div class="info-block block">
+    <div class="title-lg">Family &amp; Account Information</div>
+    <p class="t-body">
+        Get started filling in data, more information helps you make better decisions.
+    </p>
+
+    <div class="data-progress">
+        <div class="progress-title title-md">Not Started</div>
+
+        <div class="progress-container">
+            <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+            <span class='progress-label'>40%</span>
+        </div>
+    </div>
+</div>
+
+<div class="action-block">
+    <button mat-flat-button>Resend Client Invite</button>
+    <div class="t-hint">Invited on 5/30/18</div>
+</div>
+
+<div class="module-block">
+    <a class="module-node module-link title-md" href="">Balance Sheet</a>
+</div>
+
+<div class="module-block">
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node class="module-node sub" matTreeNodeToggle matTreeNodePadding *matTreeNodeDef="let node">
+            <span class="leaf-text">{{node.display}}</span>
+            <span class="status" [ngClass]="node.data | moduleStatus">&bull;</span>
+        </mat-tree-node>
+
+        <mat-tree-node class="module-node top" matTreeNodePadding *matTreeNodeDef="let node;when: dataSource.hasChild">
+            <button mat-icon-button matTreeNodeToggle>
+                <mat-icon>
+                    {{treeControl.isExpanded(node) ? 'remove' : 'add'}}
+                </mat-icon>
+            </button>
+            <span class="leaf-text title-md">{{node.display}}</span>
+            <span class="status" [ngClass]="node.data | moduleStatus">&bull;</span>
+
+        </mat-tree-node>
+    </mat-tree>
+</div>

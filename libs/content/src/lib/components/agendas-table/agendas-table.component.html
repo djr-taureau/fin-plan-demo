@@ -1,0 +1,22 @@
+<table mat-table [dataSource]="dataSource" matSort>
+
+
+  <ng-container matColumnDef="name">
+    <th class="agenda-name-col" mat-header-cell *matHeaderCellDef mat-sort-header>Agenda Name</th>
+    <td class="agenda-name-col" mat-cell *matCellDef="let element">
+        <a routerLink="/clients/1">
+          {{element.name}}
+        </a>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="createdOn">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Created On</th>
+      <td class="r-aligned" mat-cell *matCellDef="let element">{{element.createdOn | date}}</td>
+    </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+</table>
+

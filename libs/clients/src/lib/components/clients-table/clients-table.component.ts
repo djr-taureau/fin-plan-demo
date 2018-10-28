@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { MatSort, MatTableDataSource, MatPaginator } from '@angular/material';
+import {SelectionModel} from '@angular/cdk/collections';
 
 import { ClientItem, ClientItems } from '../../models';
 
@@ -9,11 +10,12 @@ import { ClientItem, ClientItems } from '../../models';
 	styleUrls: ['./clients-table.component.scss']
 })
 export class ClientsTableComponent implements OnInit, OnChanges {
-	columns: string[] = ['name', 'description', 'scope'];
+	columns: string[] = ['select', 'name', 'preferredPhone', 'preferredEmail', 'preferredAddress'];
 	@Input() dataItems: ClientItems;
 	@ViewChild(MatSort) sort: MatSort;
-	@ViewChild(MatPaginator) paginator: MatPaginator;
 	dataSource: MatTableDataSource<ClientItem>;
+	selection = new SelectionModel<ClientItem>(true, []);
+
 	displayData: ClientItems;
 
 	constructor() {
@@ -25,7 +27,20 @@ export class ClientsTableComponent implements OnInit, OnChanges {
 		if(changes.dataItems) {
 			this.dataSource = new MatTableDataSource(this.dataItems);
 			this.dataSource.sort = this.sort;
-			this.dataSource.paginator = this.paginator;
 		}
 	}
+
+  /** Whether the number of selected elements matches the total number of rows. */
+  isAllSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  /** Selects all rows if they are not all selected; otherwise clear selection. */
+  masterToggle() {
+    this.isAllSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
 }

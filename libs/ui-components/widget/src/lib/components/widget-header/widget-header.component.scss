@@ -4,10 +4,18 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 2.8rem;
+	font-size: 1.8rem;
+	line-height: 1;
+	min-height: 7.3rem;
 	font-family: $font-family-primary;
-	padding: 2rem 2.5rem 2rem 6.2rem;
-	color: $color-orange;
+	padding: 0 2.6rem 0 3rem;
+	color: #153C3F;
+	background-color: $color-white;
+	text-transform: uppercase;
+	font-weight: normal;
+
+	border-bottom: .1rem solid #D8DDDF;
+
 
 	&.lw-color-orange {
 		color: $color-white;
@@ -18,28 +26,45 @@
 		background-color: $color-green;
 	}
 	&.lw-color-white {
-		color: $color-orange;
+		color: #153C3F;
 		background-color: $color-white;
 	}
 	&.lw-color-blue {
 		color: $color-orange;
 		background-color: $color-blue-bright;
 	}
+
+	.lw-badge {
+		background-color: rgb(207,207,207);
+		color: #082F36;
+	}
+
+	.lw-widget-subtitle {
+		margin-left: 12px;
+	}
+
+	.lw-widget-header-text {
+	    display: flex;
+    	align-items: center;	
+	}
 }
 
-.lw-widget-subtitle:before {
-	content: '/';
-	display: inline-block;
-	color: $color-grey-lighter;
-	font-weight: 300;
-	margin: 0 0.8em;
-}
+
+
+// .lw-widget-subtitle:before {
+// 	content: '/';
+// 	display: inline-block;
+// 	color: $color-grey-lighter;
+// 	font-weight: 300;
+// 	margin: 0 0.8em;
+// }
 
 .lw-widget-header-links {
 	display: flex;
 }
 
 .lw-widget-link {
-	font-size: 1.6rem;
+	font-size: 1.4rem;
 	margin-left: 0.7rem;
+	text-transform: none;
 }

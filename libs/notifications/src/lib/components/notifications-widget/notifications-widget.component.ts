@@ -16,6 +16,8 @@ export type NotificationsFilter = 'all' | 'dismissed' | 'undismissed';
 })
 export class NotificationsWidgetComponent implements OnInit {
 	@Input() filter: NotificationsFilter;
+	@Input() title: string;
+	@Input() linkText = 'View all';
 
 	data$: Observable<NotificationItems>;
 	isLoaded$: Observable<boolean>;

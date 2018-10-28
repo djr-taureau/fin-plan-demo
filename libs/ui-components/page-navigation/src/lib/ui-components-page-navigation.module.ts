@@ -6,6 +6,6 @@ import { PageNavigationComponent } from './components';
 @NgModule({
 	imports: [PageNavigationCoreModule, PageNavigationUIModule],
 	declarations: [PageNavigationComponent],
-	exports: [PageNavigationComponent]
+	exports: [PageNavigationComponent, PageNavigationUIModule]
 })
 export class UiComponentsPageNavigationModule {}

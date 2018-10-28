@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import {
-	FillComponent,
-	SectionTitleComponent,
-	SectionSubTitleComponent
+	FillComponent
 } from './components';
 import { BindTemplateDirective } from './directives';
 
@@ -13,14 +11,10 @@ import { BindTemplateDirective } from './directives';
 	imports: [CommonModule, RouterModule],
 	declarations: [
 		FillComponent,
-		SectionTitleComponent,
-		SectionSubTitleComponent,
 		BindTemplateDirective
 	],
 	exports: [
 		FillComponent,
-		SectionTitleComponent,
-		SectionSubTitleComponent,
 		BindTemplateDirective
 	]
 })

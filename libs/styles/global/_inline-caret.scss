@@ -1,5 +1,6 @@
 .inline-caret {
 	line-height: 0.8;
+	
 
 	.inline-caret:first-child:not(:last-child) {
 		margin-right: -6px;
@@ -15,7 +16,8 @@
 
 	&-small {
 		&:before {
-			font-size: 0.4em;
+			font-size: 0.8em;
+			margin-left: 6px;
 		}
 	}
 

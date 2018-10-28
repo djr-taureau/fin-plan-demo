@@ -1,0 +1,42 @@
+:host {
+
+	/deep/ .mat-select-arrow {
+		color: #f26623;
+	}
+	/deep/ .mat-form-field-underline {
+		display: none;
+	}
+	/deep/ .mat-select-trigger .mat-select-value {
+		max-width: none;
+		width: inherit;
+	}
+
+	/deep/ .mat-form-field .mat-form-field-wrapper {
+		padding-bottom: 0;
+	}
+}
+
+lw-page-navigation {
+	margin: 0 -3.8rem;
+
+
+
+	/deep/ .mat-tab-nav-bar {
+		background-color: transparent;
+	}
+	/deep/ .mat-tab-link {
+		color: #fff;
+		opacity: 1;
+	}
+	/deep/ .mat-tab-link.mat-tab-label-active {
+        background: linear-gradient(90deg, #154C57 0%, #14606B 100%);
+        color: #fff;
+	}
+	/deep/ .mat-icon {
+		color: #fff;
+	}
+
+	/deep/ .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+		background-color: #f26623;
+	}
+}

@@ -4,12 +4,17 @@
 	display: block;
 	@include linear-gradient($color-green-dark, $color-green-darker);
 	min-height: 100vh;
+	height: 100%;
 	position: relative;
 	overflow: hidden;
 	& > * {
 		z-index: 1;
 		position: relative;
 	}
+
+	box-shadow: 0 0px 112px 0px rgba(0,0,0, 0.2);
+	z-index: 2;
+
 	&:after {
 		content: '';
 		position: absolute;

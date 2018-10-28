@@ -6,6 +6,18 @@ $icon-size: 2.8rem;
 	display: flex;
 	align-items: center;
 	position: relative;
+	cursor: pointer;
+
+	
+
+	&.callout {
+		a,
+		.navigation-item-display-only,
+		button {
+		color: #66AA99;
+		}
+	}
+
 	a,
 	.navigation-item-display-only,
 	button {
@@ -19,7 +31,6 @@ $icon-size: 2.8rem;
 		font-family: $font-family-text;
 		font-weight: $font-weight-light;
 	}
-	cursor: pointer;
 
 	a,
 	button {

@@ -7,8 +7,14 @@ import { NxModule } from '@nrwl/nx';
 import { AuthenticationModule } from '@lifeworks/authentication';
 import { PermissionsModule } from '@lifeworks/permissions';
 
-
-const MODULES = [NgCommonModule, HttpClientModule, ReactiveFormsModule, AuthenticationModule, PermissionsModule, NxModule];
+const MODULES = [
+	NgCommonModule,
+	HttpClientModule,
+	ReactiveFormsModule,
+	AuthenticationModule,
+	PermissionsModule,
+	NxModule
+];
 
 @NgModule({
 	imports: MODULES,

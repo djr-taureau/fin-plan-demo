@@ -1,0 +1,188 @@
+@import "../../../../../styles/global/elevation";
+
+:host {
+    background-color: #fff;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    
+    @extend .lw-elevation;
+}
+
+.divider-v {
+    height: 100%;
+    border-right: 1px solid #D8DDDF;
+}
+
+.block-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 9.5rem;
+    padding: 0 3.2rem;
+    border-bottom: 1px solid #D8DDDF;
+    grid-column: 1 / span 3;
+
+    .block-title {
+        margin-bottom: 0;
+    }
+}
+
+.block-actions {
+    display: flex;
+
+    > button {
+        margin-left: 16px;
+    }
+
+    .mat-icon,
+    .mat-icon-button {
+        height: 44px;
+        line-height: 44px;
+    }
+}
+
+.list {
+    padding: 2rem 1rem;
+}
+
+.summary-block {
+    color: #153C3F;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 0.16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #F6F8F7;
+    padding: 2.4rem 2.9rem;
+
+    .sum {
+        text-align: right;
+    }
+}
+
+.add-account-button {
+    background: linear-gradient(-180deg, #EEF0F1 0%, #D8DDDF 100%);
+    border: 1px solid #A3B5B7;
+
+    .split-icon-wrapper {
+        border-left: solid 1px #A3B5B7;
+    }
+}
+
+.mat-icon-button {
+    color: #5A5A5A;
+}
+
+.detail-node {
+    display: grid;
+    grid-template-columns: 1fr auto;
+
+    color: #082F36;
+    font-size: 14px;
+    font-weight: normal !important;
+    letter-spacing: 0.14px;
+    margin-bottom: 54px;
+    margin-top: 20px;
+}
+
+.summary-node {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    color: #153C3F;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.15px;
+    min-height: 56px;
+
+    .leaf-status {
+        margin-bottom: 3px;
+    }
+}
+
+.empty-node {
+    color: #F26623;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.12px;
+    line-height: 24px;
+    border-top: none !important;
+    margin-bottom: 12px;
+    margin-top: -10px;
+    padding-left: 48px !important;
+}
+
+.leaf-text {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.leaf-balance {
+    text-align: right;
+}
+
+.leaf-status {
+    font-size: 30px;
+    line-height: 1;
+    font-weight: 400;
+    margin-left: 4px;
+
+    .circle {
+        position: relative;
+        font-size: 34px;
+        top: -2px;
+        left: -2px;
+    }
+
+    .circle.Error,
+    &.Error {
+        color: #D0021B !important;
+    }
+
+    .circle.Ok,
+    &.Ok {
+        color: #67A797 !important;
+    }
+}
+
+.leaf-account {
+    display: flex;
+    justify-content: space-between;
+    max-width: 185px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+
+    .lw-badge {
+        background: rgba(0,0,0,0.07);
+        color: #5A5A5A;
+        font-size: 15px;
+        font-weight: normal;
+        letter-spacing: 0.12px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        padding-right: 10px;
+    }
+}
+
+.leaf-hint {
+    color: #5A5A5A;
+    font-size: 14px;
+    font-weight: normal;
+    letter-spacing: 0.12px;
+    grid-column: 1 / span 2;
+    padding-top: 8px;
+    margin: 0;
+}
+
+.leaf-action {
+    text-align: right;
+
+    .mat-icon-button .mat-button-wrapper>*{
+        vertical-align: bottom;
+    }
+}

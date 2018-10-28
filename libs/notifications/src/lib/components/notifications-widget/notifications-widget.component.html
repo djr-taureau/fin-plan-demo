@@ -1,8 +1,10 @@
 <lw-widget class="lw-elevation">
     <lw-widget-header>
-        <lw-widget-title color="green">Notifications</lw-widget-title>
-        <lw-widget-subtitle *ngIf="(dataState$ | async) === 'loaded'">{{dataItemsCount$ | async}}</lw-widget-subtitle>
-        <a lwWidgetLink [routerLink]="['notifications']" lwInlineCaret caretDirection="right">View all</a>
+        <lw-widget-title >{{title}}</lw-widget-title>
+        <lw-badge lwWidgetSubtitle  *ngIf="(dataState$ | async) === 'loaded'">
+                {{dataItemsCount$ | async}}
+        </lw-badge>
+        <a lwWidgetLink [routerLink]="['notifications']" lwInlineCaret caretDirection="right">{{linkText}}</a>
     </lw-widget-header>
     <lw-widget-content [ngSwitch]="dataState$ | async">
         <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>

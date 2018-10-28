@@ -4,7 +4,7 @@
 
   <lw-navigation-group *ngFor="let navGroup of navigation">
     <lw-navigation-title *ngIf="navGroup.display">{{navGroup.display}}</lw-navigation-title>
-    <lw-navigation-item (event)="raiseEvent($event, navItem.action || 'click')" [location]="navItem.location" [action]="navItem.action"
+    <lw-navigation-item [ngClass]="navItem.cssClass"  (event)="raiseEvent($event, navItem.action || 'click')" [location]="navItem.location" [action]="navItem.action"
       *ngFor="let navItem of navGroup.children" [icon]="navItem.icon">
       {{navItem.display}}
     </lw-navigation-item>

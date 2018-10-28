@@ -10,12 +10,20 @@ export const ApplicationRoutes = [
 				loadChildren: '@lifeworks/dashboarding#DashboardingModule'
 			},
 			{
-				path: 'activity-log',
+				path: '',
 				loadChildren: '@lifeworks/activity-log#ActivityLogModule'
 			},
 			{
-				path: 'notifications',
+				path: '',
 				loadChildren: '@lifeworks/notifications#NotificationsModule'
+			},
+			{
+				path: '',
+				loadChildren: '@lifeworks/clients#ClientsModule'
+			},
+			{
+				path: '',
+				loadChildren: '@lifeworks/content#ContentModule'
 			}
 		]
 	}

@@ -1,0 +1,35 @@
+:host > button {
+        border-radius: 0 !important;
+        height: 44px;
+        width: 221px;
+        color: #000000 !important;
+        border: 1px solid #c0c7cb;
+        background: linear-gradient(-180deg, #eef0f1 0%, #d8dddf 100%);
+        border: solid 1px #A3B5B7;
+    }
+
+	/deep/.mat-button-wrapper {
+		height: 100%;
+		display: flex;
+	}
+
+	.text-wrapper {
+		font-size: 16px;
+		font-weight: normal;
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.split-icon-wrapper {
+		display: flex;
+		border-left: solid 1px #A3B5B7;
+		justify-content: center;
+		flex-direction: column;
+		margin-right: -16px;
+		width: 33px;
+		height: 100%;
+		align-items: center;
+		margin-left: 16px;
+	}

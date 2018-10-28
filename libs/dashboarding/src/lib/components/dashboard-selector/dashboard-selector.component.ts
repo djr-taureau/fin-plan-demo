@@ -25,13 +25,7 @@ export class DashboardSelectorComponent implements OnInit {
 	ngOnInit() {
 		this.user$ = this.userService.getUser();
 		this.roles$ = this.rolesService.getRoles();
-		this.show$ = this.user$.pipe(
-			map(
-				user =>
-					user.roles.length > 1 ||
-					user.id === '079517e2-c18d-4c7a-a8e8-990af4a40f69'
-			)
-		);
+		this.show$ = this.user$.pipe(map(() => false));
 	}
 
 	changeDashboard(dashboard: string) {

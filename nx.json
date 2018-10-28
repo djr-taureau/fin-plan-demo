@@ -95,7 +95,13 @@
     "ui-components-attachment": {
       "tags": []
     },
+    "ui-components-layouts": {
+      "tags": []
+    },
     "sandbox-site": {
+      "tags": []
+    },
+    "content": {
       "tags": []
     }
   }

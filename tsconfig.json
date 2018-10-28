@@ -89,7 +89,7 @@
       "@lifeworks/clients": [
         "libs/clients/src/index.ts"
       ],
-    "@lifeworks/ui-components/status-list": [
+      "@lifeworks/ui-components/status-list": [
         "libs/ui-components/status-list/src/index.ts"
       ],
       "@lifeworks/ui-components/file-upload": [
@@ -97,6 +97,12 @@
       ],
       "@lifeworks/ui-components/attachment": [
         "libs/ui-components/attachment/src/index.ts"
+      ],
+      "@lifeworks/ui-components/layouts": [
+        "libs/ui-components/layouts/src/index.ts"
+      ],
+      "@lifeworks/content": [
+        "libs/content/src/index.ts"
       ]
     }
   },

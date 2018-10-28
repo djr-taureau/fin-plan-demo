@@ -1,0 +1,62 @@
+<div class="block-header">
+    <div class="block-title">
+        <h1 class="title-xl">Balance Sheet & Accounts</h1>
+        <span class="title-xl-sub">Get started by manually adding information or linking your accounts below:</span>
+    </div>
+
+    <div class="block-actions">
+        <button mat-icon-button>
+            <mat-icon>cached</mat-icon>
+        </button>
+        <lw-add-account-button></lw-add-account-button>
+    </div>
+</div>
+
+<div class="list">
+    <div class="summary-block">
+        <span>Assets</span>
+        <span class="sum">$2,000,000.00</span>
+    </div>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+        <mat-tree-node class="sub detail-node" matTreeNodeToggle matTreeNodePadding *matTreeNodeDef="let node">
+            <span class="leaf-text">{{node.display}}</span>
+            <span class="leaf-balance" *ngIf="node.data.balance">{{node.data.balance | currency}}</span>
+            <div class="leaf-account">
+                <lw-badge class="leaf-status" *ngIf="node.data.status == 2"><span class="circle" [ngClass]="node.data.status | linkStatus">&bull;</span>
+                    Not Found</lw-badge>
+                <img class="account-image" src="assets/imgs/logos/{{node.data.organization.name}}_logo_sm.png">
+                <span class="account-number">{{node.data.account}}</span>
+            </div>
+            <button class="leaf-action" mat-icon-button>
+                <mat-icon>edit</mat-icon>
+            </button>
+            <p class="leaf-hint" *ngIf="node.data.organization?.description">{{ node.data.organization?.description }}</p>
+        </mat-tree-node>
+
+        <mat-tree-node class="module-node top empty-node" matTreeNodePadding *matTreeNodeDef="let node;when: dataSource.isEmpty">
+            <a href="/">link account</a>
+        </mat-tree-node>
+
+        <mat-tree-node class="module-node top summary-node" matTreeNodePadding *matTreeNodeDef="let node;when: dataSource.hasChild">
+            <button mat-icon-button matTreeNodeToggle>
+                <mat-icon>
+                    {{treeControl.isExpanded(node) ? 'remove' : 'add'}}
+                </mat-icon>
+            </button>
+            <span class="leaf-text title-xl">
+                {{node.display}}
+                <span class="leaf-status" *ngIf="node.data.linkStatus == 2" [ngClass]="node.data.linkStatus | linkStatus">&bull;</span>
+            </span>
+            <span class="leaf-balance" *ngIf="node.data.SumOfBalances">{{node.data.SumOfBalances | currency}}</span>
+        </mat-tree-node>
+    </mat-tree>
+</div>
+
+<div class="divider-v"></div>
+
+<div class="list">
+    <div class="summary-block">
+        <span>Liabilities</span>
+        <span class="sum">$2,000,000.00</span>
+    </div>
+</div>

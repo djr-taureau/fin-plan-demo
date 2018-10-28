@@ -1,67 +1,103 @@
 <!-- todo: Remove hard coded values in dashboard overview -->
 <lw-dashboard-header>
     <h1>Overview</h1>
-    <lw-value-callout-item color="green" displayType="stacked">
-        <lw-value-callout-emphasis color="white" lwInlineCaret caretDirection="up" caretColor="green" caretLocation="start"
-            caretPosition="top">38</lw-value-callout-emphasis>
-        Total clients in <br>discovery phase
+    <lw-value-callout-item color="green">
+        <lw-value-callout-emphasis color="white">3</lw-value-callout-emphasis>
+        <span lwInlineCaret>Clients in <br>discovery phase</span>
     </lw-value-callout-item>
 
     <lw-value-callout-item color="green">
-        <lw-value-callout-emphasis color="white" lwInlineCaret caretDirection="down" caretColor="orange" caretLocation="start"
-            caretPosition="top">62</lw-value-callout-emphasis>
-        Total clients in <br>strategy phase
+        <lw-value-callout-emphasis color="white">6</lw-value-callout-emphasis>
+        <span lwInlineCaret>Clients in <br>strategy phase</span>
     </lw-value-callout-item>
 
-    <lw-value-callout-item color="green" displayType="inline">
-        <lw-value-callout-emphasis color="white">129</lw-value-callout-emphasis>
-        Total clients in <br>implementation phase
+    <lw-value-callout-item color="green">
+        <lw-value-callout-emphasis color="white">9</lw-value-callout-emphasis>
+        <a lwInlineCaret>Clients in <br>implementation phase</a>
     </lw-value-callout-item>
 
-    <lw-value-callout-item color="green" displayType="stacked">
-        <lw-value-callout-emphasis color="white">27</lw-value-callout-emphasis>
-        <div lwInlineCaret caretDirection="up" caretColor="orange" caretLocation="start" caretPosition="top" caretSize="large">
-            Change in total number of clients from last year at this time
-        </div>
+    <lw-value-callout-item class="callout-bottom" [displayType]="'stacked'" color="green">
+        <lw-value-callout-emphasis color="white">$7,654,321</lw-value-callout-emphasis>
+        Total under your advisement
     </lw-value-callout-item>
 
-    <lw-value-callout-item color="green" displayType="stacked">
+    <lw-value-callout-item class="callout-bottom" [displayType]="'stacked'" color="green">
         <lw-value-callout-emphasis color="white">$425,240</lw-value-callout-emphasis>
         Average yearly household income
     </lw-value-callout-item>
 
-    <lw-value-callout-item color="green" displayType="stacked">
-        <lw-value-callout-emphasis color="white">$56,240</lw-value-callout-emphasis>
-        Change in average yearly household income from last year at this time
+    <lw-value-callout-item class="callout-bottom" [displayType]="'stacked'" color="green">
+        <lw-value-callout-emphasis color="white">$90,123</lw-value-callout-emphasis>
+        YTD fee revenue
     </lw-value-callout-item>
 </lw-dashboard-header>
 
+<lw-notifications-widget title="Upcoming Tasks &amp; events" filter="undismissed"></lw-notifications-widget>
 
-<lw-notifications-widget filter="undismissed"></lw-notifications-widget>
+<lw-notifications-widget title="Notifications" linkText="View all &amp; manage" filter="undismissed"></lw-notifications-widget>
 
 
-<!-- todo: Remove hard coded values in summary list -->
-<lw-text-list>
-    <lw-text-list-title>
-        Achieved Client Goals
-    </lw-text-list-title>
-    <lw-text-list-item>
-        <a lwTextListItemHeader lwTextCaret>
-            Dave &amp; Wendy Smith
-        </a>
-        Monthly IRA contribution goal amount reached
-    </lw-text-list-item>
-    <lw-text-list-item>
-        <a lwTextListItemHeader lwTextCaret>
-            Dave &amp; Wendy Smith
-        </a>
-        Monthly IRA contribution goal amount reached
-    </lw-text-list-item>
-    <lw-text-list-item>
-        <a lwTextListItemHeader lwTextCaret>
-            Dave &amp; Wendy Smith
-        </a>
-        Monthly IRA contribution goal amount reached
-    </lw-text-list-item>
-    <a lwTextListFooter lwInlineCaret [routerLink]="['client/goals']">View all</a>
-</lw-text-list>
+<div class="page-sidebar">
+
+    <!-- todo: Remove hard coded values in summary list -->
+    <lw-text-list class="text-list-stats">
+        <lw-text-list-title>
+            Client Overview
+        </lw-text-list-title>
+        <lw-text-list-item>
+            <span lwTextListItemHeader>128</span>
+            <a lwInlineCaret >Total Clients in the System</a>
+        </lw-text-list-item>
+        <lw-text-list-item>
+            <span lwTextListItemHeader>64</span>
+            <a lwInlineCaret lwTextCaret>Total Prospects in the System</a>
+        </lw-text-list-item>
+        <lw-text-list-footer>
+            <a lwInlineCaret>View All</a>
+        </lw-text-list-footer>
+    </lw-text-list>
+
+    <lw-text-list>
+        <lw-text-list-title>
+            Achieved Goals
+        </lw-text-list-title>
+        <lw-text-list-item lwInlineCaret>
+            Monthly IRA contribution goal amount reached
+        </lw-text-list-item>
+        <lw-text-list-item lwInlineCaret>
+            Mortgage paid off ahead of goal date lorem ipsum dolor sit amet adipscing elit dolor sit amet…
+        </lw-text-list-item>
+        <lw-text-list-item lwInlineCaret>
+            Lorem ipsum dolor sit amet adipscing elit dolor sit amet…
+        </lw-text-list-item>
+        <lw-text-list-footer>
+            <a lwInlineCaret>View All</a>
+        </lw-text-list-footer>
+    </lw-text-list>
+
+    <lw-text-list class="text-list-goals">
+        <lw-text-list-title>
+            Upcoming Client <br>Birthdays/Anniversaries
+        </lw-text-list-title>
+        <lw-text-list-item>
+            <a lwTextListItemHeader>
+                Dave Smith
+            </a>
+            Birthday coming up next week on 5/28
+        </lw-text-list-item>
+        <lw-text-list-item>
+            <a lwTextListItemHeader>
+                John and Jane Jackson </a>
+            Anniversary coming up next week on 5/29
+        </lw-text-list-item>
+        <lw-text-list-item>
+            <a lwTextListItemHeader>
+                John and Jane Jackson
+            </a>
+            Client 6 Year anniversary coming up next week
+        </lw-text-list-item>
+        <lw-text-list-footer>
+            <a lwInlineCaret>View All</a>
+        </lw-text-list-footer>
+    </lw-text-list>
+</div>

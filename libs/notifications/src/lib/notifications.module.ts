@@ -9,7 +9,8 @@ import {
 import { NotificationsPageComponent } from './pages';
 import {
 	NotificationsWidgetComponent,
-	NotificationsListComponent
+	NotificationsListComponent,
+	NotificationsHeaderComponent
 } from './components';
 import { NotificationLinkPipe, NotificationImagePipe } from './pipes';
 
@@ -25,7 +26,9 @@ import { NotificationLinkPipe, NotificationImagePipe } from './pipes';
 		NotificationsWidgetComponent,
 		NotificationLinkPipe,
 		NotificationImagePipe,
-		NotificationsListComponent
+		NotificationsListComponent,
+		NotificationsHeaderComponent,
+		NotificationsHeaderComponent
 	],
 	exports: [NotificationsPageComponent, NotificationsWidgetComponent]
 })

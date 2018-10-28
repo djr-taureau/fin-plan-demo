@@ -3,7 +3,7 @@ import {
 	Directive,
 	Input,
 	ElementRef,
-	AfterViewInit,
+	AfterContentInit,
 	Renderer2
 } from '@angular/core';
 
@@ -16,7 +16,7 @@ export type CaretSize = 'small' | 'large';
 @Directive({
 	selector: '[lwInlineCaret]'
 })
-export class InlineCaretDirective implements AfterViewInit {
+export class InlineCaretDirective implements AfterContentInit {
 	@Input('lwInlineFontIcon') icon = '';
 	@Input() caretPosition: CaretPosition = 'center';
 	@Input() caretLocation: CaretLocation = 'end';
@@ -69,7 +69,7 @@ export class InlineCaretDirective implements AfterViewInit {
 		}
 	}
 
-	ngAfterViewInit() {
+	ngAfterContentInit() {
 		this.insertCaret(
 			this.caretDirection,
 			this.caretLocation,

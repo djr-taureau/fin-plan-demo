@@ -5,9 +5,10 @@
 	grid-template-columns: 3fr 1fr;
 	grid-template-rows: auto;
 	grid-column-gap: 6rem;
-	grid-row-gap: 6rem;
+	grid-row-gap: 5rem;
 }
 
 .lw-dashboard-header {
 	grid-column: auto / span 2;
+	margin-bottom: 0.2rem;
 }
