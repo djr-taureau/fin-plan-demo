@@ -1,6 +1,6 @@
 import { DescribedBaseEntity, TrackedBaseEntity, TrackedEntity } from "../../common";
 import { Entity, Column, ManyToOne, OneToMany, Index } from "typeorm";
-import { AttributeValueType } from "../../common/attribute-type";
+import { ValueType } from "../../common";
 
 enum RelationshipEntityType {
 	Profile = 0,
@@ -55,6 +55,6 @@ export class RelationshipAttribute extends TrackedEntity {
     })
 	value: string;
 
-	@Column("int")
-	type: AttributeValueType;
+	@Column('int')
+	type: ValueType;
 }

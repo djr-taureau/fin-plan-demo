@@ -4,7 +4,7 @@ import { Context, HttpRequest } from '../libs/azure-function-types'
 import { GetUserGuidQueryOptions } from '../libs/repositories/common'
 import { AuthService } from '../libs/services';
 
-export async function run(context: Context, req: HttpRequest) {
+export  = async function run(context: Context, req: HttpRequest) {
     const auth = new AuthService();
 
     const user: GetUserGuidQueryOptions = (req.body && req.body.aadGuid) ? req.body : '';

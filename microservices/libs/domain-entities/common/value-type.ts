@@ -1,6 +1,7 @@
 export enum ValueType {
-  String = 0,
-  Number = 1,
-  Boolean = 2,
-  Object = 3
+    String = 1,
+    Boolean = 2,
+    Number = 3,
+    Date = 4,
+    Object = 5,
 }

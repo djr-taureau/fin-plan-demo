@@ -1,6 +1,6 @@
 {
     "cSpell.words": [
-        "iast,"
+        "iast,",
         "domain",
         "entities",
         "instream",
@@ -9,5 +9,7 @@
         "microservices",
         "outstream",
         "ts"
-    ]
+    ],
+    "azureFunctions.projectLanguage": "JavaScript",
+    "azureFunctions.projectRuntime": "~2"
 }

@@ -7,7 +7,7 @@ import {
 import { Context } from '../libs/azure-function-types';
 
 
-export async function run(context: Context, queueMessage) {
+export = async function run(context: Context, queueMessage) {
     const notifications = new NotificationsService();
     
     return await notifications.dismiss({guid: queueMessage})

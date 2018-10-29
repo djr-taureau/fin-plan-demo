@@ -5,7 +5,7 @@ import {
 } from '../libs/function-utilities';
 import { Context, HttpRequest } from '../libs/azure-function-types';
 
-export async function run(context: Context, request: HttpRequest) {
+export = async function run(context: Context, request: HttpRequest) {
     const content = new ContentService();
 	try {
 		//todo - validate query params

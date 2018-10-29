@@ -5,7 +5,7 @@ import {
 	errorResponse
 } from '../libs/function-utilities';
 
-export async function run(context, req) {
+export = async function run(context, req) {
     const users = new UsersService();
     
 	try {

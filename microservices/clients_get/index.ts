@@ -7,7 +7,7 @@ import {
 import { Context, HttpRequest } from '../libs/azure-function-types';
 
 
-export async function run(context: Context, req: HttpRequest) {
+export = async function run(context: Context, req: HttpRequest) {
     const clients = new ClientsService();
 	
 	try {

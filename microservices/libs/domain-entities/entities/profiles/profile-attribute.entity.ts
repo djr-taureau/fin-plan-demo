@@ -21,6 +21,6 @@ export class ProfileAttribute extends TrackedBaseEntity {
 	@Column()
 	value: string;
 
-	@Column()
+	@Column('int')
 	valueType: ProfileAttributeValueType;
 }

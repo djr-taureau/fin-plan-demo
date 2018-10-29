@@ -3,7 +3,7 @@ import { errorResponse } from '../libs/function-utilities';
 import { Context, HttpRequest } from '../libs/azure-function-types'
 import { AuthService } from '../libs/services';
 
-export async function run(context: Context, req: HttpRequest) {
+export = async function run(context: Context, req: HttpRequest) {
     const auth = new AuthService();
 
     const id = (req.body && req.body.lwUserGuid) ? req.body.lwUserGuid : 'not_supplied';

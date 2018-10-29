@@ -6,9 +6,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "profile",
+      "route": "echo",
       "methods": [
-        "post"
+        "get"
       ]
     },
     {
