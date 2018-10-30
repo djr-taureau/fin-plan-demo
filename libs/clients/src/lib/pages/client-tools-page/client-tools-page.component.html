@@ -1,28 +1,5 @@
-<div class="tool-block">
-    <span class="block-title">Life Insurance</span>
-    <p class="block-description">This is a decroption Lorem ipsum dolor sit amet, consectetur ad.</p>
-    <a class="block-link" lwInlineCaret>Calculate Life Insurance</a>
-</div>
-
-<div class="tool-block">
-    <span class="block-title">Disability</span>
-    <p class="block-description">This is a decroption Lorem ipsum dolor sit amet, consectetur ad.</p>
-    <a class="block-link" lwInlineCaret>Calculate Disability</a>
-</div>
-
-<div class="tool-block">
-    <span class="block-title">Long Term Care</span>
-    <p class="block-description">This is a decroption Lorem ipsum dolor sit amet, consectetur ad.</p>
-    <a class="block-link" lwInlineCaret>Calculate Long Term Care</a>
-</div>
-
-<div class="tool-block">
-    <span class="block-title">College</span>
-    <p class="block-description">This is a decroption Lorem ipsum dolor sit amet, consectetur ad.</p>
-    <a class="block-link" lwInlineCaret>Calculate College</a>
-</div>
-<div class="tool-block">
-    <span class="block-title">Retirement</span>
-    <p class="block-description">This is a decroption Lorem ipsum dolor sit amet, consectetur ad.</p>
-    <a class="block-link" lwInlineCaret>Calculate Retirement</a>
+<div class="tool-block" *ngFor="let tool of tools$ | async">
+    <span class="block-title">{{tool.displayName}}</span>
+    <p class="block-description">{{tool.description}}</p>
+    <a class="block-link" lwInlineCaret>Calculate {{tool.displayName}}</a>
 </div>
