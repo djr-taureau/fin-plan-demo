@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class initial21540874110555 implements MigrationInterface {
+export class afterMigrations1540936051610 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.query(`DROP INDEX "IDX_797abf10a90a3306603fbf46bc" ON "system-permissions"`);
@@ -14,6 +14,7 @@ export class initial21540874110555 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "REL_fbea7378a22c50fc2037d6b5ad" ON "firm-staff"`);
         await queryRunner.query(`DROP INDEX "REL_465fd28efaf35c28d98eedcf63" ON "firm-certifications"`);
         await queryRunner.query(`DROP INDEX "REL_170f75299331bb7e214b45d511" ON "firm-accounts"`);
+        await queryRunner.query(`DROP INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"`);
         await queryRunner.query(`DROP INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"`);
         await queryRunner.query(`DROP INDEX "IDX_83b3e6a352d16970f0b50fae9f" ON "relationships"`);
         await queryRunner.query(`DROP INDEX "IDX_506d46e308160d54a4d708ee51" ON "relationship-attributes"`);
@@ -32,6 +33,7 @@ export class initial21540874110555 implements MigrationInterface {
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_fbea7378a22c50fc2037d6b5ad" ON "firm-staff"("userGuid") WHERE "userGuid" IS NOT NULL`);
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_465fd28efaf35c28d98eedcf63" ON "firm-certifications"("firmGuid") WHERE "firmGuid" IS NOT NULL`);
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_170f75299331bb7e214b45d511" ON "firm-accounts"("ownerGuid") WHERE "ownerGuid" IS NOT NULL`);
+        await queryRunner.query(`CREATE INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"("toolGuid", "initiatorGuid", "contextGuid") `);
         await queryRunner.query(`CREATE INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"("source") `);
         await queryRunner.query(`CREATE INDEX "IDX_83b3e6a352d16970f0b50fae9f" ON "relationships"("target") `);
         await queryRunner.query(`CREATE INDEX "IDX_506d46e308160d54a4d708ee51" ON "relationship-attributes"("relationshipGuid") `);
@@ -49,6 +51,7 @@ export class initial21540874110555 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_506d46e308160d54a4d708ee51" ON "relationship-attributes"`);
         await queryRunner.query(`DROP INDEX "IDX_83b3e6a352d16970f0b50fae9f" ON "relationships"`);
         await queryRunner.query(`DROP INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"`);
+        await queryRunner.query(`DROP INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"`);
         await queryRunner.query(`DROP INDEX "REL_170f75299331bb7e214b45d511" ON "firm-accounts"`);
         await queryRunner.query(`DROP INDEX "REL_465fd28efaf35c28d98eedcf63" ON "firm-certifications"`);
         await queryRunner.query(`DROP INDEX "REL_fbea7378a22c50fc2037d6b5ad" ON "firm-staff"`);
@@ -67,6 +70,7 @@ export class initial21540874110555 implements MigrationInterface {
         await queryRunner.query(`CREATE INDEX "IDX_506d46e308160d54a4d708ee51" ON "relationship-attributes"("relationshipGuid") `);
         await queryRunner.query(`CREATE INDEX "IDX_83b3e6a352d16970f0b50fae9f" ON "relationships"("target") `);
         await queryRunner.query(`CREATE INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"("source") `);
+        await queryRunner.query(`CREATE INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"("toolGuid", "initiatorGuid", "contextGuid") `);
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_170f75299331bb7e214b45d511" ON "firm-accounts"("ownerGuid") WHERE ([ownerGuid] IS NOT NULL)`);
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_465fd28efaf35c28d98eedcf63" ON "firm-certifications"("firmGuid") WHERE ([firmGuid] IS NOT NULL)`);
         await queryRunner.query(`CREATE UNIQUE INDEX "REL_fbea7378a22c50fc2037d6b5ad" ON "firm-staff"("userGuid") WHERE ([userGuid] IS NOT NULL)`);

@@ -27,14 +27,12 @@
     "help": "./node_modules/.bin/nx help",
     "clean": "rimraf dist",
     "sand": "ng serve sandbox-site",
-    
     "ms:build:clean": "rimraf ./dist/microservices",
     "ms:build:ts": "tsc -p microservices/tsconfig.microservices.json",
     "ms:build:copy": "npx copyfiles -u 1 \"microservices/**/*\" -e \"**/*(*.ts|*.microservices.json)\" dist/microservices",
     "ms:build": "npm run ms:build:clean && npm run ms:build:ts && npm run ms:build:copy",
     "ms:pack": "funcpack pack -c ./dist/microservices -o ../../dist ",
     "ms:run": "cd ./dist/microservices; func start",
-
     "affected:libs": "./node_modules/.bin/nx affected:libs",
     "sql:build:image": "docker build ./tools/docker/sql-server --tag lifeworks/sql-server:latest",
     "sql:build:container": "docker run -it  -p 1433:1433 --name lifeworks-sql -d lifeworks/sql-server:latest",
@@ -43,16 +41,14 @@
     "sql:remove": "docker rm lifeworks-sql",
     "sql:build": "npm run sql:build:image && npm run sql:build:container",
     "sql:update": "npm run sql:build:image && npm run sql:stop && npm run sql:remove && npm run sql:build:container",
-
     "setup:ssl": "./tools/scripts/gen-ssl.sh",
     "setup:sql": "npm run sql:build",
-
     "env:echo": "node ./tools/scripts/env-echo.js",
-
     "db:seed": "./node_modules/.bin/ts-node ./tools/scripts/db-seed.ts",
     "db:sync": "./tools/scripts/db-sync.sh",
     "db:gen:migrations": "./tools/scripts/migrations-generate.sh",
     "db:gen": "./tools/scripts/migrations-run.sh",
+    "db:gen:revert": "./tools/scripts/migrations-revert.sh",
     "db:config:orm": "node ./tools/scripts/orm-config.js"
   },
   "private": true,
@@ -82,6 +78,7 @@
     "mssql": "^4.1.0",
     "ngx-file-drop": "^4.0.6",
     "npmx": "0.0.0",
+    "npx": "^10.2.0",
     "ramda": "^0.25.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "6.2.2",

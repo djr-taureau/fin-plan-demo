@@ -56,7 +56,8 @@ export abstract class NamedBaseEntity extends TrackedBaseEntity {
 export abstract class DescribedBaseEntity extends NamedBaseEntity {
     @Column({
         type: 'nvarchar',
-        length: 'MAX'
+		length: 'MAX',
+		nullable: true
     })
-    description: string;
+    description?: string;
 }

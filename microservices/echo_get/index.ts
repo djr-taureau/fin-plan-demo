@@ -23,7 +23,8 @@ export = async function (context, req) {
     if(req.query.all) {
         context.res.body = JSON.stringify( {
             env: process.env,
-            req
+            req,
+            context: context
         });
         return;
     }

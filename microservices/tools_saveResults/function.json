@@ -6,9 +6,9 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "echo/{*rest1}",
+      "route": "tools/{tool}/results/{initiator}/{context}",
       "methods": [
-        "get"
+        "post"
       ]
     },
     {
