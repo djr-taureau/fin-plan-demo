@@ -9,5 +9,5 @@
   "options": {
     "encrypt": true
   },
-  "url": "mssql://lifeworks_main:Pass@word123!@lifeworkssql.database.windows.net:1433/lifeworks"
+  "url": "mssql://sa:Password123!@localhost:1433/lifeworks"
 }

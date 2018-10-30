@@ -32,7 +32,8 @@ import {
 	Organization,
 	Relationship,
 	RelationshipAttribute,
-	RelationshipDefinition
+	RelationshipDefinition,
+	SystemTool
 } from '../domain-entities';
 
 const connectionConfig: ConnectionOptions = {
@@ -75,7 +76,8 @@ const connectionConfig: ConnectionOptions = {
 		Organization,
 		Relationship,
 		RelationshipAttribute,
-		RelationshipDefinition
+		RelationshipDefinition,
+		SystemTool
 	],
 	options: {
 		encrypt: true

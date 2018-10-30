@@ -45,7 +45,7 @@ export class ProfileService {
         await this.profileAttributeRepo.deleteAllProfileAttributes(params.guid);
         return await this.profileRepo.deleteProfile(params.guid);
       } else {
-        throw "Only ProfileType Relationship Allowed to be Deleted";
+        throw new Error("Only ProfileType Relationship Allowed to be Deleted");
       }
       
     } catch(err) {

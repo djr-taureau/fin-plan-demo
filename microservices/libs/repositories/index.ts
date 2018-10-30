@@ -8,3 +8,4 @@ export * from './firm.repository';
 export * from './templates.repository';
 export * from './profile.repository';
 export * from './settings.repository';
+export * from './tools.repository';

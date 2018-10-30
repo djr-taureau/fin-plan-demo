@@ -9,3 +9,4 @@ export * from './templates.service';
 export * from './settings.service';
 export * from './content.service';
 export * from './profile.service';
+export * from './tools.service';
