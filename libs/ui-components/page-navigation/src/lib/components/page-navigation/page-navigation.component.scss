@@ -32,3 +32,18 @@
     margin-left: 4px;
     margin-top: 4px;
 }
+
+.text-container {
+    display: flex;
+    align-items: center;
+}
+
+.child-menu-button {
+    background-color: inherit;
+    border: 0;
+    width: 17px;
+    padding: 0;
+    &:focus {
+        outline: none;
+    }
+}

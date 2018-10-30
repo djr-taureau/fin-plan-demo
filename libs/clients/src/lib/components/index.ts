@@ -8,3 +8,6 @@ export * from './client-data-header/client-data-header.component'
 export * from './clients-balance-sheet/clients-balance-sheet.component'
 export * from './add-account-button/add-account-button.component';
 export * from './split-button/split-button.component';
+
+export * from './client-tools-header/client-tools-header.component'
+export * from './client-planning-header/client-planning-header.component'

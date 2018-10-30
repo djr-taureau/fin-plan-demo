@@ -6,3 +6,4 @@ export * from './client-planning-page/client-planning-page.component';
 export * from './client-activity-page/client-activity-page.component';
 export * from './client-documents-page/client-documents-page.component';
 export * from './client-sales-page/client-sales-page.component';
+export * from './client-tools-page/client-tools-page.component';

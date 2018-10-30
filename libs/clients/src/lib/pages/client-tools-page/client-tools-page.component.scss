@@ -1,0 +1,43 @@
+:host {
+	margin: 10rem 11rem;
+	display: grid;
+	grid-template: auto 1fr / 1fr 1fr 1fr;
+    grid-gap: 2rem;
+    
+    max-width: 960px;
+}
+
+.tool-block {
+    display: flex;
+    flex-direction: column;
+
+	background: #edf1f2;
+    border: 1px solid #d8dddf;
+    padding: 2.4rem 3.3rem;
+    font-weight: normal;
+    color: #153c3f;
+    font-size: 14px;
+    letter-spacing: 0.12px;
+    min-height: 198px;
+    box-sizing: border-box;
+    
+
+	.block-title {
+        margin: 0 0 1.7rem 0;
+        padding: 0;
+		font-size: 24px;
+		letter-spacing: 0.2px;
+	}
+	.block-description {
+        margin: 0;
+        padding: 0;
+        flex-grow: 1;
+		line-height: 22px;
+	}
+	.block-link {
+        margin: 1.7rem 0 0 0;
+        padding: 0;
+		color: #f26623;
+		line-height: 24px;
+	}
+}

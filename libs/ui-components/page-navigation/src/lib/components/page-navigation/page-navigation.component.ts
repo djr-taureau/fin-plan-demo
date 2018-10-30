@@ -16,4 +16,9 @@ export class PageNavigationComponent implements OnInit {
 		this.navigation = this.route.snapshot.data
 			.pageNavigation as NavigationItems;
 	}
+
+	swallow(event: MouseEvent) {
+		event.stopImmediatePropagation();
+		event.preventDefault();
+	}
 }

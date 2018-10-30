@@ -14,7 +14,8 @@ import {
 	ClientActivityPageComponent,
 	ClientDocumentsPageComponent,
 	ClientSalesPageComponent,
-	ClientDataStepPageComponent
+	ClientDataStepPageComponent,
+	ClientToolsPageComponent,
 } from './pages';
 import {
 	ClientsPageHeaderComponent,
@@ -26,7 +27,9 @@ import {
 	ClientDataHeaderComponent,
 	ClientsBalanceSheetComponent,
 	AddAccountButtonComponent,
-	SplitButtonComponent
+	SplitButtonComponent,
+	ClientPlanningHeaderComponent,
+	ClientToolsHeaderComponent
 } from './components';
 import { ModuleStatusPipe, LinkStatusPipe } from './services';
 
@@ -54,10 +57,13 @@ import { ModuleStatusPipe, LinkStatusPipe } from './services';
 		ClientDataHeaderComponent,
 		ClientsBalanceSheetComponent,
 		ClientDataStepPageComponent,
+		ClientPlanningHeaderComponent,
+		ClientToolsHeaderComponent,
 		SplitButtonComponent,
 		AddAccountButtonComponent,
 		ModuleStatusPipe,
-		LinkStatusPipe
+		LinkStatusPipe,
+		ClientToolsPageComponent
 	],
 	exports:[
 		ModuleStatusPipe,

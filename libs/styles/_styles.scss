@@ -414,3 +414,18 @@ todo: Replace with component styles */
 	justify-content: center;
 	align-items: center;
 }
+
+.page-child-menu-panel {
+	border-radius: 0 !important;
+	margin-right: -40px;
+	transform-origin: right top 0px;
+	margin-top: 46px;
+	
+	
+	.mat-menu-content {
+		margin-right: 39px;
+	}
+
+	.mat-menu-item {
+	}
+}

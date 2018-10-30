@@ -9,6 +9,7 @@ import {
 	ClientDocumentsPageComponent,
 	ClientSalesPageComponent,
 	ClientDataStepPageComponent,
+	ClientToolsPageComponent,
 } from '../pages';
 import {
 	ClientsPageHeaderComponent,
@@ -16,7 +17,9 @@ import {
 	ClientActivityHeaderComponent,
 	ClientProfileHeaderComponent,
 	ClientDataHeaderComponent,
-	ClientsModuleBarComponent
+	ClientsModuleBarComponent,
+	ClientPlanningHeaderComponent,
+	ClientToolsHeaderComponent
 } from '../components';
 import { PageComponent } from '@lifeworks/ui-components/layouts';
 
@@ -91,7 +94,19 @@ import { PageComponent } from '@lifeworks/ui-components/layouts';
 										{
 											display: 'Planning',
 											order: 3,
-											location: '/clients/1/planning'
+											location: '/clients/1/planning',
+											children: [
+												{
+													display: 'Tools',
+													order: 3,
+													location: '/clients/1/planning/tools',
+												},
+												{
+													display: 'Wealth Plan',
+													order: 3,
+													location: '/clients/1/planning/wealth-plan',
+												}
+											]
 										},
 										{
 											display: 'Activity',
@@ -152,7 +167,38 @@ import { PageComponent } from '@lifeworks/ui-components/layouts';
 							},
 							{
 								path: 'planning',
-								component: ClientPlanningPageComponent
+								children: [
+									{
+										path: '',
+										pathMatch: 'full',
+										children: [
+											{
+												path: '',
+												outlet: 'page-subheader',
+												component: ClientPlanningHeaderComponent
+											},
+											{
+												path: '',
+												component: ClientPlanningPageComponent
+											},
+										]
+									},
+									{
+										path: 'tools',
+										pathMatch: 'full',
+										children: [
+											{
+												path: '',
+												outlet: 'page-subheader',
+												component: ClientToolsHeaderComponent
+											},
+											{
+												path: '',
+												component: ClientToolsPageComponent
+											},
+										]
+									},
+								]
 							},
 							{
 								path: 'activity',
