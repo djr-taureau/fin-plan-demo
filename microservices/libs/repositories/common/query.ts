@@ -1,7 +1,12 @@
+import { MembershipType } from "../../domain-entities/common";
+
 export interface GetQueryOptions {
 	guid: string;
 }
 
+export interface CommonDeleteQueryOptions {
+	guid: string
+}
 export interface GetProfileOptions {
 	excludeAttributes?: boolean;
 	select?: Array<string>;
@@ -84,4 +89,31 @@ export interface UpdateProfileQueryOptions {
 	gender?: number,
 	dateOfBirth?: string,
 	attributes?: Array<ProfileAttributesQueryOptions>	
+}
+
+export interface GetTeamMemberQueryOptions {
+	entityGuid: string,
+}
+
+export interface CreateTeamMemberQueryOptions {
+	entityGuid: string,
+	membershipType: MembershipType
+}
+
+export interface UpdateTeamMemberQueryOptions {
+	entityGuid?: string,
+	membershipType?: MembershipType,
+}
+
+export interface CreateSystemPermissionsQuery {
+	name: string,
+	description: string,
+	scope: number,
+}
+
+export interface CreateSystemRolesQueryOptions {
+	name: string,
+	description: string,
+	scope: number,
+	permissions?: Array<CreateSystemPermissionsQuery>
 }

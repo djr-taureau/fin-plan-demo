@@ -47,7 +47,7 @@ export class ProfileRepository extends AbstractRepository<Profile> {
 
       if(!options.excludeAttributes) {
         if(profile.attributes.length > 0) {
-          return insertExtensions(profile, profile.attributes);
+          return insertExtensions(profile, profile.attributes, {convertValueType: false});
         }
       }
 

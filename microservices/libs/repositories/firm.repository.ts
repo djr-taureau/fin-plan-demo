@@ -34,6 +34,10 @@ export class FirmClientRepository extends AbstractRepository<FirmClient> {
     
   }
 
+  async getById(options: GetQueryOptions) {
+    return await this.repository.findOne(options);
+  }
+
 }
 
 @EntityRepository(FirmStaff)
@@ -80,6 +84,10 @@ export class FirmStaffRepository extends AbstractRepository<FirmStaff> {
     }
 
     
+  }
+
+  async getById(options: GetQueryOptions) {
+    return await this.repository.findOne(options);
   }
 
 }
