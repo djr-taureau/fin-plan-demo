@@ -1,9 +1,9 @@
-<lw-section-title>
+<!-- <lw-section-title>
   Financial Overview
   <lw-section-subtitle color="green">ytd</lw-section-subtitle>
-</lw-section-title>
+</lw-section-title> -->
 
-<div class="container-small">
+<!-- <div class="container-small">
   <lw-value-list>
     <lw-value-list-header>
       <lw-value-list-header-icon>ICON</lw-value-list-header-icon>
@@ -16,10 +16,10 @@
       <lw-value-list-item-value>{{item.value}}</lw-value-list-item-value>
     </lw-value-list-item>
   </lw-value-list>
-</div>
+</div> -->
 
-<lw-breadcrumb [data]="breadcrumbData">
-  <!-- <lw-breadcrumb-icon [matMenuTriggerFor]="appMenu"></lw-breadcrumb-icon>
+<!-- <lw-breadcrumb [data]="breadcrumbData"> -->
+<!-- <lw-breadcrumb-icon [matMenuTriggerFor]="appMenu"></lw-breadcrumb-icon>
   <mat-menu [overlapTrigger]="false" panelClass="lw-elevation-1" #appMenu="matMenu" class="lw-breadcrumb-mat-menu">
     <a mat-menu-item [routerLink]="'/'">Folder: 2nd Level</a>
     <a mat-menu-item [routerLink]="'/'">Folder: 1st Level</a>
@@ -27,12 +27,12 @@
   <lw-breadcrumb-location><a [routerLink]="'/'">Folder: 3rd Level</a></lw-breadcrumb-location>
   <lw-breadcrumb-location><a [routerLink]="'/'">Folder: 4th Level</a></lw-breadcrumb-location>
   <lw-breadcrumb-location>Folder: Current</lw-breadcrumb-location> -->
-</lw-breadcrumb>
+<!-- </lw-breadcrumb> -->
 
-<lw-file-upload></lw-file-upload>
+<!-- <lw-file-upload></lw-file-upload> -->
 
-<lw-status-list [data]="statusListData">
-  <!-- <lw-status-list-item [location]="'/'">
+<!-- <lw-status-list [data]="statusListData"> -->
+<!-- <lw-status-list-item [location]="'/'">
     <lw-status-list-collapsible>
     </lw-status-list-collapsible>
     Status Item 1
@@ -88,4 +88,10 @@
       </lw-status-list-status>
     </lw-status-list-item>
   </lw-status-list-item> -->
-</lw-status-list>
+<!-- </lw-status-list> -->
+
+<lw-scenario>
+  <lw-scenario-chart (addGoal)="addGoal($event)" (removeGoal)="removeGoal($event)" (clickGoal)="clickGoal($event)"
+    (hover)="hover($event)" [markers]="markersToRender" [startDate]="chartStartDate" [endDate]="chartEndDate"></lw-scenario-chart>
+  <lw-scenario-goals></lw-scenario-goals>
+</lw-scenario>

@@ -4,6 +4,7 @@ import { UiComponentsValueListModule } from '@lifeworks/ui-components/value-list
 import { UiComponentsBreadcrumbModule } from '@lifeworks/ui-components/breadcrumb';
 import { UiComponentsStatusListModule } from '@lifeworks/ui-components/status-list';
 import { UiComponentsFileUploadModule } from '@lifeworks/ui-components/file-upload';
+import { UiComponentsScenarioModule } from '@lifeworks/ui-components/scenario';
 import { UiComponentsLayoutsModule } from '@lifeworks/ui-components/layouts';
 
 const MODULES = [
@@ -12,6 +13,7 @@ const MODULES = [
 	UiComponentsStatusListModule,
 	UiComponentsBreadcrumbModule,
 	UiComponentsFileUploadModule,
+	UiComponentsScenarioModule,
 	UiComponentsLayoutsModule
 ];
 
