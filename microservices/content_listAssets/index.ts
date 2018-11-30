@@ -12,20 +12,13 @@ export = async function run(context: Context, request: HttpRequest) {
 	const SYSTEM_CONTENT_TYPE = SystemContentType.Asset
 
 	try {
-		if (params.context && params.blob) {
+		if (params.context) {
 
 			const contentContext:Array<any> = content.parseApiContext(params.context);
+            const results = await content.listContent(contentContext[0], SYSTEM_CONTENT_TYPE, contentContext[1]);
 
-			const result = await content.getContent(contentContext[0], params.blob, SYSTEM_CONTENT_TYPE, contentContext[1]);
-			if(result && result.readableStreamBody) {
-				context.res.headers = {
-					'Content-Type': result.contentType,
-					'Content-Length': result.contentLength
-				};
-				context.res.body = result.readableStreamBody.read(result.contentLength);
-			} else {
-				throw "result is null or undefined or is not a readableStreamBody";
-			}
+            context.res.body = results;                    
+			
 		} else {	
 			throw "1 or more params are missing in the request";
 		}

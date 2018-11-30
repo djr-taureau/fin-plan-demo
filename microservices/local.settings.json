@@ -7,7 +7,10 @@
     "SQL_DB": "lifeworks",
     "SQL_UID": "sa",
     "SQL_PWD": "Password123!",
-    "SQL_SYNC": true
+    "SQL_SYNC": true,
+    "BLOB_ACCOUNT": "devstoreaccount1",
+    "BLOB_ACCOUNT_KEY": "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==",
+    "BLOB_SERVICE_URL_BASE": "http://127.0.0.1:10000"
   },
   "host": {
     "CORS": "*"
