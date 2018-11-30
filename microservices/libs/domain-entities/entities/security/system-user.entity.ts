@@ -1,5 +1,5 @@
-import { Entity, Column, OneToOne, JoinColumn, ManyToMany, JoinTable } from 'typeorm';
-import { NamedBaseEntity } from '../../common';
+import { Entity, Column, OneToOne, JoinColumn, ManyToMany, JoinTable, ManyToOne, Index, OneToMany } from 'typeorm';
+import { NamedBaseEntity, EntityContext, TrackedBaseEntity } from '../../common';
 import { Profile } from '../profiles';
 import { SystemRole } from './system-role.entity';
 
@@ -15,4 +15,16 @@ export class SystemUser extends NamedBaseEntity {
 	@OneToOne(type => Profile, { nullable: true })
 	@JoinColumn()
 	profile: Profile;
+}
+
+@Entity('system-user-roles2')
+export class SystemUserRole extends TrackedBaseEntity {
+	@ManyToOne(type => SystemUser)
+	user: SystemUser;
+
+	@ManyToOne(type => SystemRole)
+	role: SystemRole;
+
+	@Column(type => EntityContext)
+    context: EntityContext;
 }

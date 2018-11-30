@@ -1,4 +1,4 @@
-export * from './account.repository';
+export * from './billing-accounts.repository';
 export * from './activity-log.repository';
 export * from './client.repository';
 export * from './notifications.repository';

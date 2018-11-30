@@ -8,7 +8,6 @@
       "name": "req",
       "route": "auth-getUserPermissions",
       "methods": [
-        "get",
         "post"
       ]
     },

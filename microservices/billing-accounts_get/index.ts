@@ -1,5 +1,5 @@
 import '../libs/typeorm/connect';
-import { AccountsService } from '../libs/services';
+import { BillingAccountsService } from '../libs/services';
 import {
 	queryResponse,
 	errorResponse
@@ -8,10 +8,10 @@ import { Context, HttpRequest } from '../libs/azure-function-types';
 
 
 export = async function run(context: Context, req: HttpRequest) {
-    const accounts = new AccountsService();
+    const accounts = new BillingAccountsService();
 	
 	try {
-		const results = await accounts.getAccounts(req.query);
+		const results = await accounts.getBillingAccounts(req.query);
 		context.res.body = queryResponse(req.query, results);
 	} catch (err) {
 		context.res.status = 500;

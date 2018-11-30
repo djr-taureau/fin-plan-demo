@@ -1,0 +1,62 @@
+<div id="api" data-name="Unified">
+
+    <div class="social" aria-label="Sign in with your social account" role="form">
+      <div class="intro">
+        <h2>Sign in with your social account</h2>
+      </div>
+      <div class="options">
+        <div>
+          <button class="accountButton firstButton" id="GoogleExchange" tabindex="1">Google</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider">
+      <h2>OR</h2>
+    </div>
+
+    <div class="localAccount" aria-label="Sign in with your existing account" role="form">
+        <div class="intro">
+          <h2>
+            Sign in with your existing account
+          </h2>
+        </div>
+        <div class="error pageLevel" aria-hidden="true" style="display: none;">
+          <p role="alert"></p>
+        </div>
+        <div class="entry">
+          <div class="entry-item">
+            <label for="signInName">
+              Email Address
+            </label>
+            <div class="error itemLevel" aria-hidden="true" style="display: none;">
+              <p role="alert"></p>
+            </div>
+            <input type="email" id="signInName" name="Sign in name" pattern="^[a-zA-Z0-9.!#$%&amp;’'*+/=?^_`{|}~-]+@@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$" placeholder="Email Address" value="" tabindex="1" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGP6zwAAAgcBApocMXEAAAAASUVORK5CYII=&quot;); cursor: auto;">
+          </div>
+          <div class="entry-item">
+            <div class="password-label">
+              <label for="password">Password</label>
+              <a id="forgotPassword" tabindex="2" href="/lifeworksdev.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/forgotPassword?csrf_token=OUZUcXlBMVRpWXhBVThDRmlPdXdGM05YWFNaN0JhdHE4czh1RXZkV2ErQWFZYTlNdTdsL2xOOWhjNXVFN0dYeHRqWlNoWUZsTlN5bWV4YmNkNmxVMUE9PTsyMDE4LTExLTMwVDE4OjAxOjE0LjQyODQ1NjJaO3dNQUpVK1JPbU83cnMxSFM5VlpmN0E9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI4NzBhZGNiZC0wMzBkLTQzNGQtYTYyYS0zNjZjMTY5ODgwNjAifQ&amp;p=B2C_1A_signup_signin">Forgot your password?</a>
+            </div>
+            <div class="error itemLevel" aria-hidden="true" style="display: none;">
+              <p role="alert"></p>
+            </div>
+            <input type="password" id="password" name="Password" placeholder="Password" tabindex="1" autocomplete="off" style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAZ9JREFUOBGVU7uKwkAUPXmID5AttNyFYBGwsLGwFBUFF/wOhfyE5jPcxkZt/IHFxg+wsZJtrFwS8NWIohZm545xNkp8XcjMnbnnnJk790YyTfPTcZwm+z7whEmSNGWwaqPR+Ca4/AqZCO5BX+STkcBTJ5/gp9HLkb2BR34kEoGu6xewlwQ0TUOxWPQXCIVCIhAMBsEeS6y9MbHpOirNlUoF6XQanU4Hq9UKhmHAsiy0Wq2L2DWZ1i+l4Ccg1et1hwJ0zd1uxzGUwn6/98OLPZbiL1vUxA3OZEI8IhOGlfKdTU3+BrThZ5lMBoVCAev1Gr1eD7PZDIFAALIs80NIRNzAT4DIw+EQm80G2WyWQ1KpFHK5nICr1NvezhIR5iyXSyQSCUSjUSiKgnK5jGQyCVVVEYvF0O12oeTz+R+GJfk3L5n8yWTC+yEej3OxwWCA4/GI7XaLfr/P0/jvlis2VadUKvH+IFK73YZt2yCxcDiM6ZR+SuDuI45GI4zHY8zncxwOB05YLBZ8Pg83BajOjEilummEuVeFmtssvgJurPYHGEKbZ/T0eqIAAAAASUVORK5CYII=&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;">
+          </div>
+          <div class="working"></div>
+          <div class="buttons">
+            <button id="next" tabindex="1">Sign in</button>
+          </div>
+        </div>
+        
+        <div class="divider">
+          <h2>OR</h2>
+        </div>
+        <div class="create">
+          <p>
+            Don't have an account?<a id="createAccount" tabindex="1" href="/lifeworksdev.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/unified?local=signup&amp;csrf_token=OUZUcXlBMVRpWXhBVThDRmlPdXdGM05YWFNaN0JhdHE4czh1RXZkV2ErQWFZYTlNdTdsL2xOOWhjNXVFN0dYeHRqWlNoWUZsTlN5bWV4YmNkNmxVMUE9PTsyMDE4LTExLTMwVDE4OjAxOjE0LjQyODQ1NjJaO3dNQUpVK1JPbU83cnMxSFM5VlpmN0E9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI4NzBhZGNiZC0wMzBkLTQzNGQtYTYyYS0zNjZjMTY5ODgwNjAifQ&amp;p=B2C_1A_signup_signin">Sign up now</a>
+          </p>
+        </div>
+      </div>
+    </div>

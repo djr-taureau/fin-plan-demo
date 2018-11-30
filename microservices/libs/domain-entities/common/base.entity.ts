@@ -2,7 +2,8 @@ import {
 	Column,
 	CreateDateColumn,
 	PrimaryGeneratedColumn,
-	UpdateDateColumn
+	UpdateDateColumn,
+	Index
 } from 'typeorm';
 
 /**
@@ -60,4 +61,24 @@ export abstract class DescribedBaseEntity extends NamedBaseEntity {
 		nullable: true
     })
     description?: string;
+}
+
+
+export enum EntityScope {
+	Account=1,
+	Firm=2,
+	Team=3,
+	Client=4,
+	User=5
+}
+
+export class EntityContext {
+
+	@Column('int')
+	@Index()
+	scope: EntityScope;
+
+	@Column('uuid')
+	@Index()
+	entity: string;
 }

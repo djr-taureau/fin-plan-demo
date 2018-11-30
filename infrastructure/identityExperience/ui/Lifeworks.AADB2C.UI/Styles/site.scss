@@ -166,8 +166,8 @@ input:focus, select:focus, textarea:focus {
 }
 
 img#background_background_image {
+    object-fit: cover;
     height: 100%;
-    width: 100%
 }
 
 div#background_page_overlay {

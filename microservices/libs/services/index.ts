@@ -1,4 +1,4 @@
-export * from './accounts.service';
+export * from './billing-accounts.service';
 export * from './activity-log.service';
 export * from './clients.service';
 export * from './notifications.service';

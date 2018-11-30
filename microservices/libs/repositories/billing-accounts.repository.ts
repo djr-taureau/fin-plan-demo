@@ -1,9 +1,9 @@
 import { EntityRepository, AbstractRepository } from 'typeorm';
 import { getPagingOptions, QueryOptions } from './common';
-import { FirmAccount } from '../domain-entities';
+import { BillingAccount } from '../domain-entities';
 
-@EntityRepository(FirmAccount)
-export class AccountRepository extends AbstractRepository<FirmAccount> {
+@EntityRepository(BillingAccount)
+export class BillingAccountsRepository extends AbstractRepository<BillingAccount> {
 	async query(options?: QueryOptions) {
 		const pagingOptions = getPagingOptions(options);
 		return await this.repository.findAndCount(pagingOptions);

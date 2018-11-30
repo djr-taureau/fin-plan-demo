@@ -6,13 +6,15 @@ import {
   FirmStaffRepository,
   UsersRepository,
   ProfileRepository,
-  ProfileAttributeRespository
+  ProfileAttributeRespository,
+  Roles2Repository
 } from '../repositories';
 import { errorResponse } from '../function-utilities/format-responses';
 
 
 export class AuthService {
   private clientRepo = getCustomRepository(ClientMemberRepository);
+  private userRolesRepo = getCustomRepository(Roles2Repository);
   private firmRepo = getCustomRepository(FirmClientRepository);
   private firmStaffRepo = getCustomRepository(FirmStaffRepository);
   private userRepo = getCustomRepository(UsersRepository);
@@ -77,7 +79,7 @@ export class AuthService {
           ...lwFirmClientContextData,
         };
       } else {
-        throw 'lwClientGuid is Empty';
+        throw new Error('lwClientGuid is Empty');
       }
     } catch(err) {
       errorResponse(err);
@@ -114,12 +116,15 @@ export class AuthService {
 
   async getUserPermissions(param) {
     try {
+      const permissions = await this.userRolesRepo.getPermissions(param);
+      return permissions
+
       const lwUserPermissions = await this.userRepo.getLwSystemUserPermissions(param);
       const lwFirmStaffPermissions = await this.firmStaffRepo.getLwFirmStaffPermissions(param);
 
       if(lwFirmStaffPermissions) {
         return uniq(concat(lwUserPermissions, lwFirmStaffPermissions));
-      } else {  
+      } else {
         return lwUserPermissions;
       }
     } catch(err) {

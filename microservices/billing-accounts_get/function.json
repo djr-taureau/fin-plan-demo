@@ -6,7 +6,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "accounts",
+      "route": "billing-accounts",
       "methods": [
         "get"
       ]

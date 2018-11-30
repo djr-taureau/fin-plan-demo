@@ -1,5 +1,4 @@
-export * from './firm-account-type';
-export * from './firm-account.entity';
+
 export * from './firm-client-status';
 export * from './firm-client.entity';
 export * from './firm-staff.entity';

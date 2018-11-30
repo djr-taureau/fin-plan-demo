@@ -1,8 +1,8 @@
-import { EntityRepository, AbstractRepository, FindOneOptions } from 'typeorm';
+import { EntityRepository, AbstractRepository, FindOneOptions, FindConditions, FindManyOptions } from 'typeorm';
 import { getPermissions } from '../function-utilities'
 import { getPagingOptions, QueryOptions, basicError, GetUserGuidQueryOptions } from './common';
-import { SystemUser, Profile, SystemRole } from '../domain-entities';
-
+import { SystemUser, Profile, SystemRole, SystemUserRole } from '../domain-entities';
+import { pathOr, concat, pluck, uniq } from 'ramda';
 @EntityRepository(SystemUser)
 export class UsersRepository extends AbstractRepository<SystemUser> {
 
@@ -53,6 +53,26 @@ export class UsersRepository extends AbstractRepository<SystemUser> {
 
       const results = await this.repository.findOne(query);
       return getPermissions(results);
+    } catch(err) {
+      basicError(err);
+    }
+  }  
+}
+
+@EntityRepository(SystemUserRole)
+export class Roles2Repository extends AbstractRepository<SystemUserRole> {
+  async getPermissions(options?: QueryOptions) {
+    try {
+      const query: FindManyOptions = {
+        where: {
+          userGuid: options
+        },
+        relations: ['role', 'role.permissions']
+      }
+
+      const results = await this.repository.find(query);
+      const r = results.reduce((a,v)=> uniq(concat(a, pathOr([], ['role', 'permissions'], v))) , []);
+      return pluck('name', r);
     } catch(err) {
       basicError(err);
     }

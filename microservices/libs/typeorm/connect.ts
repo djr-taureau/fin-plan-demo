@@ -14,7 +14,7 @@ import {
 	SystemPermission,
 	SystemRole,
 	Firm,
-	FirmAccount,
+	BillingAccount,
 	FirmClient,
 	TeamMember,
 	FirmStaffCertification,
@@ -34,7 +34,8 @@ import {
 	RelationshipAttribute,
 	RelationshipDefinition,
 	SystemTool,
-	SystemToolResult
+	SystemToolResult,
+	SystemUserRole
 } from '../domain-entities';
 
 const connectionConfig: ConnectionOptions = {
@@ -59,7 +60,7 @@ const connectionConfig: ConnectionOptions = {
 		SystemPermission,
 		SystemRole,
 		Firm,
-		FirmAccount,
+		BillingAccount,
 		FirmClient,
 		TeamMember,
 		FirmStaffCertification,
@@ -79,7 +80,8 @@ const connectionConfig: ConnectionOptions = {
 		RelationshipAttribute,
 		RelationshipDefinition,
 		SystemTool,
-		SystemToolResult
+		SystemToolResult,
+		SystemUserRole
 	],
 	options: {
 		encrypt: true

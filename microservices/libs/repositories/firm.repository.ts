@@ -17,7 +17,7 @@ export class FirmClientRepository extends AbstractRepository<FirmClient> {
           guid: options.guid //TODO: would like to not have to do this and make it similar to  client.repo
         }
       },
-      relations: ['firm', 'firm.account']
+      relations: ['firm', 'firm.billingAccount']
     }
 
     try {
@@ -25,7 +25,7 @@ export class FirmClientRepository extends AbstractRepository<FirmClient> {
       return {
         lwFirmClientGuid: results.guid,
         lwFirmGuid: results.firm.guid,
-        lwFirmAccountGuid: results.firm.account.guid
+        lwFirmAccountGuid: results.firm.billingAccount.guid
       };
     } catch(e) {
       console.error(e);
@@ -50,14 +50,14 @@ export class FirmStaffRepository extends AbstractRepository<FirmStaff> {
           guid: options
         }
       },
-      relations: ['firm', 'firm.account']
+      relations: ['firm', 'firm.billingAccount']
     }
 
     try {
       const results = await this.repository.findOne(query);
       return {
         lwFirmGuid: results.firm.guid,
-        lwFirmAccountGuid: results.firm.account.guid
+        lwFirmAccountGuid: results.firm.billingAccount.guid
       };
     } catch(e) {
       console.error(e);

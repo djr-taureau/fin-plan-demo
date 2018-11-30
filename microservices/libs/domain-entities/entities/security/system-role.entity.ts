@@ -4,7 +4,7 @@ import { SystemPermission } from './system-permission.entity';
 import { SecurityScope } from './security-scope';
 import { SystemUser } from './system-user.entity';
 
-@Entity('roles')
+@Entity('system-roles')
 export class SystemRole extends NamedBaseEntity {
 	@Column() name: string;
 

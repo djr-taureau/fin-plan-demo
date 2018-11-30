@@ -1,18 +1,19 @@
 import { Entity, Column, OneToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Subscription } from './subscription';
+
 import { NamedBaseEntity } from '../../common';
 import { SystemUser } from '../security';
-import { Firm } from './firm.entity';
-import { FirmAccountType } from './firm-account-type';
+import { Firm } from '../firms';
 
-@Entity('firm-accounts')
-export class FirmAccount extends NamedBaseEntity {
+@Entity('billing-accounts')
+export class BillingAccount extends NamedBaseEntity {
 	@OneToOne(type => SystemUser)
 	@JoinColumn()
 	owner: SystemUser;
 
-	@OneToMany(type => Firm, firm => firm.account)
+	@OneToMany(type => Firm, firm => firm.billingAccount)
 	firms: Firm[];
 
 	@Column("int")
-	accountType: FirmAccountType;
+	subscription: Subscription;
 }

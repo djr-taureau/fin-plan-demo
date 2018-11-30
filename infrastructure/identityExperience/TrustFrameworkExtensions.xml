@@ -13,7 +13,7 @@
 
       <!-- This content definition is to render an error page that displays unhandled errors. -->
       <ContentDefinition Id="api.error">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/exception</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/exception</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0</DataUri>
         <Metadata>
@@ -22,7 +22,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.idpselections">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/idpSelector</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/idpSelector</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
         <Metadata>
@@ -32,7 +32,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.idpselections.signup">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/idpSelector</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/idpSelector</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0</DataUri>
         <Metadata>
@@ -42,7 +42,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.signuporsignin">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/Unified</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/Unified</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.0.0</DataUri>
         <Metadata>
@@ -51,7 +51,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.selfasserted">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/selfAsserted</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
         <Metadata>
@@ -60,7 +60,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.selfasserted.profileupdate">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/updateProfile</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/updateProfile</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
         <Metadata>
@@ -69,7 +69,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.localaccountsignup">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/selfAsserted</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
         <Metadata>
@@ -78,7 +78,7 @@
       </ContentDefinition>
 
       <ContentDefinition Id="api.localaccountpasswordreset">
-        <LoadUri>https://lifeworks-b2c-ui-dev-wa.azurewebsites.net/selfAsserted</LoadUri>
+        <LoadUri>https://ief-dev.onlifeworks.com/selfAsserted</LoadUri>
         <RecoveryUri>~/common/default_page_error.html</RecoveryUri>
         <DataUri>urn:com:microsoft:aad:b2c:elements:selfasserted:1.1.0</DataUri>
         <Metadata>
@@ -96,17 +96,17 @@
       <TechnicalProfiles>
         <TechnicalProfile Id="LW-UserGetOrCreateUsingObjectId">
           <Metadata>
-            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserGuid</Item>
+            <Item Key="ServiceUrl">https://api-dev.onlifeworks.com/auth/auth-getUserGuid</Item>
           </Metadata>
         </TechnicalProfile>
         <TechnicalProfile Id="LW-UserContextGetUsingLWUserGuid">
           <Metadata>
-            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserContextGuids</Item>
+            <Item Key="ServiceUrl">https://api-dev.onlifeworks.com/auth/auth-getUserContextGuids</Item>
           </Metadata>
         </TechnicalProfile>
         <TechnicalProfile Id="LW-UserPermissionsGetUsingLWUserGuid">
           <Metadata>
-            <Item Key="ServiceUrl">https://lifeworks-functions.azurewebsites.net/api/auth-getUserPermissions</Item>
+            <Item Key="ServiceUrl">https://api-dev.onlifeworks.com/auth/auth-getUserPermissions</Item>
           </Metadata>
         </TechnicalProfile>
       </TechnicalProfiles>
