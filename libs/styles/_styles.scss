@@ -353,7 +353,7 @@ todo: Replace with component styles */
 			padding-left: 6rem !important;
 			font-weight: 300;
 		}
-		
+
 		.leaf-text {
 			flex-grow: 1;
 		}
@@ -387,7 +387,7 @@ todo: Replace with component styles */
 		background-color: #A3B5B7;
 	}
 	.mat-progress-bar-fill:after {
-		border-radius: 0 20px 20px 0; 
+		border-radius: 0 20px 20px 0;
 	}
 }
 
@@ -420,12 +420,18 @@ todo: Replace with component styles */
 	margin-right: -40px;
 	transform-origin: right top 0px;
 	margin-top: 46px;
-	
-	
+
+
 	.mat-menu-content {
 		margin-right: 39px;
 	}
 
 	.mat-menu-item {
-	}
+  }
 }
+
+
+
+
+
+

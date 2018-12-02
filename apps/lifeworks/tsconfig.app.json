@@ -14,5 +14,6 @@
     "../../libs/dashboarding/src/index.ts",
     "../../libs/clients/src/index.ts",
     "../../libs/content/src/index.ts",
+    "../../libs/notes/src/index.ts",
   ]
 }

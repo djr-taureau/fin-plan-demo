@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NavigationItems } from '@lifeworks/common';
-import { AuthService } from '@lifeworks/authentication';
-
+import { AuthService } from '@lifeworks/authentication';;
 import { NavigationService } from '../../services';
 
 @Component({
@@ -13,23 +13,30 @@ export class AppNavigationComponent implements OnInit {
 	navigation: NavigationItems;
 
 	constructor(
-		private auth: AuthService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private auth: AuthService,
 		private navigationService: NavigationService
 	) {}
 
 	ngOnInit() {
-		this.navigation = this.navigationService.getNavigation();
+    this.navigation = this.navigationService.getNavigation();
 	}
 
 	raiseEvent($event: MouseEvent, action: string) {
-		switch (action) {
+    switch (action) {
 			case 'logout':
 				this.logout();
-				break;
-		}
-	}
+        break;
+      case 'addNote':
+        this.router.navigate(['addNote']);
+        // this.router.navigateByUrl('/notes/addNote');
+      break;
+      }
+  }
 
 	logout() {
 		this.auth.logout();
-	}
+  }
+
 }

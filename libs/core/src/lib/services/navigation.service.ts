@@ -1,6 +1,7 @@
 import { Injectable, Inject, InjectionToken } from '@angular/core';
-
+import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import { sortNestedByOrder, NavigationItems } from '@lifeworks/common';
+
 
 export const APP_NAVIGATION = new InjectionToken<NavigationItems>(
 	'AppNavigation'
@@ -10,7 +11,7 @@ export const APP_NAVIGATION = new InjectionToken<NavigationItems>(
 	providedIn: 'root'
 })
 export class NavigationService {
-	private navigationItems: NavigationItems;
+  private navigationItems: NavigationItems;
 
 	constructor(@Inject(APP_NAVIGATION) navigation: NavigationItems) {
 		this.setNavigation(navigation);
@@ -22,5 +23,6 @@ export class NavigationService {
 
 	getNavigation() {
 		return this.navigationItems;
-	}
+  }
+
 }

@@ -1,0 +1,15 @@
+<lw-widget class="lw-elevation">
+    <lw-widget-header>
+        <lw-widget-title >{{title}}</lw-widget-title>
+        <lw-badge lwWidgetSubtitle  *ngIf="(dataState$ | async) === 'loaded'">
+                {{dataItemsCount$ | async}}
+        </lw-badge>
+        <a lwWidgetLink [routerLink]="['notifications']" lwInlineCaret caretDirection="right">{{linkText}}</a>
+    </lw-widget-header>
+    <lw-widget-content [ngSwitch]="dataState$ | async">
+        <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>
+        <div *ngSwitchCase="'empty'" class="widget-message">No new items</div>
+        <div *ngSwitchCase="'error'" class="widget-message">Opps... something went wrong</div>
+        <lw-notes-list (event)="event($event)" *ngSwitchCase="'loaded'" [items]="data$ | async"></lw-notes-list>
+    </lw-widget-content>
+</lw-widget>

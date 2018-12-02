@@ -14,7 +14,8 @@ export interface HasNavigation {
 export enum renderAsType {
 	action,
 	displayOnly,
-	location
+  location,
+  actionLocation
 }
 
 /** Mixin to add a `wrapWithAnchor` and `location` properties to a directive or component. */
@@ -27,11 +28,11 @@ export function mixinNavigation<T extends Constructor<{}>>(
 		action: string;
 
 		get renderAs() {
-			if (this.location) {
-				return renderAsType[renderAsType.location];
-			} else if (this.action) {
+	     if (this.action) {
 				return renderAsType[renderAsType.action];
-			}
+			} else if (this.location) {
+        return renderAsType[renderAsType.location];
+      }
 			return renderAsType[renderAsType.displayOnly];
 		}
 

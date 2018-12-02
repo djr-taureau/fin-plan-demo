@@ -1,3 +1,4 @@
+//tslint:disable:use-host-property-decorator
 {
   "rulesDirectory": [
     "node_modules/codelyzer",

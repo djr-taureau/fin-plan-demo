@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { PageComponent } from '@lifeworks/ui-components/layouts';
-
 import { NotificationsPageComponent } from '../pages';
 import { NotificationsHeaderComponent } from '../components';
 

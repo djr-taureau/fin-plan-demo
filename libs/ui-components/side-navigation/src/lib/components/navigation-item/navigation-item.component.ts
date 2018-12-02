@@ -12,6 +12,7 @@ import {
 	mixinNavigation,
 	HasNavigation
 } from '@lifeworks/ui-components';
+import { getRenderer } from '@angular/core/src/render3/instructions';
 
 export const _NavigationItemBase = mixinNavigation(ComponentHostBase);
 
@@ -25,14 +26,18 @@ export const _NavigationItemBase = mixinNavigation(ComponentHostBase);
 })
 export class NavigationItemComponent extends _NavigationItemBase
 	implements HasNavigation {
-	@Output() event: EventEmitter<string> = new EventEmitter<string>();
-	@Input() icon: string;
+  @Output() event: EventEmitter<string> = new EventEmitter<string>();
+  @Input() icon: string;
+
 
 	constructor(public _elementRef: ElementRef) {
-		super(_elementRef);
-	}
+    super(_elementRef);
+  }
 
 	raiseEvent() {
-		this.event.emit(null);
-	}
+    this.event.emit(null);
+    console.log(event);
+  }
+
 }
+

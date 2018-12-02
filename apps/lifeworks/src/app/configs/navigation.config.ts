@@ -27,6 +27,15 @@ export const NAVIGATION: NavigationItems = [
 				icon: 'reports',
 				location: '/reports',
 				order: 4
+      },
+      {
+        display: 'Notes',
+        icon: 'dashboard',
+        location: '/notes',
+        order: 5,
+        children: [
+          { display: 'Add Note', action: 'addNote', order: 1 }
+        ]
 			}
 		]
 	},

@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>{{ content }}</h2>
+<mat-dialog-content [formGroup]="notesForm" connectForm="note">
+    <input matInput formControlName="id" [disabled]="true" [hidden]="true" value="1">
+    <input matInput formControlName="date" [disabled]="true" [hidden]="true">
+  <mat-form-field>
+  <input matInput placeholder="Enter your notes" formControlName="notes">
+</mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">Close</button>
+  <button class="mat-raised-button mat-primary" (keydown.enter)="save($event)" (click)="save($event)">Save</button>
+</mat-dialog-actions>

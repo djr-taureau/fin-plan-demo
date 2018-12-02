@@ -18,7 +18,6 @@ import {
 } from '@ngrx/router-store';
 import { storeFreeze } from 'ngrx-store-freeze';
 import { environment } from '../environments/environment';
-
 import { AppComponent } from './app.component';
 import { ApplicationRoutes, AuthConfig, NAVIGATION } from './configs';
 import {
@@ -30,7 +29,6 @@ import {
 	CoreModule
 } from '@lifeworks/core';
 import { AuthenticationModule } from '@lifeworks/authentication';
-
 // tslint:disable-next-line
 import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';
 
@@ -44,10 +42,10 @@ const globalRippleConfig: RippleGlobalOptions = { disabled: true };
 		CoreModule,
 		BrowserAnimationsModule,
 		AzureAdAuthProviderModule,
-		AuthenticationModule.forRoot(AuthConfig),
+    AuthenticationModule.forRoot(AuthConfig),
 		NxModule.forRoot(),
 		RouterModule.forRoot(ApplicationRoutes, {
-			initialNavigation: 'enabled'
+      initialNavigation: 'enabled',
 		}),
 		StoreModule.forRoot(
 			{ route: routerReducer },
@@ -68,7 +66,7 @@ const globalRippleConfig: RippleGlobalOptions = { disabled: true };
 			provide: APP_INITIALIZER,
 			multi: true,
 			deps: [ConfigService]
-		},
+    },
 		{ provide: RouterStateSerializer, useClass: FixedRouterSerializer },
 		{ provide: CONFIG_URL, useValue: environment.configUrl },
 		{ provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: { disabled: true } }

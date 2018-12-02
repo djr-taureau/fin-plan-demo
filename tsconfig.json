@@ -1,85 +1,122 @@
 {
-	"compileOnSave": false,
-	"compilerOptions": {
-		"sourceMap": true,
-		"declaration": false,
-		"moduleResolution": "node",
-		"emitDecoratorMetadata": true,
-		"experimentalDecorators": true,
-		"target": "es5",
-		"typeRoots": ["node_modules/@types", "node_modules/date-fns"],
-		"lib": ["es2017", "dom"],
-		"baseUrl": ".",
-		"paths": {
-			"@lifeworks/activity-log": ["libs/activity-log/src/index.ts"],
-			"@lifeworks/notifications": ["libs/notifications/src/index.ts"],
-			"@lifeworks/core": ["libs/core/src/index.ts"],
-			"@lifeworks/ui-components": [
-				"libs/ui-components/core/src/index.ts"
-			],
-			"@lifeworks/ui-components/data-list": [
-				"libs/ui-components/data-list/src/index.ts"
-			],
-			"@lifeworks/ui-components/side-navigation": [
-				"libs/ui-components/side-navigation/src/index.ts"
-			],
-			"@lifeworks/authentication": ["libs/authentication/src/index.ts"],
-			"@lifeworks/authentication/providers/azure-ad-auth-provider": [
-				"libs/authentication/src/lib/providers/azure-ad-auth-provider/src/index.ts"
-			],
-			"@lifeworks/dashboarding": ["libs/dashboarding/src/index.ts"],
-			"@lifeworks/common": ["libs/common/src/index.ts"],
-			"@lifeworks/ui-components/widget": [
-				"libs/ui-components/widget/src/index.ts"
-			],
-			"@lifeworks/ui-components/value-callout": [
-				"libs/ui-components/value-callout/src/index.ts"
-			],
-			"@lifeworks/ui-components/text-list": [
-				"libs/ui-components/text-list/src/index.ts"
-			],
-			"@lifeworks/ui-components/buttons": [
-				"libs/ui-components/buttons/src/index.ts"
-			],
-			"@lifeworks/ui-components/icons": [
-				"libs/ui-components/icons/src/index.ts"
-			],
-			"@lifeworks/services": ["libs/services/src/index.ts"],
-			"@lifeworks/sandbox": ["libs/sandbox/src/index.ts"],
-			"@lifeworks/ui-components/value-list": [
-				"libs/ui-components/value-list/src/index.ts"
-			],
-			"@lifeworks/ui-components/page-layouts": [
-				"libs/ui-components/page-layouts/src/index.ts"
-			],
-			"@lifeworks/ui-components/page-navigation": [
-				"libs/ui-components/page-navigation/src/index.ts"
-			],
-			"@lifeworks/ui-components/breadcrumb": [
-				"libs/ui-components/breadcrumb/src/index.ts"
-			],
-			"@lifeworks/admin-features/dashboard": [
-				"libs/admin-features/dashboard/src/index.ts"
-			],
-			"@lifeworks/permissions": ["libs/permissions/src/index.ts"],
-			"@lifeworks/clients": ["libs/clients/src/index.ts"],
-			"@lifeworks/ui-components/status-list": [
-				"libs/ui-components/status-list/src/index.ts"
-			],
-			"@lifeworks/ui-components/file-upload": [
-				"libs/ui-components/file-upload/src/index.ts"
-			],
-			"@lifeworks/ui-components/attachment": [
-				"libs/ui-components/attachment/src/index.ts"
-			],
-			"@lifeworks/ui-components/layouts": [
-				"libs/ui-components/layouts/src/index.ts"
-			],
-			"@lifeworks/ui-components/scenario": [
-				"libs/ui-components/scenario/src/index.ts"
-			],
-			"@lifeworks/content": ["libs/content/src/index.ts"]
-		}
-	},
-	"exclude": ["node_modules", "tmp"]
+  "compileOnSave": false,
+  "compilerOptions": {
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/date-fns"
+    ],
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@lifeworks/activity-log": [
+        "libs/activity-log/src/index.ts"
+      ],
+      "@lifeworks/notifications": [
+        "libs/notifications/src/index.ts"
+      ],
+      "@lifeworks/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@lifeworks/ui-components": [
+        "libs/ui-components/core/src/index.ts"
+      ],
+      "@lifeworks/ui-components/data-list": [
+        "libs/ui-components/data-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/side-navigation": [
+        "libs/ui-components/side-navigation/src/index.ts"
+      ],
+      "@lifeworks/authentication": [
+        "libs/authentication/src/index.ts"
+      ],
+      "@lifeworks/authentication/providers/azure-ad-auth-provider": [
+        "libs/authentication/src/lib/providers/azure-ad-auth-provider/src/index.ts"
+      ],
+      "@lifeworks/dashboarding": [
+        "libs/dashboarding/src/index.ts"
+      ],
+      "@lifeworks/common": [
+        "libs/common/src/index.ts"
+      ],
+      "@lifeworks/ui-components/widget": [
+        "libs/ui-components/widget/src/index.ts"
+      ],
+      "@lifeworks/ui-components/value-callout": [
+        "libs/ui-components/value-callout/src/index.ts"
+      ],
+      "@lifeworks/ui-components/text-list": [
+        "libs/ui-components/text-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/buttons": [
+        "libs/ui-components/buttons/src/index.ts"
+      ],
+      "@lifeworks/ui-components/icons": [
+        "libs/ui-components/icons/src/index.ts"
+      ],
+      "@lifeworks/services": [
+        "libs/services/src/index.ts"
+      ],
+      "@lifeworks/sandbox": [
+        "libs/sandbox/src/index.ts"
+      ],
+      "@lifeworks/ui-components/value-list": [
+        "libs/ui-components/value-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/page-layouts": [
+        "libs/ui-components/page-layouts/src/index.ts"
+      ],
+      "@lifeworks/ui-components/page-navigation": [
+        "libs/ui-components/page-navigation/src/index.ts"
+      ],
+      "@lifeworks/ui-components/breadcrumb": [
+        "libs/ui-components/breadcrumb/src/index.ts"
+      ],
+      "@lifeworks/admin-features/dashboard": [
+        "libs/admin-features/dashboard/src/index.ts"
+      ],
+      "@lifeworks/permissions": [
+        "libs/permissions/src/index.ts"
+      ],
+      "@lifeworks/clients": [
+        "libs/clients/src/index.ts"
+      ],
+      "@lifeworks/ui-components/status-list": [
+        "libs/ui-components/status-list/src/index.ts"
+      ],
+      "@lifeworks/ui-components/file-upload": [
+        "libs/ui-components/file-upload/src/index.ts"
+      ],
+      "@lifeworks/ui-components/attachment": [
+        "libs/ui-components/attachment/src/index.ts"
+      ],
+      "@lifeworks/ui-components/layouts": [
+        "libs/ui-components/layouts/src/index.ts"
+      ],
+      "@lifeworks/ui-components/scenario": [
+        "libs/ui-components/scenario/src/index.ts"
+      ],
+      "@lifeworks/content": [
+        "libs/content/src/index.ts"
+      ],
+      "@lifeworks/notes": [
+        "libs/notes/src/index.ts"
+      ],
+      "@lifeworks/ui-components/dialog": [
+        "libs/ui-components/dialog/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
 }
