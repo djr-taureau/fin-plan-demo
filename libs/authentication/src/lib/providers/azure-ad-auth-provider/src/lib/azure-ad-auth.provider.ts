@@ -82,7 +82,10 @@ export class AzureAdAuthProvider extends AuthProvider {
 		);
 	}
 
-	async getToken() {}
+	async getToken() {
+		return this.msal.getCacheStorage().getItem('msal.idtoken');
+	}
 
-	private async getTokenPopup() {}
+	private async getTokenPopup() {
+	}
 }

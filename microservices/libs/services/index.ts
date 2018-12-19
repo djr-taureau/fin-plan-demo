@@ -11,3 +11,5 @@ export * from './content.service';
 export * from './profile.service';
 export * from './team-member.service';
 export * from './tools.service';
+export * from './event-grid.service';
+export * from './firm.service';

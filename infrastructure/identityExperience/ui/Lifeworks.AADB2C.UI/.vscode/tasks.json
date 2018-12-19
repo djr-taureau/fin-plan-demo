@@ -73,7 +73,7 @@
         "isBackground": true
     },
     {
-        "identifier": "Build: Styles",
+        "label": "Build: Styles",
         "type": "gulp",
         "task": "sass",
         "group": "build",
@@ -84,7 +84,7 @@
         "problemMatcher": []
     },
     {
-        "identifier": "Watch: Styles",
+        "label": "Watch: Styles",
         "type": "gulp",
         "task": "sass:watch",
         "group": "none",

@@ -1,0 +1,109 @@
+<TrustFrameworkPolicy
+  PolicySchemaVersion="0.3.0.0"
+  TenantId="lifeworksDev.onmicrosoft.com"
+  PolicyId="B2C_1A_base_extensions"
+  PublicPolicyUri="http://lifeworksDev.onmicrosoft.com"
+  xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <BasePolicy>
+    <TenantId>lifeworksDev.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_base</PolicyId>
+  </BasePolicy>
+  <BuildingBlocks>
+    <ContentDefinitions>
+      <!-- The following content definition is used for errors. -->
+      <ContentDefinition Id="api.error">
+        <LoadUri>https://ief-dev.onlifeworks.com/error</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for selecting an identity provider. -->
+      <ContentDefinition Id="api.idpselection.signin">
+        <LoadUri>https://ief-dev.onlifeworks.com/idpselection-signin</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for selecting an identity provider. -->
+      <ContentDefinition Id="api.idpselection.signupsignin">
+        <LoadUri>https://ief-dev.onlifeworks.com/idpselection-signupsignin</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering a local account via an activation link. -->
+      <ContentDefinition Id="api.localaccount.activation">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-activation</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for discovering a local account by e-mail or phone. -->
+      <ContentDefinition Id="api.localaccount.discovery">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-discovery</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a local account. -->
+      <ContentDefinition Id="api.localaccount.login">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-login</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a local account using an app code. -->
+      <ContentDefinition Id="api.localaccount.login.appcode">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-login-appcode</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a local account using an Authy code. -->
+      <ContentDefinition Id="api.localaccount.login.authycode">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-login-authycode</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a local account using an e-mail code. -->
+      <ContentDefinition Id="api.localaccount.login.emailcode">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-login-emailcode</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a local account using a phone code. -->
+      <ContentDefinition Id="api.localaccount.login.phonecode">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-login-phonecode</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for recovering the password for a local account. -->
+      <ContentDefinition Id="api.localaccount.passwordrecovery">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-passwordrecovery</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for resetting the password for a local account. -->
+      <ContentDefinition Id="api.localaccount.passwordreset">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-passwordreset</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for setting the password for a local account. -->
+      <ContentDefinition Id="api.localaccount.passwordset">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-passwordset</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering a local account. -->
+      <ContentDefinition Id="api.localaccount.registration">
+        <LoadUri>https://ief-dev.onlifeworks.com/localaccount-registration</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering, validating, and verifying a verification phone. -->
+      <ContentDefinition Id="api.phonefactor">
+        <LoadUri>https://ief-dev.onlifeworks.com/phonefactor</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering a verification app. -->
+      <ContentDefinition Id="api.selfasserted.appfactor.registration">
+        <LoadUri>https://ief-dev.onlifeworks.com/selfasserted-appfactor-registration</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for verifying a verification app. -->
+      <ContentDefinition Id="api.selfasserted.appfactor.verification">
+        <LoadUri>https://ief-dev.onlifeworks.com/selfasserted-appfactor-verification</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering, validating, and verifying an Authy account. -->
+      <ContentDefinition Id="api.selfasserted.authyfactor">
+        <LoadUri>https://ief-dev.onlifeworks.com/selfasserted-authyfactor</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for updating the consent for a user. -->
+      <ContentDefinition Id="api.selfasserted.consent">
+        <LoadUri>https://ief-dev.onlifeworks.com/consent</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering a user. -->
+      <ContentDefinition Id="api.selfasserted.registration">
+        <LoadUri>https://ief-dev.onlifeworks.com/selfasserted-registration</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for updating a user. -->
+      <ContentDefinition Id="api.selfasserted.profileupdate">
+        <LoadUri>https://ief-dev.onlifeworks.com/selfasserted-profileupdate</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for logging in a user. -->
+      <ContentDefinition Id="api.signupsignin">
+        <LoadUri>https://ief-dev.onlifeworks.com/signupsignin</LoadUri>
+      </ContentDefinition>
+      <!-- The following content definition is used for registering a social account. -->
+      <ContentDefinition Id="api.socialaccount.registration">
+        <LoadUri>https://ief-dev.onlifeworks.com/consent</LoadUri>
+      </ContentDefinition>
+    </ContentDefinitions>
+  </BuildingBlocks>
+</TrustFrameworkPolicy>

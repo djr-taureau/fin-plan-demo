@@ -8,4 +8,8 @@ export class BillingAccountsService {
 	async getBillingAccounts(params) {
 		return await this.repo.query(params);
 	}
+
+	async getBillingAccount(params) {
+		return await this.repo.getBillingAccount(params);
+	}
 }

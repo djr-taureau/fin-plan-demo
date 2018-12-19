@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+h1, h2 {
+  font-weight: 700
+}
+
+h2 {
+  font-size: 1em
+}
+
+a {
+  cursor: pointer;
+  background-color: transparent;
+  color: $color-primary-orange;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline
+  }
+}
+
+img {
+  border: 0
+}
+
+.normaltext {
+  font-size: .9em
+}

@@ -13,8 +13,8 @@ export class NotificationsRepository extends AbstractRepository<Notification> {
 		return await this.repository.findAndCount(pagingOptions);
 	}
 
-	async insert(notification: DeepPartial<Notification>) {
-		return await this.repository.save(notification);
+	async insert(notifications: Array<Notification>) {
+		return await this.repository.save(notifications);
 	}
 
 	async update(guid: string, notification: DeepPartial<Notification>) {

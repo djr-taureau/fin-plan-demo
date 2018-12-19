@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+	xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	PolicySchemaVersion="0.3.0.0"
+	TenantId="lifeworksDev.onmicrosoft.com"
+	PolicyId="B2C_1A_activation"
+	PublicPolicyUri="http://lifeworksDev.onmicrosoft.com">
+  <BasePolicy>
+    <TenantId>lifeworksDev.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_base_extensions</PolicyId>
+  </BasePolicy>
+  <!-- The following policy is used for registering a local account via an activation link. -->
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="Activation" />
+    <UserJourneyBehaviors>
+      <SingleSignOn Scope="Tenant" />
+      <SessionExpiryType>Rolling</SessionExpiryType>
+      <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="Activation">
+      <DisplayName>Activation</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <InputTokenFormat>JWT</InputTokenFormat>
+      <CryptographicKeys>
+        <Key Id="client_secret" StorageReferenceId="B2C_1A_LifeworksAppClientSecret" />
+      </CryptographicKeys>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="extension_Brand" />
+        <InputClaim ClaimTypeReferenceId="extension_Nonce" />
+        <InputClaim ClaimTypeReferenceId="extension_VerifiedEmail" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+        <OutputClaim ClaimTypeReferenceId="extension_Picture" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>

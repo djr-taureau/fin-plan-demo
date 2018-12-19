@@ -25,6 +25,12 @@
       "sourceMaps": true,
       "preLaunchTask": "runFunctionsHost",
       "timeout": 25000
-    }
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach",
+      "processId": "${command:pickProcess}"
+  }
   ]
 }

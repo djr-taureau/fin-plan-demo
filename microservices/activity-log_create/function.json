@@ -1,0 +1,17 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "name": "activityLogMessage",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "activity-logs-to-send",
+      "connection": "AzureWebJobsStorage"
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    }
+  ]
+}

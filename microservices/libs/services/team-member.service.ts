@@ -32,9 +32,24 @@ export class TeamMemberService {
     return await this.teamMemberRepo.create(firmStaff, params);
   }
   
+  /**
+   * 
+   * @param params
+   * @returns Array<TeamMember> with only essential data
+   */
   async getEntityTeamMembers(params) {
     const clientTeam = await this.teamMemberRepo.get(params);
     return reduce(formTeam, [], clientTeam);
+  }
+
+  /**
+   * 
+   * @param params
+   * @returns Array<TeamMember> with all DB records down to profile attributes
+   */
+  async getEntityTeamMembersFull(params) {
+    const clientTeam = await this.teamMemberRepo.get(params);
+    return clientTeam
   }
 
   async removeTeamMember(params) {

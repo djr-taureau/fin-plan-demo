@@ -1,15 +1,22 @@
 {
   "name": "lifeworks.aadb2c.ui",
   "version": "1.0.0",
-  "description": "Authentication UI for Lifeworks Azure Active Directory B2C Tenant",
+  "description": "Lifeworks Authentication Identity Experience for Azure AD",
   "author": "ezra@teambrightly.com",
   "scripts": {
+    "start": "dotnet watch run",
+    "start:run": "dotnet run",
     "build": "dotnet build",
     "build:release": "rm -rf ./dist/; dotnet publish -f netcoreapp2.1 -c Release --output ./dist/",
     "zip": "cd ./dist; zip lifeworks.aadb2c.ui.zip -rm .",
-    "package": "npm run build:release; npm run zip;",
     "deploy": "az webapp deployment source config-zip --src ./dist/lifeworks.aadb2c.ui.zip",
-    "package:deploy": "npm run package; npm run deploy"
+    "package": "npm run build:release; npm run zip;",
+    "package:deploy": "npm run package; npm run deploy",
+    "ssl:make": "dotnet dev-certs https",
+    "ssl:trust": "dotnet dev-certs https --trust",
+    "ssl": "yarn ssl:make && yarn ssl:trust",
+    "scss": "gulp sass",
+    "scss:watch": "gulp sass:watch"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

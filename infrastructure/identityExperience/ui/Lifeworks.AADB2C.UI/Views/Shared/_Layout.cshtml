@@ -1,12 +1,8 @@
-﻿@{
-    ViewData["background"] = "images/lw_street.svg";
-    ViewData["poweredByLogo"] = "images/powered-by-lifeworks.svg";
-}
-@{ IgnoreBody(); }
+﻿@model Lifeworks.AADB2C.UI.Models.IEFPageViewModel
 <!DOCTYPE html>
 <html>
 <head>
-    <title>@ViewData["Title"]</title>
+    <title>@Model.PageTitle</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
     <meta name="locale" content="en-US">
@@ -14,18 +10,17 @@
     <meta name="GOOGLEBOT" content="NOARCHIVE">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
-
-    <environment names="Development">
-        <link rel="stylesheet" href="@Settings.Value.HostUrl/css/site.css" />
+    <environment names="Local">
+        <link rel="stylesheet" href="@Model.HostUrl/css/site.css" />
     </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="@Settings.Value.HostUrl/css/site.css" asp-append-version="true" />
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="@Model.HostUrl/css/site.min.css" asp-append-version="true" />
     </environment>
     @Html.Raw(JavaScriptSnippet.FullScript)
 </head>
 <body>
     <div id="background_branding_container">
-        <img id="background_background_image" src="@Settings.Value.HostUrl/@ViewData["background"]" alt="Illustration" />
+        <img id="background_background_image" src="@Model.BackgroundImageUrl" alt="Illustration" />
     </div>
     <div class="panel" id="panel">
         <table class="panel_layout">
@@ -35,14 +30,19 @@
                     <td id="panel_center">
                         <div class="inner_container">
                             <div class="api_container normaltext">
-                                <img id="white-labeled-logo" src="@Settings.Value.HostUrl/@ViewData["whiteLabelLogo"]" alt="Illustration">
-                                
+                                <img id="white-labeled-logo" src="@Model.BrandingImageUrl" alt="Illustration">
                                 @* Azure AAD injection start *@
-                                <div id="api"></div>
+                                @section ContainerBody{
+                                    @if (@IsSectionDefined("ContainerBody")){
+                                        @RenderSection("ContainerBody", required: false)
+                                    }
+                                }
+                                @RenderSection("ContainerBody", required: false)
+                                <div id="api">@RenderBody()</div>
                                 @* Azure AAD injection end *@
                             </div>
                         </div>
-                        <img id="powered-by-logo" src="@Settings.Value.HostUrl/@ViewData["poweredByLogo"]" alt="Illustration">
+                        <img id="powered-by-logo" src="@Model.PoweredByImageUrl" alt="Illustration">
                     </td>
                 </tr>
             </tbody>
@@ -50,12 +50,11 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <environment names="Development">
-        <script src="@Settings.Value.HostUrl/js/site.js" asp-append-version="true"></script>
+    <environment names="Local">
+        <script src="@Model.HostUrl/js/site.js" asp-append-version="true"></script>
     </environment>
-    <environment names="Staging,Production">
-        <script src="@Settings.Value.HostUrl/js/site.min.js" asp-append-version="true"></script>
+    <environment names="Development,Staging,Production">
+        <script src="@Model.HostUrl/js/site.min.js" asp-append-version="true"></script>
     </environment>
-    @RenderSection("Scripts", required: false)
 </body>
 </html>

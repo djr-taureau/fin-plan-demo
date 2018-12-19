@@ -1,10 +1,48 @@
 import {
 	EntityRepository,
 	AbstractRepository,
-	FindOneOptions } from 'typeorm';
-import { GetQueryOptions } from './common';
+	FindOneOptions, 
+  FindManyOptions} from 'typeorm';
+import { GetQueryOptions, GetFirmClientOptions, GetFirmOptions } from './common';
 import { getPermissions } from '../function-utilities'
-import { FirmClient, FirmStaff } from '../domain-entities';
+import { FirmClient, FirmStaff, Firm } from '../domain-entities';
+
+@EntityRepository(Firm)
+export class FirmRepository extends AbstractRepository<Firm> {
+
+  async getFirm(guid:string, options: GetFirmOptions = {
+    excludeFirmBillingAccount: false,
+    excludeFirmStaff: false,
+    excludeFirmClients: false
+  }) {
+    const relationships = [];
+
+    //include FirmStaff
+    if(!options.excludeFirmStaff) {
+      relationships.push('staff', 'staff.user')
+    }
+
+    //Include firm billingaccount
+    if(!options.excludeFirmBillingAccount) {
+      relationships.push('billingAccount', 'billingAccount.owner')
+    }
+
+    //Include Firm Clients
+    if(!options.excludeFirmClients) {
+      relationships.push('clients', 'clients.client', 'clients.client.owner')
+    }
+
+    const query: FindManyOptions = {
+      where: {
+        guid: guid
+      },
+      relations: relationships
+    }
+
+    return await this.repository.find(query);
+  }
+
+}
 
 @EntityRepository(FirmClient)
 export class FirmClientRepository extends AbstractRepository<FirmClient> {
@@ -32,6 +70,17 @@ export class FirmClientRepository extends AbstractRepository<FirmClient> {
       return null;
     }
     
+  }
+
+  async getFirmClient(guid:string, options: GetFirmClientOptions = { excludeFirmClientMembers: false }) {
+    const query: FindManyOptions = {
+      where: {
+        guid: guid
+      },
+      relations: (options.excludeFirmClientMembers) ? [] : ['client', 'client.owner', 'client.members', 'client.members.user']
+    }
+
+    return await this.repository.find(query);
   }
 
   async getById(options: GetQueryOptions) {

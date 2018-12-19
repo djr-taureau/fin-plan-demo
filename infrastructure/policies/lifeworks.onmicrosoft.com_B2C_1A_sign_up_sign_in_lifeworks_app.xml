@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<TrustFrameworkPolicy
+	xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	PolicySchemaVersion="0.3.0.0"
+	TenantId="lifeworksDev.onmicrosoft.com"
+	PolicyId="B2C_1A_sign_up_sign_in_lifeworks_app"
+	PublicPolicyUri="http://lifeworksDev.onmicrosoft.com"
+  DeploymentMode="Development"
+  UserJourneyRecorderEndpoint="urn:journeyrecorder:applicationinsights">
+  <BasePolicy>
+    <TenantId>lifeworksDev.onmicrosoft.com</TenantId>
+    <PolicyId>B2C_1A_base_extensions</PolicyId>
+  </BasePolicy>
+  <!-- The following policy is used for logging in or registering a user to the Lifeworks app. -->
+  <RelyingParty>
+    <DefaultUserJourney ReferenceId="SignUpOrSignInForLifeworksApp" />
+    <UserJourneyBehaviors>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="1" />
+      <SessionExpiryType>Absolute</SessionExpiryType>
+      <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
+      <JourneyInsights TelemetryEngine="ApplicationInsights" InstrumentationKey="0e62a777-c546-4214-84ca-7917c5b261ff" DeveloperMode="true" ClientEnabled="false" ServerEnabled="true" TelemetryVersion="1.0.0" />
+      <ContentDefinitionParameters>
+        <Parameter Name="firm">{OAUTH-KV:firm}</Parameter>
+      </ContentDefinitionParameters>
+    </UserJourneyBehaviors>
+    <TechnicalProfile Id="SignUpOrSignInForLifeworksApp">
+      <DisplayName>Sign In or Sign Up</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <InputTokenFormat>JWT</InputTokenFormat>
+      <CryptographicKeys>
+        <Key Id="client_secret" StorageReferenceId="B2C_1A_LifeworksAppClientSecret" />
+      </CryptographicKeys>
+      <InputClaims>
+        <InputClaim ClaimTypeReferenceId="extension_Brand" />
+      </InputClaims>
+      <OutputClaims>
+        <OutputClaim ClaimTypeReferenceId="displayName" />
+        <OutputClaim ClaimTypeReferenceId="email" />
+        <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        <OutputClaim ClaimTypeReferenceId="newUser" />
+        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub" />
+        <OutputClaim ClaimTypeReferenceId="lwUserGuid" />
+        <OutputClaim ClaimTypeReferenceId="lwClientGuid" />
+        <OutputClaim ClaimTypeReferenceId="lwFirmClientGuid" />
+        <OutputClaim ClaimTypeReferenceId="lwFirmGuid" />
+        <OutputClaim ClaimTypeReferenceId="lwFirmAccountGuid" />
+        <OutputClaim ClaimTypeReferenceId="lwUserPermissions" />
+      </OutputClaims>
+      <SubjectNamingInfo ClaimType="sub" />
+    </TechnicalProfile>
+  </RelyingParty>
+</TrustFrameworkPolicy>

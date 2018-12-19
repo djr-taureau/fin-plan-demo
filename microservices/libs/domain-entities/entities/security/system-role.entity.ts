@@ -13,6 +13,6 @@ export class SystemRole extends NamedBaseEntity {
 	@Column("int") scope: SecurityScope;
 
 	@ManyToMany(type => SystemPermission)
-	@JoinTable({ name: 'role-permissions' })
+	@JoinTable({ name: 'system-role-permissions' })
 	permissions: SystemPermission[];
 }

@@ -19,8 +19,8 @@ export class AuthService {
 				new Authenticated({
 					id: token.oid,
 					displayName: token.name,
-					roles: [token.extension_lifeworks_role],
-					permissions: []
+					roles: [],
+					permissions: token.lwUserPermissions || []
 				})
 			);
 		});

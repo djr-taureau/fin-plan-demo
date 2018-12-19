@@ -1,0 +1,31 @@
+@model Lifeworks.AADB2C.UI.Models.IEFPageViewModel
+@section ContainerBody {
+  @{ @Html.Raw(ViewData["tos"]) }
+}
+
+@{
+  if (Model.IsDebugView == true ) {
+    <div id="attributeVerification" role="form">
+      <div class="attr" id="attributeList">
+        <ul>
+          <li class="CheckboxMultiSelect">
+            <div class="attrEntry">
+              <input id="extension_TermsOfServiceConsented_1" name="extension_TermsOfServiceConsented" type="checkbox" value="1" autofocus=""><label for="extension_TermsOfServiceConsented_1">I am agreeing to the terms of service</label>
+            </div>
+            <div class="attrEntry">
+              <input id="extension_TermsOfServiceAgeConsent" name="extension_TermsOfServiceAgeConsent" type="checkbox" value="1" autofocus=""><label for="extension_TermsOfServiceAgeConsent">I am over 18</label>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="buttons">
+        <button id="continue" aria-label="Continue">Continue</button>
+        <button id="cancel" aria-label="Cancel" formnovalidate="">Cancel</button>
+      </div>
+
+      <div class="verifying-modal">
+        <div id="verifying_blurb"></div>
+      </div>
+    </div>
+  }
+}

@@ -11,8 +11,8 @@ export = async function run(context: Context, req: HttpRequest) {
     const templates = new TemplatesService();
 	
 	try {
-		const results = await templates.getTemplates(req.query);
-		context.res.body = queryResponse(req.query, results);
+		// const results = await templates.getTemplate(req.query.applicationContext, req.query.template, req.query.data );
+		// context.res.body = queryResponse(req.query, results);
 	} catch (err) {
 		context.res.status = 500;
 		context.res.body = errorResponse(err);

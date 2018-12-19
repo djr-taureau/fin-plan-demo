@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-  
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <TargetLatestRuntimePatch>false</TargetLatestRuntimePatch> 
@@ -11,15 +10,14 @@
     <PackageReference Include="BundlerMinifier.Core" Version="2.8.391" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
   </ItemGroup>
+  
   <ItemGroup>
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.8.391" />
   </ItemGroup>
 
-  <Target Name="SassBuild" BeforeTargets="Build">
+  <Target Name="Build CSS" BeforeTargets="Build">
     <Exec Command="gulp sass" />
-  </Target>
-  <Target Name="MinimizeCss" BeforeTargets="Build">
+    <Message Text="Running sass" />
     <Exec Command="dotnet bundle" />
   </Target>
-
 </Project>

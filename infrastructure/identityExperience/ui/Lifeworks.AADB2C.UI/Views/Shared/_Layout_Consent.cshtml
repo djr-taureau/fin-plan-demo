@@ -1,0 +1,64 @@
+﻿@model Lifeworks.AADB2C.UI.Models.IEFPageViewModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@Model.PageTitle</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="locale" content="en-US">
+    <meta name="ROBOTS" content="NONE, NOARCHIVE">
+    <meta name="GOOGLEBOT" content="NOARCHIVE">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes">
+    <environment names="Local">
+        <link rel="stylesheet" href="@Model.HostUrl/css/site.css" />
+    </environment>
+    <environment names="Development,Staging,Production">
+        <link rel="stylesheet" href="@Model.HostUrl/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.Raw(JavaScriptSnippet.FullScript)
+</head>
+<body>
+    <div id="background_branding_container">
+        <img id="background_background_image" src="@Model.BackgroundImageUrl" alt="Illustration" />
+    </div>
+    <div class="panel panel__modal" id="panel">
+        <table class="panel_layout">
+            <tbody>
+                <tr class="panel_layout_row">
+                    <td id="panel_left"></td>
+                    <td id="panel_center">
+                        <div class="panel__modal--title">
+                            <h3>User Consent</h3>
+                        </div>
+                        <div class="inner_container">
+                            <div class="api_container normaltext">
+                                <img id="white-labeled-logo" src="@Model.BrandingImageUrl" alt="Illustration">
+                                @* Azure AAD injection start *@
+                                @section ContainerBody{
+                                    @if (@IsSectionDefined("ContainerBody")){
+                                        @RenderSection("ContainerBody", required: false)
+                                    }
+                                }
+                                @RenderSection("ContainerBody", required: false)
+
+                                <div id="api">@RenderBody()</div>
+                                @* Azure AAD injection end *@
+                            </div>
+                        </div>
+                        <img id="powered-by-logo" src="@Model.PoweredByImageUrl" alt="Illustration">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <environment names="Local">
+        <script src="@Model.HostUrl/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Development,Staging,Production">
+        <script src="@Model.HostUrl/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+</body>
+</html>

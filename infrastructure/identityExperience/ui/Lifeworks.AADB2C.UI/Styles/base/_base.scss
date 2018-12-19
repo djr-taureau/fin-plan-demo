@@ -1,0 +1,19 @@
+*, .panel, body {
+  margin: 0;
+  padding: 0
+}
+
+html, body {
+  background-color: #00abec;
+  font-family: $primary-font-family;
+  height: 100%;
+}
+
+body {
+  text-align: left;
+  z-index: -999;
+}
+
+@import './partials/icons';
+@import './partials/typography';
+@import './partials/forms';

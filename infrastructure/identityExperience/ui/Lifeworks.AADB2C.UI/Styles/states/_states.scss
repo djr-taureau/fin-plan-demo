@@ -1,0 +1,15 @@
+.hide {
+  opacity: 0
+}
+
+.error {
+  color: $color-tertiary-orange
+}
+
+.highlightError {
+  border: 1px solid $color-tertiary-orange !important;
+}
+
+.invalid, .required, .unknown {
+  display: none
+}

@@ -1,5 +1,5 @@
 import { Entity, Column } from 'typeorm';
-import { TrackedBaseEntity } from '../common';
+import { TrackedBaseEntity, EntityContext } from '../common';
 
 @Entity('notifications')
 export class Notification extends TrackedBaseEntity {
@@ -13,4 +13,7 @@ export class Notification extends TrackedBaseEntity {
   @Column('varchar')
   notification_type: string
 
+  @Column(type => EntityContext)
+  context: EntityContext;
+  
 }

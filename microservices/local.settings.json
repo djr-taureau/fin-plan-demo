@@ -8,9 +8,17 @@
     "SQL_UID": "sa",
     "SQL_PWD": "Password123!",
     "SQL_SYNC": true,
+
     "BLOB_ACCOUNT": "devstoreaccount1",
     "BLOB_ACCOUNT_KEY": "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==",
-    "BLOB_SERVICE_URL_BASE": "http://127.0.0.1:10000"
+    "BLOB_SERVICE_URL_BASE": "http://127.0.0.1:10000/devstoreaccount1",
+    // "BLOB_ACCOUNT": "lifeworksportaldev",
+    // "BLOB_ACCOUNT_KEY": "AoiRjp6yOa/B5FLlIBaB8eoOuClGLTBlpLMPol96NxebTivGoGrhyE25zZH+KOYYkkA8LNUch3RUpH5UKKUepg==",
+    // "BLOB_SERVICE_URL_BASE": "https://lifeworksportaldev.blob.core.windows.net",
+
+    "ON_SYSTEM_USER_CREATED_KEY_1": "pDK270TpdvD8fR9m/AiaO6dwLd73A4knEFK49zbHTUc=",
+    "ON_SYSTEM_USER_CREATED_SUBSCRIPTION_ID": "36e0a8ef-cad2-4218-9e5f-06659ffa18e9",
+    "ON_SYSTEM_USER_CREATED_HOSTNAME": "https://onsystemusercreated.eastus-1.eventgrid.azure.net/api/events"
   },
   "host": {
     "CORS": "*"

@@ -35,7 +35,9 @@ import {
 	RelationshipDefinition,
 	SystemTool,
 	SystemToolResult,
-	SystemUserRole
+	SystemUserRole,
+	ActivityLog,
+	Notification
 } from '../domain-entities';
 
 const connectionConfig: ConnectionOptions = {
@@ -47,6 +49,8 @@ const connectionConfig: ConnectionOptions = {
 	synchronize: (process.env.SQL_SYNC) as any || false,
 	logging: false,
 	entities: [
+		ActivityLog,
+		Notification,
 		Address,
 		ClientAccount,
 		ClientAffiliation,
@@ -81,7 +85,7 @@ const connectionConfig: ConnectionOptions = {
 		RelationshipDefinition,
 		SystemTool,
 		SystemToolResult,
-		SystemUserRole
+		SystemUserRole,
 	],
 	options: {
 		encrypt: true

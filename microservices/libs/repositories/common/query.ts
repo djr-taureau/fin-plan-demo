@@ -117,3 +117,13 @@ export interface CreateSystemRolesQueryOptions {
 	scope: number,
 	permissions?: Array<CreateSystemPermissionsQuery>
 }
+
+export interface GetFirmClientOptions {
+	excludeFirmClientMembers?: boolean
+}
+
+export interface GetFirmOptions {
+	excludeFirmStaff?: boolean,
+	excludeFirmBillingAccount?: boolean,
+	excludeFirmClients?: boolean
+}

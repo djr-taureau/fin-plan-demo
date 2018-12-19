@@ -1,37 +1,29 @@
-// import '../libs/typeorm/connect';
-// import { AccountsService } from '../libs/services';
-// import {
-// 	queryResponse,
-// 	errorResponse
-// } from '../libs/function-utilities';
-// import { Context, HttpRequest } from '../libs/azure-function-types';
+import { UserContext } from '../libs/function-utilities';
 
 
-export = async function (context, req) {
-    context.log('JavaScript HTTP trigger function processed a request.', process.env);
+export = async function(context, req) {
+	context.log('JavaScript HTTP trigger function processed a request.');
 
-    if(req.query.req) {
-        context.res.body = JSON.stringify(req);
+    if(req.query.userContext) {
+        context.res.body = UserContext.getUserContext(req)
         return;
     }
 
-    if(req.query.env) {
-        context.res.body = JSON.stringify(process.env);
-        return;
-    }
+	if (req.query.env) {
+		context.res.body = process.env;
+		return;
+	}
 
-    if(req.query.all) {
-        context.res.body = JSON.stringify( {
-            env: process.env,
-            req,
-            context: context
-        });
-        return;
-    }
-    
-    context.res = {
-            status: 400,
-            body: "Please pass a name on the query string or in the request body"
-        };
-    return;
+	if (req.query.all) {
+		context.res.body = {
+			env: process.env,
+			req,
+            context: JSON.parse(JSON.stringify( context)),
+            userContext: UserContext.getUserContext(req)
+		};
+		return;
+	}
+
+    context.res.body = req;
+	return;
 };
