@@ -75,7 +75,7 @@ export class ProfileRepository extends AbstractRepository<Profile> {
 
 
 @EntityRepository(ProfileAttribute)
-export class ProfileAttributeRespository extends AbstractRepository<ProfileAttribute> {
+export class ProfileAttributeRepository extends AbstractRepository<ProfileAttribute> {
   async createProfileAttributes(profileID, options: Array<ProfileAttributesQueryOptions>) {
     const profileFK = {
       guid: profileID

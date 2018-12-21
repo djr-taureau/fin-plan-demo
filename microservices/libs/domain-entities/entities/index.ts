@@ -13,3 +13,5 @@ export * from './templates.entity';
 export * from './settings.entity';
 export * from './address.entity';
 export * from './contact-info.entity';
+export * from './events';
+export * from './statistics'

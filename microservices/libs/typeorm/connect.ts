@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { createConnection, ConnectionOptions } from 'typeorm';
 import {
 	Address,
+	Attribute,
 	ClientAccount,
 	ClientAffiliation,
 	ClientRelationship,
@@ -35,9 +36,15 @@ import {
 	RelationshipDefinition,
 	SystemTool,
 	SystemToolResult,
-	SystemUserRole,
 	ActivityLog,
-	Notification
+	Notification,
+	Event,
+	EventParticipant,
+	EventParticipation,
+	EventWithParticipants,
+	SystemUserRole,
+	Statistics,
+	StatisticAttribute
 } from '../domain-entities';
 
 const connectionConfig: ConnectionOptions = {
@@ -50,6 +57,7 @@ const connectionConfig: ConnectionOptions = {
 	logging: false,
 	entities: [
 		ActivityLog,
+		Attribute,
 		Notification,
 		Address,
 		ClientAccount,
@@ -85,7 +93,13 @@ const connectionConfig: ConnectionOptions = {
 		RelationshipDefinition,
 		SystemTool,
 		SystemToolResult,
+		Event,
+		EventParticipant,
+		EventParticipation,
+		EventWithParticipants,
 		SystemUserRole,
+		Statistics,
+		StatisticAttribute
 	],
 	options: {
 		encrypt: true

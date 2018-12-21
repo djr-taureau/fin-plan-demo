@@ -18,7 +18,8 @@
 
     "ON_SYSTEM_USER_CREATED_KEY_1": "pDK270TpdvD8fR9m/AiaO6dwLd73A4knEFK49zbHTUc=",
     "ON_SYSTEM_USER_CREATED_SUBSCRIPTION_ID": "36e0a8ef-cad2-4218-9e5f-06659ffa18e9",
-    "ON_SYSTEM_USER_CREATED_HOSTNAME": "https://onsystemusercreated.eastus-1.eventgrid.azure.net/api/events"
+    "ON_SYSTEM_USER_CREATED_HOSTNAME": "https://onsystemusercreated.eastus-1.eventgrid.azure.net/api/events",
+    "SENDGRID_KEY": "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"
   },
   "host": {
     "CORS": "*"

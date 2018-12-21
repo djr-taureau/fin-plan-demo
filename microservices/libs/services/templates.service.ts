@@ -28,7 +28,7 @@ export class TemplatesService {
     private async getTemplate(
         applicationContext:ApplicationContext,
         template:string,
-        templateData: object
+        templateData?: object
     ) {
        const rawTemplate = await contentService.getContent(
             applicationContext, 
@@ -36,7 +36,12 @@ export class TemplatesService {
             SystemContentType.Template
         );
 
-        return hydrateTemplate(rawTemplate.content, templateData);
+        if(templateData) {
+            return hydrateTemplate(rawTemplate.content, templateData);
+        } else {
+            return rawTemplate.content;
+        }
+        
     }
 
 
@@ -44,7 +49,7 @@ export class TemplatesService {
      * 
      * @param template virtual path + filename.ext in blob storage
      */
-    async getSystemTemplate(template:string, templateData:object) {
+    async getSystemTemplate(template:string, templateData?:object) {
         return await this.getTemplate(
             ApplicationContext.System,
             template,

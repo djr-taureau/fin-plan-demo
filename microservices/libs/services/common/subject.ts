@@ -1,3 +1,4 @@
 export enum Subject {
-  NewSystemUserCreated = "NewSystemUserCreated"
+  NewSystemUserCreated = "NewSystemUserCreated",
+  NewEventCreated = "NewEventCreated"
 }

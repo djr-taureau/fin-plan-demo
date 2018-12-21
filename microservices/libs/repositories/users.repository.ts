@@ -1,6 +1,6 @@
 import { EntityRepository, AbstractRepository, FindOneOptions, FindConditions, FindManyOptions } from 'typeorm';
 import { getPermissions } from '../function-utilities'
-import { getPagingOptions, QueryOptions, basicError, GetUserGuidQueryOptions } from './common';
+import { getPagingOptions, QueryOptions, basicError, GetUserGuidQueryOptions, GetQueryOptions } from './common';
 import { SystemUser, Profile, SystemRole, SystemUserRole } from '../domain-entities';
 import { pathOr, concat, pluck, uniq } from 'ramda';
 @EntityRepository(SystemUser)
@@ -9,6 +9,21 @@ export class UsersRepository extends AbstractRepository<SystemUser> {
   async query(options?: QueryOptions) {
 		const pagingOptions = getPagingOptions(options);
 		return await this.repository.findAndCount(pagingOptions);
+  }
+
+  async getUser(params:GetQueryOptions, options = { excludeProfile: false } ) {
+    try {
+      const query: FindOneOptions = {
+        where: {
+          ...params
+        },
+        relations: (options.excludeProfile) ? [] : ['profile', 'profile.attributes']
+      }
+      return await this.repository.findOne(query);
+    } catch(err) {
+      basicError(err);
+    }
+    
   }
 
   async createSystemUser(profile: Profile, options: GetUserGuidQueryOptions) {

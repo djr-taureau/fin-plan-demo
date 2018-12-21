@@ -48,7 +48,7 @@ export class ContentService {
      * @param contentName viurtual path and filename.ext of the blob
      * @param content raw or multipart data
      */
-    private createBuffer(contentName:string, content:any) {
+    createBuffer(contentName:string, content:any) {
         const contentMimeType = this.getContentMimeType(contentName);
 
         switch(contentMimeType) {
@@ -172,6 +172,7 @@ export class ContentService {
     }
 
     /**
+     * TODO: implemented in MailService need to pull out into a utility
      * Determine the mimType based on filename.ext.
      * @param filename 
      */
@@ -184,10 +185,7 @@ export class ContentService {
         const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
         return BlobURL.fromContainerURL(containerURL, contentName).url;
     }
-
-    async getGlobalAsset(containerName:string, contentName:string) {
-        return await this.getBlobInternal(containerName, contentName);
-    }
+    
 
     /**
      * 

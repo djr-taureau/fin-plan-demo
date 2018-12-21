@@ -1,15 +1,15 @@
-import { MembershipType } from "../../domain-entities/common";
+import { EventCategory } from "../../domain-entities";
+import { MembershipType, EntityContext } from "../../domain-entities/common";
 
+/**
+ * Common Interfaces
+ */
 export interface GetQueryOptions {
 	guid: string;
 }
 
 export interface CommonDeleteQueryOptions {
 	guid: string
-}
-export interface GetProfileOptions {
-	excludeAttributes?: boolean;
-	select?: Array<string>;
 }
 
 export interface QueryOptions {
@@ -26,38 +26,13 @@ export interface QueryOptions {
 	relations?: string[];
 }
 
-export interface TemplateQueryOptions {
-	name?: string
-}
+/**
+ * Profile Realted Interfaces
+ */
 
-export interface GetUserGuidQueryOptions {
-	aadGuid: string,
-}
-
-export interface GetUserGuidQueryOptions {
-	aadGuid: string,
-	lwInviteCode?: string,
-	aadFirstName: string,
-	aadLastName: string,
-	aadDisplayName: string,
-	aadEmail: string
-}
-
-export interface CreateSettingsQueryOptions {
-	entityGuid: string,
-	name: string,
-	value: any,
-	valueType: number
-}
-
-export interface GetSettingsQueryOptions {
-	entityGuid: string;
-}
-
-export interface UpdateSettingsQueryOptions {
-	name?: string,
-	value?: any,
-	valueType?: number
+export interface GetProfileOptions {
+	excludeAttributes?: boolean;
+	select?: Array<string>;
 }
 
 export interface ProfileAttributesQueryOptions {
@@ -65,7 +40,6 @@ export interface ProfileAttributesQueryOptions {
 	value: string,
 	valueType: number
 }
-
 
 export interface CreateProfileQueryOptions {
 	profileType: number,
@@ -91,6 +65,52 @@ export interface UpdateProfileQueryOptions {
 	attributes?: Array<ProfileAttributesQueryOptions>	
 }
 
+/**
+ * Template Realted Interfaces
+ */
+export interface TemplateQueryOptions {
+	name?: string
+}
+
+/**
+ * User Realted Interfaces
+ */
+export interface GetUserGuidQueryOptions {
+	aadGuid: string,
+}
+
+export interface GetUserGuidQueryOptions {
+	aadGuid: string,
+	lwInviteCode?: string,
+	aadFirstName: string,
+	aadLastName: string,
+	aadDisplayName: string,
+	aadEmail: string
+}
+
+/**
+ * Settings Realted Interfaces
+ */
+export interface CreateSettingsQueryOptions {
+	entityGuid: string,
+	name: string,
+	value: any,
+	valueType: number
+}
+
+export interface GetSettingsQueryOptions {
+	entityGuid: string;
+}
+
+export interface UpdateSettingsQueryOptions {
+	name?: string,
+	value?: any,
+	valueType?: number
+}
+
+/**
+ * Team Realted Interfaces
+ */
 export interface GetTeamMemberQueryOptions {
 	entityGuid: string,
 }
@@ -105,6 +125,10 @@ export interface UpdateTeamMemberQueryOptions {
 	membershipType?: MembershipType,
 }
 
+
+/**
+ * System Roles/Permissions Realted Interfaces
+ */
 export interface CreateSystemPermissionsQuery {
 	name: string,
 	description: string,
@@ -118,6 +142,23 @@ export interface CreateSystemRolesQueryOptions {
 	permissions?: Array<CreateSystemPermissionsQuery>
 }
 
+/**
+ * Event Related Query Options
+ */
+
+ export interface CreateEventQueryOptions {
+	startTime: Date,
+	duration: number,
+	title: string,
+	description?: string,
+	location?: string
+	url?: string
+	category?: EventCategory,
+	organizer: string,
+	attendees?: string,
+	context: EntityContext
+ }
+
 export interface GetFirmClientOptions {
 	excludeFirmClientMembers?: boolean
 }
@@ -127,3 +168,34 @@ export interface GetFirmOptions {
 	excludeFirmBillingAccount?: boolean,
 	excludeFirmClients?: boolean
 }
+
+/**
+ * Statistics Related Interfaces
+ */
+export interface StatisticAttributeQueryOptions {
+	name: string,
+	value: string,
+	category: number
+}
+
+export interface CreateStatisticQueryOptions {
+	attributes: Array<StatisticAttributeQueryOptions>,
+	context: EntityContext
+}
+
+export interface GetStatisticQueryOptions {
+	excludeAttributes?: boolean;
+	select?: Array<string>;
+}
+
+export interface UpdateStatisticQueryOptions {
+	context?: EntityContext
+}
+
+export interface UpdateStatisticAttributeQueryOptions {
+	name: string,
+	value: string,
+	category?: number
+}
+
+

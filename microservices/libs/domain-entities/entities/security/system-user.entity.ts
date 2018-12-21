@@ -19,8 +19,6 @@ export class SystemUser extends NamedBaseEntity {
 
 @Entity('system-user-roles2')
 export class SystemUserRole extends TrackedBaseEntity {
-	@ManyToOne(type => SystemUser)
-	user: SystemUser;
 
 	@ManyToOne(type => SystemRole)
 	role: SystemRole;

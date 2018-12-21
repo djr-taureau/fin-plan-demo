@@ -1,4 +1,4 @@
-import { chain, type, map, toPairs, fromPairs, indexBy, prop } from 'ramda';
+import { chain, type, map, toPairs, fromPairs, indexBy, prop, match, reduce, filter, uniq } from 'ramda';
 
 /**
  * Flattens an object into an object with dot seperated property names
@@ -43,3 +43,21 @@ export const indexByProp = <S extends keyof T, T>(
 	propertyName: string,
 	items: T[]
 ) => indexBy<T>(<PropertyStringFn<T>>prop(propertyName), items);
+
+
+export const filterTreePair = (key, value, obj) => {
+  const removeNumsDots = new RegExp(/([a-zA-Z])\w+/g);
+  const theFilter = a => {
+    const conditioned = match(removeNumsDots, a[0]).join('');
+    return conditioned.includes(`${key}${value}`)
+  }
+  const reduction = (acc, item) => {
+    const newArr = acc;
+    newArr.push(item[1]);
+    return newArr;
+  }
+  return uniq(reduce(reduction, [],
+    filter(theFilter, toPairs(
+    flattenObj(obj)
+  ))));
+}

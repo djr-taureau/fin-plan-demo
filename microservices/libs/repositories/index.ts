@@ -11,3 +11,6 @@ export * from './settings.repository';
 export * from './team-member.repository';
 export * from './roles.repository';
 export * from './tools.repository';
+export * from './event.repository';
+export * from './statistics.repository';
+export * from './attribute.repository';

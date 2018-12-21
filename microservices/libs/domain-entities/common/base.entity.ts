@@ -69,7 +69,8 @@ export enum EntityScope {
 	Firm=2,
 	Team=3,
 	Client=4,
-	User=5
+	User=5,
+	Event=6
 }
 
 export class EntityContext {

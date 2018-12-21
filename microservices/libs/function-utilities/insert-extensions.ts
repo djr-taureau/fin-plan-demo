@@ -63,6 +63,12 @@ const makeExtensionAndConvert = (acc, item) => {
  * @param obj target object
  * @param extensions array of objects containing at minimum {name: any, value: any}
  * @param options InsertExtensionsOptions object
+ * 
+ ```
+ options = {
+   convertValueType: boolean //if true will convert string values from DB to proper types (example: "yes" => true)
+ }
+ ```
  */
 export function insertExtensions(obj:Object, extensions: Array<Object>, options: InsertExtensionsOptions = { convertValueType: true }) {
   if(options.convertValueType) {

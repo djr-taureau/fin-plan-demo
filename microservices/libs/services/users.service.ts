@@ -2,7 +2,7 @@ import { getCustomRepository } from 'typeorm';
 import { 
     UsersRepository,
     ProfileRepository,
-    ProfileAttributeRespository
+    ProfileAttributeRepository
 } from '../repositories';
 import { EventGridService } from './event-grid.service';
 import { errorResponse } from '../function-utilities/format-responses';
@@ -12,10 +12,14 @@ const newSystemUserCreated = new EventGridService();
 export class UsersService {
     private userRepo = getCustomRepository(UsersRepository);
     private profileRepo = getCustomRepository(ProfileRepository);
-    private profileAttrRepo = getCustomRepository(ProfileAttributeRespository);
+    private profileAttrRepo = getCustomRepository(ProfileAttributeRepository);
 
     async getUsers(params) {
         return await this.userRepo.query(params);
+    }
+
+    async getUser(params) {
+      return await this.userRepo.getUser(params);
     }
 
     async createUser(param) {

@@ -5,3 +5,4 @@ export * from './customizable';
 export * from './value-type';
 export * from './team-membership'
 export * from './membership-type';
+export * from './attribute';

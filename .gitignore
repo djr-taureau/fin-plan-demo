@@ -55,3 +55,8 @@ Thumbs.db
 __blobstorage__
 __azurite_db_blob__.json
 __azurite_db_table__.json
+
+#azure/function extensions
+microservices/bin
+microservices/obj
+microservices/extensions.csproj

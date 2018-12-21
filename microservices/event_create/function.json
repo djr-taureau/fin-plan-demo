@@ -1,0 +1,33 @@
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "function",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "route": "events/{entityScope}/{entityGuid}",
+      "methods": [
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "email",
+      "type": "sendGrid",
+      "direction": "out",
+      "apiKey" : "SENDGRID_KEY"
+    },
+    {
+      "type": "queue",
+      "direction": "out",
+      "name": "message",
+      "queueName": "activity-logs-to-send",
+      "connection": "AzureWebJobsStorage"
+    }
+  ]
+}

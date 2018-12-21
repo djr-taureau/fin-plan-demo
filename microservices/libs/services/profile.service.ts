@@ -1,9 +1,9 @@
 import { getCustomRepository } from 'typeorm';
-import { ProfileRepository, ProfileAttributeRespository } from '../repositories';
+import { ProfileRepository, ProfileAttributeRepository } from '../repositories';
 
 export class ProfileService {
   private profileRepo = getCustomRepository(ProfileRepository);
-  private profileAttributeRepo = getCustomRepository(ProfileAttributeRespository);
+  private profileAttributeRepo = getCustomRepository(ProfileAttributeRepository);
 
   async createProfile(params) {
     try {
