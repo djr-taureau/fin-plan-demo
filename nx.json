@@ -112,6 +112,9 @@
     },
     "ui-components-text-editor": {
       "tags": []
+    },
+    "tasks": {
+      "tags": []
     }
   }
 }

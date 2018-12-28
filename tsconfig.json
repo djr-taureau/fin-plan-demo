@@ -119,6 +119,9 @@
       ],
       "@lifeworks/ui-components/time-picker": [
         "libs/ui-components/time-picker/src/index.ts"
+      ],
+      "@lifeworks/tasks": [
+        "libs/tasks/src/index.ts"
       ]
     }
   },

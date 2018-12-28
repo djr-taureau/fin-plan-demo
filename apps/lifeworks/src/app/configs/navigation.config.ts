@@ -36,6 +36,15 @@ export const NAVIGATION: NavigationItems = [
         children: [
           { display: 'Add Note', action: 'addNote', order: 1 }
         ]
+      },
+      {
+        display: 'To Dos',
+        icon: 'list',
+        location: '/tasks',
+        order: 6,
+        children: [
+          { display: 'Add To Do', action: 'addTodo', order: 1 }
+        ]
 			}
 		]
 	},

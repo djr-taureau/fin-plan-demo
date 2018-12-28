@@ -15,5 +15,6 @@
     "../../libs/clients/src/index.ts",
     "../../libs/content/src/index.ts",
     "../../libs/notes/src/index.ts",
+    "../../libs/tasks/src/index.ts",
   ]
 }

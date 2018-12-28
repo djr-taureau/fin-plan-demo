@@ -1211,6 +1211,34 @@
           }
         }
       }
+    },
+    "tasks": {
+      "root": "libs/tasks",
+      "sourceRoot": "libs/tasks/src",
+      "projectType": "library",
+      "prefix": "lifeworks",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/tasks/src/test.ts",
+            "tsConfig": "libs/tasks/tsconfig.spec.json",
+            "karmaConfig": "libs/tasks/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/tasks/tsconfig.lib.json",
+              "libs/tasks/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

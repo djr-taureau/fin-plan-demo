@@ -28,6 +28,10 @@ export const ApplicationRoutes = [
       {
 				path: '',
         loadChildren: '@lifeworks/notes#NotesModule',
+      },
+      {
+				path: '',
+        loadChildren: '@lifeworks/tasks#TasksModule',
 			}
 		]
 	}
