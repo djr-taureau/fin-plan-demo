@@ -6,14 +6,19 @@ import {
 	NotesStateModule,
 	NotesUIModule
 } from './+modules';
-import { NotesListPageComponent } from './pages';
 import {
-  NotesHeaderComponent,
-  NotesTableComponent,
+  NotesListPageComponent,
+  PersonalListPageComponent,
+  TeamListPageComponent,
+  ClientsListPageComponent,
+} from './pages';
+import {
+  NotesNavigationComponent,
+  NotesListNavigationComponent,
   NotesFormComponent,
+  NotesListSidenavComponent,
+  NotesFormDialogComponent,
   DialogHostComponent,
-  NotesListComponent,
-  NotesWidgetComponent,
 } from './components';
 
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
@@ -27,19 +32,22 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     NgxMaterialTimepickerModule.forRoot()
 	],
 	declarations: [
-		NotesListPageComponent,
-    NotesHeaderComponent,
-    NotesTableComponent,
+    NotesListPageComponent,
+    PersonalListPageComponent,
+    TeamListPageComponent,
+    ClientsListPageComponent,
+    NotesNavigationComponent,
+    NotesListNavigationComponent,
     NotesFormComponent,
-    NotesListComponent,
-    NotesWidgetComponent,
+    NotesListSidenavComponent,
+    NotesFormDialogComponent,
     DialogHostComponent,
   ],
   exports: [
-    NotesFormComponent,
+    NotesFormDialogComponent,
     DialogHostComponent
   ],
   providers: [],
-  entryComponents: [DialogHostComponent, NotesFormComponent]
+  entryComponents: [DialogHostComponent, NotesFormDialogComponent]
 })
 export class NotesModule {}

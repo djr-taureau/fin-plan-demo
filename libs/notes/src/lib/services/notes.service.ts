@@ -5,14 +5,14 @@ import { NoteItem } from '../models';
 import { NotesState } from '../+state/notes.interfaces';
 import {
 	isLoaded,
-	selectAllNotes,
-	selectCurrentNote,
-	selectCurrentNoteId,
-	selectNoteEntities,
-	selectNoteIds,
-	selectNoteTotal,
+	allNotes,
+	allNotesCount,
+	undismissedNotes,
+	undismissedCount,
+	dismissedNotes,
+	dismissedCount
 } from '../+state/notes.selectors';
-import { Load } from '../+state/notes.actions';
+import { Load, Dismiss } from '../+state/notes.actions';
 
 @Injectable({
 	providedIn: 'root'
@@ -28,41 +28,41 @@ export class Notes {
 		this.store.dispatch(new Load());
 	}
 
-// 	getAll() {
-// 		return this.store.pipe(select(allNotes));
-// 	}
+	getAll() {
+		return this.store.pipe(select(allNotes));
+	}
 
-// 	countOfAll() {
-// 		return this.store.pipe(select(allNotesCount));
-// 	}
+	countOfAll() {
+		return this.store.pipe(select(allNotesCount));
+	}
 
-// 	getUndismissed() {
-// 		return this.store.pipe(select(undismissedNotes));
-// 	}
+	getUndismissed() {
+		return this.store.pipe(select(undismissedNotes));
+	}
 
-// 	countOfUndismissed() {
-// 		return this.store.pipe(select(undismissedCount));
-// 	}
+	countOfUndismissed() {
+		return this.store.pipe(select(undismissedCount));
+	}
 
-// 	getDismissed() {
-// 		return this.store.pipe(select(dismissedNotes));
-// 	}
+	getDismissed() {
+		return this.store.pipe(select(dismissedNotes));
+	}
 
-// 	countOfDismissed() {
-// 		return this.store.pipe(select(dismissedCount));
-// 	}
+	countOfDismissed() {
+		return this.store.pipe(select(dismissedCount));
+	}
 
-// 	getFiltered() {
-// 		return this.store.pipe(select(dismissedNotes));
-// 	}
+	getFiltered() {
+		return this.store.pipe(select(dismissedNotes));
+	}
 
-// 	countOfFiltered() {
-// 		return this.store.pipe(select(dismissedCount));
-// 	}
+	countOfFiltered() {
+		return this.store.pipe(select(dismissedCount));
+	}
 
-// 	dismiss(id: string) {
-// 		this.store.dispatch(new Dismiss(id));
-//   }
+	dismiss(id: string) {
+		this.store.dispatch(new Dismiss(id));
+  }
 
   addNote() {
 

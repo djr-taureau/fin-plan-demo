@@ -20,7 +20,6 @@ export const adapter: EntityAdapter<NoteItem> = createEntityAdapter<NoteItem>({
 });
 
 export const notesInitialState: NotesState = adapter.getInitialState({
-  status: LoadDataStatus.initial,
   ids: [],
   selectedNoteId: null,
 });
@@ -31,7 +30,7 @@ export function notesReducer(
 ): NotesState {
 	switch (action.type) {
 
-    case NotesActionTypes.Select: {
+    case NotesActionTypes.Selected: {
       return Object.assign({}, state, { selectedNoteId: action.payload });
     }
 		case NotesActionTypes.LoadSuccess:
@@ -41,7 +40,11 @@ export function notesReducer(
       return adapter.addOne(action.payload, state);
 
 		case NotesActionTypes.UpdateSuccess:
-			return adapter.upsertOne(action.payload, state);
+      return adapter.upsertOne(action.payload, state);
+
+      case NotesActionTypes.DeleteSuccess: {
+        return adapter.removeOne(action.payload.guid, state);
+      }
 
 		default:
 			return state;

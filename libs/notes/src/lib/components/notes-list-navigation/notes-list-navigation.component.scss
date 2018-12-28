@@ -1,0 +1,27 @@
+.list-item {
+  font-size: 1.6rem;
+  font-weight: 300;
+  height: 6rem;
+  color: #959595;
+  min-width: 156px;
+  min-height: 7.3rem;
+  padding-bottom: 0.7rem;
+  padding: 0 4rem 0.7rem 4rem;
+  cursor: pointer;
+}
+
+.mat-list-item-focus {
+  border-left: solid 5px #f26623;
+	background: #d8dddf;
+}
+
+.list-item.mat-list-item-active {
+  color: #153C3F;
+  font-weight: bold;
+  cursor: pointer;
+	border-left: solid 5px #f26623;
+	background: #d8dddf;
+}
+
+
+

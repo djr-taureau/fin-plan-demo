@@ -5,20 +5,21 @@ import { Notes } from '../../services';
 import { NoteImagePipe, NoteLinkPipe } from '../../pipes';
 import { NotesMock, MOCK_NOTE } from '../../testing';
 
-import { NotesFormComponent } from './notes-form.component';
+import { NotesFormDialogComponent } from './notes-form-dialog.component';
 import { NotesListComponent } from '../notes-list/Notes-list.component';
 
 describe('NotesWidgetComponent', () => {
-	let component: NotesFormComponent;
-	let fixture: ComponentFixture<NotesFormComponent>;
+	let component: NotesFormDialogComponent;
+	let fixture: ComponentFixture<NotesFormDialogComponent>;
 	const m_Notes = NotesMock;
+
 
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
 				declarations: [
-					NotesFormComponent,
+					NotesFormDialogComponent,
 					NoteImagePipe,
 					NoteLinkPipe,
 					NotesListComponent
@@ -34,7 +35,7 @@ describe('NotesWidgetComponent', () => {
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NotesFormComponent);
+		fixture = TestBed.createComponent(NotesFormDialogComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

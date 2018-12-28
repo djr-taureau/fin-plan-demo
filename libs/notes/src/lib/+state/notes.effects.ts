@@ -15,7 +15,9 @@ import {
 	AddFailure,
 	Update,
 	UpdateSuccess,
-	UpdateFailure
+  UpdateFailure,
+  Delete,
+  DeleteSuccess
 } from './notes.actions';
 import { NotesState } from './notes.interfaces';
 import { NoteItem } from '../models/note-item';
@@ -76,7 +78,18 @@ export class NotesEffects {
 			undoAction: (action: NotesActions, error) =>
 				new UpdateFailure(error)
 		}
-	);
+  );
+
+  // @Effect()
+  // deleteNote$ = this.dataPersistence.pessimisticUpdate(NotesActionTypes.Delete, {
+  //   run: (action: Delete, state: NotesState) => {
+  //     return this.notesApiService.delete(action.payload).pipe(map(_ => new DeleteSuccess(action.payload)))
+  //   },
+
+  //   onError: (action: Delete, error) => {
+  //     console.error('Error', error);
+  //   }
+  // });
 
 	constructor(
 		private actions$: Actions,

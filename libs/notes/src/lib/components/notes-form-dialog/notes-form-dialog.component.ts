@@ -1,26 +1,29 @@
 import {
 	Component,
 	OnInit,
-  ViewChild,
-  ChangeDetectionStrategy,
+	ViewChild,
 	Inject,
   AfterViewInit,
   ElementRef,
-  EventEmitter,
-  OnDestroy,
-  Input,
-  Output
+  OnDestroy
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { map, mapTo, merge, tap, startWith, switchMap, take, first } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map, mapTo, merge, tap, startWith } from 'rxjs/operators';
 import {
 	FormGroup,
 	FormBuilder,
 	Validators,
   FormControl,
 } from '@angular/forms';
+import {
+	MatDialogRef,
+	MAT_DIALOG_DATA,
+	MatDialogConfig
+} from '@angular/material/dialog';
+import { DataState, getDatasetState } from '@lifeworks/common';
+import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { NoteItem } from '../../models';
 import { Notes } from '../../services';
 import { MatCheckbox } from '@angular/material/checkbox';
@@ -43,16 +46,15 @@ export interface Assignment {
 }
 
 @Component({
-	selector: 'lw-notes-form',
-	templateUrl: './notes-form.component.html',
-  styleUrls: ['./notes-form.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+	selector: 'lw-notes-form-dialog',
+	templateUrl: './notes-form-dialog.component.html',
+  styleUrls: ['./notes-form-dialog.component.scss']
 })
 
-export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
+export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestroy {
   noteData: NoteItem;
-  note$: Observable<NoteItem> = this.notesFacade.currentNote$;
-  noteId: string;
+	notesDialogRef: MatDialogRef<NotesFormDialogComponent>;
+	notesDialogConfig: MatDialogConfig<NotesFormDialogComponent>;
 	dialogResult: any;
   editor: any;
 	notesFormData: any;
@@ -62,17 +64,6 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   notesForm: FormGroup;
   startDate = Date.now();
   minDate = new Date(Date.now());
-  private watch: Subscription;
-
-
-  @Input() set note(value: NoteItem) {
-    this.noteData = Object.assign({}, value);
-  }
-
-  @Output() saved = new EventEmitter();
-  @Output() cancelled = new EventEmitter();
-
-
 
   @ViewChild(ElementRef) undoButton;
   @ViewChild(ElementRef) redoButton;
@@ -111,52 +102,60 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
 	constructor(
     private elem: ElementRef,
-    private notesFacade: Notes,
-    private router: Router,
-    private route: ActivatedRoute,
-    private fb: FormBuilder) {
+    private NotesService: Notes,
+		private router: Router,
+    private fb: FormBuilder,
+		private dialogRef: MatDialogRef<NotesFormDialogComponent>,
+		@Inject(MAT_DIALOG_DATA) public data
+	) {
+    console.log('injected data', data);
       this.config.modules = { toolbar: this.toolbar };
       this.notesForm = this.createFormGroup();
-      this.watch = makeNoteID$(route).subscribe(noteId =>
-        this.notesFacade.selectNote(noteId)
-      );
 	  }
 
 	ngOnInit() {
-    this.notesFacade.currentNoteId$.subscribe(v => console.log('did this bitch change  ', v))
-
-    this.notesFacade.currentNote$.subscribe(val => {
-      this.notesForm.controls['name'].setValue(val.name)
-      this.notesForm.controls['note'].setValue(val.note)
-      // this.componentRef.directiveRef.setValue(val.note)
-      this.notesForm.controls['reminderDate'].setValue(val.reminderDate)
-      this.notesForm.controls['reminderTime'].setValue(val.reminderTime)
-      this.notesForm.controls['clientAssociation'].setValue(val.relatedEntityGuid)
-    });
+    this.onChanges();
   }
 
   ngAfterViewInit() {
-
     this.editorInstance = this.componentRef.directiveRef.quill();
     this.editorRef = this.componentRef.directiveRef;
-    // this.notesForm.patchValue({note: (this.editorRef.getValue())});
+    this.notesForm.valueChanges.subscribe(v => {
+      console.log(v);
+    })
+
     const redoButton = this.elem.nativeElement.querySelector('.ql-redo');
     const undoButton = this.elem.nativeElement.querySelector('.ql-undo');
     redoButton.innerHTML = '<i class="material-icons">redo</i>';
     undoButton.innerHTML = '<i class="material-icons">undo</i>';
-
+  // todo: testing to see if this works now
     fromEvent(redoButton, 'click')
     .subscribe(res => this.redo(res));
 
     fromEvent(undoButton, 'click')
     .subscribe(res => this.undo(res));
+
+    this.notesForm.get('note').valueChanges.subscribe(v => {
+      this.notesForm.get('note').setValidators(Validators.required);
+      this.notesForm.get('note').setValidators(Validators.minLength(50));
+      this.notesForm.get('note').updateValueAndValidity({
+        onlySelf: true, emitEvent: true
+      })
+    })
+
   }
 
   ngOnDestroy() {
-    this.watch.unsubscribe();
+    // unsub
   }
 
+  get name() {
+    return this.notesForm.get('name');
+  }
 
+  get note() {
+    return this.notesForm.get('note');
+  }
 
   addReminderDate(event: MatDatepickerInputEvent<Date>) {
     this.notesForm.patchValue({reminderDate: event.value});
@@ -244,7 +243,8 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.add(this.noteData);
     this.clearEditorContent();
     this.clearEditorHistory();
-    // this.resetFormGroup();
+    this.resetFormGroup();
+    this.close();
   }
 
   onSubmit() {
@@ -252,16 +252,21 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   add(Note: NoteItem) {
-		this.notesFacade.add(Note);
+		this.NotesService.add(Note);
 	}
 	update(Note: NoteItem) {
-		this.notesFacade.update(Note);
+		this.NotesService.update(Note);
 	}
+
+	close() {
+    this.dialogRef.close('Cancel');
+    this.router.navigateByUrl('/notes');
+  }
 
   createFormGroup() {
     return new FormGroup({
       name: new FormControl('', [Validators.required]),
-      note: new FormControl('', [Validators.required]),
+      note: new FormControl(''),
       addReminder: new FormControl(null),
       addTask: new FormControl(null),
       reminderDate: new FormControl({ disabled: true }),
@@ -272,24 +277,17 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // resetFormGroup() {
-  //   this.notesForm.reset({
-  //     name: null,
-  //     note: null,
-  //     addReminder: null,
-  //     addTask: null,
-  //     reminderDate: null,
-  //     reminderTime: null,
-  //     clientAssociation: null,
-  //     assignment: null,
-  //     clientVisible: null
-  //   })
-  // }
-}
-
-function makeNoteID$(route: ActivatedRoute): Observable<string> {
-  const current$ = of(route.snapshot.paramMap.get('id'));
-  const future$ = route.params.pipe(map(params => params['id']));
-
-  return current$.pipe(merge(future$));
+  resetFormGroup() {
+    this.notesForm.reset({
+      name: null,
+      note: null,
+      addReminder: null,
+      addTask: null,
+      reminderDate: null,
+      reminderTime: null,
+      clientAssociation: null,
+      assignment: null,
+      clientVisible: null
+    })
+  }
 }

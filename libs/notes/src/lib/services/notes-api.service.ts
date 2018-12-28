@@ -41,5 +41,11 @@ export class NotesApi {
 		return this.http
 			.patch([this.NotesUrl].join('/'), note)
 			.pipe(catchError(this.serviceErrorHandler(getApiError)));
-	}
+  }
+
+  // delete(note: NoteItem) {
+	// 	return this.http
+	// 		.delete([this.NotesUrl].join('/'), note.guid)
+	// 		.pipe(catchError(this.serviceErrorHandler(getApiError)));
+	// }
 }

@@ -1,0 +1,15 @@
+<mat-nav-list theme-grey>
+  <a mat-list-item [routerLink]="['/notes', item.guid]" routerLinkActive
+     #rla="routerLinkActive" #routerLinkActiveInstance="routerLinkActive" *ngFor="let item of (notes$ | async);">
+      <div>
+        <div class="lw-text-color-dark-green title title-md active">
+          {{ item.name }}
+          <br>
+          {{ item.timestamps['createdOn'] }}
+        </div>
+      </div>
+    </a>
+</mat-nav-list>
+
+
+

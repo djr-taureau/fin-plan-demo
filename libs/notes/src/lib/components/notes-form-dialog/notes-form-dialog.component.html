@@ -1,5 +1,5 @@
 <form [formGroup]="notesForm" connectForm="notesForm" (ngSubmit)="createNote(notesForm.value)">
-
+  <mat-dialog-content>
     <div class="container">
       <div class="header">
         <span class="title title-md">ADD NOTE</span>
@@ -14,14 +14,15 @@
         </div>
         <div class="note editor">
           <span class="control-padding title-sm">Note</span>
-            <quill [config]="config" [modules]="modules"
+            <quill [config]="config" [value]="''" [modules]="modules"
               (blur)="onEditorBlur($event)" (focus)="onEditorFocus($event)"
               (editorCreate)="onEditorCreate($event)" (valueChange)="onValueChange($event)"
               (contentChange)="onContentChange($event)" (selectionChange)="onSelectionChange($event)">
-              <div quillContent>{{notesForm.controls['note'].value}}</div>
+              <div quillToolbar></div>
+              <div quillContent></div>
             </quill>
-          <div class="validation-msg">
-             *Required
+          <div class="validation-msg" *ngIf="(note.value  && note.invalid)">
+              Note is required to have at least 50 characters
           </div>
           <input name="note" type="hidden" formControlName="note">
         </div>
@@ -75,12 +76,13 @@
         </div>
       </div>
     </div>
-
+  </mat-dialog-content>
+  <mat-dialog-actions>
     <div class="actions">
       <button class="cancel mat-flat-button" (click)="close()">Cancel</button>
-      <button type="submit" mat-flat-button class="orange" (keydown.enter)="save()" (click)="save()">Save</button>
+      <button type="submit" class="save mat-flat-button mat-primary" (keydown.enter)="save()" (click)="save()">Save</button>
     </div>
-
+  </mat-dialog-actions>
   <div>
 </div>
 </form>

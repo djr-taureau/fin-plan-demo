@@ -6,13 +6,15 @@ export enum NotesActionTypes {
 	Load = '[Notes] Load',
 	LoadSuccess = '[Notes] Load Success',
   LoadFailure = '[Notes] Load Failure',
-  Select = '[Notes] Select',
+  Selected = '[Notes] Selected',
   Add = '[Notes] Add',
   AddSuccess = '[Notes] Add Success',
 	AddFailure = '[Notes] Add Failure',
 	Update = '[Notes] Update',
 	UpdateSuccess = '[Notes] Update Success',
-	UpdateFailure = '[Notes] Update Failure'
+  UpdateFailure = '[Notes] Update Failure',
+  Delete = '[Notes] Delete',
+  DeleteSuccess = '[Notes] Delete Success',
 }
 
 export class Load implements Action {
@@ -33,8 +35,8 @@ export class LoadFailure implements Action {
 	constructor(public payload: Error) {}
 }
 
-export class Select implements Action {
-  readonly type = NotesActionTypes.Select;
+export class Selected implements Action {
+  readonly type = NotesActionTypes.Selected;
   constructor(public payload) { }
 }
 export class Add implements Action {
@@ -70,14 +72,26 @@ export class UpdateFailure implements Action {
 	constructor(public payload: string) {}
 }
 
+export class Delete implements Action {
+  readonly type = NotesActionTypes.Delete;
+  constructor(public payload: NoteItem) { }
+}
+
+export class DeleteSuccess implements Action {
+  readonly type = NotesActionTypes.DeleteSuccess;
+  constructor(public payload: NoteItem) { }
+}
+
 export type NotesActions =
 	| Load
 	| LoadSuccess
   | LoadFailure
-  | Select
+  | Selected
   | Add
 	| AddSuccess
 	| AddFailure
 	| Update
 	| UpdateSuccess
-	| UpdateFailure;
+  | UpdateFailure
+  | Delete
+	| DeleteSuccess;

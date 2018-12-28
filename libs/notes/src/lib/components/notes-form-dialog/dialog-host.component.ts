@@ -3,7 +3,7 @@ import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { NotesFormComponent } from './notes-form.component';
+import { NotesFormDialogComponent } from './notes-form-dialog.component';
 
 @Component({
   selector: 'lw-dialog-host',
@@ -11,8 +11,8 @@ import { NotesFormComponent } from './notes-form.component';
 })
 
 export class DialogHostComponent implements OnDestroy {
-  currentDialog: MatDialogRef<NotesFormComponent> = null;
-  currentDialogConfig: MatDialogConfig<NotesFormComponent> = null;
+  currentDialog: MatDialogRef<NotesFormDialogComponent> = null;
+  currentDialogConfig: MatDialogConfig<NotesFormDialogComponent> = null;
   destroy = new Subject<any>();
   constructor(public matDialog: MatDialog, private route: ActivatedRoute, private router: Router) {
       this.route.params.pipe(takeUntil(this.destroy))
@@ -22,7 +22,7 @@ export class DialogHostComponent implements OnDestroy {
           this.currentDialog.close();
         }
 
-        this.currentDialog = matDialog.open(NotesFormComponent, {
+        this.currentDialog = matDialog.open(NotesFormDialogComponent, {
           data: { title: '' },
           disableClose: false,
           hasBackdrop: true,
