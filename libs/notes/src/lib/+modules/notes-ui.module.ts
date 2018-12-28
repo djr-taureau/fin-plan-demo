@@ -1,22 +1,34 @@
 import { NgModule } from '@angular/core';
 import { AuthenticationModule } from '@lifeworks/authentication';
 import { CommonModule } from '@lifeworks/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UiComponentsCoreModule } from '@lifeworks/ui-components';
 import { UiComponentsLayoutsModule } from '@lifeworks/ui-components/layouts';
 import { UiComponentsDataListModule } from '@lifeworks/ui-components/data-list';
 import { UiComponentsWidgetModule } from '@lifeworks/ui-components/widget';
 import { UiComponentsButtonsModule } from '@lifeworks/ui-components/buttons';
 import { UiComponentsIconsModule } from '@lifeworks/ui-components/icons';
-import { MatDialogModule } from '@angular/material/dialog';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { QuillModule, QuillConfigInterface, QUILL_CONFIG } from 'ngx-quill-wrapper';
+
+
 
 import {
-	MatSelectModule,
-	MatInputModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatSelectModule,
+  MatCheckboxModule,
 	MatFormFieldModule,
+	MatInputModule,
 	MatIconModule,
-	MatButtonModule
+  MatButtonModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
+
 
 const MODULES = [
 	CommonModule,
@@ -27,12 +39,21 @@ const MODULES = [
 	UiComponentsButtonsModule,
 	UiComponentsIconsModule,
   UiComponentsLayoutsModule,
-	MatSelectModule,
+  QuillModule,
+  MatTableModule,
+  MatSortModule,
+  MatPaginatorModule,
+  MatSelectModule,
+  MatCheckboxModule,
 	MatInputModule,
 	MatFormFieldModule,
 	MatIconModule,
   MatButtonModule,
   MatDialogModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   FormsModule,
   ReactiveFormsModule,
 ];

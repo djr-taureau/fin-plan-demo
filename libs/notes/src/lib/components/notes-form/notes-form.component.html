@@ -1,12 +1,88 @@
-<h2 mat-dialog-title>{{ content }}</h2>
-<mat-dialog-content [formGroup]="notesForm" connectForm="note">
-    <input matInput formControlName="id" [disabled]="true" [hidden]="true" value="1">
-    <input matInput formControlName="date" [disabled]="true" [hidden]="true">
-  <mat-form-field>
-  <input matInput placeholder="Enter your notes" formControlName="notes">
-</mat-form-field>
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button class="mat-raised-button" (click)="close()">Close</button>
-  <button class="mat-raised-button mat-primary" (keydown.enter)="save($event)" (click)="save($event)">Save</button>
-</mat-dialog-actions>
+<form [formGroup]="notesForm" connectForm="notesForm" (ngSubmit)="createNote(notesForm.value)">
+  <mat-dialog-content>
+    <div class="container">
+      <div class="header">
+        <span class="title title-md">ADD NOTE</span>
+      </div>
+      <div class="note-fields">
+        <div class="name">
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <span><input note-name matInput formControlName="name"></span>
+            <mat-error *ngIf="hasError('name', 'required','touched', 'dirty')">Name is required</mat-error>
+          </mat-form-field>
+        </div>
+        <div class="note editor">
+          <span class="control-padding title-sm">Note</span>
+            <quill [config]="config" [value]="''" [modules]="modules"
+              (blur)="onEditorBlur($event)" (focus)="onEditorFocus($event)"
+              (editorCreate)="onEditorCreate($event)" (valueChange)="onValueChange($event)"
+              (contentChange)="onContentChange($event)" (selectionChange)="onSelectionChange($event)">
+              <div quillToolbar></div>
+              <div quillContent></div>
+            </quill>
+          <div class="validation-msg" *ngIf="(note.value  && note.invalid)">
+              Note is required to have at least 50 characters
+          </div>
+          <input name="note" type="hidden" formControlName="note">
+        </div>
+        <div class="add-task">
+          <mat-checkbox formControlName="addReminder">
+            <span class="control padding title-sm">Add Reminder</span>
+          </mat-checkbox>
+          <mat-checkbox formControlName="addTask" (click)="show=!show">
+            <span class="control-padding title-sm">Add Task</span>
+          </mat-checkbox>
+        </div>
+        <div class="remind-date">
+          <div class="date">
+            <mat-form-field color="primary">
+              <input readonly matInput formControlName="reminderDate" [min]="minDate" [matDatepicker]="reminderDate" placeholder="Reminder Date" (dateInput)="addReminderDate($event)">
+              <mat-datepicker-toggle matSuffix [for]="reminderDate" [disabled]="notesForm.controls['reminderDate'].disabled"></mat-datepicker-toggle>
+              <mat-datepicker #reminderDate [startAt]="startDate"></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="ngx-material-timepicker-example__form-group ngx-material-timepicker-example__form-group--toggled">
+            <input readonly matInput formControlName="reminderTime" placeholder="Reminder Time" [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly>
+            <ngx-material-timepicker-toggle color="primary" [for]="toggleTimepicker"></ngx-material-timepicker-toggle>
+            <ngx-material-timepicker #toggleTimepicker timepicker-component #toggleTimepicker [enableKeyboardInput]="false"></ngx-material-timepicker>
+          </div>
+        </div>
+      </div>
+      <div class="note-fields-2">
+        <div class="client">
+          <span class="title-sm">Add Client Association</span>
+          <mat-form-field class="flat-select fill" appearance="outline" floatLabel="never" lwControlBarControl>
+            <mat-select mat-select-arrow-wrapper placeholder="Add Client" formControlName="clientAssociation">
+              <mat-option mat-select-value-text *ngFor="let client of clients" [value]="client.value">
+                {{ client.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="assign">
+          <span class="title-sm">Add Assignment</span>
+          <mat-form-field class="flat-select fill" appearance="outline" floatLabel="never" lwControlBarControl>
+            <mat-select mat-select-arrow-wrapper placeholder="Assign" formControlName="assignment">
+              <mat-option mat-select-value-text *ngFor="let assignment of assignments" [value]="assignment.value">
+                {{assignment.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="visible">
+          <span class="client-visible title-sm">Client Visible</span>
+          <mat-slide-toggle formControlName="clientVisible" mat-button-toggle client-visible></mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <div class="actions">
+      <button class="cancel mat-flat-button" (click)="close()">Cancel</button>
+      <button type="submit" class="save mat-flat-button mat-primary" (keydown.enter)="save()" (click)="save()">Save</button>
+    </div>
+  </mat-dialog-actions>
+  <div>
+</div>
+</form>

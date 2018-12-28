@@ -9,12 +9,16 @@ import {
 	NotesActionTypes,
 	Load,
 	LoadSuccess,
-	LoadFailure,
-	Dismiss,
-	DismissSuccess,
-	DismissFailure
+  LoadFailure,
+  Add,
+	AddSuccess,
+	AddFailure,
+	Update,
+	UpdateSuccess,
+	UpdateFailure
 } from './notes.actions';
 import { NotesState } from './notes.interfaces';
+import { NoteItem } from '../models/note-item';
 import { NotesApi } from '../services/notes-api.service';
 
 
@@ -37,21 +41,40 @@ export class NotesEffects {
 						)
 					),
 			onError: (action: NotesActions, error) =>
-				new LoadFailure(error)
+        new LoadFailure(error)
 		}
-	);
+  );
+
+  @Effect()
+  addNote$ = this.dataPersistence.optimisticUpdate(
+    NotesActionTypes.Add,
+    {
+    run: (action: Add, state: NotesState) =>
+      {
+        return this.notesApiService
+          .create(action.payload.note)
+          .pipe(
+            map(
+              (note: NoteItem) => new AddSuccess(note)
+            )
+          )
+      },
+    undoAction: (action: NotesActions, error) =>
+      new AddFailure(error)
+    }
+  );
 
 	@Effect()
-	dismissNote$ = this.dataPersistence.optimisticUpdate(
-		NotesActionTypes.Dismiss,
+	updateNote$ = this.dataPersistence.optimisticUpdate(
+		NotesActionTypes.Update,
 		{
-			run: (action: Dismiss, state: NotesState) =>
+			run: (action: Update, state: NotesState) =>
 				this.notesApiService
-					.dismiss(action.payload)
-					.pipe(map(results => new DismissSuccess(action.payload))),
+					.update(action.payload)
+					.pipe(map(results => new UpdateSuccess(action.payload))),
 
 			undoAction: (action: NotesActions, error) =>
-				new DismissFailure(error)
+				new UpdateFailure(error)
 		}
 	);
 

@@ -1,1 +1,1 @@
-export * from './notes-page/notes-page.component';
+export * from './notes-list-page/notes-list-page.component';

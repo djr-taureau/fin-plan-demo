@@ -11,10 +11,9 @@ import {
 } from '@lifeworks/ui-components';
 import { NoteItem } from '../../models';
 
-export const _NotesListBase = mixinDataSource<
-	typeof ComponentBase,
-	NoteItem
->(ComponentBase);
+export const _NotesListBase = mixinDataSource<typeof ComponentBase, NoteItem>(
+	ComponentBase
+);
 
 @Component({
 	selector: 'lw-notes-list',

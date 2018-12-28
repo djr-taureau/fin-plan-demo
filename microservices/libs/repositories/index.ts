@@ -1,6 +1,7 @@
 export * from './billing-accounts.repository';
 export * from './activity-log.repository';
 export * from './client.repository';
+export * from './notes.repository';
 export * from './notifications.repository';
 export * from './permissions.repository';
 export * from './users.repository';

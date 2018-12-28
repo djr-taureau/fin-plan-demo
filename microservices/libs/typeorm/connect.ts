@@ -44,6 +44,7 @@ import {
 	EventWithParticipants,
 	SystemUserRole,
 	Statistics,
+    Note,
 	StatisticAttribute
 } from '../domain-entities';
 
@@ -99,7 +100,8 @@ const connectionConfig: ConnectionOptions = {
 		EventWithParticipants,
 		SystemUserRole,
 		Statistics,
-		StatisticAttribute
+		StatisticAttribute,
+        Note
 	],
 	options: {
 		encrypt: true

@@ -1,14 +1,18 @@
 import { Obj, DomainEntity, DomainSubject } from '@lifeworks/common';
 
-export type NoteItems = Array<NoteItem>;
+// export type NoteItems = Array<NoteItem>;
 
 export interface NoteItem extends DomainEntity, IRemoveable {
-	note: string;
-	dismissed: boolean;
-	noteType: string;
-	target: DomainSubject;
-	source?: DomainSubject;
-	subject?: DomainSubject;
+  guid: string;
+  name: string;
+  note: string;
+  relatedEntityGuid?: string;
+  entityContext?: number;
+  owner: DomainSubject;
+  reminderDate?: Date;
+  reminderTime?: string;
+  createdBy: string;
+  modifiedBy?: string;
 }
 
 export interface IRemoveable {

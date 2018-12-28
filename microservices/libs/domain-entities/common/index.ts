@@ -1,4 +1,5 @@
 export * from './base.entity';
+export * from './entity-context-enum';
 export * from './profile-attribute-type';
 export * from './schedule';
 export * from './customizable';

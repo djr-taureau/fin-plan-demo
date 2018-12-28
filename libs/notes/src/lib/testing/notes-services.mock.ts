@@ -9,19 +9,13 @@ export const ConfigServiceMock = jasmine.createSpyObj<ConfigService>(
 export const NotesMock = jasmine.createSpyObj<Notes>(
 	'Notes',
 	[
-		'countOfAll',
-		'countOfDismissed',
-		'countOfUndismissed',
-		'dismiss',
-		'getAll',
-		'getDismissed',
-		'getUndismissed',
-		'isDataLoaded',
+    'add',
+		'update',
 		'load'
 	]
 );
 
 export const NotesApiMock = jasmine.createSpyObj<NotesApi>(
 	'NotesApi',
-	['get', 'dismiss']
+	['get', 'create', 'update']
 );

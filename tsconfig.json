@@ -5,6 +5,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
     "experimentalDecorators": true,
     "target": "es5",
     "typeRoots": [
@@ -112,6 +113,12 @@
       ],
       "@lifeworks/ui-components/dialog": [
         "libs/ui-components/dialog/src/index.ts"
+      ],
+      "@lifeworks/ui-components/text-editor": [
+        "libs/ui-components/text-editor/src/index.ts"
+      ],
+      "@lifeworks/ui-components/time-picker": [
+        "libs/ui-components/time-picker/src/index.ts"
       ]
     }
   },

@@ -12,11 +12,11 @@
           <button button-vert mat-icon-button [matMenuTriggerFor]="menu">
               <mat-icon>more_vert</mat-icon>
             </button>
-            <mat-menu [ngClass]="navItem.cssClass" #menu="matMenu" xPosition="after" yPosition="below">
+            <mat-menu #menu="matMenu" [overlapTrigger]="false">
             <ng-container *ngFor="let navItem of navItem.children">
               <button vert-menu-item mat-menu-item (click)="raiseEvent($event, navItem.action || 'click')">
                 <mat-icon>{{ navItem.icon }}</mat-icon>
-                <span>{{ navItem.display }}</span>
+                {{ navItem.display }}
               </button>
             </ng-container>
             </mat-menu>

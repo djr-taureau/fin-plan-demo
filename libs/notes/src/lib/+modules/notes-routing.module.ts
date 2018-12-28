@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, UrlSegment, Router, Route, Params} from '@angular/router';
 import { PageComponent } from '@lifeworks/ui-components/layouts';
-import { NotesPageComponent } from '../pages';
+import { NotesListPageComponent } from '../pages';
 import { NotesHeaderComponent } from '../components';
 import { NotesFormComponent } from '../components';
 import { DialogHostComponent } from '../components';
@@ -12,10 +12,11 @@ import { DialogHostComponent } from '../components';
       { path: 'notes', component: PageComponent,
           children: [
             { path: '', outlet: 'page-header', component: NotesHeaderComponent},
-            { path: '', component: NotesPageComponent },
+            { path: '', component: NotesListPageComponent },
           ]
       },
-			{ path: 'addNote', component: DialogHostComponent },
+      { path: 'addNote', component: DialogHostComponent },
+      { path: 'addNote', component: DialogHostComponent, outlet: 'dialog' },
 		  ])
 	  ],
 	exports: [RouterModule]

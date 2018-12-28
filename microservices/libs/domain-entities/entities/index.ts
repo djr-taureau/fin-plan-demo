@@ -15,3 +15,4 @@ export * from './address.entity';
 export * from './contact-info.entity';
 export * from './events';
 export * from './statistics'
+export * from './note.entity';

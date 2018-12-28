@@ -30,7 +30,6 @@ export class AppNavigationComponent implements OnInit {
         break;
       case 'addNote':
         this.router.navigate(['addNote']);
-        // this.router.navigateByUrl('/notes/addNote');
       break;
       }
   }

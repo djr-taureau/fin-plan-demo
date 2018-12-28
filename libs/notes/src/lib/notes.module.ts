@@ -6,41 +6,40 @@ import {
 	NotesStateModule,
 	NotesUIModule
 } from './+modules';
-import { NotesPageComponent } from './pages';
+import { NotesListPageComponent } from './pages';
 import {
-	NotesWidgetComponent,
-	NotesListComponent,
   NotesHeaderComponent,
+  NotesTableComponent,
   NotesFormComponent,
   DialogHostComponent,
+  NotesListComponent,
+  NotesWidgetComponent,
 } from './components';
 
-import { NoteLinkPipe, NoteImagePipe } from './pipes';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
 	imports: [
 		NotesCoreModule,
 		NotesRoutingModule,
 		NotesStateModule,
-		NotesUIModule
+    NotesUIModule,
+    NgxMaterialTimepickerModule.forRoot()
 	],
 	declarations: [
-		NotesPageComponent,
-		NotesWidgetComponent,
-		NoteLinkPipe,
-		NoteImagePipe,
-		NotesListComponent,
-		NotesHeaderComponent,
+		NotesListPageComponent,
     NotesHeaderComponent,
+    NotesTableComponent,
     NotesFormComponent,
+    NotesListComponent,
+    NotesWidgetComponent,
     DialogHostComponent,
   ],
   exports: [
-    NotesPageComponent,
-    NotesWidgetComponent,
     NotesFormComponent,
     DialogHostComponent
   ],
+  providers: [],
   entryComponents: [DialogHostComponent, NotesFormComponent]
 })
 export class NotesModule {}

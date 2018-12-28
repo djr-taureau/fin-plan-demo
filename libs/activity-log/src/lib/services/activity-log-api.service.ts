@@ -13,7 +13,7 @@ import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
 	providedIn: 'root'
 })
 export class ActivityLogAPIService {
-	activityLogUrl = 'https://c1e420f9-05f0-4a54-9c29-1fc5937dd9e1.mock.pstmn.io/activity_log';
+	activityLogUrl = '3ee63553-cc38-4cf2-add2-4356fbbd6298.mock.pstmn.io/activity_log';
 
 	serviceErrorHandler = throwErrorAndLog('Activity Log API Service');
 

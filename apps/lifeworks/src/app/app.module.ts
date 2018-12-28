@@ -32,6 +32,7 @@ import { AuthenticationModule } from '@lifeworks/authentication';
 // tslint:disable-next-line
 import { AzureAdAuthProviderModule } from '@lifeworks/authentication/providers/azure-ad-auth-provider';
 
+
 const globalRippleConfig: RippleGlobalOptions = { disabled: true };
 @NgModule({
 	declarations: [AppComponent],

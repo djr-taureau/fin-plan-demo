@@ -12,7 +12,7 @@ function buildAuthProvider() {
 		'isAuthenticated',
 		'login',
 		'logout',
-		'AuthProviderMock'
+		// 'AuthProviderMock'
 	]);
 
 	mock = assoc('onAuthenticated', buildEventEmitter('onAuthenticated'), mock);

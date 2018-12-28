@@ -1,2 +1,2 @@
-export * from './notes.service';
+export * from './notes.facade';
 export * from './notes-api.service';

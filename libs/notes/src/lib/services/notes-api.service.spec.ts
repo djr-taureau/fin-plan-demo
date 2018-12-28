@@ -2,7 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 
 import { NotesApi } from './notes-api.service';
 
-describe('NotificationsApi', () => {
+describe('NotesApi', () => {
 	beforeEach(() => {
 		TestBed.configureTestingModule({
 			providers: [NotesApi]

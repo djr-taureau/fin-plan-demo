@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
-import { NoteItems, NoteItem } from '../../models';
+import { NoteItem } from '../../models';
 import { Notes } from '../../services';
 
 export type NotesFilter = 'all' | 'dismissed' | 'undismissed';
@@ -19,45 +19,45 @@ export class NotesWidgetComponent implements OnInit {
 	@Input() title: string;
 	@Input() linkText = 'View all';
 
-	data$: Observable<NoteItems>;
+	data$: Observable<Array<NoteItem>>;
 	isLoaded$: Observable<boolean>;
 	dataState$: Observable<DataState>;
 	dataItemsCount$: Observable<number>;
-	filteredItems$: Observable<NoteItems>;
+	filteredItems$: Observable<Array<NoteItem>>;
 
 	constructor(private NotesService: Notes) {}
 
 	ngOnInit() {
 		this.NotesService.load();
 		this.initDataSet(this.filter);
-		this.isLoaded$ = this.NotesService.isDataLoaded();
-		this.dataState$ = getDatasetState(this.isLoaded$, this.dataItemsCount$);
+		// this.isLoaded$ = this.NotesService.isDataLoaded();
+		// this.dataState$ = getDatasetState(this.isLoaded$, this.dataItemsCount$);
 	}
 
 	initDataSet(filter: NotesFilter) {
-		switch (filter) {
-			case 'all': {
-				this.data$ = this.NotesService.getAll();
-				this.dataItemsCount$ = this.NotesService.countOfAll();
-				break;
-			}
-			case 'dismissed': {
-				this.data$ = this.NotesService.getDismissed();
-				this.dataItemsCount$ = this.NotesService.countOfDismissed();
-				break;
-			}
-			case 'undismissed': {
-				this.data$ = this.NotesService
-					.getUndismissed()
-					.pipe(this.applyFilters());
-				this.dataItemsCount$ = this.NotesService.countOfUndismissed();
-				break;
-			}
-		}
+		// switch (filter) {
+		// 	case 'all': {
+		// 		this.data$ = this.NotesService.getAll();
+		// 		this.dataItemsCount$ = this.NotesService.countOfAll();
+		// 		break;
+		// 	}
+		// 	case 'dismissed': {
+		// 		this.data$ = this.NotesService.getDismissed();
+		// 		this.dataItemsCount$ = this.NotesService.countOfDismissed();
+		// 		break;
+		// 	}
+		// 	case 'undismissed': {
+		// 		this.data$ = this.NotesService
+		// 			.getUndismissed()
+		// 			.pipe(this.applyFilters());
+		// 		this.dataItemsCount$ = this.NotesService.countOfUndismissed();
+		// 		break;
+		// 	}
+		// }
 	}
 
 	applyFilters() {
-		return map((x: NoteItems) => x.slice(0, 3));
+		return map((x: Array<NoteItem>) => x.slice(0, 3));
 	}
 
 	event(event: DatasourceItemEvent<NoteItem>) {
@@ -69,6 +69,6 @@ export class NotesWidgetComponent implements OnInit {
 	}
 
 	dismiss(Note: NoteItem) {
-		this.NotesService.dismiss(Note.guid);
+		// this.NotesService.dismiss(Note.guid);
 	}
 }

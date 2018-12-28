@@ -1,9 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { Notes } from '../../services';
+// import { NotesService } from '../../services';
 import { NoteImagePipe, NoteLinkPipe } from '../../pipes';
-import { NotesMock, MOCK_COMPLIANCE_NOTE} from '../../testing';
+import { NotesMock } from '../../testing';
 import { NotesWidgetComponent } from '../notes-widget/notes-widget.component';
 import { NotesListComponent } from './notes-list.component';
 

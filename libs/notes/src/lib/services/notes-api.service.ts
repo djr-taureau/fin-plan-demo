@@ -9,8 +9,6 @@ import { PaginationResult, throwErrorAndLog } from '@lifeworks/common';
 import { NoteItem } from '../models';
 import { getApiError } from '../notes-errors';
 
-const DIMISS = { dismiss: true };
-
 @Injectable({
 	providedIn: 'root'
 })
@@ -24,18 +22,24 @@ export class NotesApi {
 		private configuration: ConfigService
 	) {
 		const baseUrl = configuration.getLifeworksApiUri();
-		this.NotesUrl = `${baseUrl}/Notes`;
+		this.NotesUrl = `${baseUrl}/notes`;
 	}
 
 	get() {
 		return this.http
 			.get<PaginationResult<NoteItem>>(this.NotesUrl)
 			.pipe(catchError(this.serviceErrorHandler(getApiError)));
+  }
+
+  create(note: NoteItem) {
+		return this.http
+			.post([this.NotesUrl].join('/'), note)
+			.pipe(catchError(this.serviceErrorHandler(getApiError)));
 	}
 
-	dismiss(id: string) {
+	update(note: NoteItem) {
 		return this.http
-			.patch([this.NotesUrl, id].join('/'), DIMISS)
+			.patch([this.NotesUrl].join('/'), note)
 			.pipe(catchError(this.serviceErrorHandler(getApiError)));
 	}
 }

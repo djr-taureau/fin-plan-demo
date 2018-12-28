@@ -5,11 +5,11 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { notesReducer } from '../+state/notes.reducer';
 import { NotesEffects } from '../+state/notes.effects';
-import { notesInitialState } from '../+state/notes.init';
+import { notesInitialState } from '../+state/notes.reducer';
 
 @NgModule({
 	imports: [
-		StoreModule.forFeature('Notes', notesReducer, {
+		StoreModule.forFeature('notes', notesReducer, {
 			initialState: notesInitialState
 		}),
 		EffectsModule.forFeature([NotesEffects])
