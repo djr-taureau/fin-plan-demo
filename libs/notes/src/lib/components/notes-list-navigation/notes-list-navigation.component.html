@@ -1,13 +1,11 @@
 <mat-nav-list theme-grey>
-  <a mat-list-item (click)="viewNote(item)" *ngFor="let item of (notes$ | async);">
-      <div>
-        <div class="lw-text-color-dark-green title title-md active">
-          {{ item.name }}
-          <br>
-          {{ item.timestamps['createdOn'] | niceDate }}
-        </div>
-      </div>
-    </a>
+  <a mat-list-item [ngClass]="{'selected': selected}" (click)="viewNote(item)" *ngFor="let item of (notes$ | async);">
+    <div class="lw-note-item lw-text-color-dark-green active title title-md">
+      {{ item.name }}
+      <br>
+      <span class="note-date title title-sm">
+        Date: {{ item.timestamps['createdOn'] | niceDate }}
+      </span>
+    </div>
+  </a>
 </mat-nav-list>
-
-

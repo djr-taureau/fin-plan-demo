@@ -62,7 +62,7 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   notesForm: FormGroup;
   startDate = Date.now();
   minDate = new Date(Date.now());
-  private watch: Subscription;
+
 
 
   @Input() set note(value: NoteItem) {
@@ -297,9 +297,3 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 }
 
-// function makeNoteID$(route: ActivatedRoute): Observable<string> {
-//   const current$ = of(route.snapshot.paramMap.get('id'));
-//   const future$ = route.params.pipe(map(params => params['id']));
-
-//   return current$.pipe(merge(future$));
-// }

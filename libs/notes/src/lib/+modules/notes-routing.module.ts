@@ -157,7 +157,7 @@ import { DialogHostComponent } from '../components';
             ]
           },
 				]
-      },,
+      },
       { path: 'addNote', component: DialogHostComponent },
       { path: 'addNote', component: DialogHostComponent, outlet: 'dialog' },
     ])

@@ -1,5 +1,11 @@
-.list-item {
-  font-size: 1.6rem;
+mat-nav-list {
+  transition: all .5s ease;
+  -moz-transition: all .5s ease;
+  -webkit-transition: all .5s ease
+}
+
+.mat-list-item {
+  font-size: 2.0rem;
   font-weight: 300;
   height: 6rem;
   color: #959595;
@@ -10,7 +16,12 @@
   cursor: pointer;
 }
 
-.mat-list-item-focus {
+.mat-list-item:active  {
+  border-left: solid 20px #f26623;
+  background: #d8dddf;
+}
+
+.selected-note {
   border-left: solid 5px #f26623;
 	background: #d8dddf;
 }
@@ -18,9 +29,14 @@
 .list-item.mat-list-item-active {
   color: #153C3F;
   font-weight: bold;
+  font-size: 1.6rem;
   cursor: pointer;
 	border-left: solid 5px #f26623;
 	background: #d8dddf;
+}
+
+.lw-note-item {
+  font-size: 1.6rem;
 }
 
 

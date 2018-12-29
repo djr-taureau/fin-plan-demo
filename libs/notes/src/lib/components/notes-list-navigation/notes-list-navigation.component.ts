@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NoteItem }  from '../../models/note-item';
 import { Notes } from '../../services/notes.facade';
@@ -14,12 +14,14 @@ export class NotesListNavigationComponent implements OnInit {
 
   @Input() dataItems: NoteItem[];
   @Output() selectedNote = new EventEmitter<NoteItem>();
+  @HostBinding('class.selected') selected = false;
 
   displayData: NoteItem[];
   note: NoteItem;
   note$ = this.notesFacade.currentNote$;
   notes$ = this.notesFacade.allNotes$;
   numNotes = 0;
+
 
 	constructor(
     private router: Router,
@@ -41,6 +43,7 @@ export class NotesListNavigationComponent implements OnInit {
   viewNote(item: NoteItem) {
     this.selectedNote.emit(item);
     this.notesFacade.selectNote(item.guid);
+    this.selected = !this.selected;
   }
 
 }

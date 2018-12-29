@@ -33,11 +33,7 @@ export class Notes {
     private store: Store<NotesState>,
     private actions$: ActionsSubject,
     private route: ActivatedRoute
-    ) {
-      makeNoteID$(route).subscribe(noteId => {
-        this.selectNote(noteId);
-      });
-    }
+    ) {}
 
 	load() {
     this.store.dispatch(new Load());
@@ -61,10 +57,3 @@ export class Notes {
   }
 }
 
-
-const makeNoteID$ = ( route: ActivatedRoute ):Observable<string> => {
-  const current$ = of(route.snapshot.paramMap.get('id'));
-  const future$ = route.params.pipe( map( params => params['id']));
-
-  return current$.pipe(merge( future$ ));
-};
