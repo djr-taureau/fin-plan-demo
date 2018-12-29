@@ -1,4 +1,5 @@
 export * from './notes-navigation/notes-navigation.component';
+export * from './notes-header/notes-header.component';
 export * from './notes-form-dialog/dialog-host.component';
 export * from './notes-form/notes-form.component';
 export * from './notes-list-sidenav/notes-list-sidenav.component';

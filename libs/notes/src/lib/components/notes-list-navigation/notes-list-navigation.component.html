@@ -1,15 +1,13 @@
 <mat-nav-list theme-grey>
-  <a mat-list-item [routerLink]="['/notes', item.guid]" routerLinkActive
-     #rla="routerLinkActive" #routerLinkActiveInstance="routerLinkActive" *ngFor="let item of (notes$ | async);">
+  <a mat-list-item (click)="viewNote(item)" *ngFor="let item of (notes$ | async);">
       <div>
         <div class="lw-text-color-dark-green title title-md active">
           {{ item.name }}
           <br>
-          {{ item.timestamps['createdOn'] }}
+          {{ item.timestamps['createdOn'] | niceDate }}
         </div>
       </div>
     </a>
 </mat-nav-list>
-
 
 

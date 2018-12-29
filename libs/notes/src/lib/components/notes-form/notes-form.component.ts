@@ -117,18 +117,19 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private fb: FormBuilder) {
       this.config.modules = { toolbar: this.toolbar };
       this.notesForm = this.createFormGroup();
-      this.watch = makeNoteID$(route).subscribe(noteId =>
-        this.notesFacade.selectNote(noteId)
-      );
+      this.notesFacade.currentNote$.subscribe(v => {
+        this.note = v;
+      })
 	  }
 
 	ngOnInit() {
-    this.notesFacade.currentNoteId$.subscribe(v => console.log('did this bitch change  ', v))
-
+    this.notesFacade.currentNote$.subscribe(v => console.log('onInit note Values', v))
+    console.log('this.note:', this.note);
     this.notesFacade.currentNote$.subscribe(val => {
+      console.log('current note', val);
       this.notesForm.controls['name'].setValue(val.name)
       this.notesForm.controls['note'].setValue(val.note)
-      // this.componentRef.directiveRef.setValue(val.note)
+      this.componentRef.directiveRef.setValue(val.note)
       this.notesForm.controls['reminderDate'].setValue(val.reminderDate)
       this.notesForm.controls['reminderTime'].setValue(val.reminderTime)
       this.notesForm.controls['clientAssociation'].setValue(val.relatedEntityGuid)
@@ -136,10 +137,19 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-
+    this.notesFacade.currentNote$.subscribe(v => console.log('afterViewInit note values', v))
+    this.notesFacade.currentNote$.subscribe(val => {
+      console.log('current note', val);
+      this.notesForm.controls['name'].setValue(val.name)
+      this.notesForm.controls['note'].setValue(val.note)
+      this.componentRef.directiveRef.setValue(val.note)
+      this.notesForm.controls['reminderDate'].setValue(val.reminderDate)
+      this.notesForm.controls['reminderTime'].setValue(val.reminderTime)
+      this.notesForm.controls['clientAssociation'].setValue(val.relatedEntityGuid)
+    });
     this.editorInstance = this.componentRef.directiveRef.quill();
     this.editorRef = this.componentRef.directiveRef;
-    // this.notesForm.patchValue({note: (this.editorRef.getValue())});
+    this.notesForm.patchValue({note: (this.editorRef.getValue())});
     const redoButton = this.elem.nativeElement.querySelector('.ql-redo');
     const undoButton = this.elem.nativeElement.querySelector('.ql-undo');
     redoButton.innerHTML = '<i class="material-icons">redo</i>';
@@ -153,7 +163,7 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.watch.unsubscribe();
+    // this.watch.unsubscribe();
   }
 
 
@@ -272,24 +282,24 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
-  // resetFormGroup() {
-  //   this.notesForm.reset({
-  //     name: null,
-  //     note: null,
-  //     addReminder: null,
-  //     addTask: null,
-  //     reminderDate: null,
-  //     reminderTime: null,
-  //     clientAssociation: null,
-  //     assignment: null,
-  //     clientVisible: null
-  //   })
-  // }
+  resetFormGroup() {
+    this.notesForm.reset({
+      name: null,
+      note: null,
+      addReminder: null,
+      addTask: null,
+      reminderDate: null,
+      reminderTime: null,
+      clientAssociation: null,
+      assignment: null,
+      clientVisible: null
+    })
+  }
 }
 
-function makeNoteID$(route: ActivatedRoute): Observable<string> {
-  const current$ = of(route.snapshot.paramMap.get('id'));
-  const future$ = route.params.pipe(map(params => params['id']));
+// function makeNoteID$(route: ActivatedRoute): Observable<string> {
+//   const current$ = of(route.snapshot.paramMap.get('id'));
+//   const future$ = route.params.pipe(map(params => params['id']));
 
-  return current$.pipe(merge(future$));
-}
+//   return current$.pipe(merge(future$));
+// }

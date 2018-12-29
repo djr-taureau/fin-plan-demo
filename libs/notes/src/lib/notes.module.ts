@@ -13,6 +13,7 @@ import {
   ClientsListPageComponent,
 } from './pages';
 import {
+  NotesHeaderComponent,
   NotesNavigationComponent,
   NotesListNavigationComponent,
   NotesFormComponent,
@@ -32,6 +33,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     NgxMaterialTimepickerModule.forRoot()
 	],
 	declarations: [
+    NotesHeaderComponent,
     NotesListPageComponent,
     PersonalListPageComponent,
     TeamListPageComponent,

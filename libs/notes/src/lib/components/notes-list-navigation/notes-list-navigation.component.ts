@@ -11,10 +11,14 @@ import { Notes } from '../../services/notes.facade';
 })
 
 export class NotesListNavigationComponent implements OnInit {
+
   @Input() dataItems: NoteItem[];
-  @Output() selected = new EventEmitter()
+  @Output() selectedNote = new EventEmitter<NoteItem>();
+
   displayData: NoteItem[];
-  notes$ = this.notesFacade.allNotes$
+  note: NoteItem;
+  note$ = this.notesFacade.currentNote$;
+  notes$ = this.notesFacade.allNotes$;
   numNotes = 0;
 
 	constructor(
@@ -25,13 +29,18 @@ export class NotesListNavigationComponent implements OnInit {
     this.notes$.subscribe(notes => {
       this.numNotes = notes.length;
     });
+    this.note$.subscribe(v => {
+      this.note = v;
+    });
   }
 
 	ngOnInit() {
     this.notesFacade.selectNote(this.dataItems[0].guid)
   }
 
-	raiseEvent($event) {
-
+  viewNote(item: NoteItem) {
+    this.selectedNote.emit(item);
+    this.notesFacade.selectNote(item.guid);
   }
+
 }

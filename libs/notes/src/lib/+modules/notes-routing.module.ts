@@ -8,7 +8,7 @@ import
   TeamListPageComponent,
   ClientsListPageComponent,
  } from '../pages';
-import { NotesNavigationComponent, NotesListNavigationComponent } from '../components';
+import { NotesNavigationComponent, NotesListNavigationComponent, NotesHeaderComponent } from '../components';
 import { DialogHostComponent } from '../components';
 
 @NgModule({
@@ -61,8 +61,13 @@ import { DialogHostComponent } from '../components';
           },
           {
             path: 'personal',
-            data: { pageLayout: 'almostFullWithLeftSidebar' },
+            data: { pageLayout: 'fullWithLeftSidebar' },
             children: [
+              {
+                path: '',
+                outlet: 'page-subheader',
+                component: NotesHeaderComponent
+              },
               {
                 path: '',
                 outlet: 'page-sidebar',
@@ -73,34 +78,86 @@ import { DialogHostComponent } from '../components';
                 redirectTo: 'personal'
               },
               {
-                path: 'personal',
+                path: '',
                 component: PersonalListPageComponent,
               },
-              {
-                path: 'notes/:id',
-                component: PersonalListPageComponent,
-              }
             ]
           },
-					{
-						path: 'team',
-						component: TeamListPageComponent
-					},
-					{
-						path: 'clients',
-						component: ClientsListPageComponent
+          {
+            path: 'team',
+            data: { pageLayout: 'fullWithLeftSidebar' },
+            children: [
+              {
+                path: '',
+                outlet: 'page-subheader',
+                component: NotesHeaderComponent
+              },
+              {
+                path: '',
+                outlet: 'page-sidebar',
+                component: NotesListNavigationComponent
+              },
+              {
+                path: '',
+                redirectTo: 'team'
+              },
+              {
+                path: '',
+                component: TeamListPageComponent,
+              },
+            ]
           },
           {
-						path: 'all',
-						component: NotesListPageComponent
+            path: 'clients',
+            data: { pageLayout: 'fullWithLeftSidebar' },
+            children: [
+              {
+                path: '',
+                outlet: 'page-subheader',
+                component: NotesHeaderComponent
+              },
+              {
+                path: '',
+                outlet: 'page-sidebar',
+                component: NotesListNavigationComponent
+              },
+              {
+                path: '',
+                redirectTo: 'clients'
+              },
+              {
+                path: '',
+                component: ClientsListPageComponent,
+              },
+            ]
           },
           {
-            path: 'notes/:id',
-            component: NotesListPageComponent,
-          }
+            path: 'all',
+            data: { pageLayout: 'fullWithLeftSidebar' },
+            children: [
+              {
+                path: '',
+                outlet: 'page-subheader',
+                component: NotesHeaderComponent
+              },
+              {
+                path: '',
+                outlet: 'page-sidebar',
+                component: NotesListNavigationComponent
+              },
+              {
+                path: '',
+                redirectTo: 'all'
+              },
+              {
+                path: '',
+                component: NotesListPageComponent,
+              },
+
+            ]
+          },
 				]
-      },
-      { path: 'notes/:id', component: NotesListPageComponent },
+      },,
       { path: 'addNote', component: DialogHostComponent },
       { path: 'addNote', component: DialogHostComponent, outlet: 'dialog' },
     ])

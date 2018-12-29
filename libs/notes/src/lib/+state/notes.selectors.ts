@@ -11,9 +11,8 @@ export interface AppState {
 export const reducers: ActionReducerMap<AppState> = {
   notes: fromNotes.notesReducer,
 };
-const selectNotesState = createFeatureSelector<fromNotes.NotesState>(
-	'notes'
-);
+
+const selectNotesState = createFeatureSelector<fromNotes.NotesState>('notes');
 
 export const selectNoteIds = createSelector(
   selectNotesState,

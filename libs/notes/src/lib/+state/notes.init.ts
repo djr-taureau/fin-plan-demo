@@ -1,7 +1,7 @@
 import { LoadDataStatus } from '@lifeworks/common';
-import { NotesData } from './notes.interfaces';
+import { NotesState } from './notes.interfaces';
 
-export const notesInitialState: NotesData = {
-	status: LoadDataStatus.initial,
-	entities: {}
-};
+// export const notesInitialState: NotesState = {
+// 	status: LoadDataStatus.initial,
+// 	entities: {}
+// };
