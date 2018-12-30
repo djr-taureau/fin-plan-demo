@@ -1,5 +1,5 @@
 <mat-nav-list theme-grey>
-  <a mat-list-item [ngClass]="{'selected': selected}" (click)="viewNote(item)" *ngFor="let item of (notes$ | async);">
+  <a mat-list-item [class.selected]="(item.guid === (this.notesFacade.currentNoteId$ | async))" (click)="viewNote(item)" *ngFor="let item of (notes$ | async);">
     <div class="lw-note-item lw-text-color-dark-green active title title-md">
       {{ item.name }}
       <br>

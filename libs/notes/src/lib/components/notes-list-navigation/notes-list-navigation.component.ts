@@ -14,7 +14,7 @@ export class NotesListNavigationComponent implements OnInit {
 
   @Input() dataItems: NoteItem[];
   @Output() selectedNote = new EventEmitter<NoteItem>();
-  @HostBinding('class.selected') selected = false;
+  // @HostBinding('class.selected') selected = false;
 
   displayData: NoteItem[];
   note: NoteItem;
@@ -26,7 +26,7 @@ export class NotesListNavigationComponent implements OnInit {
 	constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private notesFacade: Notes,
+    public notesFacade: Notes,
 	) {
     this.notes$.subscribe(notes => {
       this.numNotes = notes.length;
@@ -43,7 +43,7 @@ export class NotesListNavigationComponent implements OnInit {
   viewNote(item: NoteItem) {
     this.selectedNote.emit(item);
     this.notesFacade.selectNote(item.guid);
-    this.selected = !this.selected;
+    // this.selected = !this.selected;
   }
 
 }
