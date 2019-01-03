@@ -14,7 +14,6 @@ import { Notes } from '../../services';
 })
 export class NotesListPageComponent implements OnInit {
 	data$: Observable<NoteItem[]> = this.notesFacade.allNotes$;
-	isLoaded$: Observable<boolean> = this.notesFacade.isLoaded$
 	dataItemsCount$: Observable<number> = this.notesFacade.notesCount$;
 
 	constructor(private notesFacade: Notes) {}
@@ -26,7 +25,6 @@ export class NotesListPageComponent implements OnInit {
       this.notesFacade.selectNote(currentGuid)
     });
     this.dataItemsCount$.subscribe(v => console.log('item count', v));
-    this.isLoaded$.subscribe(v => console.log('status', v));
 	}
 
 	event(event: DatasourceItemEvent<NoteItem>) {

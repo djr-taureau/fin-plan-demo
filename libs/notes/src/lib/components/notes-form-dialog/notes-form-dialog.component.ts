@@ -15,9 +15,7 @@ import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { NoteItem } from '../../models';
 import { Notes } from '../../services';
-import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { take, takeLast } from 'ramda';
 import { QuillDirective, QuillComponent, QuillConfigInterface, QuillModulesInterface } from 'ngx-quill-wrapper';
 
@@ -89,8 +87,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
     private NotesService: Notes,
 		private router: Router,
     private fb: FormBuilder,
-		private dialogRef: MatDialogRef<NotesFormDialogComponent>,
-		@Inject(MAT_DIALOG_DATA) public data
+		private dialogRef: MatDialogRef<NotesFormDialogComponent>
 	) {
       this.config.modules = { toolbar: this.toolbar };
       this.notesForm = this.createFormGroup();

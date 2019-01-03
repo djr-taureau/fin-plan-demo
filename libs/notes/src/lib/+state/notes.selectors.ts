@@ -43,8 +43,6 @@ export const selectCurrentNote = createSelector(
   }
 );
 
-
-
 const STATUS_PROPERTY = propOr('status', '');
 
 const IS_LOADING = propEq('status', LoadDataStatus.loading);

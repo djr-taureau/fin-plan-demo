@@ -1,27 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { of } from 'rxjs';
-
 import { Notes } from '../../services';
-import { NoteImagePipe, NoteLinkPipe } from '../../pipes';
 import { NotesMock, MOCK_NOTE } from '../../testing';
-
 import { NotesFormComponent } from './notes-form.component';
-import { NotesListComponent } from '../notes-list/Notes-list.component';
 
-describe('NotesWidgetComponent', () => {
+describe('NotesFormComponent', () => {
 	let component: NotesFormComponent;
 	let fixture: ComponentFixture<NotesFormComponent>;
 	const m_Notes = NotesMock;
-
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
 				declarations: [
 					NotesFormComponent,
-					NoteImagePipe,
-					NoteLinkPipe,
-					NotesListComponent
 				],
 				providers: [
 					{

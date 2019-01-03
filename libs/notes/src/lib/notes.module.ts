@@ -18,6 +18,8 @@ import {
   DialogHostComponent,
 } from './components';
 
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 @NgModule({
 	imports: [
 		NotesCoreModule,
@@ -38,7 +40,10 @@ import {
     NotesFormDialogComponent,
     DialogHostComponent
   ],
-  providers: [],
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] }
+  ],
   entryComponents: [DialogHostComponent, NotesFormDialogComponent]
 })
 export class NotesModule {}

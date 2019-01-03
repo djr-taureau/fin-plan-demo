@@ -24,9 +24,7 @@ import {
 
 import { NoteItem } from '../../models';
 import { Notes } from '../../services';
-import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { MatSlideToggle } from '@angular/material/slide-toggle';
 import { take, takeLast } from 'ramda';
 import {
   QuillDirective,
@@ -63,7 +61,7 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   showReminderDate: boolean;
   notesForm: FormGroup;
   startDate = Date.now();
-  minDate = new Date(Date.now());
+  minDate = Date.now();
 
 
 

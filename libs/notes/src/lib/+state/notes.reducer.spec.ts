@@ -1,6 +1,6 @@
 
 import { Action } from '@ngrx/store'
-import { Load, LoadSuccess, Select, AddSuccess, UpdateSuccess, NotesActionTypes } from './notes.actions';
+import { Load, LoadSuccess, Selected, AddSuccess, UpdateSuccess, NotesActionTypes } from './notes.actions';
 import { notesReducer, notesInitialState } from './notes.reducer';
 import { NoteItem } from '../models/note-item';
 import { selectAllNotes, selectCurrentNoteId,  } from  './notes.selectors';
@@ -117,10 +117,10 @@ describe('notsReducer', () => {
   });
 
 
-  it(`${NotesActionTypes.Select} action should set 'selectedNoteId' in state`, () => {
+  it(`${NotesActionTypes.Selected} action should set 'selectedNoteId' in state`, () => {
     const selectedNote = 'Note-id';
 
-    const action: Select = new Select(selectedNote);
+    const action: Selected = new Selected(selectedNote);
     const state = notesReducer(notesInitialState, action);
     expect(state.selectedNoteId).toBe(selectedNote);
   });

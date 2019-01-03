@@ -2,13 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
 import { Notes } from '../../services';
-import { NoteImagePipe, NoteLinkPipe } from '../../pipes';
 import { NotesMock, MOCK_NOTE } from '../../testing';
-
 import { NotesFormDialogComponent } from './notes-form-dialog.component';
-import { NotesListComponent } from '../notes-list/Notes-list.component';
 
-describe('NotesWidgetComponent', () => {
+
+describe('NotesFormDialogComponent', () => {
 	let component: NotesFormDialogComponent;
 	let fixture: ComponentFixture<NotesFormDialogComponent>;
 	const m_Notes = NotesMock;
@@ -20,9 +18,6 @@ describe('NotesWidgetComponent', () => {
 			TestBed.configureTestingModule({
 				declarations: [
 					NotesFormDialogComponent,
-					NoteImagePipe,
-					NoteLinkPipe,
-					NotesListComponent
 				],
 				providers: [
 					{
