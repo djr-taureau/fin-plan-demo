@@ -1,5 +1,5 @@
 import { Subject } from 'rxjs';
-import { Component, OnInit, Input, Output, EventEmitter, HostBinding } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NoteItem }  from '../../models/note-item';
 import { Notes } from '../../services/notes.facade';
@@ -37,13 +37,12 @@ export class NotesListNavigationComponent implements OnInit {
   }
 
 	ngOnInit() {
-    this.notesFacade.selectNote(this.dataItems[0].guid)
+    // this.viewNote(this.dataItems[0]);
   }
 
   viewNote(item: NoteItem) {
     this.selectedNote.emit(item);
     this.notesFacade.selectNote(item.guid);
-    // this.selected = !this.selected;
   }
 
 }

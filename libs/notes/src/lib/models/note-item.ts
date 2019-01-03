@@ -13,6 +13,10 @@ export interface NoteItem extends DomainEntity, IRemoveable {
   reminderTime?: string;
   createdBy: string;
   modifiedBy?: string;
+  timestamps: {
+    createdOn: Date;
+    modifiedOn: Date;
+  }
 }
 
 export interface IRemoveable {

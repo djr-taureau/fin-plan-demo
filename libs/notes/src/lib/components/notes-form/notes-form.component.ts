@@ -3,7 +3,6 @@ import {
 	OnInit,
   ViewChild,
   ChangeDetectionStrategy,
-	Inject,
   AfterViewInit,
   ElementRef,
   EventEmitter,
@@ -11,21 +10,24 @@ import {
   Input,
   Output
 } from '@angular/core';
+
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable, of, Subscription } from 'rxjs';
-import { map, mapTo, merge, tap, startWith, switchMap, take, first } from 'rxjs/operators';
+import { Observable} from 'rxjs';
+
 import {
 	FormGroup,
 	FormBuilder,
 	Validators,
   FormControl,
 } from '@angular/forms';
+
 import { NoteItem } from '../../models';
 import { Notes } from '../../services';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
+import { take, takeLast } from 'ramda';
 import {
   QuillDirective,
   QuillComponent,
@@ -58,7 +60,7 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
 	notesFormData: any;
   editorInstance;
   editorRef;
-  checked: false;
+  showReminderDate: boolean;
   notesForm: FormGroup;
   startDate = Date.now();
   minDate = new Date(Date.now());
@@ -68,11 +70,6 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
   @Input() set note(value: NoteItem) {
     this.noteData = Object.assign({}, value);
   }
-
-  @Output() saved = new EventEmitter();
-  @Output() cancelled = new EventEmitter();
-
-
 
   @ViewChild(ElementRef) undoButton;
   @ViewChild(ElementRef) redoButton;
@@ -107,7 +104,7 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
 		{ value: '2', viewValue: 'Assign 3' }
   ];
 
-
+  hours: any[];
 
 	constructor(
     private elem: ElementRef,
@@ -117,29 +114,34 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     private fb: FormBuilder) {
       this.config.modules = { toolbar: this.toolbar };
       this.notesForm = this.createFormGroup();
+      this.notesForm.get('addReminder').valueChanges
+        .subscribe(val => this.showReminder(val));
       this.notesFacade.currentNote$.subscribe(v => {
         this.note = v;
       })
 	  }
 
 	ngOnInit() {
-    this.notesFacade.currentNote$.subscribe(v => console.log('onInit note Values', v))
-    console.log('this.note:', this.note);
+    this.showReminderDate = false;
     this.notesFacade.currentNote$.subscribe(val => {
-      console.log('current note', val);
-      this.notesForm.controls['name'].setValue(val.name)
-      this.notesForm.controls['note'].setValue(val.note)
-      this.componentRef.directiveRef.setValue(val.note)
-      this.notesForm.controls['reminderDate'].setValue(val.reminderDate)
-      this.notesForm.controls['reminderTime'].setValue(val.reminderTime)
-      this.notesForm.controls['clientAssociation'].setValue(val.relatedEntityGuid)
+      this.notesForm.controls['name'].setValue(val.name);
+      this.notesForm.controls['note'].setValue(val.note);
+      this.componentRef.directiveRef.setValue(val.note);
+      // if (val.reminderDate) {
+      //   this.showReminderDate = true;
+      // };
+      this.notesForm.controls['reminderDate'].setValue(val.reminderDate);
+      this.notesForm.controls['reminderTime'].setValue(val.reminderTime);
+      this.notesForm.controls['clientAssociation'].setValue(val.relatedEntityGuid);
     });
+
   }
 
   ngAfterViewInit() {
+    // values for hours drop-down --
+    this.hours = this.hoursOfDay();
     this.notesFacade.currentNote$.subscribe(v => console.log('afterViewInit note values', v))
     this.notesFacade.currentNote$.subscribe(val => {
-      console.log('current note', val);
       this.notesForm.controls['name'].setValue(val.name)
       this.notesForm.controls['note'].setValue(val.note)
       this.componentRef.directiveRef.setValue(val.note)
@@ -164,9 +166,19 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     // this.watch.unsubscribe();
+    // this.resetFormGroup();
   }
 
-
+  showReminder(val) {
+    this.showReminderDate = !this.showReminderDate;
+    if(this.showReminderDate) {
+      this.notesForm.get('reminderDate').enable();
+      this.notesForm.get('reminderTime').enable();
+    } else {
+      this.notesForm.get('reminderDate').disable();
+      this.notesForm.get('reminderTime').disable();
+    }
+  }
 
   addReminderDate(event: MatDatepickerInputEvent<Date>) {
     this.notesForm.patchValue({reminderDate: event.value});
@@ -254,7 +266,6 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.add(this.noteData);
     this.clearEditorContent();
     this.clearEditorHistory();
-    // this.resetFormGroup();
   }
 
   onSubmit() {
@@ -286,14 +297,38 @@ export class NotesFormComponent implements OnInit, AfterViewInit, OnDestroy {
     this.notesForm.reset({
       name: null,
       note: null,
-      addReminder: null,
+      addReminder: false,
       addTask: null,
       reminderDate: null,
       reminderTime: null,
-      clientAssociation: null,
       assignment: null,
       clientVisible: null
     })
   }
+
+  hoursOfDay() {
+    const hours = Array.from(Array(24).keys());
+    const takeMorning = take(12);
+    const takeEvening = takeLast(12);
+    const AM = takeMorning(hours);
+    const PM = takeEvening(hours);
+    const  clockHours = [];
+    const result = clockHours.concat(PM, AM);
+    return this.hourParts(result);
+  }
+
+  hourParts(hours: number[]) {
+    const hourPartList = [];
+    hours.map(v => {
+      const clockHour = v > 12 ? v - 12 : v;
+      const suffix = v > 11 ? 'PM' : 'AM';
+      const hourPartObj1 = { value: `${clockHour}:00 ${suffix}`, viewValue: `${clockHour}:00 ${suffix}` };
+      const hourPartObj2 = { value: `${clockHour}:30 ${suffix}`, viewValue: `${clockHour}:30 ${suffix}` };
+      hourPartList.push(hourPartObj1);
+      hourPartList.push(hourPartObj2);
+    });
+    return hourPartList;
+  }
+
 }
 

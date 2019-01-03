@@ -8,21 +8,15 @@ import {
 } from './+modules';
 import {
   NotesListPageComponent,
-  PersonalListPageComponent,
-  TeamListPageComponent,
-  ClientsListPageComponent,
 } from './pages';
 import {
   NotesHeaderComponent,
   NotesNavigationComponent,
   NotesListNavigationComponent,
   NotesFormComponent,
-  NotesListSidenavComponent,
   NotesFormDialogComponent,
   DialogHostComponent,
 } from './components';
-
-import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
 	imports: [
@@ -30,18 +24,13 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 		NotesRoutingModule,
 		NotesStateModule,
     NotesUIModule,
-    NgxMaterialTimepickerModule.forRoot()
 	],
 	declarations: [
     NotesHeaderComponent,
     NotesListPageComponent,
-    PersonalListPageComponent,
-    TeamListPageComponent,
-    ClientsListPageComponent,
     NotesNavigationComponent,
     NotesListNavigationComponent,
     NotesFormComponent,
-    NotesListSidenavComponent,
     NotesFormDialogComponent,
     DialogHostComponent,
   ],

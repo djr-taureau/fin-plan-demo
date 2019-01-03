@@ -1,73 +1,7 @@
 :host {
     margin-top: 0rem;
-    display: grid;
 }
 
 .title-bar {
     font-size: 1.8rem;
-}
-
-.lw-control-bar {
-  flex: none;
-  justify-content: left;
-  display: block;
-  align-items: left;
-
-  .controls-container {
-    display: block;
-    justify-content: left;
-    align-content: left;
-    align-items: left;
-  }
-}
-
-.search {
-  flex: none;
-  display: block;
-  justify-content: left;
-
-}
-
-.mat-form-field {
-  display: block;
-  justify-content: left;
-  align-content: left;
-  align-items: left;
-}
-
-.mat-form-field-appearance-outline .mat-form-field-outline {
-  display: block;
-  position: absolute;
-  top: .25em;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-}
-
-.notes-container {
-  display: grid;
-}
-
-.notes-list {
-  grid-column: col 1 / span 1;
-}
-
-.notes-form {
-  grid-column: col 2 / span 1;
-}
-
-.lw-page {
-  display: grid;
-  grid: auto auto 1fr / 1fr;
-  grid-template-rows: auto auto 1fr;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: none;
-  grid-auto-flow: initial;
-  grid-auto-rows: initial;
-  grid-auto-columns: initial;
-}
-
-.container-height {
-  height: 100%;
 }

@@ -14,7 +14,8 @@ import "rxjs/operator/filter";
 import { takeUntil, map } from 'rxjs/operators';
 import { filter } from 'rxjs/operator/filter';
 
-export type PageLayout = 'full' | 'almost-full' | 'fullWithLeftSidebar' | null | '';
+export type PageLayout = 'full' | 'almost-full' | 'fullWithLeftSidebar' | 'detailWithLeftSidebar' | null | '';
+
 const ROUTE_DATA_PAGE_LAYOUT = 'pageLayout';
 const isEndOfNavigation = is(NavigationEnd);
 
@@ -42,6 +43,11 @@ export class PageComponent implements OnDestroy {
 	@HostBinding('class.almostFullWithLeftSidebar')
 	get almostFullWithLeftSidebar() {
 		return this.pageLayout === 'almostFullWithLeftSidebar';
+  }
+
+  @HostBinding('class.detailWithLeftSidebar')
+	get detailWithLeftSidebar() {
+		return this.pageLayout === 'detailWithLeftSidebar';
 	}
 
 	constructor(

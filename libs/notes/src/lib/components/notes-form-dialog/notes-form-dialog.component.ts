@@ -9,19 +9,8 @@ import {
 } from '@angular/core';
 import { fromEvent } from 'rxjs/observable/fromEvent';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, mapTo, merge, tap, startWith } from 'rxjs/operators';
-import {
-	FormGroup,
-	FormBuilder,
-	Validators,
-  FormControl,
-} from '@angular/forms';
-import {
-	MatDialogRef,
-	MAT_DIALOG_DATA,
-	MatDialogConfig
-} from '@angular/material/dialog';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig } from '@angular/material/dialog';
 import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { NoteItem } from '../../models';
@@ -29,12 +18,8 @@ import { Notes } from '../../services';
 import { MatCheckbox } from '@angular/material/checkbox';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatSlideToggle } from '@angular/material/slide-toggle';
-import {
-  QuillDirective,
-  QuillComponent,
-  QuillConfigInterface,
-  QuillModulesInterface
-} from 'ngx-quill-wrapper';
+import { take, takeLast } from 'ramda';
+import { QuillDirective, QuillComponent, QuillConfigInterface, QuillModulesInterface } from 'ngx-quill-wrapper';
 
 export interface Client {
 	value: string;
@@ -44,7 +29,6 @@ export interface Assignment {
 	value: string;
 	viewValue: string;
 }
-
 @Component({
 	selector: 'lw-notes-form-dialog',
 	templateUrl: './notes-form-dialog.component.html',
@@ -60,7 +44,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
 	notesFormData: any;
   editorInstance;
   editorRef;
-  checked: false;
+  showReminderDate: boolean;
   notesForm: FormGroup;
   startDate = Date.now();
   minDate = new Date(Date.now());
@@ -98,7 +82,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
 		{ value: '2', viewValue: 'Assign 3' }
   ];
 
-
+  hours: any[];
 
 	constructor(
     private elem: ElementRef,
@@ -108,16 +92,19 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
 		private dialogRef: MatDialogRef<NotesFormDialogComponent>,
 		@Inject(MAT_DIALOG_DATA) public data
 	) {
-    console.log('injected data', data);
       this.config.modules = { toolbar: this.toolbar };
       this.notesForm = this.createFormGroup();
+      this.notesForm.get('addReminder').valueChanges
+        .subscribe(val => this.showReminder(val));
 	  }
 
 	ngOnInit() {
+    this.showReminderDate = false;
     this.onChanges();
   }
 
   ngAfterViewInit() {
+    this.hours = this.hoursOfDay();
     this.editorInstance = this.componentRef.directiveRef.quill();
     this.editorRef = this.componentRef.directiveRef;
     this.notesForm.valueChanges.subscribe(v => {
@@ -128,7 +115,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
     const undoButton = this.elem.nativeElement.querySelector('.ql-undo');
     redoButton.innerHTML = '<i class="material-icons">redo</i>';
     undoButton.innerHTML = '<i class="material-icons">undo</i>';
-  // todo: testing to see if this works now
+
     fromEvent(redoButton, 'click')
     .subscribe(res => this.redo(res));
 
@@ -155,6 +142,17 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
 
   get note() {
     return this.notesForm.get('note');
+  }
+
+  showReminder(val){
+    this.showReminderDate = !this.showReminderDate;
+    if(this.showReminderDate) {
+      this.notesForm.get('reminderDate').enable();
+      this.notesForm.get('reminderTime').enable();
+    } else {
+      this.notesForm.get('reminderDate').disable();
+      this.notesForm.get('reminderTime').disable();
+    }
   }
 
   addReminderDate(event: MatDatepickerInputEvent<Date>) {
@@ -260,6 +258,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
 
 	close() {
     this.dialogRef.close('Cancel');
+    // todo: change to previous activated Route
     this.router.navigateByUrl('/notes');
   }
 
@@ -281,7 +280,7 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
     this.notesForm.reset({
       name: null,
       note: null,
-      addReminder: null,
+      addReminder: false,
       addTask: null,
       reminderDate: null,
       reminderTime: null,
@@ -289,5 +288,29 @@ export class NotesFormDialogComponent implements OnInit, AfterViewInit, OnDestro
       assignment: null,
       clientVisible: null
     })
+  }
+
+  hoursOfDay() {
+    const hours = Array.from(Array(24).keys());
+    const takeMorning = take(12);
+    const takeEvening = takeLast(12);
+    const AM = takeMorning(hours);
+    const PM = takeEvening(hours);
+    const  clockHours = [];
+    const result = clockHours.concat(PM, AM);
+    return this.hourParts(result);
+  }
+
+  hourParts(hours: number[]) {
+    const hourPartList = [];
+    hours.map(v => {
+      const clockHour = v > 12 ? v - 12 : v;
+      const suffix = v > 11 ? 'PM' : 'AM';
+      const hourPartObj1 = { value: `${clockHour}:00 ${suffix}`, viewValue: `${clockHour}:00 ${suffix}` };
+      const hourPartObj2 = { value: `${clockHour}:30 ${suffix}`, viewValue: `${clockHour}:30 ${suffix}` };
+      hourPartList.push(hourPartObj1);
+      hourPartList.push(hourPartObj2);
+    });
+    return hourPartList;
   }
 }

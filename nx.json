@@ -115,6 +115,9 @@
     },
     "tasks": {
       "tags": []
+    },
+    "ui-components-hours-day-select": {
+      "tags": []
     }
   }
 }

@@ -1,8 +1,16 @@
+
+
 mat-nav-list {
   transition: all .5s ease;
   -moz-transition: all .5s ease;
-  -webkit-transition: all .5s ease
+  -webkit-transition: all .5s ease;
+  padding-right: 0;
+  margin-right: 0;
 }
+
+// .lw-control-bar-control {
+//   width: 40%;
+// }
 
 .mat-list-item {
   font-size: 2.0rem;
@@ -11,32 +19,25 @@ mat-nav-list {
   color: #959595;
   min-width: 156px;
   min-height: 7.3rem;
-  padding-bottom: 0.7rem;
-  padding: 0 4rem 0.7rem 4rem;
-  cursor: pointer;
+  align-items: center;
+  padding:  1rem 1rem 1rem 1rem;
+  justify-content: center;
 }
-
-.mat-list-item:active  {
-  border-left: solid 20px #f26623;
-  background: #d8dddf;
+.mat-list-item-content {
+  width: 20px;
 }
-
 .selected {
   border-left: solid 5px #f26623;
 	background: #d8dddf;
 }
 
-.list-item.mat-list-item-active {
-  color: #153C3F;
-  font-weight: bold;
-  font-size: 1.6rem;
-  cursor: pointer;
-	border-left: solid 5px #f26623;
-	background: #d8dddf;
+.lw-note-item {
+  padding-top: 20px;
+  justify-content: center;
 }
 
-.lw-note-item {
-  font-size: 1.6rem;
+.lw-note-title {
+  font-weight: bold;
 }
 
 

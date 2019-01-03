@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
 import { PageComponent } from '@lifeworks/ui-components/layouts';
-import
-{
-  NotesListPageComponent,
-  PersonalListPageComponent,
-  TeamListPageComponent,
-  ClientsListPageComponent,
- } from '../pages';
-import { NotesNavigationComponent, NotesListNavigationComponent, NotesHeaderComponent } from '../components';
-import { DialogHostComponent } from '../components';
+import { NotesListPageComponent } from '../pages';
+import {
+  DialogHostComponent,
+  NotesNavigationComponent,
+  NotesListNavigationComponent,
+  NotesHeaderComponent
+} from '../components';
 
 @NgModule({
 	imports: [
@@ -32,24 +30,28 @@ import { DialogHostComponent } from '../components';
 									count: 16,
 									order: 1,
                   location: ['/notes/personal'],
+                  queryParams: { filter: 'type=1' }
 								},
 								{
 									display: 'Team',
 									count: 32,
 									order: 2,
                   location: ['/notes/team'],
+                  queryParams: { filter: 'type=2' }
 								},
 								{
 									display: 'Clients',
 									count: 53,
 									order: 3,
                   location: ['/notes/clients'],
+                  queryParams: { filter: 'type=3' }
                 },
                 {
 									display: 'All',
 									count: 103,
 									order: 4,
                   location: ['/notes/all'],
+                  queryParams: { filter: 'type=4' }
 								}
 							]
 						}
@@ -61,7 +63,7 @@ import { DialogHostComponent } from '../components';
           },
           {
             path: 'personal',
-            data: { pageLayout: 'fullWithLeftSidebar' },
+            data: { pageLayout: 'detailWithLeftSidebar' },
             children: [
               {
                 path: '',
@@ -79,7 +81,7 @@ import { DialogHostComponent } from '../components';
               },
               {
                 path: '',
-                component: PersonalListPageComponent,
+                component: NotesListPageComponent,
               },
             ]
           },
@@ -103,7 +105,7 @@ import { DialogHostComponent } from '../components';
               },
               {
                 path: '',
-                component: TeamListPageComponent,
+                component: NotesListPageComponent,
               },
             ]
           },
@@ -127,7 +129,7 @@ import { DialogHostComponent } from '../components';
               },
               {
                 path: '',
-                component: ClientsListPageComponent,
+                component: NotesListPageComponent,
               },
             ]
           },

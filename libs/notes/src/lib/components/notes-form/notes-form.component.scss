@@ -2,6 +2,8 @@ $primary-color: #17343c;
 //-git
 :host {
   margin: 40px;
+  grid-gap: 0rem;
+
 }
 	.container {
 		display: grid;
@@ -19,7 +21,6 @@ $primary-color: #17343c;
 		border-radius: 5px;
 		padding: 20px;
 		font-size: 150%;
-
 	}
 
 	.box .box {
@@ -30,26 +31,31 @@ $primary-color: #17343c;
 	.header {
     grid-column: col 1 / span 6;
     border-bottom: 1px solid #D8DDDF;
+    padding-left: 20px;
 	}
 
-  .title {
-    grid-column: col 1 / span 3;
+  .delete-note {
+    grid-column: col 1 / span 2;
     padding-top: 20px;
     margin-top: 20px;
     justify-content: space-between;
     grid-row: row;
-    justify-self: left
+    justify-self: left;
+    align-self: left;
+    outline: none;
   }
-	.cancel {
-		grid-column: col 3 / span 3;
+	.auto-save {
+		grid-column: col 3 / span 4;
     grid-row: row;
     justify-self: right;
+    align-self: right;
 	}
 
 	.note-fields {
 		grid-column: col / span 4;
     grid-row: row 2;
     grid-gap: 20px;
+    padding-left: 20px;
   }
 
   .add-task {
@@ -78,7 +84,6 @@ $primary-color: #17343c;
     height: auto;    /* auto keyword */
 
   }
-
 
 	.note-fields-2 {
 		grid-column: col 5 / span 2;
@@ -133,174 +138,10 @@ $primary-color: #17343c;
 		grid-row: 3;
 	}
 
-
-.timepicker-backdrop-overlay {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.3);
-    z-index: 999;
-    pointer-events: auto;
-}
-
-.timepicker-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 999;
-    pointer-events: none;
-}
-
-.timepicker-component {
-    width: 300px;
-    border-radius: 2px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0 14px 45px, rgba(0, 0, 0, 0.22) 0 10px 18px;
-    outline: none;
-    position: static;
-    z-index: 999;
-    pointer-events: auto;
-    &__header {
-        background-color: #17343c;
-        padding: 15px 30px;
-    }
-    &__body {
-        background-color: #fff;
-        padding: 15px 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__actions {
-        display: flex;
-        justify-content: flex-end;
-        padding: 15px;
-        background-color: #ffffff;
-    }
-}
-
-@media (max-width: 1023px) and (orientation: landscape) {
-    .timepicker {
-        display: flex;
-        width: 515px;
-        &__header {
-            display: flex;
-            align-items: center;
-        }
-        &__main-content {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
-        &__actions {
-            padding: 5px;
-            margin-top: -1px;
-        }
-    }
-}
-
-.ngx-material-timepicker-example {
-  border-radius: 2px;
-  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
-  overflow: hidden;
-  &__body {
-      padding: 15px;
-  }
-  &__description {
-      margin: 0 0 15px;
-  }
-  &__form-group {
-      position: relative;
-      max-width: 300px;
-      width: 100%;
-      height: 36px;
-      border-bottom: 1px solid #D8DDDF;
-      &:not(:last-child) {
-          margin-bottom: 20px;
-      }
-      &--toggled {
-          display: flex;
-      }
-      &--disabled {
-          border-bottom-style: dashed;
-      }
-       input {
-          width: 100%;
-          height: 100%;
-          border: 0;
-          font-size: 16px;
-          &:disabled {
-              background-color: transparent;
-              cursor: not-allowed;
-          }
-          &:focus {
-              outline: none;
-          }
-          &::placeholder {
-              font-size: 16px;
-              color: #cccccc;
-          }
-      }
-  }
-}
-
-
-.ngx-material-timepicker {
-  padding-top: 50px;
-  height: 100vh;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.ngx-material-timepicker-heading {
-  &__title {
-      font-weight: 400;
-      font-size: 25px;
-      margin: 0;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #D8DDDF;
-  }
-}
-
 $primary-color: #17343c;
 $item-color: #fff;
-
-.timepicker {
-
-  .timepicker__header {
-    background-color:  #17343c !important;
-  }
-
-  .clock-face__clock-hand {
-    background-color:  #17343c !important;
-
-    &::after {
-      background-color:  #17343c !important;
-    }
-
-    &::before {
-      border-color:  #17343c !important;
-    }
-  }
-
-  .clock-face__number {
-    > span.active {
-      background-color:  #17343c !important;
-    }
-  }
-
-  button:not(.timepicker-dial__item) {
-    color:  #17343c !important;
-  }
 
   .validation-msg {
     font-size: 30%
   }
-}
+
