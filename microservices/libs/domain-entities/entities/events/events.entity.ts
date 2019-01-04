@@ -37,3 +37,12 @@ export class MeetingEvent extends EventWithParticipants {
   url?: string;
   category?: EventCategory;
 }
+
+export class TaskEvent extends Event {
+  assignedTo?: EventParticipant;
+  dueDate?: Date;
+  description: string;
+  attachments?: string;
+  dismissed: boolean;
+  taskType: string;
+}

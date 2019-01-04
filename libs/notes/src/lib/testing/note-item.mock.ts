@@ -15,7 +15,7 @@ export const MOCK_NOTE: NoteItem = {
   createdBy: 'string',
   modifiedBy: 'string',
 	timestamps: {
-		createdOn: new Date(),
+		createdOn: new Date(1974, 1, 0),
 		modifiedOn: new Date()
 	}
 };

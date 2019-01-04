@@ -117,8 +117,8 @@
       "@lifeworks/ui-components/text-editor": [
         "libs/ui-components/text-editor/src/index.ts"
       ],
-      "@lifeworks/tasks": [
-        "libs/tasks/src/index.ts"
+      "@lifeworks/events": [
+        "libs/events/src/index.ts"
       ]
     }
   },

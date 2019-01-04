@@ -31,7 +31,7 @@ export const ApplicationRoutes = [
       },
       {
 				path: '',
-        loadChildren: '@lifeworks/tasks#TasksModule',
+        loadChildren: '@lifeworks/events#EventsModule',
 			}
 		]
 	}

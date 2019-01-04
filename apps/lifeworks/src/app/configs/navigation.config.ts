@@ -40,7 +40,7 @@ export const NAVIGATION: NavigationItems = [
       {
         display: 'To Dos',
         icon: 'list',
-        location: '/tasks',
+        location: '/events',
         order: 6,
         children: [
           { display: 'Add To Do', action: 'addTodo', order: 1 }
