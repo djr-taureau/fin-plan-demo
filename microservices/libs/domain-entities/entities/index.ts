@@ -6,6 +6,7 @@ export * from './firms';
 export * from './profiles';
 export * from './security';
 export * from './system';
+export * from './events';
 export * from './relationships';
 export * from './activity-log.entity';
 export * from './notification.entity';

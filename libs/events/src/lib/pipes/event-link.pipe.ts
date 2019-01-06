@@ -10,8 +10,8 @@ export class EventLinkPipe implements PipeTransform {
 	transform(value: EventItem, args?: any): any {
 		const link = join('/', [
 			'',
-			path(['subject', 'entityType'], value),
-			path(['subject', 'guid'], value)
+			path(['title', 'entityType'], value),
+			path(['title', 'guid'], value)
 		]);
 
 		return when(equals('//'), () => '/', link);

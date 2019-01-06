@@ -3,7 +3,9 @@ import { Component, OnInit, Input, HostBinding } from '@angular/core';
 
 export const iconMap = {
 	'sales-opportunity': 'dollar',
-	'compliance-approval': 'check',
+  'compliance-approval': 'check',
+  'todo': 'list',
+  'task': 'check',
 	'compliance-revision-needed': 'x',
 	'client-flagged-content': 'flag',
 	suggestion: 'exclamation',

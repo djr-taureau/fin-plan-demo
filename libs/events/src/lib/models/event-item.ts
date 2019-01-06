@@ -1,14 +1,23 @@
-import { Obj, DomainEntity, DomainSubject } from '@lifeworks/common';
+import { EventParticapant } from './../../../../../microservices/libs/services/common/event-data';
+import { Obj, DomainEntity } from '@lifeworks/common';
 
 export type EventItems = Array<EventItem>;
 
 export interface EventItem extends DomainEntity, IRemoveable {
+  guid: string;
+  startTime: Date;
+  dueDate?: Date;
+  duration: number;
   title: string;
+  description: string;
+  status: string;
 	dismissed: boolean;
 	eventType: string;
-	target: DomainSubject;
-	source?: DomainSubject;
-	subject?: DomainSubject;
+  assignedTo: EventParticapant;
+  timestamps: {
+    createdOn: Date;
+    modifiedOn: Date;
+  }
 }
 
 export interface IRemoveable {

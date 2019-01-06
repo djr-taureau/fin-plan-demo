@@ -6,7 +6,7 @@ import {
 import {
 	EventsActions,
 	EventsActionTypes
-} from './Events.actions';
+} from './events.actions';
 import { eventsInitialState } from './events.init';
 import { EventsData } from './events.interfaces';
 

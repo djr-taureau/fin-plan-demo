@@ -17,7 +17,7 @@ export class EventParticipation {
 
 
 /**
- * 
+ *
  * "participants": [
     {
       "participationId": {
@@ -39,6 +39,6 @@ export class EventParticipation {
       }
     }
   ],
- * 
- * 
+ *
+ *
  */

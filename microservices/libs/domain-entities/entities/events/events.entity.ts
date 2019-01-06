@@ -1,5 +1,5 @@
 import { Entity, Column } from "typeorm";
-import { EntityContext, TrackedBaseEntity} from "../../common";
+import { EntityContext, TrackedBaseEntity } from "../../common";
 import { EventParticipant, EventParticipation } from './event-participant.entity';
 import { EventCategory } from './events-category';
 
@@ -42,6 +42,7 @@ export class TaskEvent extends Event {
   assignedTo?: EventParticipant;
   dueDate?: Date;
   description: string;
+  status: string;
   attachments?: string;
   dismissed: boolean;
   taskType: string;

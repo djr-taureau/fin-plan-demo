@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'lw-tasks-header',
+  selector: 'lifeworks-tasks-header',
   templateUrl: './tasks-header.component.html',
   styleUrls: ['./tasks-header.component.scss']
 })

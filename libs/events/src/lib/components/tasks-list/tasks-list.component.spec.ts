@@ -1,31 +1,31 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 
-import { Tasks } from '../../services';
-import { NoteImagePipe, NoteLinkPipe } from '../../pipes';
-import { NotesMock, MOCK_COMPLIANCE_NOTE} from '../../testing';
-import { NotesWidgetComponent } from '../notes-widget/notes-widget.component';
-import { NotesListComponent } from './tasks-list.component';
+import { Events } from '../../services';
+import { EventImagePipe, EventLinkPipe } from '../../pipes';
+import { EventsMock, MOCK_EVENT} from '../../testing';
+import { TasksWidgetComponent } from '../tasks-widget/tasks-widget.component';
+import { TasksListComponent } from './tasks-list.component';
 
 describe('NotesListComponent', () => {
-	let component: NotesListComponent;
-	let fixture: ComponentFixture<NotesListComponent>;
+	let component: TasksListComponent;
+	let fixture: ComponentFixture<TasksListComponent>;
 
 	beforeEach(
 		async(() => {
 			TestBed.configureTestingModule({
 				declarations: [
-					NotesListComponent,
-					NotesWidgetComponent,
-					NoteImagePipe,
-					NoteLinkPipe
+					TasksListComponent,
+					TasksWidgetComponent,
+					EventImagePipe,
+					EventLinkPipe
 				]
 			}).compileComponents();
 		})
 	);
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(NotesListComponent);
+		fixture = TestBed.createComponent(TasksListComponent);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

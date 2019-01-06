@@ -10,7 +10,7 @@ import { TasksHeaderComponent, TasksListComponent } from '../components';
 @NgModule({
 	imports: [
 		RouterModule.forChild([
-      { path: 'tasks', component: PageComponent,
+      { path: 'events', component: PageComponent,
         data: { title: 'To Dos' },
         children: [
           {
