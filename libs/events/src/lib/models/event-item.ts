@@ -1,4 +1,5 @@
 import { EventParticapant } from './../../../../../microservices/libs/services/common/event-data';
+import { EntityContext } from './../../../../../microservices/libs/domain-entities'
 import { Obj, DomainEntity } from '@lifeworks/common';
 
 export type EventItems = Array<EventItem>;
@@ -14,6 +15,7 @@ export interface EventItem extends DomainEntity, IRemoveable {
 	dismissed: boolean;
 	eventType: string;
   assignedTo: EventParticapant;
+  context: EntityContext;
   timestamps: {
     createdOn: Date;
     modifiedOn: Date;

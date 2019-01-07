@@ -1,8 +1,9 @@
 <lw-data-list [striped]="true">
   <lw-data-list-item [item]="event" [location]="event | eventLink" *ngFor="let event of items"
     [icon]="event | eventImage">
-    <lw-data-list-item-header>{{event?.eventType | uppercase | replace:"-":" "}}</lw-data-list-item-header>
-    <lw-data-list-item-header>{{event?.timestamps?.createdOn | niceDate}}</lw-data-list-item-header>
+    <lw-data-list-item-header>{{ event?.eventType | uppercase | replace:"-":" " }}</lw-data-list-item-header>
+    <lw-data-list-item-header>{{ event?.title }}</lw-data-list-item-header>
+    <lw-data-list-item-header>{{ event?.dueDate | niceDate }}</lw-data-list-item-header>
     <div lwInlineCaret [lwBindTemplate]="event"></div>
     <button lwDataListItemAction lw-icon-button *ngIf="!event?._ui_isRemoving" (click)="raiseItemEvent('remove', event, $event)"
       aria-label="Remove">&#xe929;</button>

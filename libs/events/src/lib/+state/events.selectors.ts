@@ -16,6 +16,7 @@ const IS_NOT_DISMISSED = propEq('dismissed', false);
 const IS_LOADING = propEq('status', LoadDataStatus.loading);
 const IS_LOADED = propEq('status', LoadDataStatus.loaded);
 
+
 const dataStatus = createSelector(EventsState, STATUS_PROPERTY);
 
 export const isLoaded = createSelector(EventsState, IS_LOADED);
@@ -47,4 +48,10 @@ export const filterEvents = filter =>
 	createSelector(allEvents, x => x.filter(IS_DISMISSED));
 
 export const filterCount = filter =>
-	createSelector(filterEvents(filter), length);
+  createSelector(filterEvents(filter), length);
+
+
+export const filterEventsByClient = (clientId: string) => createSelector(
+    allEvents,
+    (events) => events.filter(x => x.context['entity'] === clientId
+  ));

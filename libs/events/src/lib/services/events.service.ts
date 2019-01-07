@@ -10,7 +10,8 @@ import {
 	undismissedEvents,
 	undismissedCount,
 	dismissedEvents,
-	dismissedCount
+  dismissedCount,
+  filterEventsByClient
 } from '../+state/events.selectors';
 import { Load, Dismiss } from '../+state/events.actions';
 
@@ -54,6 +55,10 @@ export class Events {
 
 	getFiltered() {
 		return this.store.pipe(select(dismissedEvents));
+  }
+
+  getFilteredByClient(clientId: string) {
+		return this.store.pipe(select(filterEventsByClient(clientId)));
 	}
 
 	countOfFiltered() {

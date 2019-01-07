@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -8,15 +8,16 @@ import { EventItems, EventItem } from '../../models';
 import { Events } from '../../services';
 import { isArray } from 'util';
 
-export type EventsFilter = 'all' | 'dismissed' | 'undismissed';
+export type EventsFilter = 'all' | 'dismissed' | 'undismissed' | 'client' | 'dueDate' | 'assignedTo';
 
 @Component({
 	selector: 'lifeworks-tasks-widget',
 	templateUrl: './tasks-widget.component.html',
 	styleUrls: ['./tasks-widget.component.scss']
 })
-export class TasksWidgetComponent implements OnInit {
-	@Input() filter: EventsFilter;
+export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() filter: EventsFilter;
+  @Input() clientFilter$: Observable<string>;
 	@Input() title: string;
   @Input() linkText = 'View all';
 
@@ -24,9 +25,10 @@ export class TasksWidgetComponent implements OnInit {
 	isLoaded$: Observable<boolean>;
 	dataState$: Observable<DataState>;
 	dataItemsCount$: Observable<number>;
-	filteredItems$: Observable<EventItems>;
+  filteredItems$: Observable<EventItems>;
 
-	constructor(private eventsService: Events) {}
+
+	constructor(private eventsService: Events) { }
 
 	ngOnInit() {
 
@@ -35,8 +37,21 @@ export class TasksWidgetComponent implements OnInit {
 		this.isLoaded$ = this.eventsService.isDataLoaded();
     this.dataState$ = getDatasetState(this.isLoaded$, this.dataItemsCount$);
     this.data$.subscribe(v => console.log('mock this data', v))
-    // console.log(this.mockEvents);
-	}
+    this.clientFilter$.subscribe(v => {
+      console.log('from page', v)
+      this.selectClient(v)
+    })
+  }
+
+  ngAfterViewInit() {
+    // console.log('widget page', this.clientFilter)
+  }
+
+  ngOnChanges(event) {
+    console.log('any event', event)
+  }
+
+
 
 	initDataSet(filter: EventsFilter) {
 		switch (filter) {
@@ -51,6 +66,13 @@ export class TasksWidgetComponent implements OnInit {
 				break;
 			}
 			case 'undismissed': {
+				this.data$ = this.eventsService
+					.getUndismissed()
+					.pipe(this.applyFilters());
+				this.dataItemsCount$ = this.eventsService.countOfUndismissed();
+				break;
+      }
+      case 'client': {
 				this.data$ = this.eventsService
 					.getUndismissed()
 					.pipe(this.applyFilters());
@@ -74,5 +96,22 @@ export class TasksWidgetComponent implements OnInit {
 
 	dismiss(task: EventItem) {
 		this.eventsService.dismiss(task.guid);
-	}
+  }
+
+  selectClient(clientId: string) {
+   this.data$ = this.eventsService.getFilteredByClient(clientId);
+  }
+
+  selectDateSort(event) {
+    switch (event.value) {
+      case 'soonest':
+      // this.data$.pipe(
+        console.log('widget')
+      break;
+      case 'latest':
+        //
+        console.log('widget')
+      break;
+    }
+  }
 }
