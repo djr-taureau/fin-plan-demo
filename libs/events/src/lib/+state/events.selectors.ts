@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { prop, propOr, length, propEq, pipe, values } from 'ramda';
+import { prop, propOr, length, propEq, pipe, values, sort,sortBy, compose, curry } from 'ramda';
 import { LoadDataStatus, isTrue, isFalse } from '@lifeworks/common';
 
 import { EventsData } from './events.interfaces';
@@ -8,6 +8,11 @@ import { EventItem, EventItems } from '../models';
 const EventsState = createFeatureSelector<EventsData>(
 	'Events'
 );
+
+
+const diffSoon = function(a, b) { return new Date(a.dueDate) > new Date(b.dueDate) ? 1 : -1; };
+const diffLate = function(a, b) { return new Date(a.dueDate) < new Date(b.dueDate) ? 1 : -1; };
+
 
 const ENTITIES_PROPERTY = prop('entities');
 const STATUS_PROPERTY = propOr('status', '');
@@ -21,6 +26,8 @@ const dataStatus = createSelector(EventsState, STATUS_PROPERTY);
 
 export const isLoaded = createSelector(EventsState, IS_LOADED);
 export const isLoading = createSelector(EventsState, IS_LOADING);
+
+
 
 export const allEvents = createSelector(
 	EventsState,
@@ -52,6 +59,16 @@ export const filterCount = filter =>
 
 
 export const filterEventsByClient = (clientId: string) => createSelector(
+  allEvents,
+  (events) => events.filter(x => x.context['entity'] === clientId)
+);
+
+export const sortEventsDueSoonest = createSelector(
     allEvents,
-    (events) => events.filter(x => x.context['entity'] === clientId
-  ));
+    (events) => sort(diffSoon, events)
+  );
+
+  export const sortEventsDueLatest = createSelector(
+    allEvents,
+    (events) => sort(diffLate, events)
+  );

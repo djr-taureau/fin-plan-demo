@@ -28,6 +28,7 @@ export class TasksPageComponent implements OnInit {
 
   @Output() selectionChange: EventEmitter<MatSelectChange>;
   @Output() clientFilter: EventEmitter<string> = new EventEmitter<string>();
+  @Output() dateSort: EventEmitter<string> = new EventEmitter<string>();
 
 
 	constructor(private eventsService: Events, private clientsService: Clients, public cd: ChangeDetectorRef) {}
@@ -69,14 +70,7 @@ export class TasksPageComponent implements OnInit {
   }
 
   selectDateSort(event) {
-    switch (event.value) {
-      case 'soonest':
-      // this.data$.pipe(
-
-      break;
-      case 'latest':
-        //
-      break;
-    }
+   console.log('date sort', event.value);
+   this.dateSort.emit(event.value);
   }
 }

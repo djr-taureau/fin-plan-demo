@@ -1,12 +1,12 @@
 import { Component, OnInit, Input, AfterViewInit, OnChanges } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
-
 import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { EventItems, EventItem } from '../../models';
 import { Events } from '../../services';
 import { isArray } from 'util';
+import { ConsoleHttpPipelineLogger } from 'ms-rest-js/typings/lib/httpPipelineLogger';
 
 export type EventsFilter = 'all' | 'dismissed' | 'undismissed' | 'client' | 'dueDate' | 'assignedTo';
 
@@ -18,6 +18,7 @@ export type EventsFilter = 'all' | 'dismissed' | 'undismissed' | 'client' | 'due
 export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() filter: EventsFilter;
   @Input() clientFilter$: Observable<string>;
+  @Input() dateSort$: Observable<string>;
 	@Input() title: string;
   @Input() linkText = 'View all';
 
@@ -40,6 +41,10 @@ export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
     this.clientFilter$.subscribe(v => {
       console.log('from page', v)
       this.selectClient(v)
+    })
+    this.dateSort$.subscribe(v => {
+      console.log('from page', v)
+      this.dateSort(v)
     })
   }
 
@@ -102,15 +107,13 @@ export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
    this.data$ = this.eventsService.getFilteredByClient(clientId);
   }
 
-  selectDateSort(event) {
-    switch (event.value) {
+  dateSort(direction: string) {
+    switch (direction) {
       case 'soonest':
-      // this.data$.pipe(
-        console.log('widget')
+       this.data$ = this.eventsService.getSortSoonest();
       break;
       case 'latest':
-        //
-        console.log('widget')
+        this.data$ = this.eventsService.getSortLatest();
       break;
     }
   }

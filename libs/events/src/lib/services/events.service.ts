@@ -11,7 +11,9 @@ import {
 	undismissedCount,
 	dismissedEvents,
   dismissedCount,
-  filterEventsByClient
+  filterEventsByClient,
+  sortEventsDueSoonest,
+  sortEventsDueLatest
 } from '../+state/events.selectors';
 import { Load, Dismiss } from '../+state/events.actions';
 
@@ -59,7 +61,15 @@ export class Events {
 
   getFilteredByClient(clientId: string) {
 		return this.store.pipe(select(filterEventsByClient(clientId)));
-	}
+  }
+
+  getSortSoonest(){
+    return this.store.pipe(select(sortEventsDueSoonest));
+  }
+
+  getSortLatest(){
+    return this.store.pipe(select(sortEventsDueLatest));
+  }
 
 	countOfFiltered() {
 		return this.store.pipe(select(dismissedCount));

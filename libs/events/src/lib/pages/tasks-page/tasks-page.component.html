@@ -38,7 +38,10 @@
         <div *ngSwitchCase="'loading'" class="widget-message">Loading...</div>
         <div *ngSwitchCase="'empty'" class="widget-message">No new items</div>
         <div *ngSwitchCase="'error'" class="widget-message">Opps... something went wrong</div>
-        <lifeworks-tasks-widget [clientFilter$]="this.clientFilter" filter="all"></lifeworks-tasks-widget>
+        <lifeworks-tasks-widget
+          filter="all"
+          [dateSort$]="this.dateSort"
+          [clientFilter$]="this.clientFilter"></lifeworks-tasks-widget>
     </ng-container>
 
 </div>
