@@ -28,6 +28,49 @@ const serviceURL = new ServiceURL(`${serviceUrlBase}`, pipeline);
 export class ContentService {
 
     /**
+     * 
+     * @param content blobUrl.download() : ReadableStream
+     * @param contentMimeType mimeType
+     * @param metadata object with properties defaults to empty
+     */
+    private processReadableStream(content, contentMimeType:string, metadata = {}) {
+        if(content && content.readableStreamBody) {
+            switch(contentMimeType) {
+                case 'text/html':
+                case 'text/plain':
+                    return {
+                        metadata: Object.assign({
+                            ...metadata,
+                            contentType: content.contentType,
+                            contentLength: content.contentLength
+                        }, content.metadata),
+                        content: content.readableStreamBody.read(content.contentLength).toString()
+                    };
+                case 'application/json':
+                    return {
+                        metadata: Object.assign({
+                            ...metadata,
+                            contentType: content.contentType,
+                            contentLength: content.contentLength
+                        }, content.metadata),
+                        content: JSON.parse(content.readableStreamBody.read(content.contentLength).toString())
+                    };
+                default:
+                    return {
+                        metadata: Object.assign({
+                            ...metadata,
+                            contentType: content.contentType,
+                            contentLength: content.contentLength
+                        }, content.metadata),
+                        content: content.readableStreamBody.read(content.contentLength)
+                    }
+            }            
+        } else {
+            throw new Error('content or content.readableStream does not exist');
+        }
+    }
+
+    /**
      * Format container name for blob storage
      * 
      * @param context ApplicationContext
@@ -152,8 +195,14 @@ export class ContentService {
             const listBlobsResponse = await containerURL.listBlobFlatSegment(Aborter.none, marker);
             marker = listBlobsResponse.marker;
             for (const blob of listBlobsResponse.segment.blobItems) {
-                console.log(`Blob: ${blob.name}`);
-                result.push(blob);
+                const blobURL = BlobURL.fromContainerURL(containerURL, blob.name);
+                const blobStream = await blobURL.download(Aborter.none, 0);
+
+                const content = this.processReadableStream(blobStream, blob.properties.contentType, {
+                    containerName: containerName,
+                    blobName: blob.name
+                });
+                result.push(content);
             }
         } while (marker);
 
@@ -201,35 +250,7 @@ export class ContentService {
         const containerName = this.getContainerName(applicationContext, systemContentType, entityGuid);
         const content = await this.getBlob(containerName, contentName);
         
-        if(content && content.readableStreamBody) {
-            switch(contentMimeType) {
-                case 'text/html':
-                case 'text/plain':
-                    return {
-                        metadata: Object.assign({
-                            contentType: content.contentType,
-                            contentLength: content.contentLength
-                        }, content.metadata),
-                        content: content.readableStreamBody.read(content.contentLength).toString()
-                    };
-                case 'application/json':
-                    return {
-                        metadata: Object.assign({
-                            contentType: content.contentType,
-                            contentLength: content.contentLength
-                        }, content.metadata),
-                        content: JSON.parse(content.readableStreamBody.read(content.contentLength).toString())
-                    };
-                default:
-                    return {
-                        metadata: Object.assign({
-                            contentType: content.contentType,
-                            contentLength: content.contentLength
-                        }, content.metadata),
-                        content: content.readableStreamBody.read(content.contentLength)
-                    }
-            }            
-        }
+        return this.processReadableStream(content, contentMimeType);
     }
 
     /**

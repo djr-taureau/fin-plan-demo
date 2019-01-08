@@ -18,3 +18,4 @@ export * from './firm.service';
 export * from './statistics.service';
 export * from './mail.service';
 export * from './attribute.service';
+export * from './wealth-plan.service';

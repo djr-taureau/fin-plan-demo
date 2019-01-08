@@ -2,5 +2,6 @@ export enum SystemContentType {
   Asset = "assets",
   Document = "documents",
   Definition = "definitions",
-  Template = "templates"
+  Template = "templates",
+  WealthPlans = "wealth-plans"
 }
