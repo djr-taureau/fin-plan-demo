@@ -5,8 +5,6 @@ import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { EventItems, EventItem } from '../../models';
 import { Events } from '../../services';
-import { isArray } from 'util';
-import { ConsoleHttpPipelineLogger } from 'ms-rest-js/typings/lib/httpPipelineLogger';
 
 export type EventsFilter = 'all' | 'dismissed' | 'undismissed' | 'client' | 'dueDate' | 'assignedTo';
 
@@ -15,7 +13,7 @@ export type EventsFilter = 'all' | 'dismissed' | 'undismissed' | 'client' | 'due
 	templateUrl: './tasks-widget.component.html',
 	styleUrls: ['./tasks-widget.component.scss']
 })
-export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
+export class TasksWidgetComponent implements OnInit {
   @Input() filter: EventsFilter;
   @Input() clientFilter$: Observable<string>;
   @Input() dateSort$: Observable<string>;
@@ -39,21 +37,11 @@ export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
     this.dataState$ = getDatasetState(this.isLoaded$, this.dataItemsCount$);
     this.data$.subscribe(v => console.log('mock this data', v))
     this.clientFilter$.subscribe(v => {
-      console.log('from page', v)
       this.selectClient(v)
     })
     this.dateSort$.subscribe(v => {
-      console.log('from page', v)
       this.dateSort(v)
     })
-  }
-
-  ngAfterViewInit() {
-    // console.log('widget page', this.clientFilter)
-  }
-
-  ngOnChanges(event) {
-    console.log('any event', event)
   }
 
 
@@ -77,13 +65,6 @@ export class TasksWidgetComponent implements OnInit, AfterViewInit, OnChanges {
 				this.dataItemsCount$ = this.eventsService.countOfUndismissed();
 				break;
       }
-      case 'client': {
-				this.data$ = this.eventsService
-					.getUndismissed()
-					.pipe(this.applyFilters());
-				this.dataItemsCount$ = this.eventsService.countOfUndismissed();
-				break;
-			}
 		}
 	}
 

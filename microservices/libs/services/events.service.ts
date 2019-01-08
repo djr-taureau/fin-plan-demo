@@ -2,7 +2,7 @@ import { map, is, omit, keys, without, isEmpty, merge } from 'ramda';
 import { getCustomRepository } from "typeorm";
 import { EventRepository, GetEventsQueryOptions } from '../repositories';
 import { setValueFrom } from '../function-utilities';
-import { 
+import {
   EntityContext,
   ValueType,
   Event,
@@ -11,6 +11,7 @@ import {
 import { format } from "date-fns";
 
 import { ContentService } from './content.service';
+import { TemplatesService } from './templates.service';
 import { MailService } from './mail.service';
 import { AttributeService } from "./attribute.service";
 
@@ -35,15 +36,16 @@ const base = [
 export class EventsService {
   private eventRepo = getCustomRepository(EventRepository);
   private contentService = new ContentService();
+  private templatesService = new TemplatesService();
   private mailService = new MailService();
   private attributeService = new AttributeService();
 
   /**
-   * 
+   *
    * @param event type: MeetingEvent
    */
   private generateIcs(event) {
-    //Filter startTime and add prop event.start 
+    //Filter startTime and add prop event.start
     const start = [
       format(event.startTime, 'YYYY'),
       format(event.startTime, 'M'),
@@ -51,7 +53,7 @@ export class EventsService {
       format(event.startTime, 'h'),
       format(event.startTime, 'm'),
     ];
-    
+
     const hours = event.duration / 60 / 60;
     const time = hours.toString().split('.');
 
@@ -94,7 +96,7 @@ export class EventsService {
   /**
    * Converts JSON data to string to save to db
    * If updating an existing event entityContext becomes optional because an existing context should be specified
-   * 
+   *
    * @param params event object
    * @param entityContext EntityContext
    */
@@ -126,12 +128,12 @@ export class EventsService {
       context
     });
   }
-  
+
 
   /**
-   * 
+   *
    * @param entityContext:EntityContext
-   * @param params 
+   * @param params
    ```
    params = {
      startTime: Date,
@@ -162,8 +164,13 @@ export class EventsService {
         ...omit(base, params)
       });
     }
+<<<<<<< HEAD
     
     const formedEvent = merge(event, attributes);
+=======
+
+    const formedEvent = merge(event, attributes)
+>>>>>>> working on dismiss tasks
     const mail = await this.mailEventInvites({guid: formedEvent['guid']});
     const message = {
       ...formedEvent,
@@ -179,8 +186,8 @@ export class EventsService {
 
 
   /**
-   * 
-   * @param params 
+   *
+   * @param params
    * @param body Event | Event + Attributes
    ```
    params = {
@@ -214,8 +221,8 @@ export class EventsService {
 
 
   /**
-   * 
-   * @param params 
+   *
+   * @param params
    ```
    params = {
      guid: string
@@ -226,18 +233,18 @@ export class EventsService {
     try {
       const event = await this.eventRepo.getEvent(params.guid);
 
-      if(options.excludeAttributes) {  
+      if(options.excludeAttributes) {
         return event;
       } else {
         const attributes = await this.attributeService.getAttributes({
           scope: EntityScope.Event,
           entity: event.guid
         });
-  
+
         return {...event, ...attributes};
       }
-      
-    
+
+
     } catch(err) {
       return err;
     }
@@ -245,9 +252,9 @@ export class EventsService {
 
 
   /**
-   * 
+   *
    * @param entityContext: EntityContext
-   * 
+   *
    */
   async getEvents(entityContext:EntityContext, options?:GetEventsQueryOptions) {
     try {
@@ -260,8 +267,8 @@ export class EventsService {
 
 
   /**
-   * 
-   * @param params 
+   *
+   * @param params
    ```
    params = {
      guid: string
@@ -299,11 +306,11 @@ export class EventsService {
       return err;
     }
   }
-  
+
 
   /**
-   * 
-   * @param params 
+   *
+   * @param params
    ```
    params = {
      guid: string

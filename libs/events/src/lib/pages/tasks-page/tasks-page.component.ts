@@ -7,7 +7,7 @@ import { DataState, getDatasetState } from '@lifeworks/common';
 import { DatasourceItemEvent } from '@lifeworks/ui-components';
 import { EventItems, EventItem } from '../../models';
 import { Events, EventsApi } from '../../services';
-// todo: is this right place to pull in clients for filter by clients
+// todo: is this right place to pull in clients for filter by clients?
 import { Clients } from '../../../../../clients/src/lib/services';
 import { ClientItem } from '../../../../../clients/src/lib/models';
 
@@ -53,24 +53,24 @@ export class TasksPageComponent implements OnInit {
 
 	event(event: DatasourceItemEvent<EventItem>) {
 		switch (event.action) {
-			case 'remove':
+      case 'remove':
+      console.log('remove this now')
 				this.dismiss(event.item);
-				break;
+			break;
 		}
 	}
 
-	dismiss(Event: EventItem) {
-		this.eventsService.dismiss(Event.guid);
+	dismiss(event: EventItem) {
+    console.log('dismiss this now')
+		this.eventsService.dismiss(event.guid);
   }
 
   selectClient(event) {
     this.clientId = event.value;
-    console.log('client Id', event.value)
     this.clientFilter.emit(event.value);
   }
 
   selectDateSort(event) {
-   console.log('date sort', event.value);
    this.dateSort.emit(event.value);
   }
 }
