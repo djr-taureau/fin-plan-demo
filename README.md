@@ -6,6 +6,21 @@ Monorepo for Lifeworks
 
 Local development environment setup.
 
+## Tooling Setup
+
+Install development tools
+
+- yarn - `npm i yarn -g`
+- nrwl/nx - `yarn global add @angular/cli`
+- Docker - https://docs.docker.com/install/
+- npx -  `yarn global add npx`
+- mssql-scripter - `pip install mssql-scripter` - https://github.com/Microsoft/mssql-scripter
+- Azure Command Line - https://docs.microsoft.com/en-us/cli/azure/install-azure-cli
+- Azure Functions Tools - https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local#v2
+- Dotnet Core SDK 2.2 - https://dotnet.microsoft.com/download
+- Azure Data Studio - https://docs.microsoft.com/en-us/sql/azure-data-studio/download?view=sql-server-2017
+- Azure Storage Explorer -  https://azure.microsoft.com/en-us/features/storage-explorer/
+
 ## SSL Setup
 
 ### Generate Certs for development

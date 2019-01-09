@@ -4,7 +4,7 @@
 
 export const environment = {
 	production: false,
-	configUrl: '/config/configuration.json'
+	configUrl: '/config'
 };
 
 /*

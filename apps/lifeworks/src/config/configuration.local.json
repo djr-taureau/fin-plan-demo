@@ -1,5 +1,5 @@
 {
   "apis": {
-    "lifeworks": "http://localhost:7071/api"
+    "lifeworks": "http://localhost:7071"
   }
 }

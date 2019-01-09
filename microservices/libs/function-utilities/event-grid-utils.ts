@@ -27,7 +27,7 @@ export function isEventGridMessageQueue(message:any) {
  * @param req azure function request object
  */
 export function eventGridValidationHandshake(context:Context, req:HttpRequest) {
-  if(req.body[0].eventType == "Microsoft.EventGrid.SubscriptionValidationEvent") {
+  if(req.body[0].eventType === "Microsoft.EventGrid.SubscriptionValidationEvent") {
     context.log('validation handshake');
     return {
         validationResponse: req.body[0].data.validationCode

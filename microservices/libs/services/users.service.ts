@@ -53,11 +53,13 @@ export class UsersService {
       
               const user = await this.userRepo.createSystemUser(profile, param);
               
+              const accountKey = process.env.EVENTS_SERVICE_KEY;
+              const serviceHost = process.env.EVENTS_SERVICE_HOST;
 
 
               await newSystemUserCreated.emitEvent(
-                'pDK270TpdvD8fR9m/AiaO6dwLd73A4knEFK49zbHTUc=',
-                'onsystemusercreated.eastus-1.eventgrid.azure.net',
+                accountKey,
+                serviceHost,
                 'NewSystemUserCreated',
                 user
               );

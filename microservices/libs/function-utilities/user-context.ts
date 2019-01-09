@@ -1,5 +1,4 @@
 import { HttpRequest } from '../azure-function-types';
-import { keyframes } from '@angular/animations';
 
 const decode = require('jwt-claims');
 
