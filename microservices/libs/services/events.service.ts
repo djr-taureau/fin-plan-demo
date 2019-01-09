@@ -168,13 +168,8 @@ export class EventsService {
         ...omit(base, params)
       });
     }
-<<<<<<< HEAD
-    
-    const formedEvent = merge(event, attributes);
-=======
 
-    const formedEvent = merge(event, attributes)
->>>>>>> working on dismiss tasks
+    const formedEvent = merge(event, attributes);
     const mail = await this.mailEventInvites({guid: formedEvent['guid']});
     const message = {
       ...formedEvent,
@@ -290,7 +285,7 @@ export class EventsService {
         description: event.body
       };
       const ics = Buffer.from(this.generateIcs(event)).toString('base64');
-      
+
       const mail = await this.mailService.systemEmailTemplate({
         to: mailEvent['attendees'],
         from: mailEvent['organizer'],
