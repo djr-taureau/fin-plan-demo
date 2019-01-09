@@ -7,13 +7,10 @@ import { EventCategory } from './events-category';
 export class Event extends TrackedBaseEntity {
 
   @Column()
-  startTime: Date;
-
-  @Column('int')
-  duration: number; //seconds
-
-  @Column()
   title: string;
+
+  @Column({nullable: true})
+  startTime?: Date
 
   @Column({
     type: 'nvarchar',
@@ -33,6 +30,9 @@ export class EventWithParticipants extends Event {
 }
 
 export class MeetingEvent extends EventWithParticipants {
+  startTime: Date;
+  duration: number; //seconds
+  organizer: EventParticipant;
   location?: string;
   url?: string;
   category?: EventCategory;

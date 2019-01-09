@@ -1,6 +1,6 @@
 import { ParticipationStatus } from "./participation-status";
 
-export type Participant = {
+export class Participant {
   guid?: string;
   name: string;
   email: string;
@@ -21,17 +21,20 @@ export class EventParticipation {
  * "participants": [
     {
       "participationId": {
-        "guid": "d56b433e-f36b-1410-856c-0044de457928"
+        "name": "Jeff",
+        "email": "jeff@example.com"
       }
     },
     {
       "participationId": {
+        "guid": "d56b433e-f36b-1410-856c-0044de457928"
         "name": "John",
         "email": "john@example.com"
       }
     },
     {
       "participationId": {
+        "name": "Jen",
         "email": "jen@example.com"
       }
     }

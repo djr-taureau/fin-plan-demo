@@ -1,4 +1,4 @@
-import { map, is, omit, keys, without, isEmpty, merge, props } from 'ramda';
+import { map, is, omit, keys, without, isEmpty, merge } from 'ramda';
 import { getCustomRepository } from "typeorm";
 import { EventRepository, GetEventsQueryOptions } from '../repositories';
 import { setValueFrom } from '../function-utilities';
@@ -6,7 +6,8 @@ import {
   EntityContext,
   ValueType,
   Event,
-  EntityScope } from '../domain-entities';
+  EntityScope,
+  Participant } from '../domain-entities';
 import { format } from "date-fns";
 
 import { ContentService } from './content.service';
@@ -16,10 +17,10 @@ import { AttributeService } from "./attribute.service";
 import { createEvent } from 'ics';
 
 const formEventInvite = a => {
-  return {
+  return Object.assign(new Participant(), {
     name: a.participationId.name,
     email: a.participationId.email
-  }
+  });
 }
 
 const base = [
@@ -29,7 +30,6 @@ const base = [
   'startTime',
   'title',
   'body',
-  'duration'
 ];
 
 export class EventsService {
@@ -60,11 +60,12 @@ export class EventsService {
       hours: time[0],
       minutes: (time.length > 1) ? time[1] : '0'
     }
+
     event['uid'] = `${event.guid}-LIFEWORKS`;
     event['start'] = start;
     event['description'] = event.body;
     event['attendees'] = map(formEventInvite, event.participants);
-    event['organizer'] = map(formEventInvite, event.organizer)[0];
+    event['organizer'] = map(formEventInvite, event.organizer)[0]; //EventParticipant;
 
     //Remove invalid props
     const formatted = omit([
@@ -145,7 +146,6 @@ export class EventsService {
     const events = await this.processEventForDB({
       startTime: params.startTime,
       title: params.title,
-      duration: params.duration,
       body: (params.body !== undefined) ? params.body : null
     }, entityContext);
 
@@ -163,7 +163,7 @@ export class EventsService {
       });
     }
     
-    const formedEvent = merge(event, attributes)
+    const formedEvent = merge(event, attributes);
     const mail = await this.mailEventInvites({guid: formedEvent['guid']});
     const message = {
       ...formedEvent,
@@ -279,7 +279,7 @@ export class EventsService {
         description: event.body
       };
       const ics = Buffer.from(this.generateIcs(event)).toString('base64');
-
+      
       const mail = await this.mailService.systemEmailTemplate({
         to: mailEvent['attendees'],
         from: mailEvent['organizer'],
