@@ -10,12 +10,16 @@ import {
   Participant } from '../domain-entities';
 import { format } from "date-fns";
 
+// services
 import { ContentService } from './content.service';
 import { TemplatesService } from './templates.service';
 import { MailService } from './mail.service';
 import { AttributeService } from "./attribute.service";
 
 import { createEvent } from 'ics';
+
+
+
 
 const formEventInvite = a => {
   return Object.assign(new Participant(), {

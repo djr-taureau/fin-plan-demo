@@ -1,6 +1,6 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
 
-export class migration1546011195683 implements MigrationInterface {
+export class migration1546970995818 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<any> {
         await queryRunner.query(`CREATE TABLE "attributes" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_42893e79692b98aa97a9fdef79f" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_863ba1ee9696d8e5bae4de5f321" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_86b01c50ab9fdcc1259d14973e1" DEFAULT getdate(), "name" nvarchar(255) NOT NULL, "value" nvarchar(MAX) NOT NULL, "valueType" int NOT NULL, "contextScope" int NOT NULL, "contextEntity" uniqueidentifier NOT NULL, CONSTRAINT "PK_c60f6cef81f712dd3f313157514" PRIMARY KEY ("guid", "name"))`);
@@ -48,6 +48,9 @@ export class migration1546011195683 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "system-tools" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_22813d2a6f7dab84dc3fdc9859c" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_d528a45c3bfe4dc76b001458417" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_0b2fdb82869337a5b9a44036471" DEFAULT getdate(), "displayName" nvarchar(255) NOT NULL, "description" nvarchar(MAX), "internalName" nvarchar(255) NOT NULL, CONSTRAINT "PK_22813d2a6f7dab84dc3fdc9859c" PRIMARY KEY ("guid"))`);
         await queryRunner.query(`CREATE TABLE "system-tool-results" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_a577cf60432936f901c91400b42" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_d0db688172f5c3ad7ac90fe21a4" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_6667fb1e80ae64c26bfa74acce8" DEFAULT getdate(), "displayName" nvarchar(255) NOT NULL, "description" nvarchar(MAX), "initiatorGuid" uniqueidentifier NOT NULL, "contextGuid" uniqueidentifier NOT NULL, "variables" nvarchar(MAX) NOT NULL, "results" nvarchar(MAX) NOT NULL, "toolGuid" uniqueidentifier, CONSTRAINT "PK_a577cf60432936f901c91400b42" PRIMARY KEY ("guid"))`);
         await queryRunner.query(`CREATE INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"("toolGuid", "initiatorGuid", "contextGuid") `);
+        await queryRunner.query(`CREATE TABLE "events" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_7e09558c929e3118e97ada33d09" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_c6ea4c77512124b6b6a306f706c" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_a6d27cd9dcef6c2adb39a0ecda8" DEFAULT getdate(), "startTime" datetime NOT NULL, "duration" int NOT NULL, "title" nvarchar(255) NOT NULL, "body" nvarchar(MAX), "contextScope" int NOT NULL, "contextEntity" uniqueidentifier NOT NULL, CONSTRAINT "PK_7e09558c929e3118e97ada33d09" PRIMARY KEY ("guid"))`);
+        await queryRunner.query(`CREATE INDEX "IDX_ebf552b714830990df55b2dcfa" ON "events"("contextScope") `);
+        await queryRunner.query(`CREATE INDEX "IDX_bb79a80230dfbe6663b073ef7c" ON "events"("contextEntity") `);
         await queryRunner.query(`CREATE TABLE "relationship-definitions" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_7e5bc0d3f1e8e5d4538f3d5b148" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_86343067cdd2efbf81f6bc2d61e" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_3f2bbb80ea9a3aa418dbd376954" DEFAULT getdate(), "displayName" nvarchar(255) NOT NULL, "description" nvarchar(MAX), "name" nvarchar(255) NOT NULL, "inverseName" nvarchar(255), CONSTRAINT "PK_7e5bc0d3f1e8e5d4538f3d5b148" PRIMARY KEY ("guid"))`);
         await queryRunner.query(`CREATE TABLE "relationships" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_d14f1810da3091e99883676d7f9" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_87b96ae7ed3741ee1cf7004390c" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_dc465c94d3182df773e65fd6af4" DEFAULT getdate(), "source" uniqueidentifier NOT NULL, "sourceType" int NOT NULL, "target" uniqueidentifier NOT NULL, "targetType" int NOT NULL, "relationshipGuid" uniqueidentifier, CONSTRAINT "PK_d14f1810da3091e99883676d7f9" PRIMARY KEY ("guid"))`);
         await queryRunner.query(`CREATE INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"("source") `);
@@ -67,9 +70,6 @@ export class migration1546011195683 implements MigrationInterface {
         await queryRunner.query(`CREATE INDEX "IDX_a724de3585869bca2d8ee03297" ON "address"("target") `);
         await queryRunner.query(`CREATE TABLE "contact-information" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_30ab6f2dfe49cec83105ee823f1" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_e370df6f0aa320750d603bf8634" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_8a5f572b6c6223161524f210df3" DEFAULT getdate(), "isTypePrimary" bit NOT NULL, "name" nvarchar(255) NOT NULL, "value" nvarchar(255) NOT NULL, "valueType" int NOT NULL, "target" uniqueidentifier NOT NULL, CONSTRAINT "PK_066a1587dd95f4ba16b27062981" PRIMARY KEY ("guid", "name"))`);
         await queryRunner.query(`CREATE INDEX "IDX_6d0a6567e7447c5a05bcacacc2" ON "contact-information"("target") `);
-        await queryRunner.query(`CREATE TABLE "events" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_7e09558c929e3118e97ada33d09" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_c6ea4c77512124b6b6a306f706c" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_a6d27cd9dcef6c2adb39a0ecda8" DEFAULT getdate(), "startTime" datetime NOT NULL, "duration" int NOT NULL, "title" nvarchar(255) NOT NULL, "body" nvarchar(MAX), "contextScope" int NOT NULL, "contextEntity" uniqueidentifier NOT NULL, CONSTRAINT "PK_7e09558c929e3118e97ada33d09" PRIMARY KEY ("guid"))`);
-        await queryRunner.query(`CREATE INDEX "IDX_ebf552b714830990df55b2dcfa" ON "events"("contextScope") `);
-        await queryRunner.query(`CREATE INDEX "IDX_bb79a80230dfbe6663b073ef7c" ON "events"("contextEntity") `);
         await queryRunner.query(`CREATE TABLE "statistics" ("guid" uniqueidentifier NOT NULL CONSTRAINT "DF_eb556676529e09529fc77790ca4" DEFAULT NEWSEQUENTIALID(), "createdOn" datetime2 NOT NULL CONSTRAINT "DF_49d12fb6859cb50f46f743fb78e" DEFAULT getdate(), "modifiedOn" datetime2 NOT NULL CONSTRAINT "DF_6dd9290ef2543a0585a96f1957e" DEFAULT getdate(), "contextScope" int NOT NULL, "contextEntity" uniqueidentifier NOT NULL, CONSTRAINT "PK_eb556676529e09529fc77790ca4" PRIMARY KEY ("guid"))`);
         await queryRunner.query(`CREATE INDEX "IDX_da16efac2072d8f388013e6204" ON "statistics"("contextScope") `);
         await queryRunner.query(`CREATE INDEX "IDX_e14c13452a5b70ec0459aa8813" ON "statistics"("contextEntity") `);
@@ -169,9 +169,6 @@ export class migration1546011195683 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_e14c13452a5b70ec0459aa8813" ON "statistics"`);
         await queryRunner.query(`DROP INDEX "IDX_da16efac2072d8f388013e6204" ON "statistics"`);
         await queryRunner.query(`DROP TABLE "statistics"`);
-        await queryRunner.query(`DROP INDEX "IDX_bb79a80230dfbe6663b073ef7c" ON "events"`);
-        await queryRunner.query(`DROP INDEX "IDX_ebf552b714830990df55b2dcfa" ON "events"`);
-        await queryRunner.query(`DROP TABLE "events"`);
         await queryRunner.query(`DROP INDEX "IDX_6d0a6567e7447c5a05bcacacc2" ON "contact-information"`);
         await queryRunner.query(`DROP TABLE "contact-information"`);
         await queryRunner.query(`DROP INDEX "IDX_a724de3585869bca2d8ee03297" ON "address"`);
@@ -191,6 +188,9 @@ export class migration1546011195683 implements MigrationInterface {
         await queryRunner.query(`DROP INDEX "IDX_f6ab7583c771a89d07760923b9" ON "relationships"`);
         await queryRunner.query(`DROP TABLE "relationships"`);
         await queryRunner.query(`DROP TABLE "relationship-definitions"`);
+        await queryRunner.query(`DROP INDEX "IDX_bb79a80230dfbe6663b073ef7c" ON "events"`);
+        await queryRunner.query(`DROP INDEX "IDX_ebf552b714830990df55b2dcfa" ON "events"`);
+        await queryRunner.query(`DROP TABLE "events"`);
         await queryRunner.query(`DROP INDEX "IDX_6d1e3eb537d4a4b39bca94d1e6" ON "system-tool-results"`);
         await queryRunner.query(`DROP TABLE "system-tool-results"`);
         await queryRunner.query(`DROP TABLE "system-tools"`);

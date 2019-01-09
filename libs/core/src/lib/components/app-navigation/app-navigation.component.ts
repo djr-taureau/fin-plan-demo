@@ -31,6 +31,9 @@ export class AppNavigationComponent implements OnInit {
       case 'addNote':
         this.router.navigate(['addNote']);
       break;
+      case 'addTodo':
+        this.router.navigate(['addTodo']);
+      break;
       }
   }
 

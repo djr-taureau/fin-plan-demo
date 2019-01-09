@@ -5,17 +5,23 @@ import {
   EventsStateModule,
   EventsUiModule
 } from './+modules';
+
 import { TasksPageComponent } from './pages';
+
 import {
   TasksHeaderComponent,
   TasksListComponent,
-  TasksWidgetComponent
+  TasksWidgetComponent,
+  DialogHostComponent,
+  TodosFormDialogComponent,
 } from './components';
+
 import {
   EventImagePipe,
   EventLinkPipe
 } from './pipes';
 
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -30,6 +36,8 @@ import {
     TasksHeaderComponent,
 		TasksListComponent,
     TasksWidgetComponent,
+    TodosFormDialogComponent,
+    DialogHostComponent,
     EventImagePipe,
     EventLinkPipe
   ],
@@ -38,6 +46,10 @@ import {
     TasksWidgetComponent
 
   ],
-  entryComponents: []
+  providers: [
+    { provide: MatDialogRef, useValue: {} },
+    { provide: MAT_DIALOG_DATA, useValue: [] }
+  ],
+  entryComponents: [DialogHostComponent, TodosFormDialogComponent]
 })
 export class EventsModule {}

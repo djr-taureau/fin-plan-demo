@@ -21,10 +21,10 @@ export interface mailBoilerplate {
 export class MailService {
   private mail = new sendgrid.Mail();
   private templateService = new TemplatesService();
-  
+
   /**
-   * Sets the base data needed for sending email 
-   * 
+   * Sets the base data needed for sending email
+   *
    * @param boilerplate mailBoilerplate interface
    */
   private base(boilerplate:mailBoilerplate) {
@@ -39,9 +39,9 @@ export class MailService {
 
   /**
    * Returns API object for a simple plain text email
-   * 
+   *
    * This is intended to be used for very minimal emails that you pass content to directly
-   * 
+   *
    * @param boilerplate mailBoilerplate interface
    * @param content plain text string of email body
    */
@@ -55,9 +55,9 @@ export class MailService {
 
   /**
    * Return API object for a simple html email
-   * 
+   *
    * This is intended to be used for very minimal emails that you pass html content to directly
-   * 
+   *
    * @param boilerplate mailBoilerplate interface
    * @param content html string of email body
    */
@@ -71,7 +71,7 @@ export class MailService {
 
   /**
    * Implements the template service for basic system emails from the content service.
-   * 
+   *
    * @param boilerplate mailBoilerplate interface
    * @param template template name {virtual blob path} + {filename.ext}
    * @param templateData optional template data object to hydrate email object keys must exist in template as {{replacementTag}}
@@ -85,7 +85,7 @@ export class MailService {
     } else {
       this.mail.addTextContent(content);
     }
-    
+
     return this.mail;
   }
 

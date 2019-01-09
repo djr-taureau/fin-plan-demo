@@ -79,7 +79,13 @@ export class Events {
 		this.store.dispatch(new Dismiss(id));
   }
 
-  addEvent() {
-
+  add(event) {
+		// this.store.dispatch(new Add(event));
   }
+
+	update(note) {
+		// this.store.dispatch(new Update(event));
+  }
+
+
 }

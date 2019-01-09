@@ -1,15 +1,8 @@
 <form [formGroup]="notesForm" connectForm="notesForm" (ngSubmit)="createNote(notesForm.value)">
-
+  <mat-dialog-content>
     <div class="container">
       <div class="header">
-        <div class="delete-note">
-          <button matTooltip="Delete Note">
-            <i class="material-icons md-24">delete_outline</i>
-          </button>
-        </div>
-        <div class="auto-save">
-          Last autosaved: 2:33 pm
-        </div>
+        <span class="title title-md">ADD NOTE</span>
       </div>
       <div class="note-fields">
         <div class="name">
@@ -20,15 +13,16 @@
           </mat-form-field>
         </div>
         <div class="note editor">
-          <span class="control-padding title-md">Note</span>
-            <quill [config]="config" [modules]="modules"
+          <span class="control-padding title-sm">Note</span>
+            <quill [config]="config" [value]="''" [modules]="modules"
               (blur)="onEditorBlur($event)" (focus)="onEditorFocus($event)"
               (editorCreate)="onEditorCreate($event)" (valueChange)="onValueChange($event)"
               (contentChange)="onContentChange($event)" (selectionChange)="onSelectionChange($event)">
-              <div quillContent>{{notesForm.controls['reminderNote'].value}}</div>
+              <div quillToolbar></div>
+              <div quillContent></div>
             </quill>
-          <div class="validation-msg">
-
+          <div class="validation-msg" *ngIf="(note.value  && note.invalid)">
+              Note is required to have at least 50 characters
           </div>
           <input name="note" type="hidden" formControlName="note">
         </div>
@@ -61,7 +55,7 @@
       </div>
       <div class="note-fields-2">
         <div class="client">
-          <span class="title-md">Add Client Association</span>
+          <span class="title-sm">Add Client Association</span>
           <mat-form-field class="flat-select fill" appearance="outline" floatLabel="never" lwControlBarControl>
             <mat-select mat-select-arrow-wrapper placeholder="Add Client" formControlName="clientAssociation">
               <mat-option mat-select-value-text *ngFor="let client of clients" [value]="client.value">
@@ -71,7 +65,7 @@
           </mat-form-field>
         </div>
         <div class="assign">
-          <span class="title-md">Add Assignment</span>
+          <span class="title-sm">Add Assignment</span>
           <mat-form-field class="flat-select fill" appearance="outline" floatLabel="never" lwControlBarControl>
             <mat-select mat-select-arrow-wrapper placeholder="Assign" formControlName="assignment">
               <mat-option mat-select-value-text *ngFor="let assignment of assignments" [value]="assignment.value">
@@ -81,12 +75,18 @@
           </mat-form-field>
         </div>
         <div class="visible">
-          <span class="client-visible title-md">Client Visible</span>
+          <span class="client-visible title-sm">Client Visible</span>
           <mat-slide-toggle formControlName="clientVisible" mat-button-toggle client-visible></mat-slide-toggle>
         </div>
       </div>
     </div>
-    <div class="actions"></div>
+  </mat-dialog-content>
+
+    <div class="actions">
+      <button class="cancel mat-flat-button" (click)="close()">Cancel</button>
+      <button mat-flat-button lwControlBarControl (keydown.enter)="save()" (click)="save()">Save</button>
+    </div>
+
   <div>
-  </div>
+</div>
 </form>

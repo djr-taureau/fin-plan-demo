@@ -9,13 +9,20 @@ import { UiComponentsButtonsModule } from '@lifeworks/ui-components/buttons';
 import { UiComponentsIconsModule } from '@lifeworks/ui-components/icons';
 import { MatDialogModule } from '@angular/material/dialog';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import { QuillModule, QuillConfigInterface, QUILL_CONFIG } from 'ngx-quill-wrapper';
+
 
 import {
 	MatSelectModule,
 	MatInputModule,
 	MatFormFieldModule,
 	MatIconModule,
-	MatButtonModule
+  MatButtonModule,
+  MatCheckboxModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 } from '@angular/material';
 
 const MODULES = [
@@ -27,12 +34,18 @@ const MODULES = [
 	UiComponentsButtonsModule,
 	UiComponentsIconsModule,
   UiComponentsLayoutsModule,
+  QuillModule,
 	MatSelectModule,
 	MatInputModule,
 	MatFormFieldModule,
 	MatIconModule,
   MatButtonModule,
   MatDialogModule,
+  MatCheckboxModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   FormsModule,
   ReactiveFormsModule,
 ];

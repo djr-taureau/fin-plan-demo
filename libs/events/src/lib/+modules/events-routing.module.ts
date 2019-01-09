@@ -5,7 +5,7 @@ import { TasksPageComponent } from '../pages';
 import { TasksHeaderComponent, TasksListComponent } from '../components';
 
 
-// import { DialogHostComponent } from '../components';
+import { DialogHostComponent } from '../components';
 
 @NgModule({
 	imports: [
@@ -25,7 +25,7 @@ import { TasksHeaderComponent, TasksListComponent } from '../components';
         ]
       },
 
-			// { path: 'addTask', component: DialogHostComponent },
+			{ path: 'addTodo', component: DialogHostComponent },
 		  ])
 	  ],
 	exports: [RouterModule]

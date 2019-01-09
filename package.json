@@ -71,6 +71,7 @@
     "@ngrx/store": "^6.0.1",
     "@nrwl/nx": "^6.2.1",
     "@sendgrid/helpers": "^6.3.0",
+    "@sendgrid/mail": "^6.3.1",
     "azure-arm-eventgrid": "^2.2.0",
     "azure-eventgrid": "^1.5.0",
     "circular-dependency-plugin": "^5.0.2",

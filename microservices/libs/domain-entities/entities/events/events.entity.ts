@@ -47,3 +47,13 @@ export class TaskEvent extends Event {
   dismissed: boolean;
   taskType: string;
 }
+
+export class TodoEvent extends Event {
+  assignedTo?: EventParticipant;
+  reminderNotes: string;
+  dueDate: Date;
+  reminderTime: string;
+  status: string;
+  dismissed: boolean;
+  taskType: string;
+}

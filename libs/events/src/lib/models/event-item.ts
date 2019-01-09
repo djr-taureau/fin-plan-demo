@@ -6,11 +6,13 @@ export type EventItems = Array<EventItem>;
 
 export interface EventItem extends DomainEntity, IRemoveable {
   guid: string;
-  startTime: Date;
+  reminderNotes?: string;
+  startTime?: Date;
   dueDate?: Date;
-  duration: number;
-  title: string;
-  description: string;
+  duration?: number;
+  title?: string;
+  description?: string;
+  reminderTime?: string;
   status: string;
 	dismissed: boolean;
 	eventType: string;
