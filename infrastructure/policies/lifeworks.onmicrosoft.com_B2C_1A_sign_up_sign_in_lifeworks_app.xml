@@ -44,8 +44,9 @@
         <OutputClaim ClaimTypeReferenceId="lwUserGuid" />
         <OutputClaim ClaimTypeReferenceId="lwClientGuid" />
         <OutputClaim ClaimTypeReferenceId="lwFirmClientGuid" />
-        <OutputClaim ClaimTypeReferenceId="lwFirmGuid" />
-        <OutputClaim ClaimTypeReferenceId="lwFirmAccountGuid" />
+        <!-- Remove Default Value after beta -->
+        <OutputClaim ClaimTypeReferenceId="lwFirmGuid" DefaultValue="1b93433e-f36b-1410-8d31-00da3ea4d54f" AlwaysUseDefaultValue="true"/>
+        <OutputClaim ClaimTypeReferenceId="lwFirmAccountGuid" DefaultValue="1993433e-f36b-1410-8d31-00da3ea4d54f" AlwaysUseDefaultValue="true"/>
         <OutputClaim ClaimTypeReferenceId="lwUserPermissions" />
       </OutputClaims>
       <SubjectNamingInfo ClaimType="sub" />

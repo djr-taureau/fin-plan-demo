@@ -1,7 +1,6 @@
 import { append, reduce, filter } from 'ramda';
 import { ApplicationContext, SystemContentType, BlobMetadata } from "./common";
 import { ValueType } from '../domain-entities/common'
-import { errorResponse } from '../function-utilities/format-responses';
 
 //Services
 import { ContentService } from "./content.service";
@@ -77,8 +76,8 @@ export class WealthPlanService {
    * @param fromSystemTemplate defaults to Lifeworks (Simple)
    */
   async createFirmClientWealthPlan(entityGuid:string, name?: string, fromSystemTemplate?:string) {
-    const defaultSystemTemplate:string = "Lifeworks (Simple).json";
-    const defaultCopyName:string = "Lifeworks (Simple) Copy.json";
+    const defaultSystemTemplate: string = "Lifeworks (Simple).json";
+    const defaultCopyName: string = "Lifeworks (Simple) Copy.json";
 
     const copyFrom = await this.getWealthPlanTemplate(
       ApplicationContext.System,
@@ -120,9 +119,8 @@ export class WealthPlanService {
 
     const updatedWealthPlanSections = reduce(
       (acc, item) => {
-        const currentWealthPlan = acc;
-        currentWealthPlan.content = append(item, currentWealthPlan.content);
-        return currentWealthPlan;
+        const content = append(item, acc.content);
+        return Object.assign(acc, { content })
       },
       currentWealthPlan as any,
       sections as any
@@ -146,9 +144,8 @@ export class WealthPlanService {
 
     const updatedWealthPlanSections = reduce(
       (acc, item) => {
-        const currentWealthPlan = acc;
-        currentWealthPlan.content = filter(n => n['name'] !== item, currentWealthPlan.content);
-        return currentWealthPlan;
+        const content = filter(n => n['name'] !== item, acc.content);
+        return Object.assign(acc, { content });
       },
       currentWealthPlan,
       sections
@@ -157,7 +154,7 @@ export class WealthPlanService {
     return await this.saveWealthPlan(
       ApplicationContext.FirmClient,
       wealthPlanName,
-      updatedWealthPlanSections,
+      <any>updatedWealthPlanSections,
       entityGuid
     );
   } 
