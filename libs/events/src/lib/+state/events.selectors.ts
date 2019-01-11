@@ -1,5 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { prop, propOr, length, propEq, pipe, values, sort,sortBy, compose, curry } from 'ramda';
+import { prop, propOr, length, propEq, pipe, values, sort, sortBy, compose, curry } from 'ramda';
 import { LoadDataStatus, isTrue, isFalse } from '@lifeworks/common';
 
 import { EventsData } from './events.interfaces';
