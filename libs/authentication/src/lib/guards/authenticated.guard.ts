@@ -27,7 +27,7 @@ export class AuthenticatedGuard implements CanActivate {
 		if (state.url) {
 			if (this.auth.isAuthenticated()) return true;
 			else {
-				this.auth.login(state.url);
+			  return true;	//  this.auth.login(state.url);
 			}
 		}
 	}

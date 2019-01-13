@@ -24,14 +24,14 @@ export class LoginCallbackComponent implements OnInit {
 	constructor(private auth: AuthService, private router: Router) {}
 
 	ngOnInit() {
-		this.processAuthState();
+		// this.processAuthState();
 	}
 
-	@Timeout(500)
-	processAuthState() {
-		if (this.auth.isAuthenticated()) {
-			const redir = retriveFromStorage(REDIRECT_TOKEN);
-			this.router.navigate([redir]);
-		}
-	}
+	// @Timeout(500)
+	// processAuthState() {
+	// 	if (this.auth.isAuthenticated()) {
+	// 		const redir = retriveFromStorage(REDIRECT_TOKEN);
+	// 		this.router.navigate([redir]);
+	// 	}
+	// }
 }

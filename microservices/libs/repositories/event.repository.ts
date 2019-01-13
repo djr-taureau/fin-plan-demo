@@ -1,10 +1,11 @@
-import { 
+import {
   AbstractRepository,
-  EntityRepository, 
+  EntityRepository,
   FindOneOptions,
   FindManyOptions,
   MoreThan} from "typeorm";
-import { 
+import { getPagingOptions, QueryOptions, GetQueryOptions } from './common';
+import {
   basicError } from "./common";
 import { Event, EntityContext } from "../domain-entities";
 
@@ -17,8 +18,8 @@ export class EventRepository extends AbstractRepository<Event> {
 
   /**
    * Create an Event
-   * 
-   * @param params 
+   *
+   * @param params
    */
   async saveEvent(params: Array<Event>) {
     try {
@@ -28,10 +29,24 @@ export class EventRepository extends AbstractRepository<Event> {
     }
   }
 
-  
+  async query(options?: QueryOptions) {
+		const pagingOptions = getPagingOptions(options);
+		return await this.repository.findAndCount(pagingOptions);
+	}
+
+
+  async expandedQuery(options?: QueryOptions) {
+		const pagingOptions = getPagingOptions(options);
+		const query: FindManyOptions = {
+			...pagingOptions,
+		}
+		return await this.repository.findAndCount(query);
+	}
+
+
   /**
    * Retrieve a single event based on guid
-   * 
+   *
    * @param guid event guid
    */
   async getEvent(guid) {

@@ -1,6 +1,6 @@
 const POSTMAN_CATCHALL_PROXY = {
   context: ['/api'],
-  target: 'https://3ee63553-cc38-4cf2-add2-4356fbbd6298.mock.pstmn.ioqwerqwer',
+  target: 'https://3ee63553-cc38-4cf2-add2-4356fbbd6298.mock.pstmn.io',
   pathRewrite: {
     '^/api': ''
   },

@@ -264,6 +264,9 @@ export class EventsService {
     }
   }
 
+  async getAllEvents(params) {
+		return await this.eventRepo.expandedQuery(params);
+	}
 
   /**
    *
